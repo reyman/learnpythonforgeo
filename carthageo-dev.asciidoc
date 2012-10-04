@@ -1,0 +1,2305 @@
+Atelier Python
+==============
+Rey Sebastien <rey.sebastien@yahoo.fr>
+:Author Initials: SR
+:toc2:
+:icons: Yes
+:max-width: 70%
+
+* v0.1, Sept 15, 2012 : Initial version / 
+* v0.2, Sept 17, 2012 : Add some major explanation about list, fonctions, indentation, etc. /
+* v0.3, Sept 18, 2012 : Add information for ubuntu and windows install \+ add some minor fixes on source code \+ add some new links
+* v0.4, Sept 19, 2012 : Add section with information for POO \+ ROGLike exercices instruction and exemple
+* v0.5, Sept 20, 2012 : Add new information for POO
+* v0.6, Oct 2, 2012 : Add information for Labyrinthe exercice 
+ 
+== Introduction au document
+
+Cette longue introduction doit vous servir de point de départ pour vous lancer ensuite par la suite dans des developpements python plus lourd.
+
+Construit de façon dynamique, disponible en ligne, celui çi sera probablement mis à jour plusieurs fois durant cette semaine, et cela pour plusieurs raisons : 
+
+. c'est la première fois que ce cours est donné (l'année dernière les étudiants avait encore la malchance de faire du code sous Excell en VBA).
+. si vous voyez des fautes, des coquilles (il y en aura surement des dizaines ...) , soyez gentil, ne m'insultaient pas et faites moi signe, je corrigerai :)
+. ce document sera nourri par vos remarques, vos questions durant les Tp 
+  
+.Quels objectifs ?
+
+* Etre capable de lire un code inconnu et de le comprendre
+* Etre capable de chercher une information et de "poser une question" sur Internet et les sites spécialisés
+* Etre capable de concevoir et de réaliser un programme simple
+* Etre capable de travailler en groupe
+ 
+Ce tutorial a pour but de vous faire travailler rapidement sur python, et donc masque un certain nombre de questionnement théorique.
+
+De *très* nombreuses ressources existent pour vous éclairer sur Internet, et ce tutorial est un pot-pourri des informations que l'on peut trouver partout facilement, car Python est un langage *extremement populaire*, 
+
+J'essaierai d'en lister un certain nombres dans l'onglet ressource tout en bas de page.
+
+== Le langage python
+
+image::images/python.png[align="center"]
+
+=== Présentation rapide 
+
+Python est un langage intéressant pour plusieurs raisons, à la fois technique : 
+
+* Il est interpreté (ligne par ligne), et portable facilement (windows, linux)
+* Le typage est dynamique (pas besoin d'indiquer le type de votre variable...)
+* Tout est *objet* en python (possède des attributs et des fonctions)
+* Il existe de très nombreuses librairies logicielles qui étendent le langage dans plusieurs domaines
+* Il permet à la fois de créer de petit programmes (script réalisant/automatisant de petite tâche) , tout comme de très gros programmes ou logiciels
+* Python permet de mixer différents paradigmes de programmation : *objet ou POO* et *fonctionelle* 
+
+et pédagogique :
+
+* python est connu comme un langage "fun"
+* La documentation originale est de grande qualité
+* La communauté utilisateur est très grande (poser des questions et se procurer de la documentation gratuite est facile)
+* Le système d'indentation est un bon guide à l'apprentissage, et favorise la lisibilité du code source
+* La courbe d'apprentissage est très rapide avec ce langage, finalement assez proche du pseudo-code
+* De nombreux logiciels ou système propose une API python pour ajouter des extensions/plugin, et réaliser des traitements automatisés  
+* Comme pour le langage R, une très forte communauté s'est formé en science autour de librairies/package extension du langage : numpy, scipy, matplotlib etc.
+
+Je ne rentrerai pas plus dans le détail sur les aspects techniques du langage pour ne pas vous noyer trop vite d'information.
+
+[NOTE]
+====
+.Toutefois, pour les plus curieux, quelques liens pour aller plus loin :
+* la page wikipédia de python : http://fr.wikipedia.org/wiki/Python_%28langage%29
+* une *API* : http://fr.wikipedia.org/wiki/Interface_de_programmation
+* un *paradigme de programmation* :  http://fr.wikipedia.org/wiki/Paradigme_%28programmation%29
+* la programmation orientée objet ou POO : http://fr.wikipedia.org/wiki/Programmation_orient%C3%A9e_objet
+====
+
+=== Utilisation/Usages
+
+Python est un langage clairement à la mode, du fait qu'il est simple à utiliser et à étendre, on le retrouve un peu partout dans différents domaines :
+
+* Mathematique
+* Intelligence artificielle
+* Education
+* Jeux
+* Sécurité et Système d'exploitation
+* etc. cf http://www.python.org/about/apps/
+
+Quelques exemples d'utilisation de python spécifique en géomatique :
+
+* QGIS (http://www.qgis.org/pyqgis-cookbook/)
+* ArcGis 10
+* GeoDjango
+* Accès Postgis avec Psycopg2
+* librairie *Numpy*
+* librairie *GDAL* et *OGR* 
+* librairie *Geopy*
+* librairie *Shapely*
+* etc.
+
+.Quelques pistes supplémentaires ici :
+****
+
+* http://geotribu.net/node/165 (ogr \+ python)
+* http://www.paolocorti.net/2012/02/03/python_for_geospatial_developers/
+* http://michalisavraam.org/2010/04/the-essential-python-modules-for-gis/
+* http://spatiallyadjusted.com/2011/01/03/2011-the-year-python-takes-over-gis/
+* http://2010.foss4g.org/workshop06.php
+
+****
+
+.Et pour ceux qui veulent prendre de l'avance sur l'année, un livre et quelques pointeurs supplémentaires :
+****
+
+* http://www.packtpub.com/python-geospatial-development/book
+* http://www.gis.usu.edu/~chrisg/python/2009/
+* http://gis.stackexchange.com/questions/tagged/python
+****
+
+=== Installation 
+
+==== Windows
+
+Sous windows, l'installation est un poil plus délicate que sous Linux ou Ubuntu.
+
+Je vous conseille de choisir plutôt une installations sous forme de packages pré-installés, du type de *pythonXY*, 
+car l'installation des modules supplémentaires un à un peut vite devenir *cauchemardesque* ! 
+
+[NOTE]
+.Quelques ressources : 
+====
+* *pythonXY* qui contient des packages pour la géomatique et spyder +
+http://code.google.com/p/pythonxy/
+
+* *PortablePython* est un python qui tient sur clef USB : +
+http://www.portablepython.com/
+
+* La doc officielle propose quelques pointeurs également : +
+http://docs.python.org/using/windows.html
+
+* L'installeur officiel : +
+http://www.python.org/getit/releases/2.7.3/
+====
+
+Une autre solution envisageable, pas forcément plus complexe qu'une installation qui se passe mal sous windows, 
+passe par l'installation d'une machine virtuelle avec Ubuntu sous windows.
+L'avantage c'est qu'une fois Ubuntu installé ainsi, vous allez pouvoir profiter de tout un tas d'outil de développement beaucoup plus facilement que sous windows !!
+
+[NOTE]
+.Quelques ressources/ tutoriaux
+====
+* Ubuntu sous machine virtuelle : + 
+http://www.psychocats.net/ubuntu/virtualbox
+
+* Ubuntu sur une clé usb : +
+http://www.psychocats.net/ubuntu/usb
+====
+
+===== Ubuntu
+
+Python est natif, donc déjà installé, sous Ubuntu. [red]*Joie !*
+
+Les autres éléments, librairies, et l'IDE spyder, peuvent être installés dans le terminal, via une commande simple :
+
+[source,console]
+$> sudo apt-get install spyder 
+
+Et pour aller plus loin avec QGIS et les plugin python pour GDAL / OGR ( http://pypi.python.org/pypi/GDAL/ )
+
+[source,console]
+----
+$> sudo apt-get install python-software-properties
+$> sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
+$> sudo apt-get update
+$> sudo apt-get install qgis
+$> sudo apt-get install gdal-bin
+$> sudo apt-get install python-gdal
+$> sudo apt-get install python2.7-qgis
+----
+
+
+[NOTE]
+====
+Pour voir une listes des autres packages python disponible sous ubuntu : 
+
+[source,console]
+$> sudo aptitude search python-* | grep 2.7
+
+ou :
+
+[source,console]
+$> sudo aptitude search python-*
+
+====
+
+[NOTE]
+====
+Pour installer d'autres modules dans python, il existe plusieurs solutions : 
+
+* l'installateur easy_install livré avec python : http://wiki.python.org/moin/CheeseShopTutorial
+* ou plus simple avec l'installateur de package d'ubuntu, qui contient aussi bon nombres de packages : `apt-get`
+====
+
+[NOTE]
+====
+Il existe de nombreux paquets python en rapport avec la géomatique dont vous pouvez partir à la chasse, voici quelques listes faites par des utilisateurs :
+ 
+* http://gis.stackexchange.com/questions/23575/what-are-the-python-tools-modules-add-ins-crucial-in-gis
+* http://gis.stackexchange.com/questions/3796/python-for-gis-on-a-thumb-drive?rq=1
+* http://gis.stackexchange.com/questions/3796/python-for-gis-on-a-thumb-drive?rq=1
+* La liste de module pour Pypi (mais aussi pour `apt-get`) : http://pypi.python.org/pypi?%3aaction=browse&show=all&c=391
+====
+
+Quelques commandes utiles pour le terminal : 
+
+.Afficher le répertoire courant
+[source,console]
+$> pwd 
+
+.Se déplacer dans les répertoires
+[source,console]
+$> cd nomDeMonRepertoire
+
+.retour arrière dans la hiérarchie de répertoire
+[source,console]
+$> cd ..
+
+.Afficher le contenu du répertoire
+[source,console]
+$> ls
+
+NOTE: `$>` représente le *prompt* de votre terminal, qui contient des informations sur le répertoire ..
+
+NOTE: Vous pouvez appuyer sur la *flêche HAUT* de votre clavier numérique pour rapeller des commandes précédemment tapé et les modifier par la suite (idem dans l'interpreteur python)
+
+NOTE: En appuyant sur la touche *TAB* deux fois lors de l'écriture de vos commandes, vous pouvez obtenir des informations de complétion.   
+
+
+En savoir plus : 
+
+* http://doc.ubuntu-fr.org/console
+* https://help.ubuntu.com/community/UsingTheTerminal
+
+=== Mon premier programme en python 
+
+Il existe deux façon d'écrire et d'éxecuter un programme python : 
+
+* en mode *interactif* : l'utilisateur saisi les commandes les unes après les autres, et l'interpréteur execute/évalue chacune d'elle au fur et à mesure de leur saisie. 
+* ou en mode *execution* : on execute une grosse portion de code stocké dans un ou plusieurs fichier, en une commande.
+
+Pour le mode *execution* nous allons écrire nos programmes au préalable dans un document nommé avec l'extension *.py* 
+Pour éditer le document une fois créé vous pouvez utiliser : 
+
+* un IDE spécialisé, tel que `Spyder` (http://code.google.com/p/spyderlib/) , 
+* ou vous pouvez aussi bien utiliser un editeur de texte avec plugin python, tel que *gedit* (par défaut installé avec Ubuntu),
+
+CAUTION: Le copier - coller ne marche pas forcément des éditeurs vers le terminal, nottament lorsqu'on utilise la commande "raw_input()" qui attend une réponse utilisateur.  
+On préférera donc la commande *python nomdufichier.py* dans le terminal pour executer les fichiers.
+
+[NOTE]
+.Accélérer et configurer Spyder pour usage de la console interne
+=====
+
+Pour améliorer l'execution de spyder il faut aller dans les options et cocher la case : *Installer le input hook QT pour spyder*
+
+image::images/spyder2.png[align="center"]
+
+Pour avoir la main au moment de l'execution lors des saisies utilisateurs, il faut *configurer l'execution*
+
+image::images/spyder1.png[align="center"]
+
+Et activer la case à cocher *Intéragir avec Python lors de l'exécution*
+
+image::images/spyder3.png[align="center"]
+
+=====
+
+==== avec l'interpreteur de commande python
+
+Pour accéder à un terminal linux, cliquez sur l'onglet en haut a gauche avec une roue, et écrivez "Terminal"
+Vous pouvez ensuite tapez "python" dans le terminal linux, ce qui aura pour effet de lancer *l'intepreteur de commande en mode console interactif*.
+
+[source,console]
+----
+> python
+ActivePython 2.6.5.12 (ActiveState Software Inc.) based on
+Python 2.6.5 (r265:79063, Mar 20 2010, 14:22:52) [MSC v.1500 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+----
+
+Chaque commande que vous allez taper dans l'interpreteur de code python sera evalué : 
+
+[source,python]
+----
+>>> print "Hello World"
+hello world
+----
+
+Python vous renvoie le résultat de votre commande à chaque  fois qu'il a réussi à l'évaluer, sinon il vous renvoie une erreur.
+
+TIP: Pour quitter la console sous Ubuntu, appuyer sur la combinaison de touche : __CTRL + D__
+
+==== avec l'executable python
+
+--
+. Créer un fichier __hello.py__
+. Taper le texte suivant : 
++
+.hello.py
+[source,python]
+----
+# -*- coding: utf-8 -*-
+print "Hello World"
+----
++
+. Enregistrer et fermer le programme
+. Executer le programme ainsi dans la ligne de commande python
+--
+
+[source,console]
+$> python hello.py
+
+Réouvrez ensuite votre fichier __hello.py__ et ajoutez la ligne suivante :
+
+.hello.py
+[source,python]
+----
+print "Hello World"
+print Bonjour Monde
+----
+On redemande à l'interpreteur de lire notre programme :
+
+[source,console]
+$> python hello.py
+
+Celui ci renvoie une erreur que nous allons apprendre à lire : 
+
+[source,console]
+----
+$> python hello.py 
+  File "hello.py", line 2
+    print Bonjour Monde
+                      ^
+SyntaxError: invalid syntax
+----
+
+L'interpréteur vous donne la ligne et la faute : la syntaxe pour print est incorrecte, car il manque les guillemets
+
+Point d'entrée d'un programme python : 
+
+.hello2.py
+[source,python]
+----
+# -*- coding: utf-8 -*-
+import sys # <1>
+
+def main(): # <2>
+    print 'Hello there', sys.argv[1] # <3>
+    # Command line args are in sys.argv[1], sys.argv[2] ...
+    # sys.argv[0] is the script name itself and can be ignored
+
+
+if __name__ == '__main__': # <4>
+    main()
+----
+
+.Execution de python2.py
+[source,console]
+----
+$> python hello2.py "Sebastien Rey"
+----
+
+<1> Le mot-clef *import* permet d'étendre le programme en ajoutant des fonctionnalités qui existe dans des sous modules de python, 
+ou des modules personnalisés définit dans le répertoire par le nom du fichier (nous en discuterons plus dans la partie module)
+<2> La fonction qui sera lancé au démarrage du programme, on l'apelle souvent *main()* par convention.
+<3> *sys.argv[]* est le nom du tableau définit par python qui contient l'ensemble des paramètres passé en ligne de commande. L'élément 0 est le nom du programme.
+<4> *\__xxx__* est une dénomination spéciale de nom de fonction que seul python reconnait, ici cela a pour effet d'indiquer à l'interpréteur python que le bloc d'instruction suivant est le point de départ de notre programme lorsqu'il est executé en ligne de commande : cf. http://docs.python.org/reference/datamodel.html#specialnames pour en savoir plus
+
+
+L'avantage de cette méthode par rapport à la première, c'est que dans la première, si vous fermez le terminal, ou que vous décidez de quitter le programme pour aller boire un café, tout ce que vous avez écrit est bel et bien perdu quand vous re-lancez la console Python.
+
+Il donc plus intéressant de stocker nos programmes dans des fichiers avec des noms *explicites*, comme dans la deuxième méthode.
+
+NOTE: "Hello World" est le programme le plus connu des informaticiens, cf. http://en.wikipedia.org/wiki/Hello_world_program
+
+CAUTION: Python est sensible à la casse, il faut donc faire attention au majuscule / minuscule dans votre programme. 
+
+CAUTION: Pour ne pas avoir de problème avec les accents, pensez à ajouter la ligne suivante au tout début de votre programme : 
+__# -*- coding: utf-8 -*-__
+
+== Indentation 
+
+Python utilise l'indentation pour définir le corps des blocs d'instruction. 
+
+Il n'y a pas donc pas d'instruction *FIN POUR* , *FIN TANT QUE*, *FIN FONCTION*, etc.
+
+L'indentation se fait avec des espaces ([red]*4 espaces par niveau d'indentation*), ou avec des tabulation ([red]*1 tabulation*). Toutefois, pour ce cours, nous choisirons d'utiliser des tabulations car les erreurs sont plus faciles à voir.
+
+.Exemple de bloc :
+[source,python]
+----
+def calcul(a,b): 
+   if (a > b): # <1>
+      return a - b # <2>
+   else:
+      return a + b
+# <3>
+
+sommeCalcul = 0
+
+for i in xrange(5): # 
+   sommeCalcul = sommeCalcul + calcul(3,i) #<4>
+   if (sommeCalcul > 15):
+      sommeCalcul = sommeCalcul * 2 #<5>
+#<6>
+print sommeCalcul
+
+----
+
+<1> Premier niveau d'indentation pour définir le corps de la fonction
+<2> Deuxième niveau d'indentation pour définir le corps du bloc *if*
+<3> La fin de l'identation ici marque la fin du bloc de la fonction calcul()
+<4> Premier niveau d'indentation pour marquer le corps d'instruction de la boucle *for*
+<5> Idem, tout ce qui sera indenté au delà de ce niveau d'indentation  sera executé par la boucle for, a condition ici de rentrer dans la condition if
+<6> Fin d'indentation, fin de la boucle for et de son execution.
+
+CAUTION: Il ne faut pas mixer les espaces et les tabulations 
+
+NOTE: Les informations sur le *style* a adopter pour les commentaires, l'indentation, etc sont définis dans une *guideline* : +
+http://www.python.org/dev/peps/pep-0008/ 
+
+NOTE: Plus d'information ici aussi : + 
+http://diveintopython.adrahon.org/getting_to_know_python/indenting_code.html
+
+== Variables, Objets et Références
+
+=== Generalités 
+
+* Les variables commence par un caractère et peuvent ensuite contenir des chiffres
+* La casse est importante en python, `maVariable` est différent de `mavariable`
+* Généralement, pour le noms des variables, des objets, des méthodes, on utilise le *camelCase* : on commence par une minuscule, et on marque les changement de mot par une majuscule.
+* Les variables doivent porter des noms compréhensibles !! `temp` n'est pas un bon nom de variable
+* Il y a 29 mot clef en python, qui ne seront pas compris par l'interpreteur comme des variables mais bien comme des instructions spéciales : 
+
+|=================
+|and | def | exec | if | not | return
+|assert | del| finally | import| or| try
+|break| elif| for | in| pass| while
+|class| else| from| is| print| yield
+|continue| except| global| lambda| raise
+|=================
+
+NOTE: Vous remarquerez que la commande *print* fait partie des mot-clef ou *statements* en anglais, ce n'est donc pas une fonction mais bien un élément du langage. 
+
+=== Affectation 
+
+Une variable est affecté avec le signe __=__ 
+Une variable doit êter initialisé puis affecté une première fois pour pouvoir ensuite être utilisé dans un programme
+
+[source,python]
+----
+nbJambes = 2
+couleurYeux = "marron"
+----
+
+NOTE: __Affecter__ est le terme correct pour indiquer l'initialisation d'une variable avec une valeur
+
+En réalité le modèle d'affectation de python est un peu différent des autres langage, au sens ou python manipule des *références* et distingue nettement le *nom* d'une variable, et sa *valeur*.
+La *référence* est donc le lien qui relie les deux objets python : *nom* et *valeur* !
+
+Prenons un exemple simple : 
+
+[source,python]
+a = 3
+
+En réalité que se passe-t-il lors de cette affectation :
+
+. Python créé un objet ayant une *valeur* 3
+. puis la variable de *nom* "a" est créée si elle n'existe pas déjà
+. enfin python relie l'objet ayant la *valeur* 3 avec la variable de *nom* "a"
+
+.Etapes d'une affectation
+image::images/obj1.png[align="center"]
+
+Que se passe t il lors d'une ré-affectation ? 
+
+[source,python]
+----
+a = 3 # a est un nombre
+a = "test" # puis il devient du texte
+----
+
+L'objet contenant la valeur 3 n'est plus lié à la *variable a* donc il disparait, et il ne peux plus être appelé par la suite ! 
+
+Comment cela se passe-t-il lorsque j'observe un objet et des références partagés ? 
+
+[source,python]
+----
+a = 3 # a est un nombre
+b = a # b est un nombre
+----
+
+.objet partagés 
+image::images/obj2.png[align="center"]
+
+En réalité il existe toujours un seul objet contenant la valeur 3, et la référence est partagé, reliant la *variable a* et la *variable b* au même objet en mémoire.
+Ouis mais dans ce cas, que se passe t il si je change la valeur de a ????
+
+[source,python]
+----
+a = 3 # a est un nombre
+b = a # b est un nombre
+a = "test" # b vaut il "test" ou 3 à ce moment là ? 
+----
+
+Et bien en fait, cela dépend des cas.
+
+Tout objet dans Python est classifié en deux catégories, *mutable* ou *immutable*
+
+Dans le cas des objets dit *immutable*, python créé un *nouvel objet "test"*, et il le relie par une référence à *l'objet variable a *
+
+L'objet de valeur 3 reste quand à lui *relié par une référence à la variable b.
+
+Autrement dit, il n'est pas possible de modifier un objet lorsqu'il a été créé, il est dit *immutable*.
+
+A l'inverse de ce fonctionnement, *un objet mutable* peut être en partie modifié (les éléments qui le compose), et nous verrons qu'en ce sens il faudra être *vigilant*, pour plusieurs raisons :
+
+* car si vous changez la valeur, la ou les références reste intacte, et cela peut créer des problèmes de cohérence dans votre programme.
+* car certains objets jouent le rôle de `container`, car ils peuvent embarqués des références avec eux (par exemple, une liste peut contenir une variable, qui pointent via une référence sur un objet externe à la liste). Peu importe alors qu'ils soient mutable (listes et dictionnaires) ou immutable (les tuples), le contenu lui est de toute façon *mutable*. C'est le principe même des containers que de pouvoir stocker, lire et modifier leurs éléments. Là aussi nous en reparlerons lorsque nous aborderons la section sur les listes.
+
+La classification est donc assez simple : 
+
+* les types suivant `Numbers`, `String`, `Tuples` sont *immutables*
+* les types suivant `Lists`, `dictionnaries` sont *mutables*
+ 
+Par exemple, il est interdit de faire ça : 
+
+[source,python]
+----
+# Pour des chaines de caractères
+a = "test"
+a[0] = "v" # impossible de changer le premier caractère de la chaîne
+
+# Pour des nombres
+b = 3
+b = b + 4 # un nouvel objet contenant la valeur 7 est créé en mémoire, l'objet de valeur 3 n'est plus référencé et disparait
+----
+
+[red]*Complexe, n'est ce pas ?* 
+
+Pas tant que ça en fait, vous verrez qu'au jour le jour, et sur des programmes simples, ça ne vous posera pas aucun problème, ... il n'y a que dans quelques cas particulier qu'il faut être vigileant, nous en reparlerons quand nous aborderons les listes.
+
+
+****
+.En savoir plus sur python et les variables : 
+ * http://openbookproject.net/thinkcs/python/english2e/
+
+.En savoir plus sur le modèle objet de Python :
+* http://docs.python.org/reference/datamodel.html
+
+.En savoir plus sur le typage des données en général : 
+ * http://en.wikipedia.org/wiki/Type_system#Type_checking
+****
+
+=== Type des variables
+
+Par chance pour vous, le typages des variables est dynamiques (à l'inverse du typage statique vu en cours). Autrement dit, python est capable de detecter à la lecture de votre ligne de commande quel type de valeur à partir de la valeur que vous affectez à une variable.
+
+Il n'est donc plus utile de définir quelle type de valeur vous allez stocker dans votre variable.
+
+*Mais ce système à son revers*, et il faut être vigileant car de nombreux bug peuvent donc avoir lieu durant l'execution du programme... 
+
+Ainsi un programme peut se revéler correct pour l'interpreteur, mais plantera à l'execution car la nature des données attendues par votre programme divergera de ce qu'il aura vraiment recu.
+
+Un peu comme si vous passiez un __parapluie__ à un joueur de tennis attendant une __raquette__. 
+
+De ce fait, le programme ne saura plus quoi faire et s'arretera dans le meilleur des cas.
+
+.principaux types du langage :
+[options="header"]
+|=================
+|Types | Exemples
+|Numbers | 1234, 3.1415
+|Strings | \'spam',"guido\'s"
+|Booleans | True , False
+|Lists | [1, [2, \'three'], 4]
+|Dictionnaries | {\'food': \'spam', \'taste': \'yum'}
+|File | myfile = open(\'eggs', \'r')
+|=================
+
+CAUTION: Ce n'est pas parcque il n'y a plus besoin de typé les variables que celle ci ne possedent pas un type ! 
+La méthode __type()__ nous retourne le type d'une variable après son initialisation.
+
+[source,python]
+----
+nbJambes = 2
+type(nbJambes)
+
+# re-affectation de la variable nbJambes
+nbJambes = "deux"
+type(nbJambes)
+----
+== Commentaires
+
+Afin de pouvoir transmettre le code à quelqu'un qui ne l'a jamais lu, il est courant et recommandé de rajouter des commentaires dans votre programme.
+En python il y a plusieurs façon d'écrire des commentaires, avec `#` ou `"""`
+
+.Afficher du texte
+[source,python]
+----
+"""
+Ceci est un commentaire 
+sur plusieurs lignes ! 
+"""
+reponse = 42
+print "Je reviendrai." # Ceci est un commentaire en fin de ligne ...
+# qui peut aussi être ici en début de ligne ... 
+print reponse 
+----
+
+NOTE: Les informations sur le *style* a adopter pour les commentaires, l'indentation, etc sont définis dans une *guideline* : +
+http://www.python.org/dev/peps/pep-0008/ 
+
+== Input / Output
+
+=== Sorties : print() 
+
+La méthode `print()` permet d'afficher du texte ainsi que le contenu des variables. 
+
+.Afficher du texte
+[source,python]
+----
+reponse = 42
+print "Je reviendrai."
+print reponse
+----
+   
+Tout ce qui est compris entre deux quotes `"` et `"` est considéré comme un type `String` par python.
+Toutefois, nous allons voir ici qu'il possible d'imbriquer des variables dans une chaine de caractère, ce qui peut s'avérer très pratique quand on veux afficher divers résultats.
+De nombreuses écritures sont possibles à affichage égal, nous allons seulement en voir quelques une ci dessous : 
+
+.Concatener du texte avec une variable
+[source,python]
+----
+reponse = 42
+print "La grande question sur la vie, l'univers et le reste est", reponse
+
+age = 900
+print "Quand ", age , "ans comme moi tu auras, moins en forme tu seras !"
+
+animal = "Tyrannosaure"
+print "Le ", animal, "  n'obéit à aucun schéma de groupe ni aucun horaire de parc d'attraction. C'est l'essence du chaos."
+
+----
+
+.Concatener du texte avec du texte 
+[source,python]
+----
+vetements = "vêtements, tes bottes"
+vehicule = "moto"
+print "Je veux tes " + vetements + " et ta " + vehicule
+print "Hasta" + "la vista" + "baby"
+----
+
+.Concatener du texte avec des variables
+[source,python]
+----
+tirade1 = "J'ose tout ce qui sied à un homme, qui n'ose plus n'en est pas un."
+tirade2 = "Ignore ce que je suis et procure-moi quelque déguisement qui conviendrait au dessein que je forme."
+tirade3a = " Les prolifiques vilenies de dame nature vont pullulant sur lui." 
+tirade3b = "Dédaignant la fortune et brandissant son épée qui fumait d'une sanglante exécution"
+
+print "shakespeare a dit : ", tirade1 ,"mais aussi ", tirade2
+
+# ou avec des caractères spéciaux pour insertion dans la chaine de caractère
+print "shakespeare a dit : %s ", tirade1 ,"mais aussi ", tirade2
+
+# ou sinon sous une autre forme en concatenant variable texte et texte : 
+print "shakespeare a dit : " + tirade1 + "mais aussi " + tirade2
+
+# ou avec les deux méthodes :
+print  "shakespeare a dit : %s, mais aussi %s" % (tirade1, tirade3a + tirade3b)
+
+# cela marche aussi avec les nombres : 
+
+print "La grande question sur la %s, %s, et le %s est %d " % ("vie", "l'univers", "le reste", 42)
+----
+
+CAUTION: Attention toutefois a ne pas tout mélanger ! les Types `String` et `Numbers` ne peuvent être concatené avec l'opérateur `+`
+
+NOTE: avec `,` la variable est automatiquement transformée en chaîne de caractère, contrairement à l'opérateur `+` 
+
+[source,python]
+----
+reponse = 42
+print "La réponse à la question est :" + reponse
+
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: cannot concatenate 'str' and 'int' objects
+----
+
+Si jamais vous voulez utiliser cette syntaxe malgré tout, il existe des fonctions qui permettent heureusement de transformer du texte en nombre et inversement : 
+
+* `str()` transforme un nombre en texte 
+* `int()` transforme un texte en nombre 
+
+NOTE: Ces fonctions sont livrés avec le langage, nul besoin de les créer. La liste complète est disponible ici : http://docs.python.org/library/functions.html
+
+A ces différents types d'affichage il faut ajouter la possibilité de mettre en forme le texte pour son affichage.
+Il existe donc des caractères spéciaux que l'on peux insérer dans une chaîne de caractère afin de modifier son affichage.
+
+.Des caractères spéciaux pour la mise en forme 
+[source,python]
+----
+# tabulation
+days = "Mon\tTue\tWed\tThu\tFri\tSat\tSun\t"
+months = "Jan\nFeb\nMar\nApr\nMay\nJun\nJul\nAug"
+
+# retour à la ligne
+print days
+print months
+----
+
+****
+Une liste plus complète des caractères spéciaux, ainsi que de plus nombreuses information sur le formatage de texte peuvent être trouvé ici : 
+
+* les chapitres 6,7,8,9, 10 du livre "learn python the hard way" http://learnpythonthehardway.org/book/
+* La documentation officielle http://docs.python.org/reference/lexical_analysis.html#string-literals 
+****
+
+=== Entrées : raw_input() 
+
+La fonction *raw_input(" message ")* est l'équivalent de la commande *LIRE(" message ")* vu en cours d'algorithmie.
+
+[source,python]
+----
+value = raw_input ("Veuillez saisir un texte ou une valeur")
+print value
+----
+
+== Fonctions
+
+.Condition simple en Pseudo-Code
+****
+[red]*FONCTION* _NOMFONCTION_ [red]*(* _arguments1_, _arguments_, _..._, _argumentsN_ [red]*)*
+
+_...traitement..._
+
+[red]*RENVOIE* _[VALUE]_
+
+[red]*FIN FONCTION*
+****
+
+Ce qui donne quasiment la même chose en python théorique, le mot clef `def` introduisant le corps de la fonction :
+
+[source,python]
+----
+def nomFonction (arguments1, arguments2, ... argumentsN): 
+   #...traitements...
+   return value
+----
+
+et en pratique :
+
+[source,python]
+----
+# les fonctions doivent être déclarées avant de pouvoir être appelées !
+def somme(a,b):
+   return a + b
+
+def multiply(a,b):
+   return a * b
+
+# On affiche les valeurs retournées
+print somme(1,4) #<1>
+print multiply(2,7)
+
+a = 5
+b = 2
+
+# On peux passer des variables directement
+print somme(2,a)
+
+# ou en les modifiant/ faisant des calculs intermédiaires
+print multiply(a + 2,3 * 2 + b)
+
+# les appels de fonctions sont empilables sans aucune limite
+print somme(multiply(2,3),somme(4,b + multiply(2,8))) # <2>
+
+----
+
+<1> L'appel de fonction se fait en appelant le *nom de la fonction* suivi des *arguments entre parenthèses*.
+<2> Les arguments peuvent être calculés avant execution de la fonction, on peut donc facilement empiler les appels de fonctions comme dans cet exemple.
+
+=== Portées des variables
+
+Par portée, il faut entendre la durée de vie des variables dans votre programme ou un bloc d'instruction dans votre programme.
+
+Une variable est soit : 
+
+* *globale* : visible de partout dans le programme
+* *locale* : seulement visible dans le bloc d'instruction dans laquelle elle a été déclaré.
+
+Les variables globales sont toutes celles qui ne sont pas dans une fonction, donc dans le corps du module, et qui ont été déclaré en entête de programme.
+Elles sont visibles de partout dans votre programme, mais nous verrons par la suite qu'elles sont uniquement modifiable si le programmeur utilise le mot clef `global` 
+
+Essayons de comprendre la différence concrétement via ces exemples de programme : 
+
+.testGlobal.py
+[source,python]
+----
+X = 99 # <1>
+
+def foo1():
+   Y = 55 # <2>
+   print Y
+
+foo1()
+print Y # ne marchera pas # <3>   
+      
+# On tente de redéfinir X dans cette fonction foo()
+def foo2():
+   X = 88 # <4>
+
+foo2()
+print X # X n'a pas bougé du fait de  <4> ...
+
+# La aussi, ce code ne changera pas la valeur de la variable globale X = 99
+def foo3(X):
+   X = X + 1 # <5>
+
+foo3(X)
+print X
+   
+# Accès à la variable globale en lecture
+def foo4(Y):
+   # Portée locale
+   Z = Y + X # <6>
+   return Z
+   
+foo4(1)
+
+# Accès à la variable globale en écriture 
+def foo5():
+   global X
+   X = X + 1 # <7>
+
+foo5()
+print X
+
+----
+
+<1> Déclaré *avant* et en *dehors* d'une fonction (dans le corps du module donc), la variable `X` est considéré comme une variable *globale*.
+<2> Y est déclaré dans le corps de la fonction, c'est une variable *locale*, c'est à dire temporaire.
+<3> Si on tente d'y accéder après appel de la fonction, on se rend bien compte qu'elle a disparu. Le seul moyen de récupérer une (ou plusieurs) valeur est donc de faire un renvoi avec `return`
+<4> A partir du moment ou il y a affectation dans le corps d'une fonction, Python déclare cette nouvelle variable comme une variable locale, peu importe qu'elle existe par ailleurs.
+Autrement dit, elle [red]*masque* la variable `X` déclaré en globale.
+De la même façon que précédemment, la variable `X` *disparait/meurt* à la fin de l'execution de la fonction, c'est une *variable temporaire* en quelque sorte.
+<5> A partir du moment ou vous assignez une valeur à une variable dans une fonction, Python considère qu'il s'agit d'une variable locale. 
+Ici vous aurez une erreur, car il va tenter d'incrémenter la variable locale X, hors celle ci n'existe pas dans cette fonction. 
+<6> Z et Y sont des variables locales. Concernant X, si vous faites appel à une variable *globale*, et qu'elle n'a pas été redéfini, python est capable de re-trouver par déduction la valeur de votre variable *globale*. Toutefois, celle ci ne sera accessible qu'en lecture et pas en écriture ( car comme vu précédemment toute nouvelle affectation entraine la création d'une nouvelle variable locale). 
+<7> Il existe un mot clef `global` permettant de passer outre cette limitation vu en 6, et permettant d'accéder en écriture à votre variable *globale*. Cette utilisation est clairement déconseillé car pouvant entrainer de nombreuses incohérences dans votre programme..
+
+Voyons pourquoi dès à présent dans cet exemple : 
+
+[source,python]
+----
+X = 99
+
+def func1():
+   global X
+   X = 88
+
+def func2():
+   global X
+   X = 42
+----
+
+Compte tenu de ce programme, il est très clair ici qu'il risque de favoriser des conflits sur X, qui est devenu une ressource partagé !
+
+L'ordre d'appels des fonctions aura donc une incidence sur la valeur finale de X, ce qui est *clairement un problème* (pour la recherche d'erreur par exemple) ...
+
+=== Passage d'arguments et retour de données
+
+Quelques règles sur les arguments, et le passage d'arguments à des fonctions en python.
+
+* Les arguments sont passé par *assignation*, autrement dit il n'y a *pas de re-copie des valeurs* dans une nouvelle variable locale lors du transfert comme dans certains langages (cf C, C\+\+) .
+* *Peu importe donc le nom de vos arguments*, ils peuvent recouper des noms de variable déjà existant ailleurs dans votre programme puisque *nous savons que leurs portées sont locales.*
+* Changer un/plusieurs élément(s) dans un *objet mutable* a une *incidence sur le programme appelant* .
+
+[source,python]
+----
+def modif(a,b):
+   a = 2 # <1>
+   b[0] = 5 # <2>
+
+x = 1
+list = [1, 2]
+
+modif(x,list)
+
+print x # valeur inchangé
+print list # valeur changé
+----
+
+.Avant execution du corps de la fonction, assignation est la suivante :
+image::images/ref1.png[align="center"]
+
+<1> `a` est une variable locale qui récupère la valeur de la variable `x` lors de l'appel de la fonction.
+L'assignation n'a pas d'effet sur la variable `x`, seul la variable `a` locale sera modifié ici.
+
+<2> La liste passé ici en paramètre à une variable locale. Toutefois, une liste est un objet *mutable*, donc modifiable sur place !
+Nous ne changeons pas `b`, mais un élément de la liste représenté par b, ce qui aura à la fin de l'execution une répercution sur la variable `list`
+
+.Après execution du corps de la fonction, voici le résultat :
+image::images/ref2.png[align="center"]
+
+Un apercu des différentes techniques est donné via le lien ci dessous, mais la meilleur façon reste de renvoyer des données via le mot clef *return* 
+
+Référence ici : +
+http://docs.python.org/release/2.7.3/faq/programming.html?highlight=nonlocal#how-do-i-write-a-function-with-output-parameters-call-by-reference
+
+.exemple de code source bien écrit
+[source,python]
+----
+sac = 3
+def calcul(sac,nbOr): #<1>
+   sac = sac + nbOr
+   return sac
+
+print calcul(sac,20)
+----
+<1> Comme la fonction manipule des variables locales, peu import que les noms d'arguments se recoupent ..
+
+.exemple de code source qu'il faut éviter
+[source,python]
+----
+sac = 3
+def calcul(nbOr): #<1>
+   global sac #<2>
+   sac = sac + nbOr #<3>
+
+calcul(20)
+print sac
+----
+
+<1> Seul nbOr est une variable locale
+<2> On accède à sac en variable globale 
+<3> Et on le modifie ainsi, c'est mal ! :)
+
+== Listes
+
+=== Définition
+
+Les listes sont l'équivalent des tableaux que nous avons vu en cours. La seule différence, 
+c'est que les listes sont *forcément dynamiques*, et elles peuvent stocker *n'importe quel type de données*.
+
+A ce titre elles sont considérés comme des `containers` car elles peuvent stocker des *objets quelconques* ou bien des *références d'objets*.
+
+.initialiser une liste 
+[source,python]
+----
+#Une liste 1D vide
+listX = []
+
+# 1 dimension 
+listA = [ 1,2,3,4 ] 
+print len(listA) # 4 elements
+
+# 2 dimension matrice
+listB = [ [1,2],[2,3],[4,5]]
+print listB
+
+# 2 dimension non symmétrique
+listC = [[1,2,3], [2,1], [4]]
+print listC
+----
+
+.afficher un élément dans une liste 
+[source,python]
+----
+# 1 dimension 
+listA = [1,2,3,4] 
+print listA[0]
+
+# 2 dimension matrice
+listB = [[1,2],[2,3],[4,5]]
+print listB[1][0]
+
+# 2 dimension non symmétrique
+listC = [[1,2,3], [2,1], [4]]
+print listC[0][2]
+print listC[2][0]
+----
+
+En rapport avec la section qui discuté des références et du passage d'argument lorsque l'objet est *mutable* (comme l'objet liste) que se passe-t-il pour une liste qui contient des références vers des objets ?
+
+.changement sur place d'une liste  
+[source,python]
+----
+L1 = [2,3,4]
+L2 = L1
+----
+
+Jusqu'à présent, rien de particulier, le comportement est le même qu'avec des objets immutable.
+
+.affectation normale
+image::images/lref1.png[align="center"]
+ 
+[source,python]
+----
+L1 = [2,3,4]
+L2 = L1
+L1 = 24
+----
+
+.re-assignation normale
+image::images/lref2.png[align="center"]
+ 
+Dans ce cas là, la encore le mécanisme marche, Python detecte le changement et il créé un nouvel objet de valeur 24, qu'il rattache à la variable `L1`
+
+[source,python]
+----
+L1 = [2,3,4]
+L2 = L1
+L1[0] = 10
+----
+
+Dans ce cas là, tout est différent car nous accédons à l'intérieur de l'objet `L1` sans qu'il y ai ré-affectation, il n'y a donc pas de modification de la référence comme précédemment.
+
+[red]*L1 et L2 désigne donc toujours le même objet, donc la modification est valable pour les deux !!*
+
+[source,python]
+----
+print L1
+print L2
+----
+
+.modification d'un élément de l'objet liste mutable
+image::images/lref3.png[align="center"]
+ 
+Voyons un cas encore plus vicieux, lorsque notre liste comporte une référence vers un autre objet.
+
+[source,python]
+----
+L1 = [2,3]
+L2 = [1, L1, 8] # L2 contient une référence vers L1
+print L1
+print L2
+----
+
+Que se passe-t-il si je modifie les éléments appartenant à L1 dans L2 ?
+
+[source,python]
+----
+L2[1].append(5)
+print L1
+print L2
+# marche aussi en modifiant L1
+L1.append(8)
+print L1
+print L2
+----
+
+[red]*Surprise !* Les éléments de L1 ont été modifiés ! Donc Python accède bien à `L1` dans `L2` via une référence vers `L1` et non pas une copie des éléments du tableau !
+
+.visualisation de la référence entre L2 et L1
+image::images/lref4.png[align="center"]
+
+Si on veut éviter ce comportement, par peur de faire des erreurs, ou parcque c'est inutile, on peut indiquer à Python que l'on veut faire une copie, avec l'opérateur `[:]` : 
+
+[source,python]
+----
+L1 = [2,3]
+L2 = [1, L1[:], 8] # L2 contient une re-copie de la liste L1
+print L1
+print L2
+----
+
+Pour connaitre la taille d'une liste, on utilise la méthode len() fournit par le langage.
+
+.récupérer la taille d'une liste 
+[source,python]
+----
+# 1 dimension 
+listA = [1,2,3,4] 
+print len(listA)
+
+# 2 dimension matrice
+listB = [[1,2],[2,3],[4,5]]
+print len(listB) , "/" , len(listB[0]), "/", len(listB[1]), "/", len(listB[2])
+
+# 2 dimension non symmétrique
+listC = [[1,2,3], [2,1], [4]]
+print len(listC) 
+print len(listC[0])
+print len(listC[1])
+print len(listC[2])
+
+----
+
+=== Opérations
+
+.Modifier un élément
+[source,python]
+----
+listA = [1,5,3]
+listB = ["gerard", "paul", "albert"]
+listA[0] = 2
+listB[1] = "Edouard"
+print listA
+print listB
+----
+
+Les listes, comme beaucoup d'autres choses en python, sont des objets qui possèdent des méthodes, et des attributs.
+C'est l'opérateur `.` qui permet d'accéder et d'appliquer des méthodes sur les objets.
+
+Autrement dit, voici comment se présente un attribut et une méthode/fonction *s'appliquant sur un objet* :
+
+* *objet.attribut*
+* *objet.methode()* 
+
+Si l'objet est la liste, alors nous allons voir toutes les méthodes qui s'appliquent sur celle ci.
+
+CAUTION: La plupart de ces méthodes/fonctions ne retournent rien, et modifie la liste en place.
+
+.Ajouter des éléments
+[source,python]
+----
+listA = [1,5,3]
+listA.append(4)
+print listA
+
+listB = ["oeuf","jambon"]
+listB.append("Frites")
+print listB
+
+listC = ["gerard", "paul", "albert"]
+listC.append(["Eleonore",5])
+print listC
+
+listD = []
+listD.append(1)
+listD.append([2,3])
+listD.append("test")
+print listD
+----
+
+.Supprimer des éléments en utilisant l'indice et la fonction pop()
+[source,python]
+----
+listA = [1,5,3]
+# pop renvoie la valeur supprimé
+print "element supprimé = " , listA.pop(1)
+print "liste après suppression", listA
+
+listB = [[2,3],[1,4]]
+print "element supprimé = " , listB[0].pop(1)
+print "liste après suppression", listB
+----
+
+.Supprimer des occurence de valeurs directement avec remove()
+[source,python]
+----
+listA = [1,5,3]
+listB = [2,4,3,4]
+
+#Enleve le chiffre 5 de la liste A
+listA.remove(5)
+print listA
+
+# Enleve la première occurence 4 de la liste B
+listB.remove(4)
+print listB
+----
+
+.Accèder à l'index d'une occurence avec index()
+[source,python]
+----
+listA = [1,5,3]
+listB = [2,4,3,4]
+listC = [[2,3],[1,4]]
+
+print "index liste A = ", listA.index(3)
+print "index liste B = ", listB.index(4) # Ne renvoie l'index que de la première valeur trouvée
+print "index liste C = ", listC[1].index(4) # Marche aussi sur les tableau deux dimensions, a condition d'indiquer la dimension de recherche !!
+----
+
+.Concaténation
+[source,python]
+----
+listA = [1,5,3]
+listB = [2,[4,3]]
+listC = ["gerard", "paul", "albert"]
+
+print listA + listB
+print listA + listC + listB
+----
+
+.Multiplication
+[source,python]
+----
+listA = [1,5,3]
+print listA * 2
+----
+
+.tri 
+[source,python]
+----
+listA = [1,5,3]
+listB = [2,4,3,4]
+listC = [[3,2],[4,1]]
+
+# Modifie la liste en place
+listA.sort()
+listB.sort()
+listC[0].sort()
+listC[1].sort()
+
+print listA
+print listB
+print listC
+
+----
+
+Attention, et c'est très important, les listes sont dites *mutables*, en comparaison des autres types qui sont pour la plupart du temps *immutables*
+Par mutable, il faut comprendre qu'elles sont modifiable en l'état, sans qu'une copie ait besoin d'être faite : 
+
+.Copie
+[source,python]
+----
+listA = [1,5,3]
+listB = listA[:]
+listB.append(8)
+
+print listA
+print listB
+----
+
+[NOTE]
+.Quelques ressources supplémentaires :
+====
+* La liste complète des méthodes est disponible ici, avec des exemples : + 
+http://docs.python.org/tutorial/datastructures.html#more-on-lists
+
+* voir aussi les exemples et les exercices de Google : +
+http://code.google.com/edu/languages/google-python-class/lists.html
+
+* et de "learn python the hard way" : +
+http://learnpythonthehardway.org/book/ex38.html
+====
+
+== Structure de controle
+
+=== Condition(s)
+
+.Condition simple en Pseudo-Code
+****
+[red]*SI* _[ EXPRESSION ] == TRUE_ [red]*ALORS*
+
+_...traitement..._
+   
+[red]*FIN SI*
+****
+
+En python les mot clef équivalent sont *if* , *elif*, *else* et *:* et c'est la forme de l'indentation qui définit la taille du bloc d'instruction.
+
+La condition la plus simple donne en python :
+
+[source,python]
+----
+if (expression == True): 
+   # traitement
+----
+
+.Condition simple en Pseudo-Code
+****
+[red]*SI* _[ EXPRESSION ] == TRUE_ [red]*ALORS*
+
+_...traitement..._
+
+[red]*SINON*
+
+_...traitement..._
+   
+[red]*FIN SI*
+****
+
+Ce qui donne en python :
+
+[source,python]
+----
+if (expression == True): 
+   # traitement 1
+else:
+   # traitement 2
+----
+ 
+.Condition plus complexe en Pseudo-Code
+****
+[red]*SI* _[ EXPRESSION ] == TRUE_ [red]*ALORS*
+
+_...traitement..._
+
+[red]*SINON* _[ EXPRESSION ] == TRUE_
+
+_...traitement..._
+
+[red]*SINON* 
+
+_...traitement..._
+   
+[red]*FIN SI*
+****
+
+Ce qui donne en python :
+
+[source,python]
+----
+if (expression == True): 
+   # traitement 1
+elif (expression == True):
+   # traitement 2
+else:
+   # traitement 3
+----
+
+Le mot clef *in* peut être utilisé en accord avec les structures conditionnelles
+pour vérifier la présence (ou la non présence) d'un élément dans une liste, que cela soit un chiffre ou un caractère.
+
+Ainsi, grâce à cet notation, il est possible de faire des choses très intéressante : 
+
+[source,python]
+----
+myList = ["alex","paul","gerard","martine","helene","laurent"]
+element = raw_input("Quel nom  ? > ")
+
+if element not in myList:
+   print "L'element n'est pas présent! "
+else:
+   print "L'element est présent = ", element
+----
+
+ou bien autre exemple : 
+
+[source,python]
+----
+censor = [ 'bugger', 'nickle' ]
+word = 'bugger'
+if word in censor: 
+   print 'CENSORED'
+----
+
+
+
+
+=== Boucle(s)
+
+==== Definition ====
+
+En programmation impérative, une structure de contrôle est une commande qui contrôle l'ordre dans lequel les différentes instructions d'un algorithme ou d'un programme informatique sont exécutées.
+
+.Boucle "TANT QUE" en Pseudo-Code
+****
+[red]*TANT QUE* _[ EXPRESSION ] == TRUE_
+
+_...traitement..._
+   
+[red]*FIN TANT QUE*
+****
+
+En python on utilisera le mot clé *while* 
+
+[source,python]
+----
+while expression == True:
+   # traitement
+----
+
+Ce qui donne par exemple :
+
+[source,python]
+----
+count = 0
+while (count < 9):
+   print 'The count is:', count
+   count = count + 1
+----
+
+.Boucle "POUR" en Pseudo-Code
+****
+[red]*POUR* _[ VARIABLE ]_ [red]*DE* _[ DEBUT ]_ [red]*A* _[ FIN ]_
+
+_...traitement..._
+   
+[red]*FIN POUR*
+****
+
+En fait en python cette instruction n'existe pas sous cette forme,
+par contre il existe des opérateurs très pratiques pour parcourir des listes avec des boucles.
+Il est possible d'obtenir le même comportement en utilisant la fonction *xrange()* générant une liste allant de __[DEBUT]__ A __[FIN]__
+
+==== Parcours de liste 
+
+===== for in
+
+Python est aussi capable de manipuler directement les éléments du tableau, sans avoir à passer par les indices, même si la liste contient des éléments complexes
+
+[source,python]
+----
+# Avec une liste simple
+myList = ["alex","paul","gerard","martine","helene","laurent"]
+for element in myList:
+   print "L'element est = ", element
+
+# ou avec une liste plus complexe
+myList = ['paul', "laurent", 4, [3,2]]
+for element in myList:
+   print "L'element est de type ", type(element) , " = ", element
+----
+
+Malheureusement dans ce cas là n'avons pas accès aux indices, et donc nous ne savons de façon explicite de quel position dans le tableau nous avons extrait l'élément.
+Dans certains cas de figure cela peut poser problème (les tri par exemple ou nous avons besoin de manipuler des indices), pour résoudre cela, il existe plusieurs autre syntaxe python : 
+
+===== for in + xrange()
+
+Première solution, en générant une liste allant de __[DEBUT]__ A __[FIN]__ avec la fonction *xrange()* , il est possible de faire évoluer une variable qui va prendre de manière sucessive les différentes valeurs de notre liste, quelle soit généré ou donné par l'utilisateur : 
+
+.Avec une liste généré par la fonction xrange()
+[source,python]
+----
+# xrange() génère une liste allant de debut a fin - 1 , fin étant exclu
+debut = 1
+fin = 4
+
+print xrange(debut, fin) # renvoie une liste [2, 3]
+
+for i in xrange(debut,fin): # ou xrange(2,4) cela marche aussi
+   print 'The count is:', i
+
+#Par défaut xrange va de 0 a la valeur - 1 passé en paramètre
+for i in xrange(5):
+   print "The count is:", i
+----
+
+.Pour lire et afficher les éléments d'une liste 
+[source,python]
+----
+myList = ["alex","paul","gerard","martine","helene","laurent"]
+for i in xrange(len(myList)):
+   print "At index", i, " value equal ", myList[i] 
+----
+
+De façon plus générale, python nous permet de parcourir n'importe quel type de collection, résultat d'une fonction (comme c'est le cas pour *xrange()*) ou bien définie par l'utilisateur ...
+
+.Parcour d'une liste avec une liste d'indice personnalisé
+[source,python]
+----
+# Equivalence avec l'exemple précédent
+myList = ["alex","paul","gerard","martine","helene","laurent"]
+myIndex = [0, 2 , 3]
+for i in myIndex:
+   print "At index ", i ," value equal ", myList[i]
+----
+
+Deuxième solution, plus élégante mais plus complexe, il est possible de conserver un appel direct aux élément de la liste, tout en récupérant l'index.
+Pour cela on fait appel a la fonction enumerate() qui nous renvoie une collection avec les élément numéroté utilisable avec la notation ci dessous :
+
+[source,python]
+---- 
+myList = ["alex","paul","gerard","martine","helene","laurent"]
+for i,element in enumerate(myList):
+   print "At index ", i ," value equal ", element
+----
+
+===== For in + zip()
+
+Il est également possible de parcourir deux liste de façon simultanée en joignant les éléments de chaque liste à fusionner 1 par 1
+Voyons voir ce que nous retourne la fonction *zip(listA,listB)*
+
+[source, python]
+----
+>>> zip(questions,answers)
+[('name', 'lancelot'), ('quest', 'the holy grail'), ('favorite color', 'blue')]
+----
+
+Une liste de Tuple (question,réponse) nous est renvoyé, dans notre boucle il est donc possible pour chacun des éléments tuple () de notre liste d'assigner *q* à question et *a* à reponse
+
+[source,python]
+----
+questions = ["name", "quest", "favorite color"]
+answers = ["lancelot", "the holy grail", "blue"]
+resultOfZipping = zip(questions,answers)
+for q, a in resultOfZipping :
+   print 'What is your %s ?  It is %s' % (q, a)
+
+# ou plus simplement : 
+
+questions = ["name", "quest", "favorite color"]
+answers = ["lancelot", "the holy grail", "blue"]
+for q, a in zip(questions, answers):
+   print 'What is your %s ?  It is %s' % (q, a)
+----
+
+==== ajouter à une liste 
+
+.Opérer sur une liste 1 dimension
+[source,python]
+----
+L = [1,2,3,4,5] # Liste de valeurs quelconques
+res = [] # Initialisation d'une liste vide résultat
+
+for x in L:
+   res.append(x + 10)
+
+print res
+
+# ou bien avec l'autre technique : 
+
+L = [1,2,3,4,5] # Liste de valeurs quelconques
+res = [] # Initialisation d'une liste vide résultat
+
+for x in xrange(0,len(L)):
+   res.append(L[x] + 10)
+
+print res
+----
+
+.Opérer sur une liste 2D, ici une initialisation
+[source,python]
+----
+a = [] # initialisation tableau contenant les lignes
+for i in xrange(3):
+   b = [] # initialisation 
+   for j in xrange(3):
+      b.append(i*j) # ajout colonne
+   a.append(b) # ajout n colonne comme une nouvelle ligne
+----
+
+
+
+=== Mot-Clef spécifique
+
+Le mot clef *break* interompt immédiatement une boucle *for* ou *while* en cours
+
+Par exemple dans ce code, il est inutile d'aller jusqu'au bout de la boucle si l'utilisateur a trouvé le bon nombre.
+
+Src du code : http://inventwithpython.com/chapter4.html
+
+.guess.py
+[source,python]
+----
+# -*- coding: utf-8 -*- 
+import random
+
+if __name__ == "__main__":
+
+   guesses_made = 0
+   name = raw_input('Hello! What is your name?\n')
+   number = random.randint(1, 20)
+
+   print 'Well, {0}, I am thinking of a number between 1 and 20.'.format(name)
+
+   while guesses_made < 6:
+      guess = int(raw_input('Take a guess: '))
+      guesses_made += 1
+      if guess < number:
+         print 'Your guess is too low.'
+      if guess > number:
+         print 'Your guess is too high.'
+      if guess == number:
+         break
+
+   if guess == number:
+       print 'Good job, {0}! You guessed my number in {1} guesses!'.format(name, guesses_made)
+   else:
+       print 'Nope. The number I was thinking of was {0}'.format(number) 
+----
+
+.Execution du programme dans le terminal
+[source,console]
+$> python guess.py
+
+Le mot clef *continue* passe directement à l'itération suivante et saute les instructions qui suivent, valable pour une boucle *for* et *while* 
+
+[source,python]
+----
+for k in xrange(2,10):
+   if k > 3 and k < 8:
+     print "skipping this iteration!"
+     continue
+   print k
+----
+
+
+== Dictionnaires
+
+...
+
+
+== POO, notions de base
+
+=== Définition 
+
+Comme on a pu le voir au début de ce document, en python tout est *objet*
+Pour rappel, la Programmation Orientée Objet (ou *POO*) est un paradigme de programmation qui passe par une organisation des données particulière, je ne rentre pas plus dans le théorique, vous pouvez vous référez aux ressources dessous pour en savoir plus. 
+
+L'intérét de ce paradigme, vous allez voir, et qu'il s'accorde beaucoup mieux à la représentation complexe de la réalité que ce que nous avons vu jusqu'à présent.
+
+Ici on va rentrer dans la *pratique* assez vite car nous n'avons que *très peu de temps pour aborder les concepts théorique*. Sachez toutefois que vous allez manipuler les concepts théoriques lors des cours de modélisation à l'ENSG et que l'apprentissage de ceux ci vous aideront autant pour la *représentation de vos problèmes* (avec un langage de description de données comme *UML* par exemple) en base de données, que pour leur *traduction en programme informatique* 
+
+Vous verrez lors du cours de modélisation que le vocabulaire et les concepts généraux vont se recouper avec ce que nous allons voir ici. Seul le niveau d'abstraction utilisé pour décrire votre problème rendra plus ou moins difficile une future traduction informatique / base de données. 
+
+[red]*Attention* toutefois à ne pas vouloir trop vite coller au langage informatique, car il est très difficile de couvrir correctement la description d'un problème en rester à un niveau d'abstraction trop bas. Repensez à notre résolution de labyrinthe, et voyez comment l'apprentissage de python à modifié votre perception globale du problème. Il y'aura un avant et un après votre formation, et il vous faudra régulièrement savoir jongler entre ces différents niveaux d'abstraction pour être efficace dans la discussion, qu'elle soit avec un client ou avec un développeur informatique !
+
+Un objet est donc une *structure de donnée* qui va nous permettre d'organiser nos données :
+* autour de la descriptions de ces données (critère descriptif) 
+* et des moyens de traiter ces données (dynamique). 
+
+Prenons par exemple un exemple concret : vous même.
+
+A priori vous êtes un *humain*, et normallement vous partagez un certain nombre de `descripteur` ou `attributs` (ici simplifié) avec vos autres congénères humains :
+
+* Deux yeux
+* Deux bras
+* Deux jambes
+* Une couleur de cheveux
+* Une couleur pour les yeux
+* Une couleur de peau
+* etc.
+
+Là ou je veux en venir, c'est que si nous devions gérer des humains dans un programme classique tel que nous les avons fait jusqu'à présent, il nous faudrait autant de variables décrites ci dessous que de personnes. Sachant qu'une variable doit être unique, imaginez le bazar : 
+
+[source,python]
+----
+
+#Gérard
+couleurYeuxGerard = "brun"
+couleurCheveuxGerard = "brun"
+couleurDePeauGerard = "blanche"
+nombreJambeDeGerard = 2
+nombreOeilDeGerard = 2
+nombreBrasDeGerard = 2
+
+#Paul
+couleurYeuxGerard = "vert"
+couleurCheveuxGerard = "brun"
+couleurDePeauGerard = "blanche"
+nombreJambeDeGerard = 2
+nombreOeilDeGerard = 2
+nombreBrasDeGerard = 2
+----
+
+Bon, et maintenant si je doit gérer la classe entière de carthagéo avec ce modèle de représentation de données, il va me falloir un peu de patience...
+En plus, vous avez du le remarquer, il y a de nombreuses données redondantes, pourtant nécessaires, car Gérard pourrait bien n'avoir qu'un oeil, une jambe et travailler sur un bateau après tout.
+
+Premier constat, il existe une *matrice* commune, l'espèce humaine.
+Deuxième constat, il est possible de trouver une *matrice* originelle à pas mal de choses dans ce monde, pensez à la fabrication en série, et à l'invention de la reproduction mécanisé : Voiture, Maison, Avion, Animaux, Porte, Chaise, Chanson, SérieTV, Acteur, Réalisateur, Pompier, etc. Et c'est à partir de cette *matrice originelle* que nous allons pouvoir généraliser, ou spécialiser un certain nombre de choses : attributs et fonctions.
+
+Oui, différencier la couleur des yeux ou des cheveux en *instanciant notre matrice originelle* (c'est à dire en produisant un objet reprenant et complétant *le plan definis* par la matrice originelle) est un bon début, mais si par exemple, je veux aller plus loin et différencier vraiment les humains entre eux, et la manière dont ils interagissent entre eux,il faut que je m'intéresse non seulement aux aspects statiques mais également dynamique. 
+
+Par exemple, dans le contexte d'une université (la description de vos données dépend donc beaucoup du *contexte du problème* !), nous voyons qu'une sous-spécialisation de l'être humain générique est tout à fait possible, car dans son interaction avec l'université un étudiant n'a pas tout à fait les même fonction ni les même droits qu'un professeur, et cela bien que les deux soient des humains (quoique..) ! 
+
+.Représentation graphique d'une classe
+image::images/classe.png[align="center"]
+
+Cette *matrice originelle* est ce que l'on apelle `une classe`, elle définit à la fois des critères descriptifs ou *attributs*, ainsi que des *fonctions* ou interfaces permettant de communiquer avec les autres objets de ce monde. *Instancier une classe* revient à définir un ou plusieurs *objets* qui dérive de cette classe.
+
+Pour reprendre notre exemple, Gérard et Paul sont *deux instances* de la matrice originelle *Humain*.
+
+
+Mais si Gerard est professeur, et Paul étudiant, et que nous voulons les différencier dans notre programme, alors il nous faudra créer quelques choses qui spécialise encore un peu plus *Humain*, par exemple en définissant :
+* une classe *Etudiant* (qui possède un numéro étudiant par exemple), 
+* et une classe *Professeur* (qui possède lui d'autres attributs administratif spécifique). 
+
+Par chance avec la *POO* nous pourrons également composé les classe entres elles, car un étudiant est un humain, et un professeur est un humain également ! 
+
+Il est donc tout à fait possible d'établir une *hierarchie* structurant un peu plus notre programme pour la gestion d'une université, en adoptant soit un *héritage* , soit une *composition* entre les classes : Etudiant et Professeurs contiennent les attributs d'un être humain, mais aussi des attributs (statique) et des fonctions (dynamique) qui leurs sont spécifiques. 
+
+En python une classe est un bloc d'instruction clos avec un *début* et une *fin*, comme une fonction.
+La seule différence avec une fonction, c'est qu'une classe embarque des fonctions, et des variables qui sont caractéristique de la classe que l'on veut représenter.
+
+.Une classe dans son plus simple appareil
+[source,python]
+----
+class Humain(object) # <1> 
+   nbYeux = 2 #<2>
+   nbBras = 2
+   nbJambes = 2
+   
+   def marche(self): # <3>
+      ... traitement ...
+      
+#fin du bloc classe
+----
+
+<1> Par convention les classes démarrent avec une majuscule, et le mot clé `object` entre parenthèse est obligatoire
+<2> Les variables définies ici correspondent aux attributs de notre classe
+<3> Les méthodes en rapport avec la classe sont définies dans le corps de la classe, nous verrons qu'elles peuvent accéder par la suite à nos attributs. Seule spécificité comparé à une fonction normale, le mot clef `self` est obligatoire en début de toute vos fonctions.
+
+.Pour instancier une classe, donc créer des objets à partir de cette matrice originelle
+[source,python]
+----
+gerard = Humain() # <1>
+paul = Humain () # <2>
+
+print gerard # <3>
+
+print gerard.nbBras # <4>
+print paul.marche() # <5>
+----
+
+<1> A partir de la matrice originelle, on crééé un objet unique dont la référence est relié à la variable gerard
+<2> A partir de la matrice originelle, on créé un nouvel objet unique dont la référence est relié à la variable paul
+<3> Cela nous renvoie à la référence de l'objet, que l'on peut donc stocker, puis rapeller par la suite ! (voir l'exemple des listes qui contiennent des variables pointant sur des listes)
+<4> On peut récupérer la valeur des attributs de notre objet à l'aide l'opérateur `.`
+<5> De la même façon que nous avons appelé un attribut, nous pouvons également appelé une fonction si elle existe, en utilisant l'opérateur `.` suivi du *nom de la fonction* et de *parenthèses* `()` (qui peuvent contenir des arguments comme n'importe quelle fonction ...).
+
+A présent j'aimerais pouvoir modifier les attributs, pour que le nombre de bras, ou de jambes puissent être différents selon les personnes ! 
+
+Pour cela il faut que j'utilise un *constructeur*, en fait il s'agit d'une fonction *automatiquement appelé à la création de l'objet*
+
+Il s'agit de la fonction `__init()__` qui prend automatiquement l'argument `self` qui est une auto-référence désignant l'objet.
+
+`self` doit être indiqué comme argument dans chacune des fonctions de la classe, c'est obligatoire, c'est ce qui permet à Python de savoir a qui vous faite référence, donc ici à l'objet même ! +
+[red]*=>* self = objet courant
+
+Ainsi, pour appeler des attributs depuis des fonctions de votre classe, il faut toujours indiquer `self.nomDeVotreAttribut"`
+
+Idem pour appeler une fonction en interne dans une classe, il faut toujours l'apeller avec le mot clef self devant `self.nomDeVotreFonction()`
+
+
+=== Exemple
+
+image::images/classNavigateur.png[align="center"]
+
+Voyons avec un autre exemple d'humain, le `Navigateur` , et plus spécifiquement, le navigateur pirate !
+
+.pirate.py (voir dans /exercice)
+[source,python]
+----
+class Navigateur(object):
+   def __init__(self,yeux,bras,jambes): # <1>
+      self.tete = 1 # <2>
+      self.nbYeux = yeux # <3>
+      self.nbBras = bras
+      self.nbJambes = jambes
+      self.afficheInfo() # <4>
+      
+   def afficheInfo(self): # <5>
+      print "Bonjour ! J'ai ", self.nbYeux, "yeux, ", self.tete, " tête, ", self.nbBras, " bras, et ", self.nbJambes, " jambes ..." 
+   
+   def accident(self,type): # <6>
+      if type == "bras":
+         self.nbBras = self.nbBras - 1 # <7>
+      elif type == "jambe":
+         self.nbJambes = self.nbJambes - 1
+      elif type == "yeux":
+         self.nbYeux = self.nbYeux - 1
+   
+   def initGrade(self):
+      self.grade = "minable" # <8>
+      print "je suis un pirate ", self.grade  
+   
+   def augmenteGrade(self):   
+      if self.grade == "minable": 
+         self.grade = "minus" 
+      elif self.grade == "minus":
+         self.grade = "chef"
+      elif self.grade == "chef":
+         self.grade = "capitaine"
+
+#fin du bloc classe
+----
+
+<1> Notre constructeur initialise et donc personnalise la matrice originelle que représente la classe `Navigateur`
+<2> Mais j'ai le droit de définir également des attributs par défaut +
+[red]*! Attention !* Les attributs n'existe que dans la portée de la classe (même fonctionnement que pour les fonctions donc)
+<3> Je transfere l'argument passé à mon constructeur dans mon attribut de classe
+<4> J'appelle une fonction de mon programme à la fin de l'initialisation de l'objet, celle ci affiche des informations sur mon nouvel objet navigateur personnalisé
+<5> Une fonction, même si elle ne prend pas d'argument, doit prendre l'argument par défaut nommé 'self'
+<6> Ici on passe un argument supplémentaire qui est utilisé dans la fonction.
+<7> Je modifie un attribut de mon objet, j'ai le droit du moment que j'utilise self pour indiquer qu'il existe ! +
+[red]*=>* sinon cela créé une nouvelle variable locale à la fonction !!
+<8> Cette fonction ajoute un attribut grade à mon objet, celui ci est ensuite accessible normalement comme tout les autres attributs existant et définis dans __init__
+
+.Amusons nous maintenant avec une instance de classe : Gérard le pirate !
+[source,python]
+----
+# gerard est un petit navigateur de plaisance, et pour le moment il a tout ses membres :) 
+gerard = Navigateur(2,2,2)
+
+# il décide de rentrer dans la piraterie
+gerard.initGrade()
+
+# Sauf qu'un jour gerard croise un requin au bout d'une planche, le risque du métier, heureusement il s'en tire pas trop mal
+gerard.accident("jambe")
+gerard.afficheInfo()
+
+# Avec l'experience Gerard fait de grand progrès !
+gerard.augmenteGrade()
+gerard.augmenteGrade()
+gerard.augmenteGrade()
+gerard.augmenteGrade()
+
+print "Gerard est maintenant ", gerard.grade ," ! " 
+
+# Malheureusement, la vie de capitaine n'est pas facile ...
+gerard.accident("yeux")
+
+# Pauvre Gerard ...
+gerard.afficheInfo()
+
+----
+
+Exercice ::
+Essayez maintenant de faire un autre parcours de vie avec un autre pirate !
+
+=== Stocker des objets
+
+Comme les fonctions les objets possède une adresse en mémoire, vous avez probablement déjà afficher celle ci par erreur avec les fonctions ..
+
+Il est possible de stocker la référence des objets dans une variable, tout comme il est possible de mettre un objet de type liste dans un autre objet de type liste.
+Il est donc également possible de stocker la référence d'une fonction, ou d'un objet dans un attributs/variables quelconques, que cela soit dans un objet, dans une liste, dans une variable.
+
+Regardons ça plus en détail dans les exemples ci dessous :
+
+[source,python]
+----
+def somme(a,b):
+   return a+b
+
+def multiply(a,b):
+   return a*b
+   
+print somme # renvoie une adresse de l'objet en mémoire
+print somme() # execute la fonction !
+
+class Personne(object):
+   
+   def __init__(self,nom,prenom,age):
+      self.nom = nom
+      self.prenom = prenom
+      self.age = age
+      
+   def anniversaire(self):
+      print "Bon anniversaire ", self.nom, " !!"
+      self.age = self.age + 1
+      
+   def information(self):
+      print "Mon nom est ", self.nom, " et mon prénom est ", self.prenom
+      print "Aujourd'hui j'ai ", self.age, " ans."
+
+tomy = Personne("Ungerer","Tomy",75)
+gerard = Personne("Mulot","Gerard",55)
+# etc...
+
+# Et donc vous pouvez stocker les références/adresses dans des structures de données, c'est à dire dans des classes (dans les attributs), dans des listes, dans des dictionnaires, etc.
+listePersonne = [tomy,gerard]
+
+listeFonctionCalculette = [somme,multiply]
+
+for i in listePersonne:
+   i.information()
+
+for i in listePersonne:
+   i.anniversaire()
+
+for i in listePersonne:
+   i.information()
+
+for i in listeFonctionCalculette:
+   print "Resultat = ", i(1,3)
+
+----
+
+Exercice:: 
+. En reprenant l'exemple des navigateurs et du pirate, essayez de stocker plusieurs pirates dans un tableau, et avec un générateur aléatoire d'accident ( => une tempête par exemple) , appliquez des accidents à tel ou tel navigateur de votre tableau !
+. Affichez ensuite le résultat de cette tempête !
+
+A l'aide de ces principes, nous essaierons de réfléchir par la suite à la manière de structurer plus efficacement nos futurs programme, comme par exemple le rogueLike.
+
+.Ressources python :
+* http://www.siteduzero.com/tutoriel-3-223267-apprenez-a-programmer-en-python.html#part_296052
+
+.Ressource modélisation :
+* http://laurent-piechocki.developpez.com/uml/tutoriel/lp/cours/
+* http://fr.wikipedia.org/wiki/Diagramme_de_classes
+
+== RogueLike
+
+image::images/rogue.png[align="center"]
+
+.Qu'est ce qu'un RogueLike et comment y jouer ? 
+* http://en.wikipedia.org/wiki/Roguelike
+* http://en.wikipedia.org/wiki/Chronology_of_roguelike_video_games
+
+Un roguelike très très simplifié tiré du livre *learn python the hard way* :
+
+.rogue.py
+[source,python]
+----
+
+from sys import exit
+
+def gold_room():
+    print "This room is full of gold.  How much do you take?"
+
+    next = raw_input("> ")
+    if "0" in next or "1" in next:
+        how_much = int(next)
+    else:
+        dead("Man, learn to type a number.")
+
+    if how_much < 50:
+        print "Nice, you're not greedy, you win!"
+        exit(0)
+    else:
+        dead("You greedy bastard!")
+
+def bear_room():
+    print "There is a bear here."
+    print "The bear has a bunch of honey."
+    print "The fat bear is in front of another door."
+    print "How are you going to move the bear?"
+    bear_moved = False
+
+    while True:
+        next = raw_input("> ")
+
+        if next == "take honey":
+            dead("The bear looks at you then slaps your face off.")
+        elif next == "taunt bear" and not bear_moved:
+            print "The bear has moved from the door. You can go through it now."
+            bear_moved = True
+        elif next == "taunt bear" and bear_moved:
+            dead("The bear gets pissed off and chews your leg off.")
+        elif next == "open door" and bear_moved:
+            gold_room()
+        else:
+            print "I got no idea what that means."
+
+
+def cthulhu_room():
+    print "Here you see the great evil Cthulhu."
+    print "He, it, whatever stares at you and you go insane."
+    print "Do you flee for your life or eat your head?"
+
+    next = raw_input("> ")
+
+    if "flee" in next:
+        start()
+    elif "head" in next:
+        dead("Well that was tasty!")
+    else:
+        cthulhu_room()
+
+
+def dead(why):
+    print why, "Good job!"
+    exit(0)
+
+def start():
+    print "You are in a dark room."
+    print "There is a door to your right and left."
+    print "Which one do you take?"
+
+    next = raw_input("> ")
+
+    if next == "left":
+        bear_room()
+    elif next == "right":
+        cthulhu_room()
+    else:
+        dead("You stumble around the room until you starve.")
+
+
+start()
+
+---- 
+
+.*Objectif* : faire un petit jeu d'exploration au format texte, fil rouge de notre TP :
+
+. Une bonne grosse dose d'ambiance
+. Un explorateur mineur  image:images/chevalier.png[align="center", height=32]
+. Une cave "très très" sombre
+. Des monstres sanguinaires et des mini-jeux ! image:images/orc.png[align="center", height=32] 
+. Des mini jeux (pendu, shifumi, bon chiffre)
+. Des trésors: émeraudes, or, pierre précieuses ! image:images/chest.png[align="center", height=32]
+. Un sac pour stocker les trésors : inventaire ! 
+. Une carte du monde !
+. Des déplacements des monstres et de notre explorateur !
+
+
+[NOTE]
+.La fonction random
+====
+
+Il est nécessaire d'importer le module random en haut de votre programme pour pouvoir ensuite utiliser des fonctionnalités de ce module :
+
+[source,python]
+import random 
+
+Dans votre programme vous pouvez ensuite utiliser la fonction `randInt()` qui vous renvoie un chiffre aléatoire entre *début* et *fin*
+
+[source,python]
+nbAleatoire = random.randint(0,5)  # renvoi un chiffre entre 0 et 5 inclus
+
+D'autres fonctions utiles existent dans ce module, vous pouvez les voir ici : +
+http://docs.python.org/library/random.html
+
+====
+
+.Première étape :
+****
+. Analyser le code du roguelike simplifié ci dessus et faites quelques modifications pour vous amuser.
+. En vous basant sur le code donné dans le répertoire *exercice/ROGStep1a.py*
+.. Ajouter une commande ("N" pour next turn par exemple) pour faire défiler les jours dans votre jeu (sous forme de compte à rebour).
+.. Tout les jours vous avez la possibilité de tomber sur un monstre, si jamais cela arrive, vous mourrez...
+.. Une fois le nombre de jour épuisé, et si vous n'êtes pas mort, bravo !
+
+*Amélioration 1 :*
+
+. Lorsque le nombre de jour arrive a 0, alors un monstre arrive et vous pose une question *devine le nombre*, ce qui vous laisse une chance de survie si vous y arrivez.
+
+*Amélioration 2 :*
+
+. Intégrer le jeu du passeur de pont des MonthyPython (voir *exercice/pont.py*) 
+. Les jeux sont tirés aux hasard ! 
+
+*Amélioration 3:*
+
+. On créé deux nouveaux jeu : shifumi et pendu qui sont ensuite intégrés dans le choix random des différents jeux
+
+Pour le pendu, quelques astuces techniques : 
+. Vous pouvez stocker vos mots dans une liste et tiré aléatoirement le mot
+. Vous pouvez maintenir une liste de lettre trouvés par l'utilisateur
+. Une chaîne de caractère peut être manipulé comme une liste avec des indice
+. Vous pouvez avoir une fonction affichage qui prend les éléments trouvés par l'utilisateur 1 par 1 et les compare lettre à lettre au mot
+.. si lettre existe j'affiche la lettre 
+.. si lettre existe pas j'affiche `_`
+
+****
+
+.Deuxième étape : 
+****
+. menu contenant les choix de déplacement et la sortie : "Q" ou "D" puis "N","S","W","E"
+. On compte les jours à présent plutot, c'est plus intéressant pour ajouter ensuite des événements ..
+. Nouvelle règle de jeu, on veux pouvoir faire plusieurs commandes différentes, mais seulement un seul deplacement avant la fin du tour
+. Pour le moment on se déplace dans le vide ... on va juste se contenter de stocker le nombre de pas fait dans chaque direction.
+****
+
+.Troisième étape : 
+****
+
+** l'explorateur se déplace de 1 à chaque tour, et il peux donc afficher sa position à tout moment sur la carte via une commande "M"
+* Explorer une carte du monde en 2D [X,Y] , voir le fichier *exercice/carte.py* et *exercice/transformCarte.py* qui contient la matrice du monde à explorer
+*** `0` = vide => affiche `.`
+*** `1` = bloc de pierre => affiche `#`
+*** `2` = position de l'explorateur => affiche `@` +
+[red]*info =>* Il sera utile ici de créer une deuxième matrice pour séparer la matrice carte qui contient seulement des 0 et des 1, de la matrice qui contient les personnages à des position xy (monstres, joueur, items, village, etc.) +
+[red]*info* => Le joueur doit être bloqué par la valeur 1 dans la matrice carte !!
+
+** à présent, un monstre se déplace lui aussi sur la carte, ce qui va vous poser beaucoup de problème : +
+[red]*info* => ordre d'action lord d'une intersection Explorateur / Monstre ? +
+[red]*info* => ordre pour re-dessiner des cases à chaque tour, etc ?
+subl
+
+*Amélioration 1 :* 
+
+* La carte est trop grande, j'aimerais seulement en afficher une partie plus limitée ! +
+[red]*info* => On ajout un `offset` qui détermine le voisinnage à afficher à partir de la position x,y de l'explorateur
+
+*Amélioration 2:*
+
+* Ajout d'un sac de pierre pour stocker des richesses +
+[red]*info* => Un simple tableau comme on a déjà vu dans le cours
+
+* Ajout d'une commande *S* pour visualiser votre sac de pierre au format texte !
+
+* Le monstre relache des pierres de façon aléatoire lorsqu'il est battu, et celle ci se range de façon automatique en fonction de leur rentabilité ! (voir exo sac) +
+[red]*info* => Il faut donc faire une fusion des deux tableau, celui que je possède, et celui que me renvoie le monstre. Ensuite je relance mon algo de remplissage de sac...
+
+*Amélioration 3:*
+
+* Ajout d'une commande pour creuser le sol, ce qui donne des ressources aléatoires en or, argent, émeraudes !
+
+* Faire ré-apparaitre le monstre de façon aléatoire sur la carte X tours après sa disparition
+
+****
+
+.Quatrième etape (*bonus pour ceux qui veulent aller plus loin*) : 
+****
+
+[red]*Attention*, le niveau demandé ici pour réaliser ces fonctionnalités est plus elevé que ce que nous avons vu en cours. Mais si vous décidez de relever le challenge, en tant que bon aventurier, vous en ressortirez grandi !! 
+
+A la fin de ce texte, je vous listerai un ensemble de code sources de rogueLike existant en Python, ainsi que des références techniques sur les notions d'héritages et de composition en Python.
+
+Vous avez du remarquer que votre programme était de plus en plus gros, et que le nombre de variables contenant parfois des informations redondantes devenait de plus en plus important.
+
+En reprenant votre programme, et en appliquant les principes de la *programmation orientée objet* , vous allez pouvoir facilement (ou presque) complexifier votre programme en lui ajoutant de la structure ! 
+
+Objectifs en vrac ::
+* Ajouter des items (des *potions de vie* pour commence) au sol, ou droppé par les monstres [red]*wow!*
+* Ajouter une vrai gestion d'inventaire [red]*wow !*
+* Ajouter un marchand qui échange or, émeraude et autre contre des items de potion (dans un premier temps) [red]*wow !*
+* Ajouter un système de combat en plusieurs tours : attaque/défense [red]*wow !*
+* Ajouter des monstres avec des niveaux d'attaques différent [red]*wow !*
+* Ajouter des monstres qui cherche à minimiser la distance au joueur [red]*wow !*
+
+Quelques pistes techniques pour faire tout ça :: 
+* Dans un premier temps, vous pouvez créer une classe `GameObjects` qui regroupe les attributs communs à tout les objets mobiles/vivant du jeu :
+** Les attributs de base sont : 
+*** x, y : position de l'objet dans la matrice
+*** bloquant : l'objet est il bloquant pour le deplacement ? 
+*** caractere : le caractère dessiné
+** les fonctions de base de tout les objets sont (sans les arguments) : 
+*** draw(): prend la matrice en paramètre et écrit son caractère à la position x,y 
+*** getPosition() : recuperer les attributs x,y
+*** setPosition() : changer la position de l'objet
+*** clear() : efface l'objet
+
+* Gràce à la composition ou à l'héritage de classes en python (comme vous le sentez), vous pouvez enuiste créer des classes plus spécifique, c'est à dire qui ajoute des fonctionnalitées à `GameObjects` :
+** `Monster` ajoute les attributs *sante*, *attaque*, *defense*, *nom* et les fonctions *attaque()*, *modifieSante()*, etc. 
+** `Humain` ajoute les attributs *sante*, *attaque*, *defense*, *nom*, et les fonctions *attaque()*, *soigne()*, *blessure()*, etc.
+** `Item` contient quand à elle la fonction à appliquer lorsque l'item est utilisé !
+
+Pour la composition voilà par exemple un code fonctionnel pour illustrer les mécanismes : 
+
+[source,python]
+----
+# inspiré du code ici : 
+# http://roguebasin.roguelikedevelopment.org/index.php/Complete_Roguelike_Tutorial,_using_python%2Blibtcod,_part_6
+
+HEAL_VALUE = 25
+
+class GameObjects(object):
+    def __init__(self,x,y,caractere,bloque=False, fighter=None, item=None):
+        self.x = x
+        self.y = y
+        self.caractere = caractere
+        self.bloque = bloque
+        self.fighter = fighter  
+        self.item = item
+    def deplacement(self,dx,dy):
+        print "deplacement"
+    def draw(self,world):
+        print "redraw world"
+
+class FighterClass(object):
+    def __init__(self, sante, defense, attaque):
+        self.sante = sante
+        self.defense = defense
+        self.attaque = attaque
+    def heal(self,value):
+        self.sante += value
+
+class Item(object):
+    def __init__(self, use_function=None):
+        self.use_function = use_function
+    def use(self,playerRef):
+        self.use_function(playerRef)
+
+# La fonction a besoin de la référence joueur pour appliquer l'effet !
+def cast_heal(playerRef):
+    print "WOW ! I'm ready to FIGHT NOW !"
+    playerRef.fighter.heal(HEAL_VALUE )
+
+fight_component = FighterClass(25,3,5)
+aventurier = GameObjects(0,0,"@",fighter = fight_component)
+
+print aventurier.x
+print aventurier.y
+
+print aventurier.fighter.sante 
+aventurier.fighter.heal(10)
+print aventurier.fighter.sante 
+
+item_petite_potion = Item(cast_heal)
+item_potion = GameObjects(0,0,"P",item=item_petite_potion)
+item_potion = GameObjects(0,0,"P",item=item_petite_potion)
+
+print aventurier.fighter.sante
+item_potion.item.use(aventurier)
+print aventurier.fighter.sante
+
+----
+
+Ressources générales::
+* Composition vs Héritage : http://learnpythonthehardway.org/book/ex44.html
+
+****
+
+
+
+
+
+== Labyrinthe
+
+video::images/maze.ogv[width=600, align="center"]
+
+.Dans le repertoire */exercice/labyrinthe_v1/* vous trouverez les fichiers suivants : 
+* *constants.py* contient les variables de correspondance couleur ainsi que les valeurs attribués aux différents blocs, a priori il n'est là que pour consultation.
+* *drawMaze.py* et le fichier *Maze.py* contiennent les fonctions permettant la création de la matrice de chiffre labyrinthe, ainsi que les fonctions nécessaires à son affichage.
+* *mazeBuilder_exercice.py* est le seul fichier que vous devez compléter.
+
+Dans ce dernier, l'objectif est de *remplir chacune des fonctions* jusqu'à obtenir une version fonctionelle du programme comme présenté sur la vidéo ci dessus.
+
+Vous pouvez d'ores et déjà tester que le programme est fonctionnel en vous placant dans le repertoire */exercice/labyrinthe_v1/* et en lancant la commande suivante
+
+[source,console]
+----
+$> python mazeBuilder_exercice.py
+----
+
+.Fonction existantes : 
+****
+
+Sur l'objet labyrinthe, les fonctions suivantes existent et peuvent être apellées : 
+
+* [red]*maze.getValueAtXY(x,y)* +
+Renvoie une valeur numérique (de -1 a 4 correspondant aux variables vu dessus) correspondant à la position x y passé en paramètre
+
+* [red]*maze.setValueAtXY(x,y,value)* +
+Met la valeur 'value' dans la matrice a la position x y
+
+****
+
+.Fonction à réaliser: 
+****
+
+Les fonctions à remplir et le type de retour de celles ci sont largement commentés dans le code source , je vous donne ici quelques informations complétementaires :
+
+* [red]*def avance(direction,xRobot,yRobot)* +
+Applique la direction aux valeurs x,y du robot, et renvoie un tableau de nouvelle coordonnées [X,Y] qui remplaceront les anciennes valeurs.
+
+* [red]*def randomDirection(tableau,valueToFind)* +
+Filtre le tableau en fonction de la valeur ValueToFind et renvoie une direction au format STRING. Si cette valeur n'existe pas, on renvoi la valeur 'None'.
++
+L'indice du tableau ou on a trouvé la valeur correspond forcément à une direction, car le tableau des valeurs des cases voisines passé ici en paramètre respecte cet ordre [red]*G H D B*. Ainsi, le mapping suivant peut être réalisé :
++
+** indice = 0 équivaut à « G »
+** indice = 1 équivaut à « H »
+** indice = 2 équivaut à « D »
+** indice = 3 équivaut à « B »
++
+Une seule direction au hasard doit être selectionné parmis les différents indices ayant renvoyé 'liste[indice] == valueToFind'
++
+Exemple, je cherche une valeur égale a CEmpty, donc 'valueToFind = 0'.
++
+Mon tableau passé en paramètre contient les valeurs des voisins dans cet ordre là : 'G, H, D, B'. Admettons que le tableau contienne ces valeurs : '[0, -1, 0, 3]', quels sont les cases voisinnes vides ? +
+[red]*=>* Réponse : G et D
++
+Ainsi, une direction au hasard doit être selectionné et renvoyé parmis « G » et « D »
++
+Au final, cette fonction renvoie soit une direction, soit si la valeur n'existe pas, la valeur python 'None'.
+
+* [red]*def getDirection(tableau, valueToFind)*
++
+Même chose que ci dessus, mais renvoie la direction correspondant à la première valeur trouvé, si celle ci n'existe pas, on renvoie la valeur python 'None'.
+
+* [red]*def returnWallCase(t_world)*
++
+Renvoie un tableau contenant deux valeurs '[X,Y]' d'une case de la matrice contenant la valeur 0 (correspond à la valeur 'cEmpty')
++
+Cette fonction sert à trouver et placer les entrées et sorties, il est donc intéressant de placer ces éléments en fonction de contraintes intéressantes.
+Ainsi dans ce programme nous pouvons imaginer que les entrées et sorties sont placés dans des "impasse", pour cela il convient de rechercher un motif particulier : une case 'cEmpty' entouré de trois cases 'cWall'.
+
+* [red]*def xyVoisinnage(t_world, xRobot, yRobot)*
++
+Renvoie une liste imbriqué contenant les coordonnées '[X,Y]' de chacune des cases voisine, dans cette ordre la 'G, H, D, B'. 
+Soit une liste de cette forme '[[X,Y],[X,Y],[X,Y],[X,Y]]' 
+
+* [red]*def calculeChemin(t_world,xRobot,yRobot)*
++
+Renvoie un tableau de deux valeurs '[CHARACTER, NUMERIQUE]', la première variable contenant la direction à appliquer par le robot(« G » « H » « D » « B »), et la deuxième variable contenant une indication sur la nature du futur chemin à prendre : bloqué ou pas bloqué ('cWay' / 'cNoWay' ).
++
+Trois 'return' de listes sont possible dans cette fonction, en fonction des traitements effectués ('endCaseResult','emptyCaseResult' et 'paintedCaseResult' contiennent un caractère de direction) :
++
+** return 1 : 'return [endCaseResult,c.cWay]'
+** return 2 : 'return [emptyCaseResult, c.cWay]'
+** return 3 : 'return [paintedCaseResult, c.cNoWay]'
+
+* [red]*def run()* +
+La fonction point de départ de votre code, celle qui initialise votre robot, place vos éléments entrées/sorties, et appelle toutes les autres fonctions pour le déplacement !!
+
+****
+
+== Rendu TP
+
+ ... à venir ...
+
+== Ressources 
+
+.Officielle : 
+* http://docs.python.org/tutorial/index.html
+* http://docs.python.org/index.html
+
+.Autres : 
+* http://hyperpolyglot.org/
+* http://rgruet.free.fr/PQR27/PQR2.7.html
+* http://programming-motherfucker.com/become.html
+* http://mindview.net/Books/Python/ThinkingInPython.html
+
+////
+blabla
+////
