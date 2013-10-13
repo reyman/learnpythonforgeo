@@ -38,8 +38,6 @@ def run(maze):
 	# Indicateur de sortie
 	if sortie == False:
 
-
-
 		# Dessine le labyrinthe, a une vitesse donné en paramètre
 		draw.drawScreen(t_world,40)
 
