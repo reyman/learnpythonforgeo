@@ -89,6 +89,12 @@ class Case(object):
         self.objects = []
         self.in_FOV = False
 
+# class GameObjects(object)
+# Faire une proposition avec un DrawableObject
+# @user1579844: If class B extends class A by adding new methods and does not override class A's methods, then use inheritance. Use inheritance if B can be substituted wherever A is used. Use composition for dependency injection (to allow class B to have a class A2 instead of a class A).
+# For this and other ideas, see this SO answer. And sometimes neither composition or inheritance is right -- sometimes a simple function is best.
+# (I rather wonder if that is the case here.)
+
 # Other composition to do here
 class Door(object):
     def __init__(self, key, open=False):
@@ -104,7 +110,9 @@ tilesObject = {".": {"name": 'floor', "obj": Case, "bgcolor": (233, 207, 177), "
                "Y": {"name": 'forest', "obj": Case, "bgcolor": (25, 150, 64), "block": True},
                "|": {"name": 'pont', "obj": Case, "bgcolor": (190, 150, 35), "block": False},
                "~": {"name": 'water', "obj": Case, "bgcolor": (10, 21, 35), "block": False},
-               "+": {"name": 'doors', "obj": Case, "bgcolor": (10, 10, 25), "block": False}}
+               "+": {"name": 'doors', "obj": Door, "bgcolor": (10, 10, 25), "block": False}}
+
+# Composition
 
 # Storing moving object into list
 # Storing Tile into 2D list

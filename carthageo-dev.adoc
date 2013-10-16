@@ -1812,7 +1812,120 @@ for k in xrange(2,10):
 
 == Dictionnaires
 
-... à venir ...
+Les dictionnaires sont un autre type de structures de données permettant de stocker de l'information.
+
+A la différence des listes qui ne peuvent être accédé que par leurs indices, les dictionnaires permettent d'accéder aux données en suivant un schéma dit *clef-valeur*
+
+=== Initialiser un dictionnaire 
+
+[source,python]
+----
+# Initialisation d'un dictionnaire vide 
+monDictionnaire1 = {}
+print monDictionnaire1
+
+# Initialisation d'un dictionnaire déjà rempli
+monDictionnaire2 = {"pomme":2, "orange":3}
+print monDictionnaire2
+
+# Avec une clef numérique 
+monDictionnaire3 = {1:"Gauche", 2:"Droite"}
+print monDictionnaire3
+
+----
+
+=== Accéder à un dictionnaire 
+
+Les dictionnaires ne sont pas des séquences comme les listes, et la clef qui détermine l'entrée dans le dictionnaire peut être numérique, caractère ou composite.
+
+[source,python]
+.Lister des éléments
+----
+monDictionnaire4 = {"pomme":2, "orange":3, "patate":2}
+print monDictionnaire4["patate"]
+
+monDictionnaire5 = {1:"Gauche", 2:"Droite"}
+print monDictionnaire5[1]
+
+----
+
+[source,python]
+.Ajouter des éléments
+----
+# Initialisation d'un dictionnaire vide
+monDictionnaire6 = {}
+# et remplissage 
+monDictionnaire6["patate"] = 3
+monDictionnaire6["orange"] = 8
+monDictionnaire6["citron"] = 5
+print monDictionnaire6
+
+# Ajout dans un dictionnaire existant
+# L'ordre n'a aucune d'importance dans un dictionnaire
+monDictionnaire7 = {1:"Gauche", 3:"Droite"}
+monDictionnaire7[2] = "Milieu"
+print monDictionnaire7
+----
+
+[source,python]
+.Supprimer des éléments
+---- 
+monDictionnaire8 = {"pomme":2, "orange":3, "patate":2}
+del monDictionnaire8["pomme"]
+print monDictionnaire8
+----
+
+=== Méthodes spécifiques aux dictionnaires
+
+[source,python]
+.Lister les clef dans le dictionnaire
+---- 
+monDictionnaire9 = {"pomme":2, "orange":3, "patate":2}
+print monDictionnaire9.keys()
+----
+
+[source,python]
+.Lister les valeurs dans le dictionnaire
+---- 
+monDictionnaire10 = {"pomme":2, "orange":3, "patate":2}
+print monDictionnaire10.values()
+----
+
+[source,python]
+.Tester l'existence d'une valeur dans le dictionnaire
+---- 
+monDictionnaire11 = {"pomme":2, "orange":3, "patate":2}
+print monDictionnaire11.has_key("Pomme")
+print monDictionnaire11.has_key("pomme")
+print monDictionnaire11.has_key("citron")
+----
+
+=== Parcourir les dictionnaires
+
+[source,python]
+.Parcourir les clef
+---- 
+monDictionnaire12 = {"pomme":2, "orange":3, "patate":2}
+for clef in monDictionnaire12:
+	print clef
+----
+
+[source,python]
+.Parcourir les valeurs
+---- 
+monDictionnaire13 = {"pomme":2, "orange":3, "patate":2}
+for clef in monDictionnaire13:
+	print monDictionnaire13[clef]
+----
+
+[source,python]
+.Parcourir les clef + valeurs
+---- 
+monDictionnaire14 = {"pomme":2, "orange":3, "patate":2}
+for clef, valeur in monDictionnaire14.items():
+	print clef ," = ",  valeur
+----
+
 
 == POO
 
@@ -1952,7 +2065,7 @@ Il s'agit de la fonction `__init()__` qui prend automatiquement l'argument `self
 `self` doit être indiqué comme argument dans chacune des fonctions de la classe, c'est obligatoire, c'est ce qui permet à Python de savoir a qui vous faite référence, donc ici à l'objet même ! +
 [red]*=>* self = objet courant
 
-Ainsi, pour appeler des attributs depuis des fonctions de votre classe, il faut toujours indiquer `self.nomDeVotreAttribut"`
+Ainsi, pour appeler des attributs depuis des fonctions de votre classe, il faut toujours indiquer `self.nomDeVotreAttribut`
 
 Idem pour appeler une fonction en interne dans une classe, il faut toujours l'apeller avec le mot clef self devant `self.nomDeVotreFonction()`
 
@@ -2009,7 +2122,8 @@ class Navigateur(object):
 <6> Ici on passe un argument supplémentaire qui est utilisé dans la fonction.
 <7> Je modifie un attribut de mon objet, j'ai le droit du moment que j'utilise self pour indiquer qu'il existe ! +
 [red]*=>* sinon cela créé une nouvelle variable locale à la fonction !!
-<8> Cette fonction ajoute un attribut grade à mon objet, celui-ci est ensuite accessible normalement comme tout les autres attributs existant et définis dans __init__
+<8> Cette fonction ajoute un attribut grade à mon objet, celui-ci est ensuite accessible normalement comme tout les autres attributs existant et définis dans `__init__`
+
 
 .Amusons nous maintenant avec une instance de classe : Gérard le pirate !
 [source,python]
@@ -2157,6 +2271,134 @@ A l'aide de ces principes, nous essaierons de réfléchir par la suite à la man
 .Ressource modélisation :
 * http://laurent-piechocki.developpez.com/uml/tutoriel/lp/cours/
 * http://fr.wikipedia.org/wiki/Diagramme_de_classes
+
+=== Des objets dans des objets ?
+
+image::images/worldofpirates.png[align="left", 500]
+
+C'est ici que se trouve la vrai puissance de la programmation orientée objet, car elle permet de créer un code complexe de façon modulaire et générique.
+Reprenons notre exemple du pirate, et essayons de lui créer un monde adapté à sa mesure.
+
+image::images/classNavigateur2.png[align="center", 400]
+
+[source,python]
+----
+# -*- coding: utf-8 -*-
+
+import random
+
+# Definition des classes du monde des pirates !
+class Navigateur(object): # <1>
+    def __init__(self, nom, yeux=2, bras=2, jambes=2, argent=0, force=1, grade="minable"):
+        self.nom = nom
+        self.tete = 1
+        self.nbYeux = yeux
+        self.nbBras = bras
+        self.nbJambes = jambes
+        self.argent = argent # <2>
+        self.force = force
+        self.grade = grade
+        self.afficheInfo()
+
+    def afficheInfo(self):
+        print "Bonjour ! Je suis ", self.nom, " un navigateur", self.grade, "et de force", self.force, "\n"
+        print "J'ai ", self.nbYeux, "yeux, ", self.tete, " tête, ", self.nbBras, " bras, et ", self.nbJambes, " jambes ...\n"
+        print "J'ai ", self.argent, " dans ma bourse \n"
+
+    def augmenteGrade(self):
+        if self.grade == "minable":
+            self.grade = "minus"
+        elif self.grade == "minus":
+            self.grade = "chef"
+        elif self.grade == "chef":
+            self.grade = "capitaine"
+
+        self.force = self.force + 1 # <3>
+----
+<1> La classe Navigateur change un peu, on passe des arguments par défaut pour définir la morphologie et le grade de nos navigateurs. Ainsi on part du principe que le grade par défaut est "minus", et la morphologie normale.
+<2> De nouveaux attributs apparaissent dans notre programme : argent, force et grade.
+<3> A chaque augmentation de grade on augmente la force du navigateur de 1, par exemple cette fonction peut être appellé à chaque fois que son navire gagne un combat, on peut considérer qu'il augmente de grade.
+
+Les marins sont en général recrutés dans des `Tavernes`, logique non ? 
+
+[source,python]
+----
+class Taverne(object):
+    def __init__(self, listeDeNoms, listeDePrenoms):
+        self.listDeNoms = listeDeNoms
+        self.listDePrenoms = listeDePrenoms
+
+    def debaucher(self): # <1>
+        salaire = random.randint(1, 10)
+        force = salaire * 1.5
+        nomPrenom = " ".join([self.listDeNoms[random.randint(0, len(self.listDeNoms) - 1)],
+                              self.listDePrenoms[random.randint(0, len(self.listDePrenoms) - 1)]])
+        return Navigateur(nomPrenom, force=int(force)) # <2>
+----
+<1> En utilisant la liste de noms et prénoms stockés par l'objet `Taverne`, on génère un nouveau objet Navigateur, en piochant au hasard un salaire entre 1 et 10 pièce d'or.
+<2> Le Navigateur ainsi créé est renvoyé par la fonction débaucher()
+
+[source,python]
+----
+class Equipage(object): # <1>
+    def __init__(self, marins):
+        self.marins = marins
+
+    def jourDePaye(self, sommeParMarin):
+        print ("ajoute de l'argent à la bourse de chacun des marins")
+
+
+class Navire(object): # <2>
+    def __init__(self, nom, marins):
+        self.nom = nom
+        self.equipage = Equipage(marins)
+
+    def combat(self, ennemi): # <3>
+        print "combat le bateau ennemi ! "
+----
+
+
+<1> L'équipage se compose de marins, la classe a donc besoin d'une liste de `Navigateur` pour être instancié correctement
+<2> La classe navire est responsable d'un équipage et un seul, c'est elle qui créée l'instance de la classe `Equipage` accueillant la liste de `Navigateurs`.
+Ainsi la liste de marins passés en paramètres sert ici à instancier la classe `Equipage` stocké par chaque objet `Navire`
+<3> La classe qui définit les combats, pour déterminer l'issue du combat et calculer l'abordage, il faut prendre en paramètre un navire ennemi.
+
+[source,python]
+----
+# Programme principal
+
+# Fonction pour construire equipage
+def buildEquipage(nbMarins): # <1>
+    equipage = []
+    for x in range(nbMarins):
+        equipage.append(taverneAPirate.debaucher())
+    return equipage
+
+if __name__ == "__main__":
+    nomDePirate = ["Bonny", "Jack", "Teach", "Drake", "Morgan", "Nau", "Read"]
+    prenomDePirate = ["Anne", "Calico", "Edward", "Francis", "Henry", "Jean", "Mary"]
+
+    taverneAPirate = Taverne(nomDePirate, prenomDePirate) # <2>
+
+	# Deux navires sont instanciés avec des équipages différents
+    Navire("Queen Anne's Revenge", buildEquipage(10)) # <3>
+    Navire("Adventure Galley", buildEquipage(10))
+
+----
+
+<1> Fonction qui construit un équipage à partir d'une taverne, on s'en sert ensuite plusieurs fois dans <3> et l'instanciation des `Navire`
+<2> On instance une `Taverne` à l'aide d'une liste de noms et prénoms de pirates connus.
+<3> Les `Navires` sont créés à partir d'équipage construits dynamiquement.
+
+*Exercices* : 
+
+* Réaliser les fonctions permettant de calculer un combat entre deux Navires en se basant sur la force des pirates qui les composent.
+* Penser à payer vos pirates à la fin de chaque combat victorieux!
+* Ajouter une ou plusieurs classes de votre choix permettant d'enrichir ce monde de Pirate par de nouvelles aventures.
+
+
+=== Héritage ou Composition ?
+
 
 == Mini-Jeux
 
