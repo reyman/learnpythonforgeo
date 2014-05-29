@@ -7,6 +7,8 @@ class FontRenderer(object):
     
   def render(self, text, color=(255,255,255)):
     key = text, color
+
     if not key in self.cache.keys():
       self.cache[key] = self.font.render(text, True, color)
+
     return self.cache[key]
