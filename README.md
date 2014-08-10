@@ -8,9 +8,9 @@ this course is principally written for *really beginner students in geography*
 AsciiDoc text based format
 --------------------------
 
-You can find some information and syntax highliting file for asciidoc syntax on the official site : 
+You can use editor like Atom with specific plugin to live preview the document
 
-http://www.methods.co.nz/asciidoc/#_editor_support
+https://github.com/asciidoctor/atom-asciidoc-preview
 
 Installation 
 ------------
@@ -32,6 +32,5 @@ Directory information
 ---------------------
 
 * `/images/` directory contain images and video for the course
-* `/exercice/` contain all exercices 
 
 
