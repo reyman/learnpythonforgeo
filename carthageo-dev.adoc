@@ -9,7 +9,7 @@ Rey Sebastien <rey.sebastien@yahoo.fr>
 :source-highlighter: pygments
 :sectanchors:
 :experimental:
-:pygments-style: autumn
+:pygments-style: monokai
 
 * v0.1, Sept 15, 2012 : Initial version
 * v0.2, Sept 17, 2012 : Add some major explanation about list, fonctions, indentation, etc.

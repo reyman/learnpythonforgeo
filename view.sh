@@ -1,1 +1,1 @@
-asciidoc --theme flask --backend=html5 carthageo-dev.asciidoc
+asciidoctor --trace -a linkcss carthageo-dev.adoc

@@ -15,10 +15,10 @@ http://www.methods.co.nz/asciidoc/#_editor_support
 Installation 
 ------------
 
-To compile the source code of this course, you need `Ubuntu` and only one package :
+To compile the source code of this course, you need `Ruby` and gem `asciidoctor` => 1.5.0 :
 
 ```bash
-sudo apt-get install asciidoc
+gem install asciidoctor --pre
 ```
 
 Compilation
