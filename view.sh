@@ -1,1 +1,1 @@
-asciidoctor --trace -a linkcss carthageo-dev.adoc
+asciidoctor --trace -a linkcss cours-python.adoc
