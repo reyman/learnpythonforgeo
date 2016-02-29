@@ -24,6 +24,7 @@ Rey Sebastien <rey.sebastien@yahoo.fr> , Van Hamme Adrien <adrien.van.hamme@gmai
 * v0.13, Oct 22, 2013 : Add POO information about inheritance and composition ; remove old version of Rogue
 * v0.14 Sept 18, 2014 : Remove Roguelike; add Adrien van hamme
 * v0.15 Sept 18, 2015 : Separate Windows / Linux
+* v0.16 Fev, 2016 : Add Naval Battle
 
 == Introduction au document
 
@@ -2910,44 +2911,10 @@ Il est donc plus intéressant de stocker nos programmes dans des fichiers avec d
 
 == Mini-Jeux
 
-=== Pendu
-
-Définir une fonction `pendu()` qui pour une liste de mots passés en paramètre, permet de jouer au pendu, et renvoie à la fin du jeu `True` (gagné) or `False` (perdu)
-
-Quelques astuces techniques :
-
-* Vous pouvez stocker vos mots dans une liste et tiré aléatoirement le mot
-* Vous pouvez maintenir une liste de lettre trouvés par l'utilisateur
-* Une chaîne de caractère peut être manipulé comme une liste avec des indice
-* Vous pouvez avoir une fonction affichage qui prend les éléments trouvés par l'utilisateur 1 par 1 et les compare lettre à lettre au mot
-** si lettre existe j'affiche la lettre
-** si lettre existe pas j'affiche `_`
-
-[source,python]
-.Exemple d'appel de la fonction
-----
-mot = ["Vélociraptor", "Amazonie", "Fondation", "Titanic"]
-print pendu(mot)
-----
 
 
-=== Shifumi
 
-image::images/RPS2.png[align="center", 300]
-
-Définir une fonction `shifumi()` qui permet de jouer au shifumi avec l'ordinateur, et renvoie à la fin du jeu `True` (gagné) or `False` (perdu)
-
-Pour vous aider dans votre tâche, voici un bout de code utilisant un dictionnaire et un générateur de chiffre aléatoire.
-Ce code permet de renvoyer à chaque appel un choix de l'ordinateur pour le prochain tour !
-
-[source,python]
-----
-from random import randint
-
-gameDict = {1:"Pierre",2:"Papier",3:"Ciseaux"}
-computer_value = gameDict[randint(1,3)]
-print computer_value
-----
+Trois mini-jeux que vous devez réaliser dans le cadre du projet. Ci-dessous une explication de la fonction `random()` qui vous permettra de tirer des nombres aléatoires pour par exemple simuler un jeter de dés.
 
 [NOTE]
 .La fonction random
@@ -2970,6 +2937,71 @@ http://docs.python.org/library/random.html
 
 ====
 
+=== Pendu
+
+Définir une fonction `pendu()` qui pour une liste de mots passés en paramètre, permet de jouer au pendu, et renvoie à la fin du jeu `True` (gagné) or `False` (perdu)
+
+Quelques astuces techniques :
+
+* Vous pouvez stocker vos mots dans une liste et tiré aléatoirement le mot
+* Vous pouvez maintenir une liste de lettre trouvés par l'utilisateur
+* Une chaîne de caractère peut être manipulé comme une liste avec des indice
+* Vous pouvez avoir une fonction affichage qui prend les éléments trouvés par l'utilisateur 1 par 1 et les compare lettre à lettre au mot
+** si lettre existe j'affiche la lettre
+** si lettre existe pas j'affiche `\_`
+
+[source,python]
+.Exemple d'appel de la fonction
+----
+mot = ["Vélociraptor", "Amazonie", "Fondation", "Titanic"]
+print pendu(mot)
+----
+
+=== Shifumi
+
+image::images/RPS2.png[align="center", 300]
+
+Définir une fonction `shifumi()` qui permet de jouer au shifumi avec l'ordinateur, et renvoie à la fin du jeu `True` (gagné) or `False` (perdu)
+
+Pour vous aider dans votre tâche, voici un bout de code utilisant un dictionnaire et un générateur de chiffre aléatoire.
+
+Ce code permet de renvoyer à chaque appel un choix de l'ordinateur pour le prochain tour !
+
+[source,python]
+----
+from random import randint
+
+gameDict = {1:"Pierre",2:"Papier",3:"Ciseaux"}
+
+choixJoueur = raw_input("Pierre Papier Ciseaux ? ")
+
+#Nombre tiré aléatoirement entre 1 et 3 inclus
+choixOrdinateur = randint(1,3)
+computer_value = gameDict[choixOrdinateur]
+
+print "choix ordinateur = " , computer_value
+print "choix joueur = " , choixJoueur
+----
+
+=== Bataille navale
+
+Définir deux tableaux imbriqués (matrice ligne/colonne classique), un pour l'ordinateur nommé `matriceComputer` et un autre pour le joueur `matricePlayer`.
+
+Les matrices sont initialisées avec des valeurs égales à `O`, valeur que l'on choisit pour représenter une case d'eau inoccupée.
+
+Au départ, on part de règles simples que l'on pourra complexifier par la suite si on le désire. Par exemple dans l'idée de se rapprocher de la véritable bataille navale (plusieurs type de bateaux occupant des tailles différentes dans la matrice).
+
+Le joueur doit pouvoir placer plusieurs bateaux (à vous de voir le nombre) dans `matricePlayer` Pour cela il lui suffit de saisir la ligne et la colonne ou se situera chaque bateaux. Si la case est libre (valeur de la cellule mise à 0) alors le bateau est positionné, c'est-à-dire la case devient occupée ( valeur de la cellule mise à 1).
+
+De l'autre coté, l'ordinateur positionne de façon automatique le même nombre de bateau que le joueur dans `matriceComputer`. Evidemment il faudra faire attention à ne pas placer des bateaux sur des cases déjà occupées ( valeur de la cellule mise à 1).
+
+Le jeu et l'ordinateur joue ensuite à tour de rôle en indiquant des positions x /y qui désigne la case de la matrice adverse à tester. Si un bateau existe à la case désignée, alors celui-ci coule ( 1 case = 1 bateau), et la valeur de cette case passe à 2.
+
+Le jeu s'arrête lorsqu’un des deux joueurs n'a plus aucun bateau en jeu.
+
+Dans ce jeu, vous avez l'occasion de travailler aussi sur l'affichage des matrices, en affichant au joueur les positions de ses bateaux coulés ( valeur de la cellule mise à 2), de ses bateaux restants ( valeur de la cellule égale à 1).
+
+Si l'on décide de sauvegarder la liste des coordonnées déjà saisies par l'utilisateur, alors il pourra être intéressant de les afficher sur une nouvelle matrice.
 
 == Ressources
 
