@@ -25,6 +25,7 @@ Rey Sebastien <rey.sebastien@yahoo.fr> , Van Hamme Adrien <adrien.van.hamme@gmai
 * v0.14 Sept 18, 2014 : Remove Roguelike; add Adrien van hamme
 * v0.15 Sept 18, 2015 : Separate Windows / Linux
 * v0.16 Fev, 2016 : Add Naval Battle
+* v0.17 Nov, 2016 : Add exercices and informations for POO pirates
 
 == Introduction au document
 
@@ -2123,8 +2124,11 @@ gerard.afficheInfo()
 
 ----
 
-Exercice ::
-Essayez maintenant de faire un autre parcours de vie avec un autre pirate !
+*Exercices* :
+
+[options=interactive]
+- [ ] Essayez maintenant de faire un autre parcours de vie avec un autre pirate !
+- [ ] Ajoutez une nouvelle fonction `descendreGrade()`
 
 === Stocker des objets
 
@@ -2146,6 +2150,20 @@ def multiply(a,b):
 print somme # renvoie une adresse de l'objet en mémoire
 print somme() # execute la fonction !
 
+for i in listeFonctionCalculette:
+   print "Resultat = ", i(1,3)
+
+# Et donc vous pouvez stocker les références/adresses dans des structures de données, c'est à dire dans des classes (dans les attributs), dans des listes, dans des dictionnaires, etc.
+
+listeFonctionCalculette = [somme,multiply]
+
+----
+
+Cela marche exactement de la même façon avec des objets, qui peuvent également être stockés dans des listes, des dictionnaires, etc.
+
+[source,python]
+----
+
 class Personne(object):
 
    def __init__(self,nom,prenom,age):
@@ -2161,15 +2179,15 @@ class Personne(object):
       print "Mon nom est ", self.nom, " et mon prénom est ", self.prenom
       print "Aujourd'hui j'ai ", self.age, " ans."
 
+# Creation de deux objets a partir de la classe Personne
 tomy = Personne("Ungerer","Tomy",75)
 gerard = Personne("Mulot","Gerard",55)
 # etc...
 
-# Et donc vous pouvez stocker les références/adresses dans des structures de données, c'est à dire dans des classes (dans les attributs), dans des listes, dans des dictionnaires, etc.
+# On stocke ces objets dans une liste
 listePersonne = [tomy,gerard]
 
-listeFonctionCalculette = [somme,multiply]
-
+# On appelle des fonctions sur les objets contenus dans cette liste
 for i in listePersonne:
    i.information()
 
@@ -2179,14 +2197,14 @@ for i in listePersonne:
 for i in listePersonne:
    i.information()
 
-for i in listeFonctionCalculette:
-   print "Resultat = ", i(1,3)
-
 ----
 
-Exercice::
-. En reprenant l'exemple des navigateurs et du pirate, essayez de stocker plusieurs pirates dans un tableau, et avec un générateur aléatoire d'accident ( => une tempête par exemple) , appliquez des accidents à tel ou tel navigateur de votre tableau !
-. Affichez ensuite le résultat de cette tempête !
+*Exercices* :
+
+[options=interactive]
+- [ ] En reprenant l'exemple des navigateurs et du pirate, essayez de stocker plusieurs pirates dans une liste, appelez un accident sur chacun d'eux à l'aide d'une boucle.
+- [ ] Construisez une fonction tempete qui prend un objet navigateur en paramètre, et lui applique un accident au hasard. Appelez ensuite cette fonction sur un des pirates de votre liste.
+- [ ] Essayez maintenant d'appliquer cette fonction sur un navigateur tiré au hasard dans votre liste de pirate !
 
 === Bref rappel des termes
 
@@ -2246,9 +2264,14 @@ A l'aide de ces principes, nous essaierons de réfléchir par la suite à la man
 image::images/worldofpirates.png[align="left", 500]
 
 C'est ici que se trouve la vrai puissance de la programmation orientée objet, car elle permet de créer un code complexe de façon modulaire et générique.
+
 Reprenons notre exemple du pirate, et essayons de lui créer un monde adapté à sa mesure.
 
 image::images/classNavigateur2.png[align="center", 400]
+
+Ce schéma UML (diagramme de classe) peut se lire ainsi. Un objet construit avec la classe `Taverne` doit pouvoir construire des navigateurs en partant de la classe `Navigateur`. Un objet de type `Equipage` contient en ensemble d'objets de type `Navigateur` (dans une liste par exemple). L'objet de type `Equipage` est ici dépendant et construit par l'objet de type `Navire`, il n'existe pas en dehors (symbole losange noir). Enfin un objet de type `Navire` contient un seul objet équipage.
+
+Ainsi on peut en déduire qu'un objet navire contient un objet équipage qui contient lui même un attribut contenant une liste d'objets navigateurs.
 
 [source,python]
 ----
@@ -2327,44 +2350,45 @@ class Navire(object): # <2>
         print "combat le bateau ennemi ! "
 ----
 
-
 <1> L'équipage se compose de marins, la classe a donc besoin d'une liste de `Navigateur` pour être instancié correctement
 <2> La classe navire est responsable d'un équipage et un seul, c'est elle qui créée l'instance de la classe `Equipage` accueillant la liste de `Navigateurs`.
 Ainsi la liste de marins passés en paramètres sert ici à instancier la classe `Equipage` stocké par chaque objet `Navire`
 <3> La classe qui définit les combats, pour déterminer l'issue du combat et calculer l'abordage, il faut prendre en paramètre un navire ennemi.
 
-[source,python]
-----
-# Programme principal
-
-# Fonction pour construire equipage
-def buildEquipage(nbMarins): # <1>
-    equipage = []
-    for x in range(nbMarins):
-        equipage.append(taverneAPirate.debaucher())
-    return equipage
-
-if __name__ == "__main__":
-    nomDePirate = ["Bonny", "Jack", "Teach", "Drake", "Morgan", "Nau", "Read"]
-    prenomDePirate = ["Anne", "Calico", "Edward", "Francis", "Henry", "Jean", "Mary"]
-
-    taverneAPirate = Taverne(nomDePirate, prenomDePirate) # <2>
-
-	# Deux navires sont instanciés avec des équipages différents
-    Navire("Queen Anne's Revenge", buildEquipage(10)) # <3>
-    Navire("Adventure Galley", buildEquipage(10))
-
-----
-
-<1> Fonction qui construit un équipage à partir d'une taverne, on s'en sert ensuite plusieurs fois dans <3> et l'instanciation des `Navire`
-<2> On instance une `Taverne` à l'aide d'une liste de noms et prénoms de pirates connus.
-<3> Les `Navires` sont créés à partir d'équipage construits dynamiquement.
-
-
 *Exercices* :
 
 [options=interactive]
-- [ ] Réaliser les fonctions permettant de calculer un combat entre deux Navires en se basant sur la force des pirates qui les composent. Remplir la fonction `combat()`
+
+- [ ] Construire/Instancier un objet de type `Taverne` stocké dans une variable `taverneAPirate` à partir des listes ci-dessous :
+
+[source,python]
+----
+nomDePirate = ["Bonny", "Jack", "Teach", "Drake", "Morgan", "Nau", "Read"]
+prenomDePirate = ["Anne", "Calico", "Edward", "Francis", "Henry", "Jean", "Mary"]
+----
+
+- [ ] Ecrire une fonction qui prend en paramètre un nombre de marin (nbMarins) et un objet taverneAPirate de type `Taverne`, et renvoie une liste d'objets `Navigateur`.
+
+[source,python]
+----
+
+# Fonction pour construire equipage
+def buildEquipage(taverne, nbMarins):
+    equipage = []
+    ...
+    return equipage
+----
+
+Comme déjà vu un peu plus haut, on apelle les attributs et les fonctions à l'aide d'une notation pointée. Une fois l'objet `taverneAPirate` instancié, il est possible d'apeller sa fonction `debaucher()` ainsi `taverneAPirate.debaucher()`
+
+- [ ] Construire et stocker dans des variables deux objets navires (`navire1` et `navire2` par exemple) à partir de la classe `Navire` en leur passant des équipages renvoyés par `buildEquipage(...)`
+
+Comme déjà vu un peu plus haut, on apelle les attributs et les fonctions des objets à l'aide d'une notation pointée, et cela de façon hiérarchique.
+
+Par exemple, la liste de navigateurs est passée à `navire1`, qui lors de sa initialisation construit directement un objet de type `Equipage` qui prend en paramètre cette même liste (`self.equipage = Equipage(marins)`). Celle-ci étant stocké dans l'attribut `marins` de cet équipage, on pourra l'apeller ainsi : `navire1.equipage.marin`. Comme il s'agit d'une liste, les navigateurs qu'elle contient peuvent être appelé avec la notation tableau classique. Ainsi `navire1.equipage.marins[0]` renvoie le premier marin de l'équipage, dont on peut également afficher les informations `navire1.equipage.marins[0].afficheInfo()`
+
+- [ ] Réaliser les fonctions permettant de calculer un combat entre deux Navires en se basant sur la force des pirates qui les composent. Remplir la fonction `combat()` qui prend forcément un objet navire en paramètre (pour comparer les deux forces, celle de lui-même, et celle du navire passé en paramètre).
+
 - [ ] Penser à payer vos pirates à la fin de chaque combat victorieux! Remplir la fonction `jourDePaye()`
 - [ ] Penser à ajouter une ou plusieurs classes de votre choix permettant d'enrichir ce monde de Pirate par de nouvelles aventures.
 
