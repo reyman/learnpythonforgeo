@@ -1,5 +1,6 @@
-= Atelier Python
-Rey Sebastien <rey.sebastien@yahoo.fr> , Van Hamme Adrien <adrien.van.hamme@gmail.com>
+Atelier Python
+==============
+Rey Sebastien <rey.sebastien@yahoo.fr> \o/ Van Hamme Adrien <adrien.van.hamme@gmail.com> \o/
 :Author Initials: SR
 :toc2:
 :toclevels: 4
@@ -22,10 +23,7 @@ Rey Sebastien <rey.sebastien@yahoo.fr> , Van Hamme Adrien <adrien.van.hamme@gmai
 * v0.10, Sept 27, 2013 : Add information about cd command and folder to find Pycharm
 * v0.11, Oct 13, 2013 : Add POO information and exercices
 * v0.13, Oct 22, 2013 : Add POO information about inheritance and composition ; remove old version of Rogue
-* v0.14 Sept 18, 2014 : Remove Roguelike; add Adrien van hamme
-* v0.15 Sept 18, 2015 : Separate Windows / Linux
-* v0.16 Fev, 2016 : Add Naval Battle
-* v0.17 Nov, 2016 : Add exercices and informations for POO pirates
+* v0.14 Sept 18, 2014 remove Roguelike; add Adrien van hamme
 
 == Introduction au document
 
@@ -109,9 +107,28 @@ Quelques exemples d'utilisation de python spécifique en géomatique :
 * librairie *Shapely*
 * etc.
 
-=== Installation de Python
+.Quelques pistes supplémentaires ici :
+****
 
-==== Sous Ubuntu
+* http://geotribu.net/node/165 (ogr \+ python)
+* http://www.paolocorti.net/2012/02/03/python_for_geospatial_developers/
+* http://michalisavraam.org/2010/04/the-essential-python-modules-for-gis/
+* http://spatiallyadjusted.com/2011/01/03/2011-the-year-python-takes-over-gis/
+* http://2010.foss4g.org/workshop06.php
+
+****
+
+.Et pour ceux qui veulent prendre de l'avance sur l'année, un livre et quelques pointeurs supplémentaires :
+****
+
+* http://www.packtpub.com/python-geospatial-development/book
+* http://www.gis.usu.edu/~chrisg/python/2009/
+* http://gis.stackexchange.com/questions/tagged/python
+****
+
+=== Installation
+
+==== Ubuntu
 
 Ubuntu est un système d'exploitation libre, et open-source, alternatif à Windows, et qui peut être installé sur n'importe quel ordinateur.
 
@@ -215,11 +232,11 @@ $> sudo apt-get install python-gdal
 $> sudo apt-get install python2.7-qgis
 ----
 
-==== Sous Windows
+==== Windows
 
 Sous windows, l'installation est un poil plus délicate que sous Linux ou Ubuntu.
 
-Je vous conseille de choisir plutôt une installation sous forme de packages pré-installés, du type de *pythonXY*, *anaconda*, *osgeo4w*
+Je vous conseille de choisir plutôt une installation sous forme de packages pré-installés, du type de *pythonXY*,
 car l'installation des modules supplémentaires un à un peut vite devenir *cauchemardesque* !
 
 [NOTE]
@@ -234,15 +251,8 @@ http://www.portablepython.com/
 * La doc officielle propose quelques pointeurs également : +
 http://docs.python.org/using/windows.html
 
-* L'installeur officiel de python : +
-http://www.python.org/getit/releases/
-
-* Le set de package python *Osgeo4w* : +
-http://trac.osgeo.org/osgeo4w/
-
-* Le gestionnaire de package python *Anaconda* : +
-https://www.continuum.io/downloads
-
+* L'installeur officiel : +
+http://www.python.org/getit/releases/2.7.3/
 ====
 
 Une autre solution envisageable, pas forcément plus complexe qu'une installation qui se passe mal sous windows,
@@ -264,57 +274,72 @@ http://www.psychocats.net/ubuntu/usb
 Il existe deux façon d'écrire et d'éxecuter un programme python :
 
 * en mode *interactif* : l'utilisateur saisit les commandes les unes après les autres, et l'interpréteur execute/évalue chacunes d'elle au fur et à mesure de leur saisie.
-* ou en mode *execution* : on execute une grosse portion de code stocké dans un ou plusieurs fichier, en une seule commande.
+* ou en mode *execution* : on execute une grosse portion de code stocké dans un ou plusieurs fichier, en une commande.
 
-Les deux prochaines sections *interpréteur de commande* (mode interactif) et *Executer un bloc de code entier* (mode exécution) s'appuient sur l'utilisation du programme `Python`. Il est en effet le seul qui peut comprendre les programmes que vous écrirez dans ce langage.
+Pour le mode *execution* nous allons écrire nos programmes au préalable dans un document nommé avec l'extension *.py*
 
-Ces deux modes d'utilisation du programme python suffisent pour écrire des programmes, mais offre un confort très relatif. On préférera utiliser un IDE (qui se base sur le mode exécution), comme décrit dans la troisième section *En utilisant l'IDE Pycharm*.
+Pour éditer le document une fois créé nous allons utiliser un http://fr.wikipedia.org/wiki/Environnement_de_d%C3%A9veloppement[IDE] parmis ceux là :
 
-==== En utilisant l'interpréteur de commande Python
+* *Pycharm* en Community Edition (Windows et Linux) http://www.jetbrains.com/pycharm/download/index.html
+* *Spyder* http://code.google.com/p/spyderlib/ ,
 
-===== Sous windows
+Vous pouvez plus simplement utiliser un éditeur de texte avec le plugin python, tel que *gedit* (par défaut installé avec Ubuntu),
 
-Pour accéder à un terminal windows, cliquez sur le bouton Démarrer, puis cherchez l'outil *invite de commande* aussi nommé *cmd* (voir https://fr.wikipedia.org/wiki/Cmd[wikipedia] et http://windows.developpez.com/cours/ligne-commande/?page=page_4[liste des commandes] )
+CAUTION: Le copier - coller ne marche pas forcément des éditeurs vers le terminal, notamment lorsqu'on utilise la commande "raw_input()" qui attend une réponse utilisateur.
+On préférera donc la commande *python nomdufichier.py* dans le terminal pour executer les fichiers.
 
-L'executable de Python 2.7 se trouve généralement dans le répertoire `c:\Python27` , pour cela vous devez vous déplacer dans l'invite de commande avec les commandes suivantes :
+==== Pycharm
 
-.Afficher le répertoire courant
-[source,python]
-dir
+image::images/pycharmLogo.png[align="center"]
 
-.Se déplacer dans les répertoires
-[source,python]
-cd nomDeMonRepertoire
+Pycharm est un *excellent* IDE compatible avec Windows, Mac et Linux, +
+téléchargeable gratuitement sur le site : http://www.jetbrains.com/pycharm/download/index.html
 
-.retour arrière dans la hiérarchie de répertoire
-[source,python]
-cd ..
+Sous Ubuntu, il n'y a pas d'installeur du logiciel comme sous windows.
+Celui çi se présente sous la forme d'une archive (au format `.tar.gz`), et d'un executable qu'il faut lancer depuis le répertoire `/bin/` du dossier une fois extrait.
 
-.exemple d'accès au repertoire contenan l'interpréteur python 2.7
-[source,python]
-cd c:\Python27
+* Crééer un répertoire `pycharm` à la racine de votre `Dossier personnel`
+* Télécharger `Pycharm Education` ici : http://www.jetbrains.com/
+* Extraire l'archive `.tar.gz` dans un répertoire `pycharm` que nous avons créé dans votre espace personnel
+* Ouvrir le Terminal (celui çi s'ouvre à la racine de votre `Dossier personnel`, la commande `ls` vous le confirmera)
+* Se déplacer avec la commande `cd` dans le bon répertoire : `cd pycharm/`, puis `cd pycharm-edu-2.0/`, puis `cd bin/`
+* Puis tapez `sh pycharm.sh` dans le terminal pour lancer le logiciel !
 
-Une fois dans le répertoire `c:\Python27`, vous pouvez ensuite taper `python`, ce qui aura pour effet de lancer *l'intepreteur de commande en mode console interactif*.
+=====
 
-[source,python]
-----
-> python
-ActivePython 2.6.5.12 (ActiveState Software Inc.) based on
-Python 2.6.5 (r265:79063, Mar 20 2010, 14:22:52) [MSC v.1500 32 bit (Intel)] on win32
-Type "help", "copyright", "credits" or "license" for more information.
-----
+Pour configurer l'interpreteur si cela n'est pas déjà fait par défaut, vous pouvez aller dans les préférences du logiciels.
 
-Toutes les commandes que vous tapez dans ce mode interactif doivent être en python pour être comprise par l'interpréteur Python. Une ligne n'est évalué que lorsque vous tapez kbd:[Entrée].
+image::images/pycharm1.png[align="center"]
 
-[source,python]
-----
->>> print "Hello World"
-hello world
-----
+Et choisir l'interpréteur Python que vous souhaitez utiliser pour votre projet : 2.7 ou 3.0
 
-Pour quitter ce *mode interactif* et revenir dans l'*invite de commande*, vous pouvez taper `exit()` ou kbd:[Ctrl + D]
+image::images/pycharm2.png[align="center"]
 
-===== Sous linux
+Pour lancer un programme python, il suffit de faire un clic droit sur le fichier python que vous voulez executer, et de cliquer sur `run`
+
+image::images/pycharm3.png[align="center"]
+
+==== Spyder
+
+[NOTE]
+.Accélérer et configurer Spyder pour usage de la console interne
+=====
+
+Pour améliorer l'execution de spyder il faut aller dans les options et cocher la case : *Installer le input hook QT pour spyder*
+
+image::images/spyder2.png[align="center"]
+
+Pour avoir la main au moment de l'execution lors des saisies utilisateurs, il faut *configurer l'execution*
+
+image::images/spyder1.png[align="center"]
+
+Et activer la case à cocher *Intéragir avec Python lors de l'exécution*
+
+image::images/spyder3.png[align="center"]
+
+=====
+
+==== avec l'interpréteur de commande python
 
 Pour accéder à un terminal linux, cliquez sur l'onglet en haut à gauche avec une roue, et écrivez "Terminal"
 Vous pouvez ensuite taper "python" dans le terminal linux, ce qui aura pour effet de lancer *l'intepreteur de commande en mode console interactif*.
@@ -337,19 +362,13 @@ hello world
 
 Python vous renvoie le résultat de votre commande à chaque  fois qu'il a réussi à l'évaluer, sinon il vous renvoie une erreur.
 
-TIP: Pour quitter la console python sous Ubuntu, appuyer sur la combinaison de touche : kbd:[Ctrl + D]
+TIP: Pour quitter la python sous Ubuntu, appuyer sur la combinaison de touche : kbd:[Ctrl + D]
 
-==== Executer un bloc de code entier
-
-Pour le mode *execution* nous allons écrire nos programmes au préalable dans un document nommé avec l'extension *.py* dans le repertoire de votre choix. Vous devez ouvrir une *invite de commande* (windows), ou un *terminal* (linux) et vous positionner ensuite dans ce répertoire avec les commandes adéquates propre au système que vous utilisez(cd, dir, etc.)
-
-Si vous êtes sous linux, alors vous pouvez directement taper `python nomduprogramme.py` dans le terminal.
-
-Si vous êtes sous windows, alors il faut remplace `python nomduprogramme.py` par la commande suivante `C:\Python27\python nomduprogramme.py` dans les programmes ci-dessous.
+==== avec l'executable python
 
 --
 . Créer un fichier __hello.py__
-. Ecrire dans ce fichier le texte suivant :
+. Taper le texte suivant :
 +
 .hello.py
 [source,python]
@@ -363,7 +382,7 @@ print "Hello World"
 --
 
 [source,python]
-python hello.py
+$> python hello.py
 
 Réouvrez ensuite votre fichier __hello.py__ et ajoutez la ligne suivante :
 
@@ -376,13 +395,13 @@ print Bonjour Monde
 On redemande à l'interpréteur de lire notre programme :
 
 [source,python]
-python hello.py
+$> python hello.py
 
 Celui-ci renvoie une erreur que nous allons apprendre à lire :
 
 [source,python]
 ----
-python hello.py
+$> python hello.py
   File "hello.py", line 2
     print Bonjour Monde
                       ^
@@ -391,59 +410,47 @@ SyntaxError: invalid syntax
 
 L'interpréteur vous donne la ligne et la faute : la syntaxe pour print est incorrecte, car il manque les guillemets
 
+Point d'entrée d'un programme python :
+
+.hello2.py
+[source,python]
+----
+# -*- coding: utf-8 -*-
+import sys # <1>
+
+def main(): # <2>
+    print 'Hello there', sys.argv[1] # <3>
+    # Command line args are in sys.argv[1], sys.argv[2] ...
+    # sys.argv[0] is the script name itself and can be ignored
+
+
+if __name__ == '__main__': # <4>
+    main()
+----
+
+.Execution de python2.py
+[source,python]
+----
+$> python hello2.py "Sebastien Rey"
+----
+
+<1> Le mot-clef *import* permet d'étendre le programme en ajoutant des fonctionnalités qui existent dans des sous-modules de python,
+ou des modules personnalisés définis dans le répertoire par le nom du fichier (nous en discuterons plus dans la partie module)
+<2> La fonction qui sera lancée au démarrage du programme, on l'apelle souvent *main()* par convention.
+<3> *sys.argv[]* est le nom du tableau définit par python qui contient l'ensemble des paramètres passé en ligne de commande. L'élément 0 est le nom du programme.
+<4> *\__xxx__* est une dénomination spéciale de nom de fonction que seul python reconnait, ici cela a pour effet d'indiquer à l'interpréteur python que le bloc d'instruction suivant est le point de départ de notre programme lorsqu'il est executé en ligne de commande : cf. http://docs.python.org/reference/datamodel.html#specialnames pour en savoir plus
+
+
+L'avantage de cette méthode par rapport à la première, c'est que dans la première, si vous fermez le terminal, ou que vous décidez de quitter le programme pour aller boire un café, tout ce que vous avez écrit est bel et bien perdu quand vous re-lancez la console Python.
+
+Il est donc plus intéressant de stocker nos programmes dans des fichiers avec des noms *explicites*, comme dans la deuxième méthode.
+
 NOTE: "Hello World" est le programme le plus connu des informaticiens, cf. http://en.wikipedia.org/wiki/Hello_world_program
 
 CAUTION: Python est *sensible à la casse*, il faut donc faire attention aux majuscules / minuscules dans votre programme.
 
 CAUTION: Pour ne pas avoir de problème avec les accents, pensez à ajouter la ligne suivante au tout début de votre programme :
 __# -*- coding: utf-8 -*-__
-
-==== En utilisant l'IDE Pycharm
-
-Pour éditer le document une fois créé nous allons utiliser un http://fr.wikipedia.org/wiki/Environnement_de_d%C3%A9veloppement[IDE] nommé *Pycharm* (Windows, Linux, MacOSX) disponible http://www.jetbrains.com/pycharm/download/index.html[ici]
-
-Vous pouvez plus simplement utiliser un éditeur de texte, mais un IDE fournit des fonctions avancées facilitant votre vie de développeur.
-
-image::images/pycharmLogo.png[align="center"]
-
-Pycharm est un *excellent* IDE compatible avec *Windows, Mac et Linux*, +
-téléchargeable gratuitement sur le http://www.jetbrains.com/pycharm/download/index.html[site]
-
-===== Installation sous Windows
-
-L'installation de Pycharm est relativement simple sous windows.
-
-Python doit d'abord être installé sur l'ordinateur (voir section installation de python)
-
-Il suffit ensuite de télécharger la version *community* ou *education* sur le site, puis de lancer l'installation.
-
-Une fois installé, vous pouvez lancer Pycharm, qui vous demandera de configurer l'interpréteur python que vous voulez utiliser par défaut. Sous windows, celui-ci se trouve généralement dans `c:\Python27\python.exe`.
-
-===== Installation sous Ubuntu
-
-Sous Ubuntu, il n'y a pas d'installeur du logiciel comme sous windows.
-Celui çi se présente sous la forme d'une archive (au format `.tar.gz`), et d'un executable qu'il faut lancer depuis le répertoire `/bin/` du dossier une fois extrait.
-
-* Crééer un répertoire `pycharm` à la racine de votre `Dossier personnel`
-* Télécharger `Pycharm Education` ici : http://www.jetbrains.com/
-* Extraire l'archive `.tar.gz` dans un répertoire `pycharm` que nous avons créé dans votre espace personnel
-* Ouvrir le Terminal (celui çi s'ouvre à la racine de votre `Dossier personnel`, la commande `ls` vous le confirmera)
-* Se déplacer avec la commande `cd` dans le bon répertoire : `cd pycharm/`, puis `cd pycharm-edu-2.0/`, puis `cd bin/`
-* Puis tapez `sh pycharm.sh` dans le terminal pour lancer le logiciel !
-
-===== Configurer l'interpréteur python (windows/ubuntu)
-
-Pycharm a besoin de savoir ou se trouve le programme `Python` pour executer les programmes. Pour configurer l'interpreteur si cela n'est pas déjà fait par défaut, vous pouvez aller dans les préférences du logiciels.
-
-image::images/pycharm1.png[align="center"]
-
-Et choisir l'interpréteur Python que vous souhaitez utiliser pour votre projet : 2.7 ou 3.0
-
-image::images/pycharm2.png[align="center"]
-
-Pour lancer un programme python, il suffit de faire un clic droit sur le fichier python que vous voulez executer, et de cliquer sur `run`
-
-image::images/pycharm3.png[align="center"]
 
 == Indentation
 
@@ -2124,11 +2131,8 @@ gerard.afficheInfo()
 
 ----
 
-*Exercices* :
-
-[options=interactive]
-- [ ] Essayez maintenant de faire un autre parcours de vie avec un autre pirate !
-- [ ] Ajoutez une nouvelle fonction `descendreGrade()`
+Exercice ::
+Essayez maintenant de faire un autre parcours de vie avec un autre pirate !
 
 === Stocker des objets
 
@@ -2150,20 +2154,6 @@ def multiply(a,b):
 print somme # renvoie une adresse de l'objet en mémoire
 print somme() # execute la fonction !
 
-for i in listeFonctionCalculette:
-   print "Resultat = ", i(1,3)
-
-# Et donc vous pouvez stocker les références/adresses dans des structures de données, c'est à dire dans des classes (dans les attributs), dans des listes, dans des dictionnaires, etc.
-
-listeFonctionCalculette = [somme,multiply]
-
-----
-
-Cela marche exactement de la même façon avec des objets, qui peuvent également être stockés dans des listes, des dictionnaires, etc.
-
-[source,python]
-----
-
 class Personne(object):
 
    def __init__(self,nom,prenom,age):
@@ -2179,15 +2169,15 @@ class Personne(object):
       print "Mon nom est ", self.nom, " et mon prénom est ", self.prenom
       print "Aujourd'hui j'ai ", self.age, " ans."
 
-# Creation de deux objets a partir de la classe Personne
 tomy = Personne("Ungerer","Tomy",75)
 gerard = Personne("Mulot","Gerard",55)
 # etc...
 
-# On stocke ces objets dans une liste
+# Et donc vous pouvez stocker les références/adresses dans des structures de données, c'est à dire dans des classes (dans les attributs), dans des listes, dans des dictionnaires, etc.
 listePersonne = [tomy,gerard]
 
-# On appelle des fonctions sur les objets contenus dans cette liste
+listeFonctionCalculette = [somme,multiply]
+
 for i in listePersonne:
    i.information()
 
@@ -2197,14 +2187,14 @@ for i in listePersonne:
 for i in listePersonne:
    i.information()
 
+for i in listeFonctionCalculette:
+   print "Resultat = ", i(1,3)
+
 ----
 
-*Exercices* :
-
-[options=interactive]
-- [ ] En reprenant l'exemple des navigateurs et du pirate, essayez de stocker plusieurs pirates dans une liste, appelez un accident sur chacun d'eux à l'aide d'une boucle.
-- [ ] Construisez une fonction tempete qui prend un objet navigateur en paramètre, et lui applique un accident au hasard. Appelez ensuite cette fonction sur un des pirates de votre liste.
-- [ ] Essayez maintenant d'appliquer cette fonction sur un navigateur tiré au hasard dans votre liste de pirate !
+Exercice::
+. En reprenant l'exemple des navigateurs et du pirate, essayez de stocker plusieurs pirates dans un tableau, et avec un générateur aléatoire d'accident ( => une tempête par exemple) , appliquez des accidents à tel ou tel navigateur de votre tableau !
+. Affichez ensuite le résultat de cette tempête !
 
 === Bref rappel des termes
 
@@ -2264,14 +2254,9 @@ A l'aide de ces principes, nous essaierons de réfléchir par la suite à la man
 image::images/worldofpirates.png[align="left", 500]
 
 C'est ici que se trouve la vrai puissance de la programmation orientée objet, car elle permet de créer un code complexe de façon modulaire et générique.
-
 Reprenons notre exemple du pirate, et essayons de lui créer un monde adapté à sa mesure.
 
 image::images/classNavigateur2.png[align="center", 400]
-
-Ce schéma UML (diagramme de classe) peut se lire ainsi. Un objet construit avec la classe `Taverne` doit pouvoir construire des navigateurs en partant de la classe `Navigateur`. Un objet de type `Equipage` contient en ensemble d'objets de type `Navigateur` (dans une liste par exemple). L'objet de type `Equipage` est ici dépendant et construit par l'objet de type `Navire`, il n'existe pas en dehors (symbole losange noir). Enfin un objet de type `Navire` contient un seul objet équipage.
-
-Ainsi on peut en déduire qu'un objet navire contient un objet équipage qui contient lui même un attribut contenant une liste d'objets navigateurs.
 
 [source,python]
 ----
@@ -2350,45 +2335,44 @@ class Navire(object): # <2>
         print "combat le bateau ennemi ! "
 ----
 
+
 <1> L'équipage se compose de marins, la classe a donc besoin d'une liste de `Navigateur` pour être instancié correctement
 <2> La classe navire est responsable d'un équipage et un seul, c'est elle qui créée l'instance de la classe `Equipage` accueillant la liste de `Navigateurs`.
 Ainsi la liste de marins passés en paramètres sert ici à instancier la classe `Equipage` stocké par chaque objet `Navire`
 <3> La classe qui définit les combats, pour déterminer l'issue du combat et calculer l'abordage, il faut prendre en paramètre un navire ennemi.
 
+[source,python]
+----
+# Programme principal
+
+# Fonction pour construire equipage
+def buildEquipage(nbMarins): # <1>
+    equipage = []
+    for x in range(nbMarins):
+        equipage.append(taverneAPirate.debaucher())
+    return equipage
+
+if __name__ == "__main__":
+    nomDePirate = ["Bonny", "Jack", "Teach", "Drake", "Morgan", "Nau", "Read"]
+    prenomDePirate = ["Anne", "Calico", "Edward", "Francis", "Henry", "Jean", "Mary"]
+
+    taverneAPirate = Taverne(nomDePirate, prenomDePirate) # <2>
+
+	# Deux navires sont instanciés avec des équipages différents
+    Navire("Queen Anne's Revenge", buildEquipage(10)) # <3>
+    Navire("Adventure Galley", buildEquipage(10))
+
+----
+
+<1> Fonction qui construit un équipage à partir d'une taverne, on s'en sert ensuite plusieurs fois dans <3> et l'instanciation des `Navire`
+<2> On instance une `Taverne` à l'aide d'une liste de noms et prénoms de pirates connus.
+<3> Les `Navires` sont créés à partir d'équipage construits dynamiquement.
+
+
 *Exercices* :
 
 [options=interactive]
-
-- [ ] Construire/Instancier un objet de type `Taverne` stocké dans une variable `taverneAPirate` à partir des listes ci-dessous :
-
-[source,python]
-----
-nomDePirate = ["Bonny", "Jack", "Teach", "Drake", "Morgan", "Nau", "Read"]
-prenomDePirate = ["Anne", "Calico", "Edward", "Francis", "Henry", "Jean", "Mary"]
-----
-
-- [ ] Ecrire une fonction qui prend en paramètre un nombre de marin (nbMarins) et un objet taverneAPirate de type `Taverne`, et renvoie une liste d'objets `Navigateur`.
-
-[source,python]
-----
-
-# Fonction pour construire equipage
-def buildEquipage(taverne, nbMarins):
-    equipage = []
-    ...
-    return equipage
-----
-
-Comme déjà vu un peu plus haut, on apelle les attributs et les fonctions à l'aide d'une notation pointée. Une fois l'objet `taverneAPirate` instancié, il est possible d'apeller sa fonction `debaucher()` ainsi `taverneAPirate.debaucher()`
-
-- [ ] Construire et stocker dans des variables deux objets navires (`navire1` et `navire2` par exemple) à partir de la classe `Navire` en leur passant des équipages renvoyés par `buildEquipage(...)`
-
-Comme déjà vu un peu plus haut, on apelle les attributs et les fonctions des objets à l'aide d'une notation pointée, et cela de façon hiérarchique.
-
-Par exemple, la liste de navigateurs est passée à `navire1`, qui lors de sa initialisation construit directement un objet de type `Equipage` qui prend en paramètre cette même liste (`self.equipage = Equipage(marins)`). Celle-ci étant stocké dans l'attribut `marins` de cet équipage, on pourra l'apeller ainsi : `navire1.equipage.marin`. Comme il s'agit d'une liste, les navigateurs qu'elle contient peuvent être appelé avec la notation tableau classique. Ainsi `navire1.equipage.marins[0]` renvoie le premier marin de l'équipage, dont on peut également afficher les informations `navire1.equipage.marins[0].afficheInfo()`
-
-- [ ] Réaliser les fonctions permettant de calculer un combat entre deux Navires en se basant sur la force des pirates qui les composent. Remplir la fonction `combat()` qui prend forcément un objet navire en paramètre (pour comparer les deux forces, celle de lui-même, et celle du navire passé en paramètre).
-
+- [ ] Réaliser les fonctions permettant de calculer un combat entre deux Navires en se basant sur la force des pirates qui les composent. Remplir la fonction `combat()`
 - [ ] Penser à payer vos pirates à la fin de chaque combat victorieux! Remplir la fonction `jourDePaye()`
 - [ ] Penser à ajouter une ou plusieurs classes de votre choix permettant d'enrichir ce monde de Pirate par de nouvelles aventures.
 
@@ -2891,54 +2875,102 @@ if __name__ == "__main__":
 
 CAUTION: Le duckTyping pourrait être utile dans le cadre du projet
 
-== Divers
-
-
-=== main d'un programme
-
-
-Point d'entrée d'un programme python :
-
-.hello2.py
-[source,python]
-----
-# -*- coding: utf-8 -*-
-import sys # <1>
-
-def main(): # <2>
-    print 'Hello there', sys.argv[1] # <3>
-    # Command line args are in sys.argv[1], sys.argv[2] ...
-    # sys.argv[0] is the script name itself and can be ignored
-
-
-if __name__ == '__main__': # <4>
-    main()
-----
-
-.Execution de python2.py
-[source,python]
-----
-$> python hello2.py "Sebastien Rey"
-----
-
-<1> Le mot-clef *import* permet d'étendre le programme en ajoutant des fonctionnalités qui existent dans des sous-modules de python,
-ou des modules personnalisés définis dans le répertoire par le nom du fichier (nous en discuterons plus dans la partie module)
-<2> La fonction qui sera lancée au démarrage du programme, on l'apelle souvent *main()* par convention.
-<3> *sys.argv[]* est le nom du tableau définit par python qui contient l'ensemble des paramètres passé en ligne de commande. L'élément 0 est le nom du programme.
-<4> *\_\_xxx_\_* est une dénomination spéciale de nom de fonction que seul python reconnait, ici cela a pour effet d'indiquer à l'interpréteur python que le bloc d'instruction suivant est le point de départ de notre programme lorsqu'il est executé en ligne de commande : cf. http://docs.python.org/reference/datamodel.html#specialnames pour en savoir plus
-
-
-L'avantage de cette méthode par rapport à la première, c'est que dans la première, si vous fermez le terminal, ou que vous décidez de quitter le programme pour aller boire un café, tout ce que vous avez écrit est bel et bien perdu quand vous re-lancez la console Python.
-
-Il est donc plus intéressant de stocker nos programmes dans des fichiers avec des noms *explicites*, comme dans la deuxième méthode.
-
-
 == Mini-Jeux
 
+=== Pendu
+
+Définir une fonction `pendu()` qui pour une liste de mots passés en paramètre, permet de jouer au pendu, et renvoie à la fin du jeu `True` (gagné) or `False` (perdu)
+
+Quelques astuces techniques :
+
+* Vous pouvez stocker vos mots dans une liste et tiré aléatoirement le mot
+* Vous pouvez maintenir une liste de lettre trouvés par l'utilisateur
+* Une chaîne de caractère peut être manipulé comme une liste avec des indice
+* Vous pouvez avoir une fonction affichage qui prend les éléments trouvés par l'utilisateur 1 par 1 et les compare lettre à lettre au mot
+** si lettre existe j'affiche la lettre
+** si lettre existe pas j'affiche `_`
+
+[source,python]
+.Exemple d'appel de la fonction
+----
+mot = ["Vélociraptor", "Amazonie", "Fondation", "Titanic"]
+print pendu(mot)
+----
 
 
+=== Shifumi
 
-Trois mini-jeux que vous devez réaliser dans le cadre du projet. Ci-dessous une explication de la fonction `random()` qui vous permettra de tirer des nombres aléatoires pour par exemple simuler un jeter de dés.
+image::images/RPS2.png[align="center", 300]
+
+Définir une fonction `shifumi()` qui permet de jouer au shifumi avec l'ordinateur, et renvoie à la fin du jeu `True` (gagné) or `False` (perdu)
+
+Pour vous aider dans votre tâche, voici un bout de code utilisant un dictionnaire et un générateur de chiffre aléatoire.
+Ce code permet de renvoyer à chaque appel un choix de l'ordinateur pour le prochain tour !
+
+[source,python]
+----
+from random import randint
+
+gameDict = {1:"Pierre",2:"Papier",3:"Ciseaux"}
+computer_value = gameDict[randint(1,3)]
+print computer_value
+----
+
+== Labyrinthe
+
+video::images/maze.ogv[width=600, align="center"]
+
+L'objectif est de retrouver la logique qui existe derrière l'algorithme de http://en.wikipedia.org/wiki/Maze_solving_algorithm#Tr.C3.A9maux.27s_algorithm[Trémaux], et de l'implémenter en utilisant le programme à trou existant. Celui ci gère déjà l'affichage et la construction du labyrinthe, reste à programmer le comportement du robot en utilisant les documents.
+
+.Dans le repertoire */exercice/labyrinthe_v1/* vous trouverez les fichiers suivants :
+* *constants.py* contient les variables de correspondance couleur ainsi que les valeurs attribués aux différents blocs, a priori il n'est là que pour consultation.
+* *drawMaze.py* et le fichier *Maze.py* contiennent les fonctions permettant la création de la matrice de chiffre labyrinthe, ainsi que les fonctions nécessaires à son affichage.
+* *mazeBuilder_exercice.py* est le seul fichier que vous devez compléter.
+* *labyrinthe_enonce_eleve.odt* qui contient des informations sur l'algorithme et chacune des fonctions.
+
+Dans ce dernier, l'objectif est de *remplir chacune des fonctions* jusqu'à obtenir une version fonctionelle du programme comme présenté sur la vidéo ci dessus.
+
+Vous pouvez d'ores et déjà tester que le programme est fonctionnel en vous placant dans le repertoire */exercice/labyrinthe_v1/* et en lancant la commande suivante
+
+[source,python]
+----
+$> python mazeBuilder_exercice.py
+----
+
+
+.Fonction existantes :
+****
+Sur l'objet labyrinthe, les fonctions suivantes existent et peuvent être apellées :
+
+* [red]*maze.getValueAtXY(x,y)* +
+Renvoie une valeur numérique (de -1 a 4 correspondant aux variables vu dessus) correspondant à la position x y passé en paramètre
+
+* [red]*maze.setValueAtXY(x,y,value)* +
+Met la valeur 'value' dans la matrice a la position x y
+****
+
+.Fonction à réaliser:
+****
+
+Les fonctions à remplir et le type de retour de celles ci sont largement commentés dans le code source et dans le document distribué en cours.
+
+Voici un bref rappel des fonctions que vous devez réaliser et agencer pour que le robot puisse fonctionner :
+
+* [red]*def avance(direction,xRobot,yRobot)* +
+
+* [red]*def randomDirection(tableau,valueToFind)* +
+
+* [red]*def getDirection(tableau, valueToFind)*
+
+* [red]*def returnWallCase(t_world)*
+
+* [red]*def xyVoisinnage(t_world, xRobot, yRobot)*
+
+* [red]*def calculeChemin(t_world,xRobot,yRobot)*
+
+* [red]*def run()* +
+
+****
 
 [NOTE]
 .La fonction random
@@ -2961,71 +2993,36 @@ http://docs.python.org/library/random.html
 
 ====
 
-=== Pendu
+== Rendu TP
 
-Définir une fonction `pendu()` qui pour une liste de mots passés en paramètre, permet de jouer au pendu, et renvoie à la fin du jeu `True` (gagné) or `False` (perdu)
+=== Pour le 14 octobre
 
-Quelques astuces techniques :
+* Traduction en Python des exercices vus en cours d'algorithmie (tout sauf sac à dos)
+* Réaliser les <<_mini_jeux,Mini-Jeux>>
+* Lire la partie <<_poo,POO>> et essayer de faire les exercices
 
-* Vous pouvez stocker vos mots dans une liste et tiré aléatoirement le mot
-* Vous pouvez maintenir une liste de lettre trouvés par l'utilisateur
-* Une chaîne de caractère peut être manipulé comme une liste avec des indice
-* Vous pouvez avoir une fonction affichage qui prend les éléments trouvés par l'utilisateur 1 par 1 et les compare lettre à lettre au mot
-** si lettre existe j'affiche la lettre
-** si lettre existe pas j'affiche `\_`
+=== Pour le 24/25 octobre
 
-[source,python]
-.Exemple d'appel de la fonction
-----
-mot = ["Vélociraptor", "Amazonie", "Fondation", "Titanic"]
-print pendu(mot)
-----
+* Finir les exercices sur les pirates.
 
-=== Shifumi
+=== Projets
+* Labyrinthe en groupe de 2
+* Pirates en groupe de 2
 
-image::images/RPS2.png[align="center", 300]
+[CAUTION]
+.Tous les codes des exercices seront commentés et regroupés dans une arborescence de cette forme :
+====
 
-Définir une fonction `shifumi()` qui permet de jouer au shifumi avec l'ordinateur, et renvoie à la fin du jeu `True` (gagné) or `False` (perdu)
+* NomsDesElevesDuGroupe/
+** exercices/
+** miniJeux/
+** labyrinthe/
 
-Pour vous aider dans votre tâche, voici un bout de code utilisant un dictionnaire et un générateur de chiffre aléatoire.
+Chaque répertoire contiendra un ou des fichiers executables depuis *Pycharm* en cliquant sur le bouton `Run`.
 
-Ce code permet de renvoyer à chaque appel un choix de l'ordinateur pour le prochain tour !
+Le répertoire sera ensuite compressé, et mis dans le dossier *renduTP* sur l'espace de partage.
 
-[source,python]
-----
-from random import randint
-
-gameDict = {1:"Pierre",2:"Papier",3:"Ciseaux"}
-
-choixJoueur = raw_input("Pierre Papier Ciseaux ? ")
-
-#Nombre tiré aléatoirement entre 1 et 3 inclus
-choixOrdinateur = randint(1,3)
-computer_value = gameDict[choixOrdinateur]
-
-print "choix ordinateur = " , computer_value
-print "choix joueur = " , choixJoueur
-----
-
-=== Bataille navale
-
-Définir deux tableaux imbriqués (matrice ligne/colonne classique), un pour l'ordinateur nommé `matriceComputer` et un autre pour le joueur `matricePlayer`.
-
-Les matrices sont initialisées avec des valeurs égales à `O`, valeur que l'on choisit pour représenter une case d'eau inoccupée.
-
-Au départ, on part de règles simples que l'on pourra complexifier par la suite si on le désire. Par exemple dans l'idée de se rapprocher de la véritable bataille navale (plusieurs type de bateaux occupant des tailles différentes dans la matrice).
-
-Le joueur doit pouvoir placer plusieurs bateaux (à vous de voir le nombre) dans `matricePlayer` Pour cela il lui suffit de saisir la ligne et la colonne ou se situera chaque bateaux. Si la case est libre (valeur de la cellule mise à 0) alors le bateau est positionné, c'est-à-dire la case devient occupée ( valeur de la cellule mise à 1).
-
-De l'autre coté, l'ordinateur positionne de façon automatique le même nombre de bateau que le joueur dans `matriceComputer`. Evidemment il faudra faire attention à ne pas placer des bateaux sur des cases déjà occupées ( valeur de la cellule mise à 1).
-
-Le jeu et l'ordinateur joue ensuite à tour de rôle en indiquant des positions x /y qui désigne la case de la matrice adverse à tester. Si un bateau existe à la case désignée, alors celui-ci coule ( 1 case = 1 bateau), et la valeur de cette case passe à 2.
-
-Le jeu s'arrête lorsqu’un des deux joueurs n'a plus aucun bateau en jeu.
-
-Dans ce jeu, vous avez l'occasion de travailler aussi sur l'affichage des matrices, en affichant au joueur les positions de ses bateaux coulés ( valeur de la cellule mise à 2), de ses bateaux restants ( valeur de la cellule égale à 1).
-
-Si l'on décide de sauvegarder la liste des coordonnées déjà saisies par l'utilisateur, alors il pourra être intéressant de les afficher sur une nouvelle matrice.
+====
 
 == Ressources
 

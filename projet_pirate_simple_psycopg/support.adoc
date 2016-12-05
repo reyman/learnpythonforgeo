@@ -1,0 +1,319 @@
+= Projet Python Open Source
+:Author Initials: SR
+:toc2:
+:toclevels: 4
+:icons: font
+:max-width: 80%
+:source-highlighter: pygments
+:sectanchors:
+:experimental:
+:pygments-style: tango
+
+**Auteurs :**
+
+Rey Sebastien
+<rey.sebastien@yahoo.fr>
+
+== Projet
+
+En cours ...
+
+== Introduction à Psycopg2
+
+Pour manipuler une base de données, on utilise une librairie python spécifique nommé `psycopg2`
+
+[NOTE]
+====
+
+- Pour consulter l'url de l'API psycopg2 : http://initd.org/psycopg/docs/
+- Pour consulter un tutorial simple d'utilisation de psycopg2 : http://initd.org/psycopg/docs/usage.html
+====
+
+=== Info base de données
+
+[NOTE]
+====
+* L'url est `web504.webfaction.com:5432`
+* Le login de la base est : `reyman64_triade`
+* Le nom d'utilisateur est : `reyman64_triade`
+* Le mdp est : `M2Triade`
+====
+
+Cinq tables sont présentes dans la base de données :
+
+.Tables fixes :
+* coastline (LineString) : #id, geom
+* ports (Point) : #id_ports, city, country, geom, country.
+
+.Tables à manipuler avec attribut **idbinome**:
+* bateaux (Point) : #id_bateaux, geom, nom, idbinome, color, #id_ports
+
+Le schéma `exo2017` de la table `reyman64_cartha` contient donc `ports` et `coastline` qui ne doivent pas être modifié, par contre les tables `bateaux` sont des tables communes à tous que vous allez manipuler avec précaution en utilisant pour l'insertion ou la suppression l'attribut **idbinome**.
+
+[TIP]
+====
+Voir les données du site http://www.naturalearthdata.com/downloads/110m-physical-vectors/[naturalearthdata]
+
+Pour les villes/ports, les données viennent d'un shape réalisé par  https://nordpil.com/resources/world-database-of-large-cities/[nordpil]
+====
+
+=== Initier une connection
+
+Pour importer `psycopg2` dans python :
+
+[source,python]
+----
+import psycopg2
+----
+
+Pour se connecter à la base de données :
+
+[source,python]
+----
+conn = psycopg2.connect(database="nomdelabase", user="postgres", password="secret", host="adressebase")
+----
+
+`conn` est une variable qui contient l'objet permettant d'accéder au lien entre votre programme et la base de données.
+
+Une fois que votre programme à finit de traiter les données, il est impératif de bien clôturer ce lien en appelant la fonction `close()` sur votre objet, ici `conn` :
+
+[source,python]
+----
+conn.close()
+----
+
+=== Executer une requete
+
+Une requete n'aboutit pas obligatoirement, il faut utiliser des blocs d'instruction `try` `except` pour capturer les erreurs susceptibles d'apparaitre.
+
+Par exemple, si votre requete est mal écrite, elle ne sera pas executé par la base de données, et une exception sera levée par le programme.
+
+-  le bloc `try` contient un code susceptible de soulever une erreur, ce n'est pas forcément limité aux requetes SQL, c'est aussi valable  par exemple pour les opération de lecture/écriture dans un fichier
+
+-  le bloc `catch` contient quant à lui le code à executer en cas d'erreur.
+
+Un bloc `try` `except` se présente sous cette forme :
+
+[source,python]
+----
+try:
+  # tentative d'execution de la requete SQL
+  curs.execute(marequeteSQL)
+
+except psycopg2.ProgrammingError,err:
+  # Affichage de l'erreur
+  print err
+----
+
+Plus d'information sur les blocs try / catch en python est disponible sur ces sites http://docs.python.org/2/tutorial/errors.html[#1] http://www.siteduzero.com/tutoriel-3-37204-les-exceptions.html[#2]
+
+Pour executer une requete, nous avons vu qu'il fallait un object connexion, et un curseur qui va vous permettre de dialoguer (dans les deux sens) avec la base de données Postgis.
+
+Pour récupérer et stocker un curseur :
+
+[source,python]
+----
+cur = conn.cursor()
+----
+
+Pour fermer le curseur :
+
+[source,python]
+----
+cur.close()
+----
+
+[NOTE]
+====
+
+Il vaut mieux ouvrir (et fermer) un curseur pour chaque bloc de requetes, c'est beaucoup moins couteux que d'ouvrir et de fermer une connexion à chaque fois.
+====
+
+Le curseur permet d'executer une requete ainsi :
+
+[source,python]
+----
+cur.execute("SELECT * FROM test;")
+
+# equivalent à
+requete = "SELECT * FROM test;"
+cur.execute(requete)
+
+# equivalent à
+requete = ("SELECT * FROM %s;") % ("test")
+cur.execute(requete)
+----
+
+et de récupérer les valeurs après execution (si elles existent) ainsi :
+
+[source,python]
+----
+cur.fetchone() # ou cur.fetchmany() ou cur.fetchall()
+----
+
+Par exemple le résultat de `cur.fetchone()` est un *itérable python*, apellé plusieurs fois il permet d'avancer dans les résultats :
+
+  >>> cur.execute("SELECT * FROM test;")
+  >>> for record in cur:
+         print record
+
+  (1, 100, "abc'def")
+  (2, None, 'dada')
+  (3, 42, 'bar')
+
+Chaque élément `record` peut ensuite être parcouru avec une instruction de type *for .. in* car il s'agit d'une variable de type   http://python.developpez.com/cours/DiveIntoPython/php/frdiveintopython/native_data_types/tuples.php[`Tuple`].
+
+Il y'a aussi la possibilité de récupérer un tuple contenant l'ensemble des résultat avec la méthode `fetchall()`
+
+  >>> cur.execute("SELECT * FROM test;")
+  >>> cur.fetchall()
+
+  [(1, 100, "abcdef"), (2, None, 'dada'), (3, 42, 'bar')]
+
+=== Valider les données en base
+
+Les bases de données bénéficie de mécanismes de protection permettant de les protéger contre les mauvaises transactions. Il est donc important de valider vos requetes par la commande :
+
+[source,python]
+----
+conn.commit()
+----
+
+Si vous ne le faites pas, tout vos changement sur la base, donc vos requêtes d'insertion/update/delete seront perdus (et cela jusqu'au précédent `commit()`).
+
+Si une requete se passe mal (renvoie une exception par exemple), alors il est possible de remettre la base dans son état précédent datant du dernier commit(), avec la commande suivante :
+
+[source,python]
+----
+conn.rollback()
+----
+
+=== Passer des paramètres aux requetes avec Psycopg
+
+Les types normalisé pour SQL *ne sont pas les même* que les type Python, il n'est donc pas permis de passer une liste ou une chaine de caractère comme variable sans utiliser une syntaxe spéciale.
+
+Par exemple le type `List` de python n'existe pas en SQL, par contre il peut être converti par psycopg2 en utilisant le type http://www.postgresql.org/docs/9.1/static/datatype.html[`ARRAY`] qui lui existe.
+
+[CAUTION]
+====
+Il est formalement interdit d'executer une requete en utilisant ce formalisme là pour le passage d'arguments (`cur` est l'objet curseur) :
+
+[source,python]
+----
+SQL = "INSERT INTO authors (name) VALUES ('%s');" # NEVER DO THIS
+data = ("O'Reilly", )
+cur.execute(SQL % data) # THIS WILL FAIL MISERABLY
+----
+
+  ProgrammingError: syntax error at or near "Reilly"
+  LINE 1: INSERT INTO authors (name) VALUES ('O'Reilly')
+
+====
+
+La bonne méthode est de passer les variables qu'au moment de l'execution de la requête, de cette façon :
+
+[source,python]
+----
+cur.execute("INSERT INTO test (num, data) VALUES (%s, %s)", (100, "abcdef",))
+----
+
+[CAUTION]
+====
+
+Cette méthode n'est utilisé que pour le placement de variable, autrement dit, il est interdit de faire ca pour construire des requetes de façon dynamique !
+====
+
+Par exemple, reprenons la requete précédent, et imaginons qu'il nous faut insérer le nom de table comme paramètre pour faire une créer une fonction d'insertion d'objet plus générique :
+
+[source,python]
+----
+# Remplacement classique de chaine de caractere avec python
+SQL = "INSERT INTO %s(num, data) VALUES (%%s, %%s)" % (table)
+
+# Renvoie la chaine "INSERT INTO table(num, data) VALUES (%s, %s)"
+print SQL
+
+# Remplacement specifique à psycopg2 avec conversion de types
+cur.execute(SQL, (100, "abcdef",))
+----
+
+Vous remarquerez l'importance du double `%%s` qui après remplacement devient `%s`, et fait que nos variables puissent être insérées correctement !
+
+Plus d'information sur la conversion de type est disponible sur la documentation de   http://initd.org/psycopg/docs/usage.html#passing-parameters-to-sql-queries[psycopg2]
+
+=== Suppression
+
+Pour supprimer une table de la base, il faut d'abord supprimer la clé primaire avec http://sql.sh/cours/alter-table[`ALTER TABLE`], puis la table elle même avec http://sql.sh/cours/drop-table[`DROP TABLE`]
+
+=== Pour afficher les metadata
+
+Il vous faudra récupérer les métadata concernant les tables (noms de colonnes, type de projection, etc.), pour cela il vous faudra envoyer des requêtes sur la base http://postgis.net/docs/manual-1.4/ch04.html#id418599[`geometry_columns`] contenu dans le schema public.
+
+Pour questionner les metadata d'une table, vous pouvez utiliser ce type de code :
+
+[source,python]
+----
+metadataSQL = "SELECT srid, type, f_table_schema FROM public.geometry_columns WHERE f_table_name = '%s';" %(table)
+
+curs.execute(metadataSQL)
+tableMetaData = curs.fetchone()
+
+tableSRID = int(tableMetaData[0])
+tableGeomType = tableMetaData[1]
+tableSchema = tableMetaData[2]
+----
+
+Lorsque vous faites des requêtes utilisant plusieurs tables, il est tentant d'utiliser le joker `*` (comme dans `select * from ...;`) pour selectionner l'ensemble des colonnes. Cette technique peut poser problème. En effet, dans le cas d'une jointure entre une `tableA` et une `tableB` en vue de réaliser une `tableC`, l'utilisation du joker `*` sur un `select` fait que chacune des colonnes `geom` de `tableA` et de `tableB` sont récupérées dans `tableC`. Ce qui peut poser problème par la suite lors de l'affichage dans QGIS.
+
+Voici une astuce pour récupérer la liste des colonnes d'une table en vue de construire une chaine de caractère où la colonne `geom` à été supprimé ! Vous pouvez ainsi remplacer pour une des tables de notre exemple (A ou B) le `*` du `select` par cette construction de colonne qui supprime la colonne `geom` tout en conservant le reste des colonnes.
+
+[source,python]
+----
+
+try:
+    curs.execute("SELECT column_name FROM information_schema.columns where table_name= %s;", ( table,))
+except psycopg2.ProgrammingError,err:
+    print "error " , err
+
+from itertools import chain
+columnList = list(chain.from_iterable(curs.fetchall()))
+columnList = [c for c in columnList if c != "geom"]
+print ",".join(columnList)
+----
+
+Enfin, si jamais vous avez des problèmes pour accéder à vos colonnes, il faut  rafraichir la liste des metaData dans postgis, le code suivant supprime et recrée la table :
+
+[source,python]
+----
+curs.execute("DELETE FROM geometry_columns; SELECT Populate_Geometry_Columns();")
+----
+
+=== Mise en application
+
+Pour faciliter l'usage des fonctions de psycopg2, j'ai mis en place deux fonctions utilitaires pour l'envoie de requetes de lecture ou d'écriture.
+
+[source,python]
+----
+sql = "SELECT %s,%s from exo2017.bateaux"
+
+# les arguments idBinome, et id_ports sont intégrés dans la chaine de caractere à la place des %s
+bdUtil.execute_read_db(sql1,("idBinome","id_ports"))
+
+sql = "bla bla %s bla bla %s"
+
+# même chose avec l'écriture, on passe une chaine de caractère sql, et des arguments de remplacement
+bdUtil.execute_write_db(sql2,(argument1,argument2))
+
+----
+
+- Dans la fonction `getAndBuildPorts()`, écrire le SQL permettant de renvoyer la géometrie (geom) du port au format WKT. Indice, vous devez utiliser la fonction `ST_AsText` : http://www.postgis.org/docs/ST_AsText.html[#lien]
+
+- Dans la classe `Ports`, il y a une fonction `buildNavire()` à remplir. Ajouter votre bateau avec votre identifiant `idbinome` (accessible avec `self.bdUtil.ident`) dans la table `bateau`. Utiliser une requête SQL `INSERT INTO` : https://www.postgresql.org/docs/9.0/static/dml-insert.html[#lien]
+
+- Après intégration du bateau dans la base, pour récupérer l'identifiant bateau `id_bateaux` qui vous permettra de créer `newnavire`, vous aurez besoin d'ajouter à la fin de votre requete sql, la commande `RETURNING id_bateaux;`
+
+- `getAccessiblePorts()` renvoie la liste de routes maritimes possibles qui n'intersecte pas les cotes. Pour tester l'intersection entre une ligne reliant le port 1 et le port 2 (avec `ST_MakeLine(geom1,geom2)`), et l'ensemble des lignes de cote de la table `exo2017.coastline`, vous pouvez utiliser `ST_Intersects`  http://postgis.refractions.net/docs/ST_Intersects.html[#lien] (pour construire la ligne entre les deux ports) et `ST_Union` http://postgis.net/docs/ST_Union.html[#lien] (pour merger le contenu de `exo2017.coastline`). N'oubliez pas que vous pouvez transformer un WKT en geom a tout moment en utilisant la fonction `ST_GeomFromText(monWKT,monSRID)` http://postgis.net/docs/ST_GeomFromText.html[#lien]
+
+- Dans la classe `Ports`, il y a une fonction `listBoat()` qui effectue une jointure http://sql.sh/cours/jointures/inner-join[#lien] entre la table `exo2017.bateaux` et `exo2017.ports` à la recherche de tout les bateaux qui sont présent dans ce ports d'identifiant `self.id_ports`
+
+- Enfin dans la classe `Navire`, il y a la fonction `moveToPort()` qui permet de mettre à jour la position du bateau. Il faut donc modifier dans l'objet les attributs `self.id_ports`, `self.wkt`, tout en mettant à jour les colonnes `id_ports` et `geom` de ce bateau dans la table exo2017.bateaux.
