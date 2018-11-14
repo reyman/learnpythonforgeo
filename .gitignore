@@ -1,7 +1,6 @@
 *.zip
 *.pyc
 *.*~
-*.html
 *.idea
 *.css
 /image_non_utilise/

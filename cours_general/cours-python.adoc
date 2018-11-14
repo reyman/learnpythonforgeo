@@ -28,6 +28,7 @@ Rey Sebastien <rey.sebastien-coyrehourcq@univ-rouen.fr> , Van Hamme Adrien <adri
 * v0.17 Nov, 2016 : Add exercices and informations for POO pirates
 * v0.18 Nov, 2017 : Add new step of amelioration for Naval Battle
 * v0.19 Nov, 2017 : New version of POO information and exercices
+* v0.20 Nov, 2018 : Update to Python 3.0 :)
 
 == Introduction au document
 
@@ -470,30 +471,30 @@ Pycharm possède un super outil qui permet de corriger une *indentation défectu
 .Exemple de bloc :
 [source,python]
 ----
-def calcul(a,b):
-   if (a > b): # <1>
-      return a - b # <2>
-   else:
-      return a + b
-# <3>
+import random
 
-sommeCalcul = 0
+a = random.randint(0,5)
+b = random.randint(0,5)
 
-for i in xrange(5): #
-   sommeCalcul = sommeCalcul + calcul(3,i) #<4>
-   if (sommeCalcul > 15):
-      sommeCalcul = sommeCalcul * 2 #<5>
-#<6>
-print sommeCalcul
+if a >= 3: # <1>
+	print("a = ", a, " superieur a 3")
+	if b >= 2: # <2>
+		print ("b = ", b, " superieur a 2")
+		b  = b * 2
+	# <3>
+else:
+	print("a = ", a , "<= 3") # <4>
+# <5>
+
+print("b = ", b)
 
 ----
 
 <1> Premier niveau d'indentation pour définir le corps de la fonction
 <2> Deuxième niveau d'indentation pour définir le corps du bloc *if*
-<3> La fin de l'identation ici marque la fin du bloc de la fonction calcul()
-<4> Premier niveau d'indentation pour marquer le corps d'instruction de la boucle *for*
-<5> Idem, tout ce qui sera indenté au delà de ce niveau d'indentation sera executé par la boucle for, à condition ici de rentrer dans la condition if
-<6> Fin d'indentation, fin de la boucle for et de son execution.
+<3> La fin de l'indentation pour le *if* du point 2.
+<4> Indentation pour le bloc *else*
+<5> Fin d'indentation du premier *if* du point 1.
 
 CAUTION: Il ne faut pas mixer les espaces et les tabulations
 
@@ -1593,7 +1594,7 @@ _...traitement..._
 
 En fait en python cette instruction n'existe pas sous cette forme,
 par contre il existe des opérateurs très pratiques pour parcourir des listes avec des boucles.
-Il est possible d'obtenir le même comportement en utilisant la fonction *xrange()* générant une liste allant de __[DEBUT]__ A __[FIN]__
+Il est possible d'obtenir le même comportement en utilisant la fonction *range()* générant une liste allant de __[DEBUT]__ A __[FIN]__
 
 ==== Parcours de liste
 
@@ -1617,24 +1618,24 @@ for element in myList:
 Malheureusement dans ce cas-là, nous n'avons pas accès aux indices, et donc nous ne savons pas de façon explicite de quelle position dans le tableau nous avons extrait l'élément.
 Dans certains cas de figure cela peut poser problème (les tris par exemple où nous avons besoin de manipuler des indices), pour résoudre cela, il existe plusieurs autres syntaxes python :
 
-===== for in + xrange()
+===== for in + range()
 
-Première solution, en générant une liste allant de *__[DEBUT]__* A *__[FIN]__* avec la fonction `xrange()` , il est possible de faire évoluer une variable qui va prendre de manière sucessive les différentes valeurs de notre liste, quelle soit générée ou donnée par l'utilisateur :
+Première solution, en générant une liste allant de *__[DEBUT]__* A *__[FIN]__* avec la fonction `range()` , il est possible de faire évoluer une variable qui va prendre de manière sucessive les différentes valeurs de notre liste, quelle soit générée ou donnée par l'utilisateur :
 
-.Avec une liste générée par la fonction xrange()
+.Avec une liste générée par la fonction range()
 [source,python]
 ----
-# xrange() génère une liste allant de debut a fin - 1 , fin étant exclu
+# range() génère une liste allant de debut a fin - 1 , fin étant exclu
 debut = 1
 fin = 4
 
-print xrange(debut, fin) # renvoie une liste [2, 3]
+print range(debut, fin) # renvoie une liste [2, 3]
 
-for i in xrange(debut,fin): # ou xrange(2,4) cela marche aussi
+for i in range(debut,fin): # ou range(2,4) cela marche aussi
    print 'The count is:', i
 
-#Par défaut xrange va de 0 a la valeur - 1 passé en paramètre
-for i in xrange(5):
+#Par défaut range va de 0 a la valeur - 1 passé en paramètre
+for i in range(5):
    print "The count is:", i
 ----
 
@@ -1642,11 +1643,11 @@ for i in xrange(5):
 [source,python]
 ----
 myList = ["alex","paul","gerard","martine","helene","laurent"]
-for i in xrange(len(myList)):
+for i in range(len(myList)):
    print "At index", i, " value equal ", myList[i]
 ----
 
-De façon plus générale, python nous permet de parcourir n'importe quel type de collection, résultat d'une fonction (comme c'est le cas pour `xrange()`) ou bien définie par l'utilisateur ...
+De façon plus générale, python nous permet de parcourir n'importe quel type de collection, résultat d'une fonction (comme c'est le cas pour `range()`) ou bien définie par l'utilisateur ...
 
 .Parcour d'une liste avec une liste d'indices personnalisés
 [source,python]
@@ -1720,7 +1721,7 @@ print res
 L = [1,2,3,4,5] # Liste de valeurs quelconques
 res = [] # Initialisation d'une liste vide résultat
 
-for x in xrange(0,len(L)):
+for x in range(0,len(L)):
    res.append(L[x] + 10)
 
 print res
@@ -1730,15 +1731,15 @@ print res
 [source,python]
 ----
 a = [] # initialisation tableau contenant les lignes
-for i in xrange(3):
+for i in range(3):
    b = [] # initialisation
-   for j in xrange(3):
+   for j in range(3):
       b.append(i*j) # ajout colonne
    a.append(b) # ajout n colonne comme une nouvelle ligne
 print a
 ----
 
-pass:macros[http://pythontutor.com/visualize.html#code=a+%3D+%5B%5D+%23+initialisation+tableau+contenant+les+lignes%0Afor+i+in+xrange(3)%3A%0A+b+%3D+%5B%5D+%23+initialisation%0A+for+j+in+xrange(3)%3A%0A++b.append(i*j)+%23+ajout+colonne%0A+a.append(b)+%23+ajout+n+colonne+comme+une+nouvelle+ligne%0Aprint+a&mode=display&cumulative=true&heapPrimitives=false&drawParentPointers=true&textReferences=false&showOnlyOutputs=false&py=2&curInstr=0[Voir l'execution en ligne\]]
+pass:macros[http://pythontutor.com/visualize.html#code=a%20%3D%20%5B%5D%20%23%20initialisation%20tableau%20contenant%20les%20lignes%0Afor%20i%20in%20range%283%29%3A%0A%20b%20%3D%20%5B%5D%20%23%20initialisation%0A%20for%20j%20in%20range%283%29%3A%0A%20%20b.append%28i*j%29%20%23%20ajout%20colonne%0A%20a.append%28b%29%20%23%20ajout%20n%20colonne%20comme%20une%20nouvelle%20ligne%0Aprint%28a%29&cumulative=true&curInstr=0&heapPrimitives=false&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false[Voir l'execution en ligne\]]
 
 === Mot-Clef spécifique
 
@@ -1786,7 +1787,7 @@ Le mot clef *continue* passe directement à l'itération suivante et saute les i
 
 [source,python]
 ----
-for k in xrange(2,10):
+for k in range(2,10):
    if k > 3 and k < 8:
      print "skipping this iteration!"
      continue
@@ -2960,7 +2961,7 @@ class Navire(object):
 
         nombreDeCombat = random.randint(0, len(self.equipage.marins)-1)
         print "nombreDeCombat = ", nombreDeCombat
-        for i in xrange(nombreDeCombat):
+        for i in range(nombreDeCombat):
             #Duels
             # Marin 1
             pirate1 = navire1.equipage.random()
