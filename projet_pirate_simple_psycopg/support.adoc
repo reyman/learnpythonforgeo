@@ -33,7 +33,7 @@ Pour manipuler une base de données, on utilise une librairie python spécifique
 
 [NOTE]
 ====
-* L'url est `web504.webfaction.com:5432`
+* L'url est `web564.webfaction.com:5432`
 * Le login de la base est : `reyman64_triade`
 * Le nom d'utilisateur est : `reyman64_triade`
 * Le mdp est : `M2Triade`
@@ -306,7 +306,7 @@ bdUtil.execute_write_db(sql2,(argument1,argument2))
 
 ----
 
-- Dans la fonction `getAndBuildPorts()`, écrire le SQL permettant de renvoyer la géometrie (geom) du port au format WKT. Indice, vous devez utiliser la fonction `ST_AsText` : http://www.postgis.org/docs/ST_AsText.html[#lien]
+- Dans la fonction `getAndBuildPorts()`, écrire le SQL permettant de renvoyer la géometrie (geom) du port au format WKT. Indice, vous devez écrire une requête avec la fonction `ST_AsText` : http://www.postgis.org/docs/ST_AsText.html[#lien]
 
 - Dans la classe `Ports`, il y a une fonction `buildNavire()` à remplir. Ajouter votre bateau avec votre identifiant `idbinome` (accessible avec `self.bdUtil.ident`) dans la table `bateau`. Utiliser une requête SQL `INSERT INTO` : https://www.postgresql.org/docs/9.0/static/dml-insert.html[#lien]
 

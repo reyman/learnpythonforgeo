@@ -1,5 +1,5 @@
 = Atelier Python
-Rey Sebastien <rey.sebastien@yahoo.fr> , Van Hamme Adrien <adrien.van.hamme@gmail.com>
+Rey Sebastien <rey.sebastien-coyrehourcq@univ-rouen.fr> , Van Hamme Adrien <adrien.van.hamme@gmail.com>
 :Author Initials: SR
 :toc2:
 :toclevels: 4
@@ -8,7 +8,7 @@ Rey Sebastien <rey.sebastien@yahoo.fr> , Van Hamme Adrien <adrien.van.hamme@gmai
 :source-highlighter: pygments
 :sectanchors:
 :experimental:
-:pygments-style: monokai
+:pygments-style: tango
 
 * v0.1, Sept 15, 2012 : Initial version
 * v0.2, Sept 17, 2012 : Add some major explanation about list, fonctions, indentation, etc.
@@ -26,6 +26,8 @@ Rey Sebastien <rey.sebastien@yahoo.fr> , Van Hamme Adrien <adrien.van.hamme@gmai
 * v0.15 Sept 18, 2015 : Separate Windows / Linux
 * v0.16 Fev, 2016 : Add Naval Battle
 * v0.17 Nov, 2016 : Add exercices and informations for POO pirates
+* v0.18 Nov, 2017 : Add new step of amelioration for Naval Battle
+* v0.19 Nov, 2017 : New version of POO information and exercices
 
 == Introduction au document
 
@@ -453,6 +455,9 @@ Il n'y a pas donc pas d'instruction *FIN POUR* , *FIN TANT QUE*, *FIN FONCTION*,
 
 L'indentation se fait avec des espaces ([red]*4 espaces par niveau d'indentation*), ou avec des tabulations ([red]*1 tabulation*). Toutefois, pour ce cours, nous choisirons d'utiliser des tabulations car les erreurs sont plus faciles à voir.
 
+Regarder le code ci-dessous sans forcément faire attention à ce qu'il veut dire,
+voici en général à quoi ressemble un programme python classique avec ses différents blocs d'indentation.
+
 [NOTE]
 =====
 Pycharm possède un super outil qui permet de corriger une *indentation défectueuse* de façon très simple.
@@ -819,11 +824,19 @@ Une liste plus complète des caractères spéciaux, ainsi que de plus nombreuses
 
 === Entrées : raw_input()
 
-La fonction *raw_input(" message ")* est l'équivalent de la commande *LIRE(" message ")* vu en cours d'algorithmie.
+La fonction *raw_input(" message ")* est l'équivalent de la commande *SAISIE(" message ")* vu en cours d'algorithmie, attention elle renvoie une chaîne de caractère.
 
 [source,python]
 ----
 value = raw_input ("Veuillez saisir un texte ou une valeur")
+print value
+----
+
+Pour transformer une variable caractère en numérique, on utilise la fonction de conversion `int()`
+
+[source,python]
+----
+value = int(raw_input ("Veuillez saisir un texte ou une valeur"))
 print value
 ----
 
@@ -1947,12 +1960,12 @@ nombreOeilDeGerard = 2
 nombreBrasDeGerard = 2
 
 #Paul
-couleurYeuxGerard = "vert"
-couleurCheveuxGerard = "brun"
-couleurDePeauGerard = "blanche"
-nombreJambeDeGerard = 2
-nombreOeilDeGerard = 2
-nombreBrasDeGerard = 2
+couleurYeuxPaul = "vert"
+couleurCheveuxPaul = "brun"
+couleurDePeauPaul = "blanche"
+nombreJambeDePaul = 2
+nombreOeilDePaul = 2
+nombreBrasDePaul = 2
 ----
 
 Bon, et maintenant si je doit gérer la classe entière de carthagéo avec ce modèle de représentation de données, il va me falloir un peu de patience...
@@ -2060,12 +2073,12 @@ class Navigateur(object):
    def afficheInfo(self): # <5>
       print "Bonjour ! J'ai ", self.nbYeux, "yeux, ", self.tete, " tête, ", self.nbBras, " bras, et ", self.nbJambes, " jambes ..."
 
-   def accident(self,type): # <6>
-      if type == "bras":
+   def accident(self,typeAcc): # <6>
+      if typeAcc == "bras":
          self.nbBras = self.nbBras - 1 # <7>
-      elif type == "jambe":
+      elif typeAcc == "jambe":
          self.nbJambes = self.nbJambes - 1
-      elif type == "yeux":
+      elif typeAcc == "yeux":
          self.nbYeux = self.nbYeux - 1
 
    def initGrade(self):
@@ -2224,7 +2237,7 @@ La classe `Navigateur` est initialisé grâce à la fonction constructeur `__ini
 
 [source,python]
 ----
-class Navigateur(object): def accident(self,type):
+class Navigateur(object): def accident(self,typeAcc):
 ----
 
 La classe `Navigateur` possède une fonction nommé `accident` qui prend `self` et 1 paramètre"
@@ -2263,15 +2276,9 @@ A l'aide de ces principes, nous essaierons de réfléchir par la suite à la man
 
 image::images/worldofpirates.png[align="left", 500]
 
-C'est ici que se trouve la vrai puissance de la programmation orientée objet, car elle permet de créer un code complexe de façon modulaire et générique.
+C'est ici que se trouve la vrai puissance de la programmation orientée objet, car elle permet de créer un code complexe de façon modulaire et générique, par exemple en imbriquant des objets dans d'autres objets.
 
-Reprenons notre exemple du pirate, et essayons de lui créer un monde adapté à sa mesure.
-
-image::images/classNavigateur2.png[align="center", 400]
-
-Ce schéma UML (diagramme de classe) peut se lire ainsi. Un objet construit avec la classe `Taverne` doit pouvoir construire des navigateurs en partant de la classe `Navigateur`. Un objet de type `Equipage` contient en ensemble d'objets de type `Navigateur` (dans une liste par exemple). L'objet de type `Equipage` est ici dépendant et construit par l'objet de type `Navire`, il n'existe pas en dehors (symbole losange noir). Enfin un objet de type `Navire` contient un seul objet équipage.
-
-Ainsi on peut en déduire qu'un objet navire contient un objet équipage qui contient lui même un attribut contenant une liste d'objets navigateurs.
+Essayons à présente de créer un monde à la mesure de nos pirates. La première étape consiste à revoir notre classe `Navigateur`
 
 [source,python]
 ----
@@ -2281,7 +2288,7 @@ import random
 
 # Definition des classes du monde des pirates !
 class Navigateur(object): # <1>
-    def __init__(self, nom, salaire, yeux=2, bras=2, jambes=2, argent=0, force=1, grade="minable"):
+    def __init__(self, nom, salaire=10, yeux=2, bras=2, jambes=2, argent=0, force=1, grade="minable"):
         self.nom = nom
         self.salaire = salaire
         self.tete = 1
@@ -2292,11 +2299,6 @@ class Navigateur(object): # <1>
         self.force = force
         self.grade = grade
         self.afficheInfo()
-
-    def afficheInfo(self):
-        print "Bonjour ! Je suis ", self.nom, " un navigateur", self.grade, "et de force", self.force, "\n"
-        print "J'ai ", self.nbYeux, "yeux, ", self.tete, " tête, ", self.nbBras, " bras, et ", self.nbJambes, " jambes ...\n"
-        print "J'ai ", self.argent, " dans ma bourse \n"
 
     def augmenteGrade(self):
         if self.grade == "minable":
@@ -2312,7 +2314,138 @@ class Navigateur(object): # <1>
 <2> De nouveaux attributs apparaissent dans notre programme : argent, force et grade.
 <3> A chaque augmentation de grade on augmente la force du navigateur de 1, par exemple cette fonction peut être appellé à chaque fois que son navire gagne un combat, on peut considérer qu'il augmente de grade.
 
-Les marins sont en général recrutés dans des `Tavernes`, logique non ?
+Mais nous le savons bien, un pirate tout seul n'a aucune chance de survie dans ce monde hostile, il lui faut donc un équipage.
+
+Dans le code suivant nous créons un premier équipage en utilisant une liste dans lequel nous stockons plusieurs instances de cette classe `Navigateur`.
+
+[source,python]
+----
+jack =  Navigateur("Jack Calico", argent=10, force=10, grade="capitaine")
+edward =  Navigateur("Edward Drake", argent=2, force=3, grade="minable")
+anne = Navigateur("Anne Bonny",argent= 3, force=2, grade="minable")
+equipe1 = [jack,edward,anne]
+print equipe1
+----
+
+Normalement un code bizarre de ce type s'affiche `[<__main__.Navigateur instance at 0x7f632f278908>, <__main__.Navigateur instance at 0x7f632f2789e0>, <__main__.Navigateur instance at 0x7f632f278a28>]`
+
+Il s'agit de la référence des objets en mémoire. Pour accéder au contenu de chacun de ces objets navigateurs, il n'y a pas d'autres choix que de faire appel aux méthodes ou aux attributs propre à ces objets.
+
+Pour mieux comprendre la structure qui résulte d'un tel code, on peut se représenter la liste sous cette forme en mémoire. Les valeurs initialisées pour chaque attributs étant commentée ici en rouge.
+
+image::images/equipage.png[align="center", 500]
+
+Si je veux affiche par exemple, le nom de chacun des pirates, je pourrais faire la boucle suivante :
+
+[source,python]
+----
+for p in equipe1:
+	print p.nom
+----
+
+Je peux aussi changer la valeur des attributs directement :
+
+
+[source,python]
+----
+for p in equipe1:
+	p.argent = p.argent * 2
+	print p.argent
+----
+
+Si je veux uniquement augmenter le grade des *minables* dans mon équipage, il suffit de filtrer notre liste en fonction d'un attribut :
+
+[source,python]
+----
+for p in equipe1:
+	if p.grade == "minable":
+		p.augmenteGrade()
+----
+
+Si je veux calculer l'argent total que possède cet équipage, encore une fois rien de plus facile. Il suffit d'accéder à l'attribut correspondant lors d'un parcours de liste.
+
+[source,python]
+----
+richesse = 0
+for p in equipe1:
+	richesse = richesse + p.argent
+print richesse
+----
+
+Réaliser cet équipage n'est qu'une première étape, que pouvons nous ajouter à présent ? Il serait intéressant par exemple d'encapsuler notre liste de pirates fraichement construite dans un objet `Equipage` auquel on pourra rajouter la fonction de calcul des richesses que nous avons déjà réalisé.
+
+[source,python]
+----
+class Equipage(object): # <1>
+    def __init__(self, marins):
+        self.marins = marins
+
+    def calculDesRichesses(self): #<2>
+        richesse = 0
+        for p in self.marins:
+            richesse = richesse + p.argent
+        print richesse
+
+    def rechercheDuPlusRiche(self): #<3>
+        pass
+
+    def rechercheDuPlusFort(self):
+        pass
+
+    def calculForceEquipage(self): #<4>
+        pass
+----
+
+<1> La classe a besoin d'une liste de `Navigateur` pour que notre méthode marche correctement.
+<2> On interroge l'attribut de notre objet qui contient à présent la liste de navigateurs, à savoir `self.marins`
+<3> Il est intéressant de pouvoir savoir à tout moment quel est le navigateur le plus fort mais aussi le plus riche de la bande. A vous d'écrire le code :)
+<4> Une fonction qui renvoie la force totale de notre équipage, pratique pour comparer deux équipages par la suite (dans la future fonction `combat()` par exemple)
+
+Une première idée serait de définir un équipage ainsi :
+
+[source,python]
+----
+equipage1 = Equipage([jack,edward,anne])
+----
+
+Seulement voilà, maintenant que nous avons définit un équipage comme un objet à part entière, plus complexe qu'une simple liste, il serait également intéressant de donner une vrai raison d'être à cet équipage, à savoir un bateau qui l'abrite.
+
+Plutôt que de créer un objet `Equipage` à part, pour ensuite le passer en paramètre lors de l'instanciation d'un `Navire`, nous préferons ici faire le choix d'une vrai composition. Ainsi l'équipage (et non les navigateurs, qui eux restent libre d'être associés à d'autres bateaux/équipages) devient exclusivement rattaché à un objet Navire. Si le `Navire` sombre, alors l'objet `Equipage` sombre avec lui.
+
+[source,python]
+----
+class Navire(object): # <1>
+    def __init__(self, nom, marins):
+        self.nom = nom
+        self.equipage = Equipage(marins)
+
+    def combat(self, ennemi): # <2>
+        print "combat le bateau ennemi ! "
+----
+
+
+<1> La classe navire est responsable d'un équipage et un seul, c'est elle qui créée l'instance de la classe `Equipage` accueillant la liste de `Navigateurs`.
+Ainsi la liste de marins passés en paramètres sert ici à instancier la classe `Equipage` stocké par chaque objet `Navire`
+<2> La classe qui définit les combats, pour déterminer l'issue du combat et calculer l'abordage, il faut prendre en paramètre un navire ennemi. On se base sur une comparaison de force entre les deux équipages pour le moment. Le navire le plus fort l'emporte.
+
+Désormais, c'est l'objet `Navire` qui récupère la liste de navigateurs pour en faire un objet `Equipage`.
+
+[source,python]
+----
+navire1 = Navire("Queen Anne's Revenge",[jack,edward,anne])
+----
+
+En terme d'imbrication entre objets (`Navire` contient `Equipage` contient une liste de `Navigateurs`), cela représente le diagramme de classe, puis d'objets suivant :
+
+image::images/imbricationClasses.png[align="center", 500]
+
+image::images/imbricationClasses2.png[align="center", 600]
+
+La liste de navigateurs est passée à `navire1`, qui lors de sa initialisation construit directement un objet de type `Equipage` qui prend en paramètre cette même liste (`self.equipage = Equipage(marins)`). Celle-ci étant stocké dans l'attribut `marins` de cet équipage, on pourra l'apeller ainsi : `navire1.equipage.marin`. Comme il s'agit d'une liste, les navigateurs qu'elle contient peuvent être appelé avec la notation tableau classique. Ainsi `navire1.equipage.marins[0]` renvoie le premier marin de l'équipage, dont on peut également afficher le nom `navire1.equipage.marins[0].nom`
+
+Autrement dit, chaque imbrication implique un niveau supplémentaire dans la notation pointé.
+
+Enfin, pour cette dernière étape, essayons d'être encore plus imaginatif. Les pirates ne se recrutent pas n'importe comment, il faut aller les chercher dans des `Tavernes`, logique non ?
 
 [source,python]
 ----
@@ -2323,43 +2456,30 @@ class Taverne(object):
 
     def debaucher(self): # <1>
         salaire = random.randint(1, 10)
+		argent = random.randint(1, 20)
         force = salaire * 1.5
         nomPrenom = " ".join([self.listDeNoms[random.randint(0, len(self.listDeNoms) - 1)],
                               self.listDePrenoms[random.randint(0, len(self.listDePrenoms) - 1)]])
-        return Navigateur(nomPrenom, salaire, force=int(force)) # <2>
+        return Navigateur(nomPrenom, salaire, argent=argent, force=int(force)) # <2>
 ----
-<1> En utilisant la liste de noms et prénoms stockés par l'objet `Taverne`, on génère un nouveau objet Navigateur, en piochant au hasard un salaire entre 1 et 10 pièce d'or.
-<2> Le Navigateur ainsi créé est renvoyé par la fonction débaucher()
+<1> En utilisant la liste de noms et prénoms stockés par l'objet `Taverne`, on génère un nouvel objet `Navigateur`, en piochant au hasard un salaire entre 1 et 10 pièce d'or.
+<2> Le Navigateur ainsi créé est renvoyé par la fonction `debaucher()`
 
-[source,python]
-----
-class Equipage(object): # <1>
-    def __init__(self, marins):
-        self.marins = marins
+Ne reste plus ici qu'à construire une fonction qui apelle de multiple fois la fonction `debaucher()` pour constituer équipage. Nous allons voire cela dans les exercices.
 
-    def jourDePaye(self):
-        print ("ajoute de l'argent à la bourse de chacun des marins")
+Voici un schéma UML qui tente de résumer de façon globale cette architecture.
 
+image::images/classNavigateur2.png[align="center", 400]
 
-class Navire(object): # <2>
-    def __init__(self, nom, marins):
-        self.nom = nom
-        self.equipage = Equipage(marins)
+Ce schéma UML (diagramme de classe) peut se lire ainsi. Un objet construit avec la classe `Taverne` doit pouvoir construire des navigateurs en partant de la classe `Navigateur`. Un objet de type `Equipage` contient en ensemble d'objets de type `Navigateur` (dans une liste par exemple). L'objet de type `Equipage` est ici dépendant et construit par l'objet de type `Navire`, il n'existe pas en dehors (symbole losange noir). Enfin un objet de type `Navire` contient un seul objet équipage.
 
-    def combat(self, ennemi): # <3>
-        print "combat le bateau ennemi ! "
-----
-
-<1> L'équipage se compose de marins, la classe a donc besoin d'une liste de `Navigateur` pour être instancié correctement
-<2> La classe navire est responsable d'un équipage et un seul, c'est elle qui créée l'instance de la classe `Equipage` accueillant la liste de `Navigateurs`.
-Ainsi la liste de marins passés en paramètres sert ici à instancier la classe `Equipage` stocké par chaque objet `Navire`
-<3> La classe qui définit les combats, pour déterminer l'issue du combat et calculer l'abordage, il faut prendre en paramètre un navire ennemi.
+Ainsi on peut en déduire qu'un objet navire contient un objet équipage qui contient lui même un attribut contenant une liste d'objets navigateurs.
 
 *Exercices* :
 
 [options=interactive]
 
-- [ ] Construire/Instancier un objet de type `Taverne` stocké dans une variable `taverneAPirate` à partir des listes ci-dessous :
+- [ ] Construire/Instancier un objet de type `Taverne` stocké dans une variable `taverneAPirate` en lui passant les listes ci-dessous :
 
 [source,python]
 ----
@@ -2367,7 +2487,7 @@ nomDePirate = ["Bonny", "Jack", "Teach", "Drake", "Morgan", "Nau", "Read"]
 prenomDePirate = ["Anne", "Calico", "Edward", "Francis", "Henry", "Jean", "Mary"]
 ----
 
-- [ ] Ecrire une fonction qui prend en paramètre un nombre de marin (nbMarins) et un objet taverneAPirate de type `Taverne`, et renvoie une liste d'objets `Navigateur`.
+- [ ] Ecrire une fonction `buildEquipage` qui prend en paramètre un nombre de marin (nbMarins) et un objet taverneAPirate de type `Taverne`, et renvoie une liste d'objets `Navigateur`.
 
 [source,python]
 ----
@@ -2375,6 +2495,7 @@ prenomDePirate = ["Anne", "Calico", "Edward", "Francis", "Henry", "Jean", "Mary"
 # Fonction pour construire equipage
 def buildEquipage(taverne, nbMarins):
     equipage = []
+    equipage.append(...)
     ...
     return equipage
 ----
@@ -2385,11 +2506,11 @@ Comme déjà vu un peu plus haut, on apelle les attributs et les fonctions à l'
 
 Comme déjà vu un peu plus haut, on apelle les attributs et les fonctions des objets à l'aide d'une notation pointée, et cela de façon hiérarchique.
 
-Par exemple, la liste de navigateurs est passée à `navire1`, qui lors de sa initialisation construit directement un objet de type `Equipage` qui prend en paramètre cette même liste (`self.equipage = Equipage(marins)`). Celle-ci étant stocké dans l'attribut `marins` de cet équipage, on pourra l'apeller ainsi : `navire1.equipage.marin`. Comme il s'agit d'une liste, les navigateurs qu'elle contient peuvent être appelé avec la notation tableau classique. Ainsi `navire1.equipage.marins[0]` renvoie le premier marin de l'équipage, dont on peut également afficher les informations `navire1.equipage.marins[0].afficheInfo()`
 
-- [ ] Réaliser les fonctions permettant de calculer un combat entre deux Navires en se basant sur la force des pirates qui les composent. Remplir la fonction `combat()` qui prend forcément un objet navire en paramètre (pour comparer les deux forces, celle de lui-même, et celle du navire passé en paramètre).
+- [ ] Réaliser les fonctions permettant de calculer un combat entre deux Navires en se basant sur la force des pirates qui les composent. Remplir la fonction `calculForceEquipage()` et `combat()` qui prend forcément un objet navire en paramètre (pour comparer les deux forces, celle de lui-même, et celle du navire passé en paramètre).
 
-- [ ] Penser à payer vos pirates à la fin de chaque combat victorieux! Remplir la fonction `jourDePaye()`
+- [ ] Penser à payer vos pirates à la fin de chaque combat victorieux! Remplir la fonction `jourDePaye()` qui se base sur le salaire de vos pirates.
+
 - [ ] Penser à ajouter une ou plusieurs classes de votre choix permettant d'enrichir ce monde de Pirate par de nouvelles aventures.
 
 image::images/bandePirates.jpg[align="center", 400]
@@ -3026,6 +3147,21 @@ Le jeu s'arrête lorsqu’un des deux joueurs n'a plus aucun bateau en jeu.
 Dans ce jeu, vous avez l'occasion de travailler aussi sur l'affichage des matrices, en affichant au joueur les positions de ses bateaux coulés ( valeur de la cellule mise à 2), de ses bateaux restants ( valeur de la cellule égale à 1).
 
 Si l'on décide de sauvegarder la liste des coordonnées déjà saisies par l'utilisateur, alors il pourra être intéressant de les afficher sur une nouvelle matrice.
+
+Voici une liste d'améliorations possibles, avec les niveaux de difficultés associés :
+
+*  [ ] Bateaux positionnable de différentes tailles, en Horizontal / Vertical (*facile*)
+*  [ ] Timer en tour de jeu (*facile*)
+*  [ ] Sauvegarde et restauration du jeu via un fichier csv (*moyen*)
+*  [ ] Déplacement des bateaux pendant le jeu (*moyen*)
+*  [ ] Version POO du programme (*facile*)
+*  [ ] Monstres marins qui se déplacent et attaquent (*moyen*)
+*  [ ] Système d'amélioration basé sur des points d'expériences (*difficile*)
+	** [ ] Dégats sur les bateaux exprimés en pourcentage ou en point de vie
+	** [ ] Portée de tir par bateau, améliorable
+	** [ ] Possibilité de se défendre, via par exemple des anti missiles
+	** [ ] Lancement de projectiles en Horizontal et/ou Vertical
+
 
 == Ressources
 
