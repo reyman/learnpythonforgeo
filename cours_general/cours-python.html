@@ -785,7 +785,7 @@ L&#8217;avantage c&#8217;est qu&#8217;une fois Ubuntu installé ainsi, vous alle
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="python"><span class="tok-o">&gt;&gt;&gt;</span> <span class="tok-k">print</span> <span class="tok-s">&quot;Hello World&quot;</span>
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-o">&gt;&gt;&gt;</span> <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;Hello World&quot;</span><span class="tok-p">)</span>
 <span class="tok-n">hello</span> <span class="tok-n">world</span></code></pre>
 </div>
 </div>
@@ -812,7 +812,7 @@ Vous pouvez ensuite taper "python" dans le terminal linux, ce qui aura pour effe
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="python"><span class="tok-o">&gt;&gt;&gt;</span> <span class="tok-k">print</span> <span class="tok-s">&quot;Hello World&quot;</span>
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-o">&gt;&gt;&gt;</span> <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;Hello World&quot;</span><span class="tok-p">)</span>
 <span class="tok-n">hello</span> <span class="tok-n">world</span></code></pre>
 </div>
 </div>
@@ -857,7 +857,7 @@ Pour quitter la console python sous Ubuntu, appuyer sur la combinaison de touche
 <div class="title">hello.py</div>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="python"><span class="tok-c"># -*- coding: utf-8 -*-</span>
-<span class="tok-k">print</span> <span class="tok-s">&quot;Hello World&quot;</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;Hello World&quot;</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 </li>
@@ -882,8 +882,8 @@ Pour quitter la console python sous Ubuntu, appuyer sur la combinaison de touche
 <div class="listingblock">
 <div class="title">hello.py</div>
 <div class="content">
-<pre class="pygments highlight"><code data-lang="python"><span class="tok-k">print</span> <span class="tok-s">&quot;Hello World&quot;</span>
-<span class="tok-k">print</span> <span class="tok-n">Bonjour</span> <span class="tok-n">Monde</span></code></pre>
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;Hello World&quot;</span><span class="tok-p">)</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">Bonjour</span> <span class="tok-n">Monde</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -901,13 +901,13 @@ Pour quitter la console python sous Ubuntu, appuyer sur la combinaison de touche
 <div class="content">
 <pre class="pygments highlight"><code data-lang="python"><span class="tok-n">python</span> <span class="tok-n">hello</span><span class="tok-o">.</span><span class="tok-n">py</span>
   <span class="tok-n">File</span> <span class="tok-s">&quot;hello.py&quot;</span><span class="tok-p">,</span> <span class="tok-n">line</span> <span class="tok-mi">2</span>
-    <span class="tok-k">print</span> <span class="tok-n">Bonjour</span> <span class="tok-n">Monde</span>
+    <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">Bonjour</span> <span class="tok-n">Monde</span><span class="tok-p">)</span>
                       <span class="tok-o">^</span>
 <span class="tok-ne">SyntaxError</span><span class="tok-p">:</span> <span class="tok-n">invalid</span> <span class="tok-n">syntax</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>L&#8217;interpréteur vous donne la ligne et la faute : la syntaxe pour print est incorrecte, car il manque les guillemets</p>
+<p>L&#8217;interpréteur vous donne la ligne et la faute : la syntaxe pour print() est incorrecte, car il manque les guillemets</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1569,9 +1569,9 @@ En python il y a plusieurs façons d&#8217;écrire des commentaires, avec <code>
 <span class="tok-sd">sur plusieurs lignes !</span>
 <span class="tok-sd">&quot;&quot;&quot;</span>
 <span class="tok-n">reponse</span> <span class="tok-o">=</span> <span class="tok-mi">42</span>
-<span class="tok-k">print</span> <span class="tok-s">&quot;Je reviendrai.&quot;</span> <span class="tok-c"># Ceci est un commentaire en fin de ligne ...</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;Je reviendrai.&quot;</span><span class="tok-p">)</span> <span class="tok-c"># Ceci est un commentaire en fin de ligne ...</span>
 <span class="tok-c"># qui peut aussi être ici en début de ligne ...</span>
-<span class="tok-k">print</span> <span class="tok-n">reponse</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">reponse</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -1601,8 +1601,8 @@ Les informations sur le <strong>style</strong> à adopter pour les commentaires,
 <div class="title">Afficher du texte</div>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="python"><span class="tok-n">reponse</span> <span class="tok-o">=</span> <span class="tok-mi">42</span>
-<span class="tok-k">print</span> <span class="tok-s">&quot;Je reviendrai.&quot;</span>
-<span class="tok-k">print</span> <span class="tok-n">reponse</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;Je reviendrai.&quot;</span><span class="tok-p">)</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">reponse</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1614,13 +1614,13 @@ De nombreuses écritures sont possibles à affichage égal, nous allons seulemen
 <div class="title">Concatener du texte avec une variable</div>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="python"><span class="tok-n">reponse</span> <span class="tok-o">=</span> <span class="tok-mi">42</span>
-<span class="tok-k">print</span> <span class="tok-s">&quot;La grande question sur la vie, l&#39;univers et le reste est&quot;</span><span class="tok-p">,</span> <span class="tok-n">r</span><span class="tok-err">é</span><span class="tok-n">ponse</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;La grande question sur la vie, l&#39;univers et le reste est&quot;</span><span class="tok-p">,</span> <span class="tok-n">r</span><span class="tok-err">é</span><span class="tok-n">ponse</span><span class="tok-p">)</span>
 
 <span class="tok-n">age</span> <span class="tok-o">=</span> <span class="tok-mi">900</span>
-<span class="tok-k">print</span> <span class="tok-s">&quot;Quand &quot;</span><span class="tok-p">,</span> <span class="tok-n">age</span> <span class="tok-p">,</span> <span class="tok-s">&quot;ans comme moi tu auras, moins en forme tu seras !&quot;</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;Quand &quot;</span><span class="tok-p">,</span> <span class="tok-n">age</span> <span class="tok-p">,</span> <span class="tok-s">&quot;ans comme moi tu auras, moins en forme tu seras !&quot;</span><span class="tok-p">)</span>
 
 <span class="tok-n">animal</span> <span class="tok-o">=</span> <span class="tok-s">&quot;Tyranosaure&quot;</span>
-<span class="tok-k">print</span> <span class="tok-s">&quot;Le &quot;</span><span class="tok-p">,</span> <span class="tok-n">animal</span><span class="tok-p">,</span> <span class="tok-s">&quot;  n&#39;obéit à aucun schéma de groupe ni aucun horaire de parc d&#39;attraction. C&#39;est l&#39;essence du chaos.&quot;</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;Le &quot;</span><span class="tok-p">,</span> <span class="tok-n">animal</span><span class="tok-p">,</span> <span class="tok-s">&quot;  n&#39;obéit à aucun schéma de groupe ni aucun horaire de parc d&#39;attraction. C&#39;est l&#39;essence du chaos.&quot;</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1628,8 +1628,8 @@ De nombreuses écritures sont possibles à affichage égal, nous allons seulemen
 <div class="content">
 <pre class="pygments highlight"><code data-lang="python"><span class="tok-n">vetements</span> <span class="tok-o">=</span> <span class="tok-s">&quot;vêtements, tes bottes&quot;</span>
 <span class="tok-n">vehicule</span> <span class="tok-o">=</span> <span class="tok-s">&quot;moto&quot;</span>
-<span class="tok-k">print</span> <span class="tok-s">&quot;Je veux tes &quot;</span> <span class="tok-o">+</span> <span class="tok-n">vetements</span> <span class="tok-o">+</span> <span class="tok-s">&quot; et ta &quot;</span> <span class="tok-o">+</span> <span class="tok-n">vehicule</span>
-<span class="tok-k">print</span> <span class="tok-s">&quot;Hasta&quot;</span> <span class="tok-o">+</span> <span class="tok-s">&quot;la vista&quot;</span> <span class="tok-o">+</span> <span class="tok-s">&quot;baby&quot;</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;Je veux tes &quot;</span> <span class="tok-o">+</span> <span class="tok-n">vetements</span> <span class="tok-o">+</span> <span class="tok-s">&quot; et ta &quot;</span> <span class="tok-o">+</span> <span class="tok-n">vehicule</span><span class="tok-p">)</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;Hasta&quot;</span> <span class="tok-o">+</span> <span class="tok-s">&quot;la vista&quot;</span> <span class="tok-o">+</span> <span class="tok-s">&quot;baby&quot;</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1640,17 +1640,17 @@ De nombreuses écritures sont possibles à affichage égal, nous allons seulemen
 <span class="tok-n">tirade3a</span> <span class="tok-o">=</span> <span class="tok-s">&quot; Les prolifiques vilenies de dame nature vont pullulant sur lui.&quot;</span>
 <span class="tok-n">tirade3b</span> <span class="tok-o">=</span> <span class="tok-s">&quot;Dédaignant la fortune et brandissant son épée qui fumait d&#39;une sanglante exécution&quot;</span>
 
-<span class="tok-k">print</span> <span class="tok-s">&quot;Shakespeare a dit : &quot;</span><span class="tok-p">,</span> <span class="tok-n">tirade1</span> <span class="tok-p">,</span><span class="tok-s">&quot;mais aussi &quot;</span><span class="tok-p">,</span> <span class="tok-n">tirade2</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;Shakespeare a dit : &quot;</span><span class="tok-p">,</span> <span class="tok-n">tirade1</span> <span class="tok-p">,</span><span class="tok-s">&quot;mais aussi &quot;</span><span class="tok-p">,</span> <span class="tok-n">tirade2</span><span class="tok-p">)</span>
 
 <span class="tok-c"># ou sinon sous une autre forme en concatenant variable texte et texte :</span>
-<span class="tok-k">print</span> <span class="tok-s">&quot;Shakespeare a dit : &quot;</span> <span class="tok-o">+</span> <span class="tok-n">tirade1</span> <span class="tok-o">+</span> <span class="tok-s">&quot;mais aussi &quot;</span> <span class="tok-o">+</span> <span class="tok-n">tirade2</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;Shakespeare a dit : &quot;</span> <span class="tok-o">+</span> <span class="tok-n">tirade1</span> <span class="tok-o">+</span> <span class="tok-s">&quot;mais aussi &quot;</span> <span class="tok-o">+</span> <span class="tok-n">tirade2</span><span class="tok-p">)</span>
 
 <span class="tok-c"># ou avec les deux méthodes :</span>
-<span class="tok-k">print</span>  <span class="tok-s">&quot;shakespeare a dit : </span><span class="tok-si">%s</span><span class="tok-s">, mais aussi </span><span class="tok-si">%s</span><span class="tok-s">&quot;</span> <span class="tok-o">%</span> <span class="tok-p">(</span><span class="tok-n">tirade1</span><span class="tok-p">,</span> <span class="tok-n">tirade3a</span> <span class="tok-o">+</span> <span class="tok-n">tirade3b</span><span class="tok-p">)</span>
+<span class="tok-k">print</span><span class="tok-p">(</span>  <span class="tok-s">&quot;shakespeare a dit : </span><span class="tok-si">%s</span><span class="tok-s">, mais aussi </span><span class="tok-si">%s</span><span class="tok-s">&quot;</span> <span class="tok-o">%</span> <span class="tok-p">(</span><span class="tok-n">tirade1</span><span class="tok-p">,</span> <span class="tok-n">tirade3a</span> <span class="tok-o">+</span> <span class="tok-n">tirade3b</span><span class="tok-p">))</span>
 
 <span class="tok-c"># cela marche aussi avec les nombres :</span>
 
-<span class="tok-k">print</span> <span class="tok-s">&quot;La grande question sur la </span><span class="tok-si">%s</span><span class="tok-s">, </span><span class="tok-si">%s</span><span class="tok-s">, et le </span><span class="tok-si">%s</span><span class="tok-s"> est </span><span class="tok-si">%d</span><span class="tok-s"> &quot;</span> <span class="tok-o">%</span> <span class="tok-p">(</span><span class="tok-s">&quot;vie&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;l&#39;univers&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;le reste&quot;</span><span class="tok-p">,</span> <span class="tok-mi">42</span><span class="tok-p">)</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;La grande question sur la </span><span class="tok-si">%s</span><span class="tok-s">, </span><span class="tok-si">%s</span><span class="tok-s">, et le </span><span class="tok-si">%s</span><span class="tok-s"> est </span><span class="tok-si">%d</span><span class="tok-s"> &quot;</span> <span class="tok-o">%</span> <span class="tok-p">(</span><span class="tok-s">&quot;vie&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;l&#39;univers&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;le reste&quot;</span><span class="tok-p">,</span> <span class="tok-mi">42</span><span class="tok-p">))</span></code></pre>
 </div>
 </div>
 <div class="admonitionblock caution">
@@ -1680,7 +1680,7 @@ avec <code>,</code> la variable est automatiquement transformée en chaîne de c
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="python"><span class="tok-n">reponse</span> <span class="tok-o">=</span> <span class="tok-mi">42</span>
-<span class="tok-k">print</span> <span class="tok-s">&quot;La réponse à la question est :&quot;</span> <span class="tok-o">+</span> <span class="tok-n">reponse</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;La réponse à la question est :&quot;</span> <span class="tok-o">+</span> <span class="tok-n">reponse</span><span class="tok-p">)</span>
 
 <span class="tok-n">Traceback</span> <span class="tok-p">(</span><span class="tok-n">most</span> <span class="tok-n">recent</span> <span class="tok-n">call</span> <span class="tok-n">last</span><span class="tok-p">):</span>
   <span class="tok-n">File</span> <span class="tok-s">&quot;&lt;stdin&gt;&quot;</span><span class="tok-p">,</span> <span class="tok-n">line</span> <span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-ow">in</span> <span class="tok-o">&lt;</span><span class="tok-n">module</span><span class="tok-o">&gt;</span>
@@ -1724,8 +1724,8 @@ Il existe donc des caractères spéciaux que l&#8217;on peux insérer dans une c
 <span class="tok-n">months</span> <span class="tok-o">=</span> <span class="tok-s">&quot;Jan</span><span class="tok-se">\n</span><span class="tok-s">Feb</span><span class="tok-se">\n</span><span class="tok-s">Mar</span><span class="tok-se">\n</span><span class="tok-s">Apr</span><span class="tok-se">\n</span><span class="tok-s">May</span><span class="tok-se">\n</span><span class="tok-s">Jun</span><span class="tok-se">\n</span><span class="tok-s">Jul</span><span class="tok-se">\n</span><span class="tok-s">Aug&quot;</span>
 
 <span class="tok-c"># retour à la ligne</span>
-<span class="tok-k">print</span> <span class="tok-n">days</span>
-<span class="tok-k">print</span> <span class="tok-n">months</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">days</span><span class="tok-p">)</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">months</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="sidebarblock">
@@ -1754,7 +1754,7 @@ Il existe donc des caractères spéciaux que l&#8217;on peux insérer dans une c
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="python"><span class="tok-n">value</span> <span class="tok-o">=</span> <span class="tok-nb">raw_input</span> <span class="tok-p">(</span><span class="tok-s">&quot;Veuillez saisir un texte ou une valeur&quot;</span><span class="tok-p">)</span>
-<span class="tok-k">print</span> <span class="tok-n">value</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">value</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1763,7 +1763,7 @@ Il existe donc des caractères spéciaux que l&#8217;on peux insérer dans une c
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="python"><span class="tok-n">value</span> <span class="tok-o">=</span> <span class="tok-nb">int</span><span class="tok-p">(</span><span class="tok-nb">raw_input</span> <span class="tok-p">(</span><span class="tok-s">&quot;Veuillez saisir un texte ou une valeur&quot;</span><span class="tok-p">))</span>
-<span class="tok-k">print</span> <span class="tok-n">value</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">value</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 </div>
@@ -1812,20 +1812,20 @@ Il existe donc des caractères spéciaux que l&#8217;on peux insérer dans une c
    <span class="tok-k">return</span> <span class="tok-n">a</span> <span class="tok-o">*</span> <span class="tok-n">b</span>
 
 <span class="tok-c"># On affiche les valeurs retournées</span>
-<span class="tok-k">print</span> <span class="tok-n">somme</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">,</span><span class="tok-mi">4</span><span class="tok-p">)</span> <i class="conum" data-value="1"></i><b>(1)</b>
-<span class="tok-k">print</span> <span class="tok-n">multiply</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">7</span><span class="tok-p">)</span>
+<span class="tok-k">print</span> <span class="tok-p">(</span><span class="tok-n">somme</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">,</span><span class="tok-mi">4</span><span class="tok-p">))</span> <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="tok-k">print</span> <span class="tok-p">(</span><span class="tok-n">multiply</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">7</span><span class="tok-p">))</span>
 
 <span class="tok-n">a</span> <span class="tok-o">=</span> <span class="tok-mi">5</span>
 <span class="tok-n">b</span> <span class="tok-o">=</span> <span class="tok-mi">2</span>
 
 <span class="tok-c"># On peux passer des variables directement</span>
-<span class="tok-k">print</span> <span class="tok-n">somme</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-n">a</span><span class="tok-p">)</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">somme</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-n">a</span><span class="tok-p">))</span>
 
 <span class="tok-c"># ou en les modifiant/ faisant des calculs intermédiaires</span>
-<span class="tok-k">print</span> <span class="tok-n">multiply</span><span class="tok-p">(</span><span class="tok-n">a</span> <span class="tok-o">+</span> <span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">3</span> <span class="tok-o">*</span> <span class="tok-mi">2</span> <span class="tok-o">+</span> <span class="tok-n">b</span><span class="tok-p">)</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">multiply</span><span class="tok-p">(</span><span class="tok-n">a</span> <span class="tok-o">+</span> <span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">3</span> <span class="tok-o">*</span> <span class="tok-mi">2</span> <span class="tok-o">+</span> <span class="tok-n">b</span><span class="tok-p">))</span>
 
 <span class="tok-c"># les appels de fonctions sont empilables sans aucune limite</span>
-<span class="tok-k">print</span> <span class="tok-n">somme</span><span class="tok-p">(</span><span class="tok-n">multiply</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">3</span><span class="tok-p">),</span><span class="tok-n">somme</span><span class="tok-p">(</span><span class="tok-mi">4</span><span class="tok-p">,</span><span class="tok-n">b</span> <span class="tok-o">+</span> <span class="tok-n">multiply</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">8</span><span class="tok-p">)))</span> <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+<span class="tok-k">print</span> <span class="tok-p">(</span><span class="tok-n">somme</span><span class="tok-p">(</span><span class="tok-n">multiply</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">3</span><span class="tok-p">),</span><span class="tok-n">somme</span><span class="tok-p">(</span><span class="tok-mi">4</span><span class="tok-p">,</span><span class="tok-n">b</span> <span class="tok-o">+</span> <span class="tok-n">multiply</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">8</span><span class="tok-p">))))</span> <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -1872,24 +1872,24 @@ Elles sont visibles de partout dans votre programme, mais nous verrons par la su
 
 <span class="tok-k">def</span> <span class="tok-nf">foo1</span><span class="tok-p">():</span>
    <span class="tok-n">Y</span> <span class="tok-o">=</span> <span class="tok-mi">55</span> <i class="conum" data-value="2"></i><b>(2)</b>
-   <span class="tok-k">print</span> <span class="tok-n">Y</span>
+   <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">Y</span><span class="tok-p">)</span>
 
 <span class="tok-n">foo1</span><span class="tok-p">()</span>
-<span class="tok-k">print</span> <span class="tok-n">Y</span> <span class="tok-c"># ne marchera pas </span><i class="conum" data-value="3"></i><b>(3)</b>
+<span class="tok-k">print</span> <span class="tok-p">(</span><span class="tok-n">Y</span><span class="tok-p">)</span> <span class="tok-c"># ne marchera pas </span><i class="conum" data-value="3"></i><b>(3)</b>
 
 <span class="tok-c"># On tente de redéfinir X dans cette fonction foo()</span>
 <span class="tok-k">def</span> <span class="tok-nf">foo2</span><span class="tok-p">():</span>
    <span class="tok-n">X</span> <span class="tok-o">=</span> <span class="tok-mi">88</span> <i class="conum" data-value="4"></i><b>(4)</b>
 
 <span class="tok-n">foo2</span><span class="tok-p">()</span>
-<span class="tok-k">print</span> <span class="tok-n">X</span> <span class="tok-c"># X n&#39;a pas bougé du fait de  &lt;4&gt; ...</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">X</span> <span class="tok-p">)</span> <span class="tok-c"># X n&#39;a pas bougé du fait de  &lt;4&gt; ...</span>
 
 <span class="tok-c"># La aussi, ce code ne changera pas la valeur de la variable globale X = 99</span>
 <span class="tok-k">def</span> <span class="tok-nf">foo3</span><span class="tok-p">(</span><span class="tok-n">X</span><span class="tok-p">):</span>
    <span class="tok-n">X</span> <span class="tok-o">=</span> <span class="tok-n">X</span> <span class="tok-o">+</span> <span class="tok-mi">1</span> <i class="conum" data-value="5"></i><b>(5)</b>
 
 <span class="tok-n">foo3</span><span class="tok-p">(</span><span class="tok-n">X</span><span class="tok-p">)</span>
-<span class="tok-k">print</span> <span class="tok-n">X</span>
+<span class="tok-k">print</span> <span class="tok-p">(</span><span class="tok-n">X</span><span class="tok-p">)</span>
 
 <span class="tok-c"># Accès à la variable globale en lecture</span>
 <span class="tok-k">def</span> <span class="tok-nf">foo4</span><span class="tok-p">(</span><span class="tok-n">Y</span><span class="tok-p">):</span>
@@ -1905,7 +1905,7 @@ Elles sont visibles de partout dans votre programme, mais nous verrons par la su
    <span class="tok-n">X</span> <span class="tok-o">=</span> <span class="tok-n">X</span> <span class="tok-o">+</span> <span class="tok-mi">1</span> <i class="conum" data-value="7"></i><b>(7)</b>
 
 <span class="tok-n">foo5</span><span class="tok-p">()</span>
-<span class="tok-k">print</span> <span class="tok-n">X</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">X</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -2004,8 +2004,8 @@ Ici vous aurez une erreur, car il va tenter d&#8217;incrémenter la variable loc
 
 <span class="tok-n">modif</span><span class="tok-p">(</span><span class="tok-n">x</span><span class="tok-p">,</span><span class="tok-nb">list</span><span class="tok-p">)</span>
 
-<span class="tok-k">print</span> <span class="tok-n">x</span> <span class="tok-c"># valeur inchangé</span>
-<span class="tok-k">print</span> <span class="tok-nb">list</span> <span class="tok-c"># valeur changé</span></code></pre>
+<span class="tok-k">print</span> <span class="tok-p">(</span><span class="tok-n">x</span><span class="tok-p">)</span> <span class="tok-c"># valeur inchangé</span>
+<span class="tok-k">print</span> <span class="tok-p">(</span><span class="tok-nb">list</span><span class="tok-p">)</span> <span class="tok-c"># valeur changé</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2052,7 +2052,7 @@ Nous ne changeons pas <code>b</code>, mais un élément de la liste représenté
    <span class="tok-n">sac</span> <span class="tok-o">=</span> <span class="tok-n">sac</span> <span class="tok-o">+</span> <span class="tok-n">nbOr</span>
    <span class="tok-k">return</span> <span class="tok-n">sac</span>
 
-<span class="tok-k">print</span> <span class="tok-n">calcul</span><span class="tok-p">(</span><span class="tok-n">sac</span><span class="tok-p">,</span><span class="tok-mi">20</span><span class="tok-p">)</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">calcul</span><span class="tok-p">(</span><span class="tok-n">sac</span><span class="tok-p">,</span><span class="tok-mi">20</span><span class="tok-p">))</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2076,7 +2076,7 @@ Nous ne changeons pas <code>b</code>, mais un élément de la liste représenté
    <span class="tok-n">sac</span> <span class="tok-o">=</span> <span class="tok-n">sac</span> <span class="tok-o">+</span> <span class="tok-n">nbOr</span> <i class="conum" data-value="3"></i><b>(3)</b>
 
 <span class="tok-n">calcul</span><span class="tok-p">(</span><span class="tok-mi">20</span><span class="tok-p">)</span>
-<span class="tok-k">print</span> <span class="tok-n">sac</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">sac</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -2113,7 +2113,7 @@ Ce qui n&#8217;exclue pas la possibilité d&#8217;avoir plusieurs fonctions <cod
         <span class="tok-k">print</span><span class="tok-p">(</span><span class="tok-s">&quot;pas de taxe pour les pauvres&quot;</span><span class="tok-p">)</span>
         <span class="tok-k">return</span> <span class="tok-n">sac</span>
 
-<span class="tok-k">print</span> <span class="tok-n">douane</span><span class="tok-p">(</span><span class="tok-n">sac</span><span class="tok-p">)</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">douane</span><span class="tok-p">(</span><span class="tok-n">sac</span><span class="tok-p">))</span></code></pre>
 </div>
 </div>
 </div>
@@ -2139,15 +2139,15 @@ c&#8217;est que les listes sont <strong>forcément dynamiques</strong>, et elles
 
 <span class="tok-c"># 1 dimension</span>
 <span class="tok-n">listA</span> <span class="tok-o">=</span> <span class="tok-p">[</span> <span class="tok-mi">1</span><span class="tok-p">,</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">3</span><span class="tok-p">,</span><span class="tok-mi">4</span> <span class="tok-p">]</span>
-<span class="tok-k">print</span> <span class="tok-nb">len</span><span class="tok-p">(</span><span class="tok-n">listA</span><span class="tok-p">)</span> <span class="tok-c"># 4 elements</span>
+<span class="tok-k">print</span> <span class="tok-p">(</span><span class="tok-nb">len</span><span class="tok-p">(</span><span class="tok-n">listA</span><span class="tok-p">))</span> <span class="tok-c"># 4 elements</span>
 
 <span class="tok-c"># 2 dimension matrice</span>
 <span class="tok-n">listB</span> <span class="tok-o">=</span> <span class="tok-p">[</span> <span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">,</span><span class="tok-mi">2</span><span class="tok-p">],[</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">3</span><span class="tok-p">],[</span><span class="tok-mi">4</span><span class="tok-p">,</span><span class="tok-mi">5</span><span class="tok-p">]]</span>
-<span class="tok-k">print</span> <span class="tok-n">listB</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">listB</span><span class="tok-p">)</span>
 
 <span class="tok-c"># 2 dimension non symmétrique</span>
 <span class="tok-n">listC</span> <span class="tok-o">=</span> <span class="tok-p">[[</span><span class="tok-mi">1</span><span class="tok-p">,</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">3</span><span class="tok-p">],</span> <span class="tok-p">[</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">1</span><span class="tok-p">],</span> <span class="tok-p">[</span><span class="tok-mi">4</span><span class="tok-p">]]</span>
-<span class="tok-k">print</span> <span class="tok-n">listC</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">listC</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2160,7 +2160,7 @@ c&#8217;est que les listes sont <strong>forcément dynamiques</strong>, et elles
 <span class="tok-n">listB</span> <span class="tok-o">=</span> <span class="tok-p">[</span> <span class="tok-mi">1</span><span class="tok-p">,</span><span class="tok-mi">2</span> <span class="tok-p">]</span>
 <span class="tok-n">listC</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-n">listA</span><span class="tok-p">,</span> <span class="tok-n">listB</span><span class="tok-p">]</span>
 
-<span class="tok-k">print</span> <span class="tok-n">listC</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">listC</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2173,7 +2173,7 @@ c&#8217;est que les listes sont <strong>forcément dynamiques</strong>, et elles
 <span class="tok-k">for</span> <span class="tok-n">i</span> <span class="tok-ow">in</span> <span class="tok-nb">range</span><span class="tok-p">(</span><span class="tok-mi">3</span><span class="tok-p">):</span>
   <span class="tok-n">listA</span><span class="tok-o">.</span><span class="tok-n">append</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">)</span>
 
-<span class="tok-k">print</span> <span class="tok-n">listA</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">listA</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2193,8 +2193,8 @@ c&#8217;est que les listes sont <strong>forcément dynamiques</strong>, et elles
   <span class="tok-k">return</span> <span class="tok-n">a</span> <span class="tok-o">*</span> <span class="tok-n">b</span>
 
 <span class="tok-n">listd</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-n">somme</span><span class="tok-p">,</span><span class="tok-n">multiply</span><span class="tok-p">]</span>
-<span class="tok-k">print</span> <span class="tok-n">listd</span><span class="tok-p">[</span><span class="tok-mi">0</span><span class="tok-p">](</span><span class="tok-mi">1</span><span class="tok-p">,</span><span class="tok-mi">2</span><span class="tok-p">)</span>
-<span class="tok-k">print</span> <span class="tok-n">listd</span><span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">](</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">9</span><span class="tok-p">)</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">listd</span><span class="tok-p">[</span><span class="tok-mi">0</span><span class="tok-p">](</span><span class="tok-mi">1</span><span class="tok-p">,</span><span class="tok-mi">2</span><span class="tok-p">))</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">listd</span><span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">](</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">9</span><span class="tok-p">))</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2205,16 +2205,16 @@ c&#8217;est que les listes sont <strong>forcément dynamiques</strong>, et elles
 <div class="content">
 <pre class="pygments highlight"><code data-lang="python"><span class="tok-c"># 1 dimension</span>
 <span class="tok-n">listA</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">,</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">3</span><span class="tok-p">,</span><span class="tok-mi">4</span><span class="tok-p">]</span>
-<span class="tok-k">print</span> <span class="tok-n">listA</span><span class="tok-p">[</span><span class="tok-mi">0</span><span class="tok-p">]</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">listA</span><span class="tok-p">[</span><span class="tok-mi">0</span><span class="tok-p">])</span>
 
 <span class="tok-c"># 2 dimension matrice</span>
 <span class="tok-n">listB</span> <span class="tok-o">=</span> <span class="tok-p">[[</span><span class="tok-mi">1</span><span class="tok-p">,</span><span class="tok-mi">2</span><span class="tok-p">],[</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">3</span><span class="tok-p">],[</span><span class="tok-mi">4</span><span class="tok-p">,</span><span class="tok-mi">5</span><span class="tok-p">]]</span>
-<span class="tok-k">print</span> <span class="tok-n">listB</span><span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">][</span><span class="tok-mi">0</span><span class="tok-p">]</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">listB</span><span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">][</span><span class="tok-mi">0</span><span class="tok-p">])</span>
 
 <span class="tok-c"># 2 dimension non symmétrique</span>
 <span class="tok-n">listC</span> <span class="tok-o">=</span> <span class="tok-p">[[</span><span class="tok-mi">1</span><span class="tok-p">,</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">3</span><span class="tok-p">],</span> <span class="tok-p">[</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">1</span><span class="tok-p">],</span> <span class="tok-p">[</span><span class="tok-mi">4</span><span class="tok-p">]]</span>
-<span class="tok-k">print</span> <span class="tok-n">listC</span><span class="tok-p">[</span><span class="tok-mi">0</span><span class="tok-p">][</span><span class="tok-mi">2</span><span class="tok-p">]</span>
-<span class="tok-k">print</span> <span class="tok-n">listC</span><span class="tok-p">[</span><span class="tok-mi">2</span><span class="tok-p">][</span><span class="tok-mi">0</span><span class="tok-p">]</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">listC</span><span class="tok-p">[</span><span class="tok-mi">0</span><span class="tok-p">][</span><span class="tok-mi">2</span><span class="tok-p">])</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">listC</span><span class="tok-p">[</span><span class="tok-mi">2</span><span class="tok-p">][</span><span class="tok-mi">0</span><span class="tok-p">])</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2270,8 +2270,8 @@ c&#8217;est que les listes sont <strong>forcément dynamiques</strong>, et elles
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="python"><span class="tok-k">print</span> <span class="tok-n">L1</span>
-<span class="tok-k">print</span> <span class="tok-n">L2</span></code></pre>
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">L1</span><span class="tok-p">)</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">L2</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="imageblock" style="text-align: center">
@@ -2287,8 +2287,8 @@ c&#8217;est que les listes sont <strong>forcément dynamiques</strong>, et elles
 <div class="content">
 <pre class="pygments highlight"><code data-lang="python"><span class="tok-n">L1</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">3</span><span class="tok-p">]</span>
 <span class="tok-n">L2</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-n">L1</span><span class="tok-p">,</span> <span class="tok-mi">8</span><span class="tok-p">]</span> <span class="tok-c"># L2 contient une référence vers L1</span>
-<span class="tok-k">print</span> <span class="tok-n">L1</span>
-<span class="tok-k">print</span> <span class="tok-n">L2</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">L1</span><span class="tok-p">)</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">L2</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2300,12 +2300,12 @@ c&#8217;est que les listes sont <strong>forcément dynamiques</strong>, et elles
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="python"><span class="tok-n">L2</span><span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">]</span><span class="tok-o">.</span><span class="tok-n">append</span><span class="tok-p">(</span><span class="tok-mi">5</span><span class="tok-p">)</span>
-<span class="tok-k">print</span> <span class="tok-n">L1</span>
-<span class="tok-k">print</span> <span class="tok-n">L2</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">L1</span><span class="tok-p">)</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">L2</span><span class="tok-p">)</span>
 <span class="tok-c"># marche aussi en modifiant L1</span>
 <span class="tok-n">L1</span><span class="tok-o">.</span><span class="tok-n">append</span><span class="tok-p">(</span><span class="tok-mi">8</span><span class="tok-p">)</span>
-<span class="tok-k">print</span> <span class="tok-n">L1</span>
-<span class="tok-k">print</span> <span class="tok-n">L2</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">L1</span><span class="tok-p">)</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">L2</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2327,8 +2327,8 @@ c&#8217;est que les listes sont <strong>forcément dynamiques</strong>, et elles
 <div class="content">
 <pre class="pygments highlight"><code data-lang="python"><span class="tok-n">L1</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">3</span><span class="tok-p">]</span>
 <span class="tok-n">L2</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-n">L1</span><span class="tok-p">[:],</span> <span class="tok-mi">8</span><span class="tok-p">]</span> <span class="tok-c"># L2 contient une re-copie de la liste L1</span>
-<span class="tok-k">print</span> <span class="tok-n">L1</span>
-<span class="tok-k">print</span> <span class="tok-n">L2</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">L1</span><span class="tok-p">)</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">L2</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2339,18 +2339,18 @@ c&#8217;est que les listes sont <strong>forcément dynamiques</strong>, et elles
 <div class="content">
 <pre class="pygments highlight"><code data-lang="python"><span class="tok-c"># 1 dimension</span>
 <span class="tok-n">listA</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">,</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">3</span><span class="tok-p">,</span><span class="tok-mi">4</span><span class="tok-p">]</span>
-<span class="tok-k">print</span> <span class="tok-nb">len</span><span class="tok-p">(</span><span class="tok-n">listA</span><span class="tok-p">)</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-nb">len</span><span class="tok-p">(</span><span class="tok-n">listA</span><span class="tok-p">))</span>
 
 <span class="tok-c"># 2 dimension matrice</span>
 <span class="tok-n">listB</span> <span class="tok-o">=</span> <span class="tok-p">[[</span><span class="tok-mi">1</span><span class="tok-p">,</span><span class="tok-mi">2</span><span class="tok-p">],[</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">3</span><span class="tok-p">],[</span><span class="tok-mi">4</span><span class="tok-p">,</span><span class="tok-mi">5</span><span class="tok-p">]]</span>
-<span class="tok-k">print</span> <span class="tok-nb">len</span><span class="tok-p">(</span><span class="tok-n">listB</span><span class="tok-p">)</span> <span class="tok-p">,</span> <span class="tok-s">&quot;/&quot;</span> <span class="tok-p">,</span> <span class="tok-nb">len</span><span class="tok-p">(</span><span class="tok-n">listB</span><span class="tok-p">[</span><span class="tok-mi">0</span><span class="tok-p">]),</span> <span class="tok-s">&quot;/&quot;</span><span class="tok-p">,</span> <span class="tok-nb">len</span><span class="tok-p">(</span><span class="tok-n">listB</span><span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">]),</span> <span class="tok-s">&quot;/&quot;</span><span class="tok-p">,</span> <span class="tok-nb">len</span><span class="tok-p">(</span><span class="tok-n">listB</span><span class="tok-p">[</span><span class="tok-mi">2</span><span class="tok-p">])</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-nb">len</span><span class="tok-p">(</span><span class="tok-n">listB</span><span class="tok-p">)</span> <span class="tok-p">,</span> <span class="tok-s">&quot;/&quot;</span> <span class="tok-p">,</span> <span class="tok-nb">len</span><span class="tok-p">(</span><span class="tok-n">listB</span><span class="tok-p">[</span><span class="tok-mi">0</span><span class="tok-p">]),</span> <span class="tok-s">&quot;/&quot;</span><span class="tok-p">,</span> <span class="tok-nb">len</span><span class="tok-p">(</span><span class="tok-n">listB</span><span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">]),</span> <span class="tok-s">&quot;/&quot;</span><span class="tok-p">,</span> <span class="tok-nb">len</span><span class="tok-p">(</span><span class="tok-n">listB</span><span class="tok-p">[</span><span class="tok-mi">2</span><span class="tok-p">]))</span>
 
 <span class="tok-c"># 2 dimension non symmétrique</span>
 <span class="tok-n">listC</span> <span class="tok-o">=</span> <span class="tok-p">[[</span><span class="tok-mi">1</span><span class="tok-p">,</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">3</span><span class="tok-p">],</span> <span class="tok-p">[</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">1</span><span class="tok-p">],</span> <span class="tok-p">[</span><span class="tok-mi">4</span><span class="tok-p">]]</span>
-<span class="tok-k">print</span> <span class="tok-nb">len</span><span class="tok-p">(</span><span class="tok-n">listC</span><span class="tok-p">)</span>
-<span class="tok-k">print</span> <span class="tok-nb">len</span><span class="tok-p">(</span><span class="tok-n">listC</span><span class="tok-p">[</span><span class="tok-mi">0</span><span class="tok-p">])</span>
-<span class="tok-k">print</span> <span class="tok-nb">len</span><span class="tok-p">(</span><span class="tok-n">listC</span><span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">])</span>
-<span class="tok-k">print</span> <span class="tok-nb">len</span><span class="tok-p">(</span><span class="tok-n">listC</span><span class="tok-p">[</span><span class="tok-mi">2</span><span class="tok-p">])</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-nb">len</span><span class="tok-p">(</span><span class="tok-n">listC</span><span class="tok-p">))</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-nb">len</span><span class="tok-p">(</span><span class="tok-n">listC</span><span class="tok-p">[</span><span class="tok-mi">0</span><span class="tok-p">]))</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-nb">len</span><span class="tok-p">(</span><span class="tok-n">listC</span><span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">]))</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-nb">len</span><span class="tok-p">(</span><span class="tok-n">listC</span><span class="tok-p">[</span><span class="tok-mi">2</span><span class="tok-p">]))</span></code></pre>
 </div>
 </div>
 </div>
@@ -2363,8 +2363,8 @@ c&#8217;est que les listes sont <strong>forcément dynamiques</strong>, et elles
 <span class="tok-n">listB</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-s">&quot;gerard&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;paul&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;albert&quot;</span><span class="tok-p">]</span>
 <span class="tok-n">listA</span><span class="tok-p">[</span><span class="tok-mi">0</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-mi">2</span>
 <span class="tok-n">listB</span><span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-s">&quot;Edouard&quot;</span>
-<span class="tok-k">print</span> <span class="tok-n">listA</span>
-<span class="tok-k">print</span> <span class="tok-n">listB</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">listA</span><span class="tok-p">)</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">listB</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2404,21 +2404,21 @@ La plupart de ces méthodes/fonctions ne retournent rien, et modifient la liste 
 <div class="content">
 <pre class="pygments highlight"><code data-lang="python"><span class="tok-n">listA</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">,</span><span class="tok-mi">5</span><span class="tok-p">,</span><span class="tok-mi">3</span><span class="tok-p">]</span>
 <span class="tok-n">listA</span><span class="tok-o">.</span><span class="tok-n">append</span><span class="tok-p">(</span><span class="tok-mi">4</span><span class="tok-p">)</span>
-<span class="tok-k">print</span> <span class="tok-n">listA</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">listA</span><span class="tok-p">)</span>
 
 <span class="tok-n">listB</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-s">&quot;oeuf&quot;</span><span class="tok-p">,</span><span class="tok-s">&quot;jambon&quot;</span><span class="tok-p">]</span>
 <span class="tok-n">listB</span><span class="tok-o">.</span><span class="tok-n">append</span><span class="tok-p">(</span><span class="tok-s">&quot;Frites&quot;</span><span class="tok-p">)</span>
-<span class="tok-k">print</span> <span class="tok-n">listB</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">listB</span><span class="tok-p">)</span>
 
 <span class="tok-n">listC</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-s">&quot;gerard&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;paul&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;albert&quot;</span><span class="tok-p">]</span>
 <span class="tok-n">listC</span><span class="tok-o">.</span><span class="tok-n">append</span><span class="tok-p">([</span><span class="tok-s">&quot;Eleonore&quot;</span><span class="tok-p">,</span><span class="tok-mi">5</span><span class="tok-p">])</span>
-<span class="tok-k">print</span> <span class="tok-n">listC</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">listC</span><span class="tok-p">)</span>
 
 <span class="tok-n">listD</span> <span class="tok-o">=</span> <span class="tok-p">[]</span>
 <span class="tok-n">listD</span><span class="tok-o">.</span><span class="tok-n">append</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">)</span>
 <span class="tok-n">listD</span><span class="tok-o">.</span><span class="tok-n">append</span><span class="tok-p">([</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">3</span><span class="tok-p">])</span>
 <span class="tok-n">listD</span><span class="tok-o">.</span><span class="tok-n">append</span><span class="tok-p">(</span><span class="tok-s">&quot;test&quot;</span><span class="tok-p">)</span>
-<span class="tok-k">print</span> <span class="tok-n">listD</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">listD</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -2427,7 +2427,7 @@ La plupart de ces méthodes/fonctions ne retournent rien, et modifient la liste 
 <pre class="pygments highlight"><code data-lang="python"><span class="tok-n">listA</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">,</span><span class="tok-mi">5</span><span class="tok-p">,</span><span class="tok-mi">3</span><span class="tok-p">]</span>
 <span class="tok-c"># Insérer un 8 à la position 2 se fait avec la commande suivante :</span>
 <span class="tok-n">listA</span><span class="tok-o">.</span><span class="tok-n">insert</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">8</span><span class="tok-p">)</span>
-<span class="tok-k">print</span> <span class="tok-n">listA</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">listA</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -2435,12 +2435,12 @@ La plupart de ces méthodes/fonctions ne retournent rien, et modifient la liste 
 <div class="content">
 <pre class="pygments highlight"><code data-lang="python"><span class="tok-n">listA</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">,</span><span class="tok-mi">5</span><span class="tok-p">,</span><span class="tok-mi">3</span><span class="tok-p">]</span>
 <span class="tok-c"># pop renvoie la valeur supprimé</span>
-<span class="tok-k">print</span> <span class="tok-s">&quot;element supprimé = &quot;</span> <span class="tok-p">,</span> <span class="tok-n">listA</span><span class="tok-o">.</span><span class="tok-n">pop</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">)</span>
-<span class="tok-k">print</span> <span class="tok-s">&quot;liste après suppression&quot;</span><span class="tok-p">,</span> <span class="tok-n">listA</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;element supprimé = &quot;</span> <span class="tok-p">,</span> <span class="tok-n">listA</span><span class="tok-o">.</span><span class="tok-n">pop</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">))</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;liste après suppression&quot;</span><span class="tok-p">,</span> <span class="tok-n">listA</span><span class="tok-p">)</span>
 
 <span class="tok-n">listB</span> <span class="tok-o">=</span> <span class="tok-p">[[</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">3</span><span class="tok-p">],[</span><span class="tok-mi">1</span><span class="tok-p">,</span><span class="tok-mi">4</span><span class="tok-p">]]</span>
-<span class="tok-k">print</span> <span class="tok-s">&quot;element supprimé = &quot;</span> <span class="tok-p">,</span> <span class="tok-n">listB</span><span class="tok-p">[</span><span class="tok-mi">0</span><span class="tok-p">]</span><span class="tok-o">.</span><span class="tok-n">pop</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">)</span>
-<span class="tok-k">print</span> <span class="tok-s">&quot;liste après suppression&quot;</span><span class="tok-p">,</span> <span class="tok-n">listB</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;element supprimé = &quot;</span> <span class="tok-p">,</span> <span class="tok-n">listB</span><span class="tok-p">[</span><span class="tok-mi">0</span><span class="tok-p">]</span><span class="tok-o">.</span><span class="tok-n">pop</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">))</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;liste après suppression&quot;</span><span class="tok-p">,</span> <span class="tok-n">listB</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -2451,11 +2451,11 @@ La plupart de ces méthodes/fonctions ne retournent rien, et modifient la liste 
 
 <span class="tok-c">#Enleve le chiffre 5 de la liste A</span>
 <span class="tok-n">listA</span><span class="tok-o">.</span><span class="tok-n">remove</span><span class="tok-p">(</span><span class="tok-mi">5</span><span class="tok-p">)</span>
-<span class="tok-k">print</span> <span class="tok-n">listA</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">listA</span><span class="tok-p">)</span>
 
 <span class="tok-c"># Enleve la première occurence 4 de la liste B</span>
 <span class="tok-n">listB</span><span class="tok-o">.</span><span class="tok-n">remove</span><span class="tok-p">(</span><span class="tok-mi">4</span><span class="tok-p">)</span>
-<span class="tok-k">print</span> <span class="tok-n">listB</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">listB</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -2465,9 +2465,9 @@ La plupart de ces méthodes/fonctions ne retournent rien, et modifient la liste 
 <span class="tok-n">listB</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">4</span><span class="tok-p">,</span><span class="tok-mi">3</span><span class="tok-p">,</span><span class="tok-mi">4</span><span class="tok-p">]</span>
 <span class="tok-n">listC</span> <span class="tok-o">=</span> <span class="tok-p">[[</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">3</span><span class="tok-p">],[</span><span class="tok-mi">1</span><span class="tok-p">,</span><span class="tok-mi">4</span><span class="tok-p">]]</span>
 
-<span class="tok-k">print</span> <span class="tok-s">&quot;index liste A = &quot;</span><span class="tok-p">,</span> <span class="tok-n">listA</span><span class="tok-o">.</span><span class="tok-n">index</span><span class="tok-p">(</span><span class="tok-mi">3</span><span class="tok-p">)</span>
-<span class="tok-k">print</span> <span class="tok-s">&quot;index liste B = &quot;</span><span class="tok-p">,</span> <span class="tok-n">listB</span><span class="tok-o">.</span><span class="tok-n">index</span><span class="tok-p">(</span><span class="tok-mi">4</span><span class="tok-p">)</span> <span class="tok-c"># Ne renvoie l&#39;index que de la première valeur trouvée</span>
-<span class="tok-k">print</span> <span class="tok-s">&quot;index liste C = &quot;</span><span class="tok-p">,</span> <span class="tok-n">listC</span><span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">]</span><span class="tok-o">.</span><span class="tok-n">index</span><span class="tok-p">(</span><span class="tok-mi">4</span><span class="tok-p">)</span> <span class="tok-c"># Marche aussi sur les tableau deux dimensions, a condition d&#39;indiquer la dimension de recherche !!</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;index liste A = &quot;</span><span class="tok-p">,</span> <span class="tok-n">listA</span><span class="tok-o">.</span><span class="tok-n">index</span><span class="tok-p">(</span><span class="tok-mi">3</span><span class="tok-p">))</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;index liste B = &quot;</span><span class="tok-p">,</span> <span class="tok-n">listB</span><span class="tok-o">.</span><span class="tok-n">index</span><span class="tok-p">(</span><span class="tok-mi">4</span><span class="tok-p">))</span> <span class="tok-c"># Ne renvoie l&#39;index que de la première valeur trouvée</span>
+<span class="tok-k">print</span><span class="tok-p">(</span><span class="tok-s">&quot;index liste C = &quot;</span><span class="tok-p">,</span> <span class="tok-n">listC</span><span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">]</span><span class="tok-o">.</span><span class="tok-n">index</span><span class="tok-p">(</span><span class="tok-mi">4</span><span class="tok-p">))</span> <span class="tok-c"># Marche aussi sur les tableau deux dimensions, a condition d&#39;indiquer la dimension de recherche !!</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -2477,15 +2477,15 @@ La plupart de ces méthodes/fonctions ne retournent rien, et modifient la liste 
 <span class="tok-n">listB</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-mi">2</span><span class="tok-p">,[</span><span class="tok-mi">4</span><span class="tok-p">,</span><span class="tok-mi">3</span><span class="tok-p">]]</span>
 <span class="tok-n">listC</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-s">&quot;gerard&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;paul&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;albert&quot;</span><span class="tok-p">]</span>
 
-<span class="tok-k">print</span> <span class="tok-n">listA</span> <span class="tok-o">+</span> <span class="tok-n">listB</span>
-<span class="tok-k">print</span> <span class="tok-n">listA</span> <span class="tok-o">+</span> <span class="tok-n">listC</span> <span class="tok-o">+</span> <span class="tok-n">listB</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">listA</span> <span class="tok-o">+</span> <span class="tok-n">listB</span><span class="tok-p">)</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">listA</span> <span class="tok-o">+</span> <span class="tok-n">listC</span> <span class="tok-o">+</span> <span class="tok-n">listB</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Multiplication</div>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="python"><span class="tok-n">listA</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">,</span><span class="tok-mi">5</span><span class="tok-p">,</span><span class="tok-mi">3</span><span class="tok-p">]</span>
-<span class="tok-k">print</span> <span class="tok-n">listA</span> <span class="tok-o">*</span> <span class="tok-mi">2</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">listA</span> <span class="tok-o">*</span> <span class="tok-mi">2</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -2501,9 +2501,9 @@ La plupart de ces méthodes/fonctions ne retournent rien, et modifient la liste 
 <span class="tok-n">listC</span><span class="tok-p">[</span><span class="tok-mi">0</span><span class="tok-p">]</span><span class="tok-o">.</span><span class="tok-n">sort</span><span class="tok-p">()</span>
 <span class="tok-n">listC</span><span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">]</span><span class="tok-o">.</span><span class="tok-n">sort</span><span class="tok-p">()</span>
 
-<span class="tok-k">print</span> <span class="tok-n">listA</span>
-<span class="tok-k">print</span> <span class="tok-n">listB</span>
-<span class="tok-k">print</span> <span class="tok-n">listC</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">listA</span><span class="tok-p">)</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">listB</span><span class="tok-p">)</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">listC</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2517,8 +2517,8 @@ Par mutable, il faut comprendre qu&#8217;elles sont donc modifiables en l&#8217;
 <span class="tok-n">listB</span> <span class="tok-o">=</span> <span class="tok-n">listA</span><span class="tok-p">[:]</span>
 <span class="tok-n">listB</span><span class="tok-o">.</span><span class="tok-n">append</span><span class="tok-p">(</span><span class="tok-mi">8</span><span class="tok-p">)</span>
 
-<span class="tok-k">print</span> <span class="tok-n">listA</span>
-<span class="tok-k">print</span> <span class="tok-n">listB</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">listA</span><span class="tok-p">)</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">listB</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -2666,9 +2666,9 @@ pour vérifier la présence (ou la non présence) d&#8217;un élément dans une 
 <span class="tok-n">element</span> <span class="tok-o">=</span> <span class="tok-nb">raw_input</span><span class="tok-p">(</span><span class="tok-s">&quot;Quel nom  ? &gt; &quot;</span><span class="tok-p">)</span>
 
 <span class="tok-k">if</span> <span class="tok-n">element</span> <span class="tok-ow">not</span> <span class="tok-ow">in</span> <span class="tok-n">myList</span><span class="tok-p">:</span>
-   <span class="tok-k">print</span> <span class="tok-s">&quot;L&#39;element n&#39;est pas présent! &quot;</span>
+   <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;L&#39;element n&#39;est pas présent! &quot;</span><span class="tok-p">)</span>
 <span class="tok-k">else</span><span class="tok-p">:</span>
-   <span class="tok-k">print</span> <span class="tok-s">&quot;L&#39;element est présent = &quot;</span><span class="tok-p">,</span> <span class="tok-n">element</span></code></pre>
+   <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;L&#39;element est présent = &quot;</span><span class="tok-p">,</span> <span class="tok-n">element</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2679,7 +2679,7 @@ pour vérifier la présence (ou la non présence) d&#8217;un élément dans une 
 <pre class="pygments highlight"><code data-lang="python"><span class="tok-n">censor</span> <span class="tok-o">=</span> <span class="tok-p">[</span> <span class="tok-s">&#39;bugger&#39;</span><span class="tok-p">,</span> <span class="tok-s">&#39;nickle&#39;</span> <span class="tok-p">]</span>
 <span class="tok-n">word</span> <span class="tok-o">=</span> <span class="tok-s">&#39;bugger&#39;</span>
 <span class="tok-k">if</span> <span class="tok-n">word</span> <span class="tok-ow">in</span> <span class="tok-n">censor</span><span class="tok-p">:</span>
-   <span class="tok-k">print</span> <span class="tok-s">&#39;CENSORED&#39;</span></code></pre>
+   <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&#39;CENSORED&#39;</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 </div>
@@ -2720,7 +2720,7 @@ pour vérifier la présence (ou la non présence) d&#8217;un élément dans une 
 <div class="content">
 <pre class="pygments highlight"><code data-lang="python"><span class="tok-n">count</span> <span class="tok-o">=</span> <span class="tok-mi">0</span>
 <span class="tok-k">while</span> <span class="tok-p">(</span><span class="tok-n">count</span> <span class="tok-o">&lt;</span> <span class="tok-mi">9</span><span class="tok-p">):</span>
-   <span class="tok-k">print</span> <span class="tok-s">&#39;The count is:&#39;</span><span class="tok-p">,</span> <span class="tok-n">count</span>
+   <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&#39;The count is:&#39;</span><span class="tok-p">,</span> <span class="tok-n">count</span><span class="tok-p">)</span>
    <span class="tok-n">count</span> <span class="tok-o">=</span> <span class="tok-n">count</span> <span class="tok-o">+</span> <span class="tok-mi">1</span></code></pre>
 </div>
 </div>
@@ -2756,12 +2756,12 @@ Il est possible d&#8217;obtenir le même comportement en utilisant la fonction <
 <pre class="pygments highlight"><code data-lang="python"><span class="tok-c"># Avec une liste simple</span>
 <span class="tok-n">myList</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-s">&quot;alex&quot;</span><span class="tok-p">,</span><span class="tok-s">&quot;paul&quot;</span><span class="tok-p">,</span><span class="tok-s">&quot;gerard&quot;</span><span class="tok-p">,</span><span class="tok-s">&quot;martine&quot;</span><span class="tok-p">,</span><span class="tok-s">&quot;helene&quot;</span><span class="tok-p">,</span><span class="tok-s">&quot;laurent&quot;</span><span class="tok-p">]</span>
 <span class="tok-k">for</span> <span class="tok-n">element</span> <span class="tok-ow">in</span> <span class="tok-n">myList</span><span class="tok-p">:</span>
-   <span class="tok-k">print</span> <span class="tok-s">&quot;L&#39;element est = &quot;</span><span class="tok-p">,</span> <span class="tok-n">element</span>
+   <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;L&#39;element est = &quot;</span><span class="tok-p">,</span> <span class="tok-n">element</span><span class="tok-p">)</span>
 
 <span class="tok-c"># ou avec une liste plus complexe</span>
 <span class="tok-n">myList</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-s">&#39;paul&#39;</span><span class="tok-p">,</span> <span class="tok-s">&quot;laurent&quot;</span><span class="tok-p">,</span> <span class="tok-mi">4</span><span class="tok-p">,</span> <span class="tok-p">[</span><span class="tok-mi">3</span><span class="tok-p">,</span><span class="tok-mi">2</span><span class="tok-p">]]</span>
 <span class="tok-k">for</span> <span class="tok-n">element</span> <span class="tok-ow">in</span> <span class="tok-n">myList</span><span class="tok-p">:</span>
-   <span class="tok-k">print</span> <span class="tok-s">&quot;L&#39;element est de type &quot;</span><span class="tok-p">,</span> <span class="tok-nb">type</span><span class="tok-p">(</span><span class="tok-n">element</span><span class="tok-p">)</span> <span class="tok-p">,</span> <span class="tok-s">&quot; = &quot;</span><span class="tok-p">,</span> <span class="tok-n">element</span></code></pre>
+   <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;L&#39;element est de type &quot;</span><span class="tok-p">,</span> <span class="tok-nb">type</span><span class="tok-p">(</span><span class="tok-n">element</span><span class="tok-p">)</span> <span class="tok-p">,</span> <span class="tok-s">&quot; = &quot;</span><span class="tok-p">,</span> <span class="tok-n">element</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2781,14 +2781,14 @@ Dans certains cas de figure cela peut poser problème (les tris par exemple où 
 <span class="tok-n">debut</span> <span class="tok-o">=</span> <span class="tok-mi">1</span>
 <span class="tok-n">fin</span> <span class="tok-o">=</span> <span class="tok-mi">4</span>
 
-<span class="tok-k">print</span> <span class="tok-nb">range</span><span class="tok-p">(</span><span class="tok-n">debut</span><span class="tok-p">,</span> <span class="tok-n">fin</span><span class="tok-p">)</span> <span class="tok-c"># renvoie une liste [2, 3]</span>
+<span class="tok-k">print</span> <span class="tok-p">(</span><span class="tok-nb">range</span><span class="tok-p">(</span><span class="tok-n">debut</span><span class="tok-p">,</span> <span class="tok-n">fin</span><span class="tok-p">))</span> <span class="tok-c"># renvoie une liste [2, 3]</span>
 
 <span class="tok-k">for</span> <span class="tok-n">i</span> <span class="tok-ow">in</span> <span class="tok-nb">range</span><span class="tok-p">(</span><span class="tok-n">debut</span><span class="tok-p">,</span><span class="tok-n">fin</span><span class="tok-p">):</span> <span class="tok-c"># ou range(2,4) cela marche aussi</span>
-   <span class="tok-k">print</span> <span class="tok-s">&#39;The count is:&#39;</span><span class="tok-p">,</span> <span class="tok-n">i</span>
+   <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&#39;The count is:&#39;</span><span class="tok-p">,</span> <span class="tok-n">i</span><span class="tok-p">)</span>
 
 <span class="tok-c">#Par défaut range va de 0 a la valeur - 1 passé en paramètre</span>
 <span class="tok-k">for</span> <span class="tok-n">i</span> <span class="tok-ow">in</span> <span class="tok-nb">range</span><span class="tok-p">(</span><span class="tok-mi">5</span><span class="tok-p">):</span>
-   <span class="tok-k">print</span> <span class="tok-s">&quot;The count is:&quot;</span><span class="tok-p">,</span> <span class="tok-n">i</span></code></pre>
+   <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;The count is:&quot;</span><span class="tok-p">,</span> <span class="tok-n">i</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -2796,7 +2796,7 @@ Dans certains cas de figure cela peut poser problème (les tris par exemple où 
 <div class="content">
 <pre class="pygments highlight"><code data-lang="python"><span class="tok-n">myList</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-s">&quot;alex&quot;</span><span class="tok-p">,</span><span class="tok-s">&quot;paul&quot;</span><span class="tok-p">,</span><span class="tok-s">&quot;gerard&quot;</span><span class="tok-p">,</span><span class="tok-s">&quot;martine&quot;</span><span class="tok-p">,</span><span class="tok-s">&quot;helene&quot;</span><span class="tok-p">,</span><span class="tok-s">&quot;laurent&quot;</span><span class="tok-p">]</span>
 <span class="tok-k">for</span> <span class="tok-n">i</span> <span class="tok-ow">in</span> <span class="tok-nb">range</span><span class="tok-p">(</span><span class="tok-nb">len</span><span class="tok-p">(</span><span class="tok-n">myList</span><span class="tok-p">)):</span>
-   <span class="tok-k">print</span> <span class="tok-s">&quot;At index&quot;</span><span class="tok-p">,</span> <span class="tok-n">i</span><span class="tok-p">,</span> <span class="tok-s">&quot; value equal &quot;</span><span class="tok-p">,</span> <span class="tok-n">myList</span><span class="tok-p">[</span><span class="tok-n">i</span><span class="tok-p">]</span></code></pre>
+   <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;At index&quot;</span><span class="tok-p">,</span> <span class="tok-n">i</span><span class="tok-p">,</span> <span class="tok-s">&quot; value equal &quot;</span><span class="tok-p">,</span> <span class="tok-n">myList</span><span class="tok-p">[</span><span class="tok-n">i</span><span class="tok-p">])</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2809,7 +2809,7 @@ Dans certains cas de figure cela peut poser problème (les tris par exemple où 
 <span class="tok-n">myList</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-s">&quot;alex&quot;</span><span class="tok-p">,</span><span class="tok-s">&quot;paul&quot;</span><span class="tok-p">,</span><span class="tok-s">&quot;gerard&quot;</span><span class="tok-p">,</span><span class="tok-s">&quot;martine&quot;</span><span class="tok-p">,</span><span class="tok-s">&quot;helene&quot;</span><span class="tok-p">,</span><span class="tok-s">&quot;laurent&quot;</span><span class="tok-p">]</span>
 <span class="tok-n">myIndex</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-mi">0</span><span class="tok-p">,</span> <span class="tok-mi">2</span> <span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">]</span>
 <span class="tok-k">for</span> <span class="tok-n">i</span> <span class="tok-ow">in</span> <span class="tok-n">myIndex</span><span class="tok-p">:</span>
-   <span class="tok-k">print</span> <span class="tok-s">&quot;At index &quot;</span><span class="tok-p">,</span> <span class="tok-n">i</span> <span class="tok-p">,</span><span class="tok-s">&quot; value equal &quot;</span><span class="tok-p">,</span> <span class="tok-n">myList</span><span class="tok-p">[</span><span class="tok-n">i</span><span class="tok-p">]</span></code></pre>
+   <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;At index &quot;</span><span class="tok-p">,</span> <span class="tok-n">i</span> <span class="tok-p">,</span><span class="tok-s">&quot; value equal &quot;</span><span class="tok-p">,</span> <span class="tok-n">myList</span><span class="tok-p">[</span><span class="tok-n">i</span><span class="tok-p">])</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2820,7 +2820,7 @@ Pour cela on fait appel a la fonction enumerate() qui nous renvoie une collectio
 <div class="content">
 <pre class="pygments highlight"><code data-lang="python"><span class="tok-n">myList</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-s">&quot;alex&quot;</span><span class="tok-p">,</span><span class="tok-s">&quot;paul&quot;</span><span class="tok-p">,</span><span class="tok-s">&quot;gerard&quot;</span><span class="tok-p">,</span><span class="tok-s">&quot;martine&quot;</span><span class="tok-p">,</span><span class="tok-s">&quot;helene&quot;</span><span class="tok-p">,</span><span class="tok-s">&quot;laurent&quot;</span><span class="tok-p">]</span>
 <span class="tok-k">for</span> <span class="tok-n">i</span><span class="tok-p">,</span><span class="tok-n">element</span> <span class="tok-ow">in</span> <span class="tok-nb">enumerate</span><span class="tok-p">(</span><span class="tok-n">myList</span><span class="tok-p">):</span>
-   <span class="tok-k">print</span> <span class="tok-s">&quot;At index &quot;</span><span class="tok-p">,</span> <span class="tok-n">i</span> <span class="tok-p">,</span><span class="tok-s">&quot; value equal &quot;</span><span class="tok-p">,</span> <span class="tok-n">element</span></code></pre>
+   <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;At index &quot;</span><span class="tok-p">,</span> <span class="tok-n">i</span> <span class="tok-p">,</span><span class="tok-s">&quot; value equal &quot;</span><span class="tok-p">,</span> <span class="tok-n">element</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 </div>
@@ -2835,7 +2835,7 @@ Voyons voir ce que nous retourne la fonction <code>zip(listA,listB)</code></p>
 <pre class="pygments highlight"><code data-lang="python"><span class="tok-n">questions</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-s">&quot;name&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;quest&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;favorite color&quot;</span><span class="tok-p">]</span>
 <span class="tok-n">answers</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-s">&quot;lancelot&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;the holy grail&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;blue&quot;</span><span class="tok-p">]</span>
 <span class="tok-n">result</span> <span class="tok-o">=</span> <span class="tok-nb">zip</span><span class="tok-p">(</span><span class="tok-n">questions</span><span class="tok-p">,</span><span class="tok-n">answers</span><span class="tok-p">)</span>
-<span class="tok-k">print</span> <span class="tok-n">result</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">result</span><span class="tok-p">)</span>
 <span class="tok-c">#renvoie [(&#39;name&#39;, &#39;lancelot&#39;), (&#39;quest&#39;, &#39;the holy grail&#39;), (&#39;favorite color&#39;, &#39;blue&#39;)]</span></code></pre>
 </div>
 </div>
@@ -2851,14 +2851,14 @@ Voyons voir ce que nous retourne la fonction <code>zip(listA,listB)</code></p>
 <span class="tok-n">answers</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-s">&quot;lancelot&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;the holy grail&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;blue&quot;</span><span class="tok-p">]</span>
 <span class="tok-n">resultOfZipping</span> <span class="tok-o">=</span> <span class="tok-nb">zip</span><span class="tok-p">(</span><span class="tok-n">questions</span><span class="tok-p">,</span><span class="tok-n">answers</span><span class="tok-p">)</span>
 <span class="tok-k">for</span> <span class="tok-n">q</span><span class="tok-p">,</span> <span class="tok-n">a</span> <span class="tok-ow">in</span> <span class="tok-n">resultOfZipping</span> <span class="tok-p">:</span>
-   <span class="tok-k">print</span> <span class="tok-s">&#39;What is your </span><span class="tok-si">%s</span><span class="tok-s"> ?  It is </span><span class="tok-si">%s</span><span class="tok-s">&#39;</span> <span class="tok-o">%</span> <span class="tok-p">(</span><span class="tok-n">q</span><span class="tok-p">,</span> <span class="tok-n">a</span><span class="tok-p">)</span>
+   <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&#39;What is your </span><span class="tok-si">%s</span><span class="tok-s"> ?  It is </span><span class="tok-si">%s</span><span class="tok-s">&#39;</span> <span class="tok-o">%</span> <span class="tok-p">(</span><span class="tok-n">q</span><span class="tok-p">,</span> <span class="tok-n">a</span><span class="tok-p">))</span>
 
 <span class="tok-c"># ou plus simplement :</span>
 
 <span class="tok-n">questions</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-s">&quot;name&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;quest&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;favorite color&quot;</span><span class="tok-p">]</span>
 <span class="tok-n">answers</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-s">&quot;lancelot&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;the holy grail&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;blue&quot;</span><span class="tok-p">]</span>
 <span class="tok-k">for</span> <span class="tok-n">q</span><span class="tok-p">,</span> <span class="tok-n">a</span> <span class="tok-ow">in</span> <span class="tok-nb">zip</span><span class="tok-p">(</span><span class="tok-n">questions</span><span class="tok-p">,</span> <span class="tok-n">answers</span><span class="tok-p">):</span>
-   <span class="tok-k">print</span> <span class="tok-s">&#39;What is your </span><span class="tok-si">%s</span><span class="tok-s"> ?  It is </span><span class="tok-si">%s</span><span class="tok-s">&#39;</span> <span class="tok-o">%</span> <span class="tok-p">(</span><span class="tok-n">q</span><span class="tok-p">,</span> <span class="tok-n">a</span><span class="tok-p">)</span></code></pre>
+   <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&#39;What is your </span><span class="tok-si">%s</span><span class="tok-s"> ?  It is </span><span class="tok-si">%s</span><span class="tok-s">&#39;</span> <span class="tok-o">%</span> <span class="tok-p">(</span><span class="tok-n">q</span><span class="tok-p">,</span> <span class="tok-n">a</span><span class="tok-p">))</span></code></pre>
 </div>
 </div>
 </div>
@@ -2874,7 +2874,7 @@ Voyons voir ce que nous retourne la fonction <code>zip(listA,listB)</code></p>
 <span class="tok-k">for</span> <span class="tok-n">x</span> <span class="tok-ow">in</span> <span class="tok-n">L</span><span class="tok-p">:</span>
    <span class="tok-n">res</span><span class="tok-o">.</span><span class="tok-n">append</span><span class="tok-p">(</span><span class="tok-n">x</span> <span class="tok-o">+</span> <span class="tok-mi">10</span><span class="tok-p">)</span>
 
-<span class="tok-k">print</span> <span class="tok-n">res</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">res</span><span class="tok-p">)</span>
 
 <span class="tok-c"># ou bien avec l&#39;autre technique :</span>
 
@@ -2884,7 +2884,7 @@ Voyons voir ce que nous retourne la fonction <code>zip(listA,listB)</code></p>
 <span class="tok-k">for</span> <span class="tok-n">x</span> <span class="tok-ow">in</span> <span class="tok-nb">range</span><span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-p">,</span><span class="tok-nb">len</span><span class="tok-p">(</span><span class="tok-n">L</span><span class="tok-p">)):</span>
    <span class="tok-n">res</span><span class="tok-o">.</span><span class="tok-n">append</span><span class="tok-p">(</span><span class="tok-n">L</span><span class="tok-p">[</span><span class="tok-n">x</span><span class="tok-p">]</span> <span class="tok-o">+</span> <span class="tok-mi">10</span><span class="tok-p">)</span>
 
-<span class="tok-k">print</span> <span class="tok-n">res</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">res</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -2896,7 +2896,7 @@ Voyons voir ce que nous retourne la fonction <code>zip(listA,listB)</code></p>
    <span class="tok-k">for</span> <span class="tok-n">j</span> <span class="tok-ow">in</span> <span class="tok-nb">range</span><span class="tok-p">(</span><span class="tok-mi">3</span><span class="tok-p">):</span>
       <span class="tok-n">b</span><span class="tok-o">.</span><span class="tok-n">append</span><span class="tok-p">(</span><span class="tok-n">i</span><span class="tok-o">*</span><span class="tok-n">j</span><span class="tok-p">)</span> <span class="tok-c"># ajout colonne</span>
    <span class="tok-n">a</span><span class="tok-o">.</span><span class="tok-n">append</span><span class="tok-p">(</span><span class="tok-n">b</span><span class="tok-p">)</span> <span class="tok-c"># ajout n colonne comme une nouvelle ligne</span>
-<span class="tok-k">print</span> <span class="tok-n">a</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">a</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2927,22 +2927,22 @@ Voyons voir ce que nous retourne la fonction <code>zip(listA,listB)</code></p>
    <span class="tok-n">name</span> <span class="tok-o">=</span> <span class="tok-nb">raw_input</span><span class="tok-p">(</span><span class="tok-s">&#39;Hello! What is your name?</span><span class="tok-se">\n</span><span class="tok-s">&#39;</span><span class="tok-p">)</span>
    <span class="tok-n">number</span> <span class="tok-o">=</span> <span class="tok-n">random</span><span class="tok-o">.</span><span class="tok-n">randint</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">20</span><span class="tok-p">)</span>
 
-   <span class="tok-k">print</span> <span class="tok-s">&#39;Well, {0}, I am thinking of a number between 1 and 20.&#39;</span><span class="tok-o">.</span><span class="tok-n">format</span><span class="tok-p">(</span><span class="tok-n">name</span><span class="tok-p">)</span>
+   <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&#39;Well, {0}, I am thinking of a number between 1 and 20.&#39;</span><span class="tok-o">.</span><span class="tok-n">format</span><span class="tok-p">(</span><span class="tok-n">name</span><span class="tok-p">))</span>
 
    <span class="tok-k">while</span> <span class="tok-n">guesses_made</span> <span class="tok-o">&lt;</span> <span class="tok-mi">6</span><span class="tok-p">:</span>
       <span class="tok-n">guess</span> <span class="tok-o">=</span> <span class="tok-nb">int</span><span class="tok-p">(</span><span class="tok-nb">raw_input</span><span class="tok-p">(</span><span class="tok-s">&#39;Take a guess: &#39;</span><span class="tok-p">))</span>
       <span class="tok-n">guesses_made</span> <span class="tok-o">+=</span> <span class="tok-mi">1</span>
       <span class="tok-k">if</span> <span class="tok-n">guess</span> <span class="tok-o">&lt;</span> <span class="tok-n">number</span><span class="tok-p">:</span>
-         <span class="tok-k">print</span> <span class="tok-s">&#39;Your guess is too low.&#39;</span>
+         <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&#39;Your guess is too low.&#39;</span><span class="tok-p">)</span>
       <span class="tok-k">if</span> <span class="tok-n">guess</span> <span class="tok-o">&gt;</span> <span class="tok-n">number</span><span class="tok-p">:</span>
-         <span class="tok-k">print</span> <span class="tok-s">&#39;Your guess is too high.&#39;</span>
+         <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&#39;Your guess is too high.&#39;</span><span class="tok-p">)</span>
       <span class="tok-k">if</span> <span class="tok-n">guess</span> <span class="tok-o">==</span> <span class="tok-n">number</span><span class="tok-p">:</span>
          <span class="tok-k">break</span>
 
    <span class="tok-k">if</span> <span class="tok-n">guess</span> <span class="tok-o">==</span> <span class="tok-n">number</span><span class="tok-p">:</span>
-       <span class="tok-k">print</span> <span class="tok-s">&#39;Good job, {0}! You guessed my number in {1} guesses!&#39;</span><span class="tok-o">.</span><span class="tok-n">format</span><span class="tok-p">(</span><span class="tok-n">name</span><span class="tok-p">,</span> <span class="tok-n">guesses_made</span><span class="tok-p">)</span>
+       <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&#39;Good job, {0}! You guessed my number in {1} guesses!&#39;</span><span class="tok-o">.</span><span class="tok-n">format</span><span class="tok-p">(</span><span class="tok-n">name</span><span class="tok-p">,</span> <span class="tok-n">guesses_made</span><span class="tok-p">))</span>
    <span class="tok-k">else</span><span class="tok-p">:</span>
-       <span class="tok-k">print</span> <span class="tok-s">&#39;Nope. The number I was thinking of was {0}&#39;</span><span class="tok-o">.</span><span class="tok-n">format</span><span class="tok-p">(</span><span class="tok-n">number</span><span class="tok-p">)</span></code></pre>
+       <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&#39;Nope. The number I was thinking of was {0}&#39;</span><span class="tok-o">.</span><span class="tok-n">format</span><span class="tok-p">(</span><span class="tok-n">number</span><span class="tok-p">))</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -2958,9 +2958,9 @@ Voyons voir ce que nous retourne la fonction <code>zip(listA,listB)</code></p>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="python"><span class="tok-k">for</span> <span class="tok-n">k</span> <span class="tok-ow">in</span> <span class="tok-nb">range</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">10</span><span class="tok-p">):</span>
    <span class="tok-k">if</span> <span class="tok-n">k</span> <span class="tok-o">&gt;</span> <span class="tok-mi">3</span> <span class="tok-ow">and</span> <span class="tok-n">k</span> <span class="tok-o">&lt;</span> <span class="tok-mi">8</span><span class="tok-p">:</span>
-     <span class="tok-k">print</span> <span class="tok-s">&quot;skipping this iteration!&quot;</span>
+     <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;skipping this iteration!&quot;</span><span class="tok-p">)</span>
      <span class="tok-k">continue</span>
-   <span class="tok-k">print</span> <span class="tok-n">k</span></code></pre>
+   <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">k</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 </div>
@@ -2981,15 +2981,15 @@ Voyons voir ce que nous retourne la fonction <code>zip(listA,listB)</code></p>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="python"><span class="tok-c"># Initialisation d&#39;un dictionnaire vide</span>
 <span class="tok-n">monDictionnaire1</span> <span class="tok-o">=</span> <span class="tok-p">{}</span>
-<span class="tok-k">print</span> <span class="tok-n">monDictionnaire1</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">monDictionnaire1</span><span class="tok-p">)</span>
 
 <span class="tok-c"># Initialisation d&#39;un dictionnaire déjà rempli</span>
 <span class="tok-n">monDictionnaire2</span> <span class="tok-o">=</span> <span class="tok-p">{</span><span class="tok-s">&quot;pomme&quot;</span><span class="tok-p">:</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-s">&quot;orange&quot;</span><span class="tok-p">:</span><span class="tok-mi">3</span><span class="tok-p">}</span>
-<span class="tok-k">print</span> <span class="tok-n">monDictionnaire2</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">monDictionnaire2</span><span class="tok-p">)</span>
 
 <span class="tok-c"># Avec une clef numérique</span>
 <span class="tok-n">monDictionnaire3</span> <span class="tok-o">=</span> <span class="tok-p">{</span><span class="tok-mi">1</span><span class="tok-p">:</span><span class="tok-s">&quot;Gauche&quot;</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">:</span><span class="tok-s">&quot;Droite&quot;</span><span class="tok-p">}</span>
-<span class="tok-k">print</span> <span class="tok-n">monDictionnaire3</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">monDictionnaire3</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 </div>
@@ -3002,10 +3002,10 @@ Voyons voir ce que nous retourne la fonction <code>zip(listA,listB)</code></p>
 <div class="title">Lister des éléments</div>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="python"><span class="tok-n">monDictionnaire4</span> <span class="tok-o">=</span> <span class="tok-p">{</span><span class="tok-s">&quot;pomme&quot;</span><span class="tok-p">:</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-s">&quot;orange&quot;</span><span class="tok-p">:</span><span class="tok-mi">3</span><span class="tok-p">,</span> <span class="tok-s">&quot;patate&quot;</span><span class="tok-p">:</span><span class="tok-mi">2</span><span class="tok-p">}</span>
-<span class="tok-k">print</span> <span class="tok-n">monDictionnaire4</span><span class="tok-p">[</span><span class="tok-s">&quot;patate&quot;</span><span class="tok-p">]</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">monDictionnaire4</span><span class="tok-p">[</span><span class="tok-s">&quot;patate&quot;</span><span class="tok-p">])</span>
 
 <span class="tok-n">monDictionnaire5</span> <span class="tok-o">=</span> <span class="tok-p">{</span><span class="tok-mi">1</span><span class="tok-p">:</span><span class="tok-s">&quot;Gauche&quot;</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">:</span><span class="tok-s">&quot;Droite&quot;</span><span class="tok-p">}</span>
-<span class="tok-k">print</span> <span class="tok-n">monDictionnaire5</span><span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">]</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">monDictionnaire5</span><span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">])</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -3017,13 +3017,13 @@ Voyons voir ce que nous retourne la fonction <code>zip(listA,listB)</code></p>
 <span class="tok-n">monDictionnaire6</span><span class="tok-p">[</span><span class="tok-s">&quot;patate&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-mi">3</span>
 <span class="tok-n">monDictionnaire6</span><span class="tok-p">[</span><span class="tok-s">&quot;orange&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-mi">8</span>
 <span class="tok-n">monDictionnaire6</span><span class="tok-p">[</span><span class="tok-s">&quot;citron&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-mi">5</span>
-<span class="tok-k">print</span> <span class="tok-n">monDictionnaire6</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">monDictionnaire6</span><span class="tok-p">)</span>
 
 <span class="tok-c"># Ajout dans un dictionnaire existant</span>
 <span class="tok-c"># L&#39;ordre n&#39;a aucune d&#39;importance dans un dictionnaire</span>
 <span class="tok-n">monDictionnaire7</span> <span class="tok-o">=</span> <span class="tok-p">{</span><span class="tok-mi">1</span><span class="tok-p">:</span><span class="tok-s">&quot;Gauche&quot;</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">:</span><span class="tok-s">&quot;Droite&quot;</span><span class="tok-p">}</span>
 <span class="tok-n">monDictionnaire7</span><span class="tok-p">[</span><span class="tok-mi">2</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-s">&quot;Milieu&quot;</span>
-<span class="tok-k">print</span> <span class="tok-n">monDictionnaire7</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">monDictionnaire7</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -3031,7 +3031,7 @@ Voyons voir ce que nous retourne la fonction <code>zip(listA,listB)</code></p>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="python"><span class="tok-n">monDictionnaire8</span> <span class="tok-o">=</span> <span class="tok-p">{</span><span class="tok-s">&quot;pomme&quot;</span><span class="tok-p">:</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-s">&quot;orange&quot;</span><span class="tok-p">:</span><span class="tok-mi">3</span><span class="tok-p">,</span> <span class="tok-s">&quot;patate&quot;</span><span class="tok-p">:</span><span class="tok-mi">2</span><span class="tok-p">}</span>
 <span class="tok-k">del</span> <span class="tok-n">monDictionnaire8</span><span class="tok-p">[</span><span class="tok-s">&quot;pomme&quot;</span><span class="tok-p">]</span>
-<span class="tok-k">print</span> <span class="tok-n">monDictionnaire8</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">monDictionnaire8</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 </div>
@@ -3041,23 +3041,23 @@ Voyons voir ce que nous retourne la fonction <code>zip(listA,listB)</code></p>
 <div class="title">Lister les clef dans le dictionnaire</div>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="python"><span class="tok-n">monDictionnaire9</span> <span class="tok-o">=</span> <span class="tok-p">{</span><span class="tok-s">&quot;pomme&quot;</span><span class="tok-p">:</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-s">&quot;orange&quot;</span><span class="tok-p">:</span><span class="tok-mi">3</span><span class="tok-p">,</span> <span class="tok-s">&quot;patate&quot;</span><span class="tok-p">:</span><span class="tok-mi">2</span><span class="tok-p">}</span>
-<span class="tok-k">print</span> <span class="tok-n">monDictionnaire9</span><span class="tok-o">.</span><span class="tok-n">keys</span><span class="tok-p">()</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">monDictionnaire9</span><span class="tok-o">.</span><span class="tok-n">keys</span><span class="tok-p">())</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Lister les valeurs dans le dictionnaire</div>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="python"><span class="tok-n">monDictionnaire10</span> <span class="tok-o">=</span> <span class="tok-p">{</span><span class="tok-s">&quot;pomme&quot;</span><span class="tok-p">:</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-s">&quot;orange&quot;</span><span class="tok-p">:</span><span class="tok-mi">3</span><span class="tok-p">,</span> <span class="tok-s">&quot;patate&quot;</span><span class="tok-p">:</span><span class="tok-mi">2</span><span class="tok-p">}</span>
-<span class="tok-k">print</span> <span class="tok-n">monDictionnaire10</span><span class="tok-o">.</span><span class="tok-n">values</span><span class="tok-p">()</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">monDictionnaire10</span><span class="tok-o">.</span><span class="tok-n">values</span><span class="tok-p">())</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Tester l&#8217;existence d&#8217;une valeur dans le dictionnaire</div>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="python"><span class="tok-n">monDictionnaire11</span> <span class="tok-o">=</span> <span class="tok-p">{</span><span class="tok-s">&quot;pomme&quot;</span><span class="tok-p">:</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-s">&quot;orange&quot;</span><span class="tok-p">:</span><span class="tok-mi">3</span><span class="tok-p">,</span> <span class="tok-s">&quot;patate&quot;</span><span class="tok-p">:</span><span class="tok-mi">2</span><span class="tok-p">}</span>
-<span class="tok-k">print</span> <span class="tok-n">monDictionnaire11</span><span class="tok-o">.</span><span class="tok-n">has_key</span><span class="tok-p">(</span><span class="tok-s">&quot;Pomme&quot;</span><span class="tok-p">)</span>
-<span class="tok-k">print</span> <span class="tok-n">monDictionnaire11</span><span class="tok-o">.</span><span class="tok-n">has_key</span><span class="tok-p">(</span><span class="tok-s">&quot;pomme&quot;</span><span class="tok-p">)</span>
-<span class="tok-k">print</span> <span class="tok-n">monDictionnaire11</span><span class="tok-o">.</span><span class="tok-n">has_key</span><span class="tok-p">(</span><span class="tok-s">&quot;citron&quot;</span><span class="tok-p">)</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">monDictionnaire11</span><span class="tok-o">.</span><span class="tok-n">has_key</span><span class="tok-p">(</span><span class="tok-s">&quot;Pomme&quot;</span><span class="tok-p">))</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">monDictionnaire11</span><span class="tok-o">.</span><span class="tok-n">has_key</span><span class="tok-p">(</span><span class="tok-s">&quot;pomme&quot;</span><span class="tok-p">))</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">monDictionnaire11</span><span class="tok-o">.</span><span class="tok-n">has_key</span><span class="tok-p">(</span><span class="tok-s">&quot;citron&quot;</span><span class="tok-p">))</span></code></pre>
 </div>
 </div>
 </div>
@@ -3068,7 +3068,7 @@ Voyons voir ce que nous retourne la fonction <code>zip(listA,listB)</code></p>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="python"><span class="tok-n">monDictionnaire12</span> <span class="tok-o">=</span> <span class="tok-p">{</span><span class="tok-s">&quot;pomme&quot;</span><span class="tok-p">:</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-s">&quot;orange&quot;</span><span class="tok-p">:</span><span class="tok-mi">3</span><span class="tok-p">,</span> <span class="tok-s">&quot;patate&quot;</span><span class="tok-p">:</span><span class="tok-mi">2</span><span class="tok-p">}</span>
 <span class="tok-k">for</span> <span class="tok-n">clef</span> <span class="tok-ow">in</span> <span class="tok-n">monDictionnaire12</span><span class="tok-p">:</span>
-	<span class="tok-k">print</span> <span class="tok-n">clef</span></code></pre>
+	<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">clef</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -3076,7 +3076,7 @@ Voyons voir ce que nous retourne la fonction <code>zip(listA,listB)</code></p>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="python"><span class="tok-n">monDictionnaire13</span> <span class="tok-o">=</span> <span class="tok-p">{</span><span class="tok-s">&quot;pomme&quot;</span><span class="tok-p">:</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-s">&quot;orange&quot;</span><span class="tok-p">:</span><span class="tok-mi">3</span><span class="tok-p">,</span> <span class="tok-s">&quot;patate&quot;</span><span class="tok-p">:</span><span class="tok-mi">2</span><span class="tok-p">}</span>
 <span class="tok-k">for</span> <span class="tok-n">clef</span> <span class="tok-ow">in</span> <span class="tok-n">monDictionnaire13</span><span class="tok-p">:</span>
-	<span class="tok-k">print</span> <span class="tok-n">monDictionnaire13</span><span class="tok-p">[</span><span class="tok-n">clef</span><span class="tok-p">]</span></code></pre>
+	<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">monDictionnaire13</span><span class="tok-p">[</span><span class="tok-n">clef</span><span class="tok-p">])</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -3084,7 +3084,7 @@ Voyons voir ce que nous retourne la fonction <code>zip(listA,listB)</code></p>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="python"><span class="tok-n">monDictionnaire14</span> <span class="tok-o">=</span> <span class="tok-p">{</span><span class="tok-s">&quot;pomme&quot;</span><span class="tok-p">:</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-s">&quot;orange&quot;</span><span class="tok-p">:</span><span class="tok-mi">3</span><span class="tok-p">,</span> <span class="tok-s">&quot;patate&quot;</span><span class="tok-p">:</span><span class="tok-mi">2</span><span class="tok-p">}</span>
 <span class="tok-k">for</span> <span class="tok-n">clef</span><span class="tok-p">,</span> <span class="tok-n">valeur</span> <span class="tok-ow">in</span> <span class="tok-n">monDictionnaire14</span><span class="tok-o">.</span><span class="tok-n">items</span><span class="tok-p">():</span>
-	<span class="tok-k">print</span> <span class="tok-n">clef</span> <span class="tok-p">,</span><span class="tok-s">&quot; = &quot;</span><span class="tok-p">,</span>  <span class="tok-n">valeur</span></code></pre>
+	<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">clef</span> <span class="tok-p">,</span><span class="tok-s">&quot; = &quot;</span><span class="tok-p">,</span>  <span class="tok-n">valeur</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 </div>
@@ -3246,7 +3246,7 @@ En plus, vous avez du le remarquer, il y a de nombreuses données redondantes, p
    <span class="tok-n">nbJambes</span> <span class="tok-o">=</span> <span class="tok-mi">2</span>
 
    <span class="tok-k">def</span> <span class="tok-nf">marche</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span> <i class="conum" data-value="3"></i><b>(3)</b>
-      <span class="tok-k">print</span> <span class="tok-s">&quot;Je marche !&quot;</span>
+      <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;Je marche !&quot;</span><span class="tok-p">)</span>
       <span class="tok-c">#... traitement ...</span>
 
 <span class="tok-c">#fin du bloc classe</span></code></pre>
@@ -3274,10 +3274,10 @@ En plus, vous avez du le remarquer, il y a de nombreuses données redondantes, p
 <pre class="pygments highlight"><code data-lang="python"><span class="tok-n">gerard</span> <span class="tok-o">=</span> <span class="tok-n">Humain</span><span class="tok-p">()</span> <i class="conum" data-value="1"></i><b>(1)</b>
 <span class="tok-n">paul</span> <span class="tok-o">=</span> <span class="tok-n">Humain</span> <span class="tok-p">()</span> <i class="conum" data-value="2"></i><b>(2)</b>
 
-<span class="tok-k">print</span> <span class="tok-n">gerard</span> <i class="conum" data-value="3"></i><b>(3)</b>
+<span class="tok-k">print</span> <span class="tok-p">(</span><span class="tok-n">gerard</span><span class="tok-p">)</span> <i class="conum" data-value="3"></i><b>(3)</b>
 
-<span class="tok-k">print</span> <span class="tok-n">gerard</span><span class="tok-o">.</span><span class="tok-n">nbBras</span> <i class="conum" data-value="4"></i><b>(4)</b>
-<span class="tok-k">print</span> <span class="tok-n">paul</span><span class="tok-o">.</span><span class="tok-n">marche</span><span class="tok-p">()</span> <i class="conum" data-value="5"></i><b>(5)</b></code></pre>
+<span class="tok-k">print</span> <span class="tok-p">(</span><span class="tok-n">gerard</span><span class="tok-o">.</span><span class="tok-n">nbBras</span><span class="tok-p">)</span> <i class="conum" data-value="4"></i><b>(4)</b>
+<span class="tok-k">print</span> <span class="tok-p">(</span><span class="tok-n">paul</span><span class="tok-o">.</span><span class="tok-n">marche</span><span class="tok-p">())</span> <i class="conum" data-value="5"></i><b>(5)</b></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3349,7 +3349,7 @@ En plus, vous avez du le remarquer, il y a de nombreuses données redondantes, p
       <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">afficheInfo</span><span class="tok-p">()</span> <i class="conum" data-value="4"></i><b>(4)</b>
 
    <span class="tok-k">def</span> <span class="tok-nf">afficheInfo</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span> <i class="conum" data-value="5"></i><b>(5)</b>
-      <span class="tok-k">print</span> <span class="tok-s">&quot;Bonjour ! J&#39;ai &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nbYeux</span><span class="tok-p">,</span> <span class="tok-s">&quot;yeux, &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">tete</span><span class="tok-p">,</span> <span class="tok-s">&quot; tête, &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nbBras</span><span class="tok-p">,</span> <span class="tok-s">&quot; bras, et &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nbJambes</span><span class="tok-p">,</span> <span class="tok-s">&quot; jambes ...&quot;</span>
+      <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;Bonjour ! J&#39;ai &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nbYeux</span><span class="tok-p">,</span> <span class="tok-s">&quot;yeux, &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">tete</span><span class="tok-p">,</span> <span class="tok-s">&quot; tête, &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nbBras</span><span class="tok-p">,</span> <span class="tok-s">&quot; bras, et &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nbJambes</span><span class="tok-p">,</span> <span class="tok-s">&quot; jambes ...&quot;</span><span class="tok-p">)</span>
 
    <span class="tok-k">def</span> <span class="tok-nf">accident</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span><span class="tok-n">typeAcc</span><span class="tok-p">):</span> <i class="conum" data-value="6"></i><b>(6)</b>
       <span class="tok-k">if</span> <span class="tok-n">typeAcc</span> <span class="tok-o">==</span> <span class="tok-s">&quot;bras&quot;</span><span class="tok-p">:</span>
@@ -3361,7 +3361,7 @@ En plus, vous avez du le remarquer, il y a de nombreuses données redondantes, p
 
    <span class="tok-k">def</span> <span class="tok-nf">initGrade</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
       <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">grade</span> <span class="tok-o">=</span> <span class="tok-s">&quot;minable&quot;</span> <i class="conum" data-value="8"></i><b>(8)</b>
-      <span class="tok-k">print</span> <span class="tok-s">&quot;je suis un pirate &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">grade</span>
+      <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;je suis un pirate &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">grade</span><span class="tok-p">)</span>
 
    <span class="tok-k">def</span> <span class="tok-nf">augmenteGrade</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
       <span class="tok-k">if</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">grade</span> <span class="tok-o">==</span> <span class="tok-s">&quot;minable&quot;</span><span class="tok-p">:</span>
@@ -3431,7 +3431,7 @@ En plus, vous avez du le remarquer, il y a de nombreuses données redondantes, p
 <span class="tok-n">gerard</span><span class="tok-o">.</span><span class="tok-n">augmenteGrade</span><span class="tok-p">()</span>
 <span class="tok-n">gerard</span><span class="tok-o">.</span><span class="tok-n">augmenteGrade</span><span class="tok-p">()</span>
 
-<span class="tok-k">print</span> <span class="tok-s">&quot;Gerard est maintenant &quot;</span><span class="tok-p">,</span> <span class="tok-n">gerard</span><span class="tok-o">.</span><span class="tok-n">grade</span> <span class="tok-p">,</span><span class="tok-s">&quot; ! &quot;</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;Gerard est maintenant &quot;</span><span class="tok-p">,</span> <span class="tok-n">gerard</span><span class="tok-o">.</span><span class="tok-n">grade</span> <span class="tok-p">,</span><span class="tok-s">&quot; ! &quot;</span><span class="tok-p">)</span>
 
 <span class="tok-c"># Malheureusement, la vie de capitaine n&#39;est pas facile ...</span>
 <span class="tok-n">gerard</span><span class="tok-o">.</span><span class="tok-n">accident</span><span class="tok-p">(</span><span class="tok-s">&quot;yeux&quot;</span><span class="tok-p">)</span>
@@ -3474,15 +3474,15 @@ Il est donc également possible de stocker la référence d&#8217;une fonction, 
 <span class="tok-k">def</span> <span class="tok-nf">multiply</span><span class="tok-p">(</span><span class="tok-n">a</span><span class="tok-p">,</span><span class="tok-n">b</span><span class="tok-p">):</span>
    <span class="tok-k">return</span> <span class="tok-n">a</span><span class="tok-o">*</span><span class="tok-n">b</span>
 
-<span class="tok-k">print</span> <span class="tok-n">somme</span> <span class="tok-c"># renvoie une adresse de l&#39;objet en mémoire</span>
-<span class="tok-k">print</span> <span class="tok-n">somme</span><span class="tok-p">()</span> <span class="tok-c"># execute la fonction !</span>
+<span class="tok-k">print</span> <span class="tok-p">(</span><span class="tok-n">somme</span><span class="tok-p">)</span> <span class="tok-c"># renvoie une adresse de l&#39;objet en mémoire</span>
+<span class="tok-k">print</span> <span class="tok-p">(</span><span class="tok-n">somme</span><span class="tok-p">())</span> <span class="tok-c"># execute la fonction !</span>
 
 <span class="tok-c"># Et donc vous pouvez stocker les références/adresses dans des structures de données, c&#39;est à dire dans des classes (dans les attributs), dans des listes, dans des dictionnaires, etc.</span>
 
 <span class="tok-n">listeFonctionCalculette</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-n">somme</span><span class="tok-p">,</span><span class="tok-n">multiply</span><span class="tok-p">]</span>
 
 <span class="tok-k">for</span> <span class="tok-n">i</span> <span class="tok-ow">in</span> <span class="tok-n">listeFonctionCalculette</span><span class="tok-p">:</span>
-   <span class="tok-k">print</span> <span class="tok-s">&quot;Resultat = &quot;</span><span class="tok-p">,</span> <span class="tok-n">i</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">,</span><span class="tok-mi">3</span><span class="tok-p">)</span></code></pre>
+   <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;Resultat = &quot;</span><span class="tok-p">,</span> <span class="tok-n">i</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">,</span><span class="tok-mi">3</span><span class="tok-p">))</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3498,12 +3498,12 @@ Il est donc également possible de stocker la référence d&#8217;une fonction, 
       <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">age</span> <span class="tok-o">=</span> <span class="tok-n">age</span>
 
    <span class="tok-k">def</span> <span class="tok-nf">anniversaire</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
-      <span class="tok-k">print</span> <span class="tok-s">&quot;Bon anniversaire &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nom</span><span class="tok-p">,</span> <span class="tok-s">&quot; !!&quot;</span>
+      <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;Bon anniversaire &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nom</span><span class="tok-p">,</span> <span class="tok-s">&quot; !!&quot;</span><span class="tok-p">)</span>
       <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">age</span> <span class="tok-o">=</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">age</span> <span class="tok-o">+</span> <span class="tok-mi">1</span>
 
    <span class="tok-k">def</span> <span class="tok-nf">information</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
-      <span class="tok-k">print</span> <span class="tok-s">&quot;Mon nom est &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nom</span><span class="tok-p">,</span> <span class="tok-s">&quot; et mon prénom est &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">prenom</span>
-      <span class="tok-k">print</span> <span class="tok-s">&quot;Aujourd&#39;hui j&#39;ai &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">age</span><span class="tok-p">,</span> <span class="tok-s">&quot; ans.&quot;</span>
+      <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;Mon nom est &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nom</span><span class="tok-p">,</span> <span class="tok-s">&quot; et mon prénom est &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">prenom</span><span class="tok-p">)</span>
+      <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;Aujourd&#39;hui j&#39;ai &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">age</span><span class="tok-p">,</span> <span class="tok-s">&quot; ans.&quot;</span><span class="tok-p">)</span>
 
 <span class="tok-c"># Creation de deux objets a partir de la classe Personne</span>
 <span class="tok-n">tomy</span> <span class="tok-o">=</span> <span class="tok-n">Personne</span><span class="tok-p">(</span><span class="tok-s">&quot;Ungerer&quot;</span><span class="tok-p">,</span><span class="tok-s">&quot;Tomy&quot;</span><span class="tok-p">,</span><span class="tok-mi">75</span><span class="tok-p">)</span>
@@ -3686,7 +3686,7 @@ Il est donc également possible de stocker la référence d&#8217;une fonction, 
 <span class="tok-n">edward</span> <span class="tok-o">=</span>  <span class="tok-n">Navigateur</span><span class="tok-p">(</span><span class="tok-s">&quot;Edward Drake&quot;</span><span class="tok-p">,</span> <span class="tok-n">argent</span><span class="tok-o">=</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-n">force</span><span class="tok-o">=</span><span class="tok-mi">3</span><span class="tok-p">,</span> <span class="tok-n">grade</span><span class="tok-o">=</span><span class="tok-s">&quot;minable&quot;</span><span class="tok-p">)</span>
 <span class="tok-n">anne</span> <span class="tok-o">=</span> <span class="tok-n">Navigateur</span><span class="tok-p">(</span><span class="tok-s">&quot;Anne Bonny&quot;</span><span class="tok-p">,</span><span class="tok-n">argent</span><span class="tok-o">=</span> <span class="tok-mi">3</span><span class="tok-p">,</span> <span class="tok-n">force</span><span class="tok-o">=</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-n">grade</span><span class="tok-o">=</span><span class="tok-s">&quot;minable&quot;</span><span class="tok-p">)</span>
 <span class="tok-n">equipe1</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-n">jack</span><span class="tok-p">,</span><span class="tok-n">edward</span><span class="tok-p">,</span><span class="tok-n">anne</span><span class="tok-p">]</span>
-<span class="tok-k">print</span> <span class="tok-n">equipe1</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">equipe1</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3709,7 +3709,7 @@ Il est donc également possible de stocker la référence d&#8217;une fonction, 
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="python"><span class="tok-k">for</span> <span class="tok-n">p</span> <span class="tok-ow">in</span> <span class="tok-n">equipe1</span><span class="tok-p">:</span>
-	<span class="tok-k">print</span> <span class="tok-n">p</span><span class="tok-o">.</span><span class="tok-n">nom</span></code></pre>
+	<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">p</span><span class="tok-o">.</span><span class="tok-n">nom</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3719,7 +3719,7 @@ Il est donc également possible de stocker la référence d&#8217;une fonction, 
 <div class="content">
 <pre class="pygments highlight"><code data-lang="python"><span class="tok-k">for</span> <span class="tok-n">p</span> <span class="tok-ow">in</span> <span class="tok-n">equipe1</span><span class="tok-p">:</span>
 	<span class="tok-n">p</span><span class="tok-o">.</span><span class="tok-n">argent</span> <span class="tok-o">=</span> <span class="tok-n">p</span><span class="tok-o">.</span><span class="tok-n">argent</span> <span class="tok-o">*</span> <span class="tok-mi">2</span>
-	<span class="tok-k">print</span> <span class="tok-n">p</span><span class="tok-o">.</span><span class="tok-n">argent</span></code></pre>
+	<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">p</span><span class="tok-o">.</span><span class="tok-n">argent</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3740,7 +3740,7 @@ Il est donc également possible de stocker la référence d&#8217;une fonction, 
 <pre class="pygments highlight"><code data-lang="python"><span class="tok-n">richesse</span> <span class="tok-o">=</span> <span class="tok-mi">0</span>
 <span class="tok-k">for</span> <span class="tok-n">p</span> <span class="tok-ow">in</span> <span class="tok-n">equipe1</span><span class="tok-p">:</span>
 	<span class="tok-n">richesse</span> <span class="tok-o">=</span> <span class="tok-n">richesse</span> <span class="tok-o">+</span> <span class="tok-n">p</span><span class="tok-o">.</span><span class="tok-n">argent</span>
-<span class="tok-k">print</span> <span class="tok-n">richesse</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">richesse</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3756,7 +3756,7 @@ Il est donc également possible de stocker la référence d&#8217;une fonction, 
         <span class="tok-n">richesse</span> <span class="tok-o">=</span> <span class="tok-mi">0</span>
         <span class="tok-k">for</span> <span class="tok-n">p</span> <span class="tok-ow">in</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">marins</span><span class="tok-p">:</span>
             <span class="tok-n">richesse</span> <span class="tok-o">=</span> <span class="tok-n">richesse</span> <span class="tok-o">+</span> <span class="tok-n">p</span><span class="tok-o">.</span><span class="tok-n">argent</span>
-        <span class="tok-k">print</span> <span class="tok-n">richesse</span>
+        <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">richesse</span><span class="tok-p">)</span>
 
     <span class="tok-k">def</span> <span class="tok-nf">rechercheDuPlusRiche</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span> <i class="conum" data-value="3"></i><b>(3)</b>
         <span class="tok-k">pass</span>
@@ -3810,7 +3810,7 @@ Il est donc également possible de stocker la référence d&#8217;une fonction, 
         <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">equipage</span> <span class="tok-o">=</span> <span class="tok-n">Equipage</span><span class="tok-p">(</span><span class="tok-n">marins</span><span class="tok-p">)</span>
 
     <span class="tok-k">def</span> <span class="tok-nf">combat</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span> <span class="tok-n">ennemi</span><span class="tok-p">):</span> <i class="conum" data-value="2"></i><b>(2)</b>
-        <span class="tok-k">print</span> <span class="tok-s">&quot;combat le bateau ennemi ! &quot;</span></code></pre>
+        <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;combat le bateau ennemi ! &quot;</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -4029,8 +4029,8 @@ Ainsi la liste de marins passés en paramètres sert ici à instancier la classe
     <span class="tok-k">def</span> <span class="tok-nf">__init__</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span><span class="tok-n">nation</span><span class="tok-p">):</span>
         <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nation</span> <span class="tok-o">=</span> <span class="tok-n">nation</span>
     <span class="tok-k">def</span> <span class="tok-nf">speak</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
-        <span class="tok-k">print</span> <span class="tok-s">&quot;je suis &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nation</span>
-        <span class="tok-k">print</span> <span class="tok-s">&quot;et je suis un pirate normal ...&quot;</span>
+        <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;je suis &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nation</span><span class="tok-p">)</span>
+        <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;et je suis un pirate normal ...&quot;</span><span class="tok-p">)</span>
 
 <span class="tok-c"># PirateMagicien is - a Pirate</span>
 <span class="tok-k">class</span> <span class="tok-nc">PirateMagicien</span><span class="tok-p">(</span><span class="tok-n">Pirate</span><span class="tok-p">):</span> <i class="conum" data-value="2"></i><b>(2)</b>
@@ -4039,11 +4039,11 @@ Ainsi la liste de marins passés en paramètres sert ici à instancier la classe
         <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">formules</span> <span class="tok-o">=</span> <span class="tok-n">listFormule</span> <i class="conum" data-value="4"></i><b>(4)</b>
 
     <span class="tok-k">def</span> <span class="tok-nf">speak</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span> <i class="conum" data-value="5"></i><b>(5)</b>
-        <span class="tok-k">print</span> <span class="tok-s">&quot;je suis un magicien de nationalité &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nation</span>
+        <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;je suis un magicien de nationalité &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nation</span><span class="tok-p">)</span>
 
     <span class="tok-k">def</span> <span class="tok-nf">cast</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span> <i class="conum" data-value="6"></i><b>(6)</b>
         <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">speak</span><span class="tok-p">()</span>
-        <span class="tok-k">print</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">formules</span><span class="tok-p">[</span><span class="tok-n">random</span><span class="tok-o">.</span><span class="tok-n">randint</span><span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-p">,</span><span class="tok-nb">len</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">formules</span><span class="tok-p">)</span><span class="tok-o">-</span><span class="tok-mi">1</span><span class="tok-p">)]</span></code></pre>
+        <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">formules</span><span class="tok-p">[</span><span class="tok-n">random</span><span class="tok-o">.</span><span class="tok-n">randint</span><span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-p">,</span><span class="tok-nb">len</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">formules</span><span class="tok-p">)</span><span class="tok-o">-</span><span class="tok-mi">1</span><span class="tok-p">)])</span></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -4091,8 +4091,8 @@ L&#8217;appel des functions propre à chacun est en bas du programme.</p>
         <span class="tok-k">print</span><span class="tok-p">(</span><span class="tok-s">&quot;miam miam&quot;</span><span class="tok-p">)</span>
 
     <span class="tok-k">def</span> <span class="tok-nf">speak</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
-        <span class="tok-k">print</span> <span class="tok-s">&quot; *Bweahhhh* &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nation</span>
-        <span class="tok-k">print</span> <span class="tok-s">&quot; *Bweahhhh* Brain ... &quot;</span>
+        <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot; *Bweahhhh* &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nation</span><span class="tok-p">)</span>
+        <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot; *Bweahhhh* Brain ... &quot;</span><span class="tok-p">)</span>
 
 <span class="tok-c"># PirateVolant is - a Pirate</span>
 <span class="tok-k">class</span> <span class="tok-nc">PirateVolant</span><span class="tok-p">(</span><span class="tok-n">Pirate</span><span class="tok-p">):</span>
@@ -4105,8 +4105,8 @@ L&#8217;appel des functions propre à chacun est en bas du programme.</p>
         <span class="tok-k">print</span><span class="tok-p">(</span><span class="tok-s">&quot;Je vole sur mon &quot;</span> <span class="tok-o">+</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nomDuBalais</span><span class="tok-p">)</span>
 
     <span class="tok-k">def</span> <span class="tok-nf">speak</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
-        <span class="tok-k">print</span> <span class="tok-s">&quot;Je suis &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nation</span>
-        <span class="tok-k">print</span> <span class="tok-s">&quot;et je suis l&#39;as des as pirates ... &quot;</span>
+        <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;Je suis &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nation</span><span class="tok-p">)</span>
+        <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;et je suis l&#39;as des as pirates ... &quot;</span><span class="tok-p">)</span>
 
 
 <span class="tok-n">unPremierSpecialiste</span> <span class="tok-o">=</span> <span class="tok-n">PirateMagicien</span><span class="tok-p">(</span><span class="tok-s">&quot;Italien&quot;</span><span class="tok-p">,[</span><span class="tok-s">&quot;Abracadabra&quot;</span><span class="tok-p">,</span><span class="tok-s">&quot;Bazinga&quot;</span><span class="tok-p">])</span>
@@ -4313,7 +4313,7 @@ Il faut privilégier la composition dès que votre hierarchie de classe vous par
         <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nomDuBalais</span> <span class="tok-o">=</span> <span class="tok-n">nomDuBalais</span>
 
     <span class="tok-k">def</span> <span class="tok-nf">fly</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
-        <span class="tok-k">print</span> <span class="tok-s">&quot;Je vole sur mon &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nomDuBalais</span></code></pre>
+        <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;Je vole sur mon &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nomDuBalais</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4426,7 +4426,7 @@ Il s&#8217;agit d&#8217;une aggregation, mais le bénéfice est le même que pou
     <span class="tok-k">def</span> <span class="tok-nf">cast</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
         <span class="tok-k">if</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">owner</span><span class="tok-p">:</span> <i class="conum" data-value="1"></i><b>(1)</b>
             <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">owner</span><span class="tok-o">.</span><span class="tok-n">vie</span> <span class="tok-o">+=</span> <span class="tok-mf">5.0</span> <span class="tok-o">*</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">power</span> <i class="conum" data-value="2"></i><b>(2)</b>
-            <span class="tok-k">print</span> <span class="tok-s">&quot;pfscht +&quot;</span><span class="tok-p">,</span>  <span class="tok-mf">5.0</span> <span class="tok-o">*</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">power</span> <span class="tok-p">,</span> <span class="tok-s">&quot; vie&quot;</span>
+            <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;pfscht +&quot;</span><span class="tok-p">,</span>  <span class="tok-mf">5.0</span> <span class="tok-o">*</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">power</span> <span class="tok-p">,</span> <span class="tok-s">&quot; vie&quot;</span><span class="tok-p">)</span>
 
 <span class="tok-k">class</span> <span class="tok-nc">Pirate</span><span class="tok-p">(</span><span class="tok-nb">object</span><span class="tok-p">):</span>
     <span class="tok-k">def</span> <span class="tok-nf">__init__</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span> <span class="tok-n">nation</span><span class="tok-p">,</span> <span class="tok-n">vie</span><span class="tok-p">,</span><span class="tok-n">magicien</span> <span class="tok-o">=</span> <span class="tok-bp">None</span><span class="tok-p">,</span> <span class="tok-n">zombie</span> <span class="tok-o">=</span> <span class="tok-bp">None</span><span class="tok-p">,</span> <span class="tok-n">volant</span> <span class="tok-o">=</span> <span class="tok-bp">None</span><span class="tok-p">):</span>
@@ -4442,7 +4442,7 @@ Il s&#8217;agit d&#8217;une aggregation, mais le bénéfice est le même que pou
 <span class="tok-n">magicien</span> <span class="tok-o">=</span> <span class="tok-n">MagicPower</span><span class="tok-p">(</span><span class="tok-mf">2.0</span><span class="tok-p">)</span>
 <span class="tok-n">monpirate</span> <span class="tok-o">=</span> <span class="tok-n">Pirate</span><span class="tok-p">(</span><span class="tok-s">&quot;LeChuck&quot;</span><span class="tok-p">,</span> <span class="tok-mf">100.0</span><span class="tok-p">,</span> <span class="tok-n">magicien</span> <span class="tok-o">=</span> <span class="tok-n">magicien</span><span class="tok-p">)</span>
 <span class="tok-n">monpirate</span><span class="tok-o">.</span><span class="tok-n">magic</span><span class="tok-o">.</span><span class="tok-n">cast</span><span class="tok-p">()</span>
-<span class="tok-k">print</span> <span class="tok-n">monpirate</span><span class="tok-o">.</span><span class="tok-n">vie</span> <i class="conum" data-value="4"></i><b>(4)</b></code></pre>
+<span class="tok-k">print</span> <span class="tok-p">(</span><span class="tok-n">monpirate</span><span class="tok-o">.</span><span class="tok-n">vie</span><span class="tok-p">)</span> <i class="conum" data-value="4"></i><b>(4)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -4573,12 +4573,12 @@ In other words, don&#8217;t check whether it IS-a duck: check whether it QUACKS-
         <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">power</span> <span class="tok-o">=</span> <span class="tok-n">power</span>
 
     <span class="tok-k">def</span> <span class="tok-nf">attaque</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span> <span class="tok-n">ennemi</span><span class="tok-p">):</span>
-        <span class="tok-k">print</span> <span class="tok-s">&quot;Attaque de puissance &quot;</span><span class="tok-p">,</span><span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">power</span> <span class="tok-p">,</span><span class="tok-s">&quot; sur &quot;</span><span class="tok-p">,</span><span class="tok-n">ennemi</span><span class="tok-o">.</span><span class="tok-n">nom</span>
+        <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;Attaque de puissance &quot;</span><span class="tok-p">,</span><span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">power</span> <span class="tok-p">,</span><span class="tok-s">&quot; sur &quot;</span><span class="tok-p">,</span><span class="tok-n">ennemi</span><span class="tok-o">.</span><span class="tok-n">nom</span><span class="tok-p">)</span>
         <span class="tok-n">ennemi</span><span class="tok-o">.</span><span class="tok-n">blessure</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">power</span><span class="tok-p">)</span>
 
     <span class="tok-k">def</span> <span class="tok-nf">blessure</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span><span class="tok-n">vie</span><span class="tok-p">):</span>
         <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">vie</span> <span class="tok-o">-=</span> <span class="tok-n">vie</span>
-        <span class="tok-k">print</span> <span class="tok-s">&quot;Aie ! moi &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nom</span><span class="tok-p">,</span> <span class="tok-s">&quot;je suis blessé de -&quot;</span><span class="tok-p">,</span> <span class="tok-n">vie</span>
+        <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;Aie ! moi &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nom</span><span class="tok-p">,</span> <span class="tok-s">&quot;je suis blessé de -&quot;</span><span class="tok-p">,</span> <span class="tok-n">vie</span><span class="tok-p">)</span>
 
 <span class="tok-k">class</span> <span class="tok-nc">Equipage</span><span class="tok-p">(</span><span class="tok-nb">object</span><span class="tok-p">):</span>
     <span class="tok-k">def</span> <span class="tok-nf">__init__</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span> <span class="tok-n">marins</span><span class="tok-p">):</span>
@@ -4601,11 +4601,11 @@ In other words, don&#8217;t check whether it IS-a duck: check whether it QUACKS-
 
     <span class="tok-k">def</span> <span class="tok-nf">combat</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span> <span class="tok-n">ennemi</span><span class="tok-p">):</span>
 
-        <span class="tok-k">print</span> <span class="tok-s">&quot;Attaque de puissance &quot;</span><span class="tok-p">,</span><span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">power</span> <span class="tok-p">,</span><span class="tok-s">&quot; sur &quot;</span><span class="tok-p">,</span><span class="tok-n">ennemi</span><span class="tok-o">.</span><span class="tok-n">nom</span>
+        <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;Attaque de puissance &quot;</span><span class="tok-p">,</span><span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">power</span> <span class="tok-p">,</span><span class="tok-s">&quot; sur &quot;</span><span class="tok-p">,</span><span class="tok-n">ennemi</span><span class="tok-o">.</span><span class="tok-n">nom</span><span class="tok-p">)</span>
         <span class="tok-n">ennemi</span><span class="tok-o">.</span><span class="tok-n">blessure</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">power</span><span class="tok-p">)</span>
 
         <span class="tok-n">nombreDeCombat</span> <span class="tok-o">=</span> <span class="tok-n">random</span><span class="tok-o">.</span><span class="tok-n">randint</span><span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-p">,</span> <span class="tok-nb">len</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">equipage</span><span class="tok-o">.</span><span class="tok-n">marins</span><span class="tok-p">)</span><span class="tok-o">-</span><span class="tok-mi">1</span><span class="tok-p">)</span>
-        <span class="tok-k">print</span> <span class="tok-s">&quot;nombreDeCombat = &quot;</span><span class="tok-p">,</span> <span class="tok-n">nombreDeCombat</span>
+        <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;nombreDeCombat = &quot;</span><span class="tok-p">,</span> <span class="tok-n">nombreDeCombat</span><span class="tok-p">)</span>
         <span class="tok-k">for</span> <span class="tok-n">i</span> <span class="tok-ow">in</span> <span class="tok-nb">range</span><span class="tok-p">(</span><span class="tok-n">nombreDeCombat</span><span class="tok-p">):</span>
             <span class="tok-c">#Duels</span>
             <span class="tok-c"># Marin 1</span>
@@ -4686,7 +4686,7 @@ Le duckTyping pourrait être utile dans le cadre du projet
 <span class="tok-kn">import</span> <span class="tok-nn">sys</span> <i class="conum" data-value="1"></i><b>(1)</b>
 
 <span class="tok-k">def</span> <span class="tok-nf">main</span><span class="tok-p">():</span> <i class="conum" data-value="2"></i><b>(2)</b>
-    <span class="tok-k">print</span> <span class="tok-s">&#39;Hello there&#39;</span><span class="tok-p">,</span> <span class="tok-n">sys</span><span class="tok-o">.</span><span class="tok-n">argv</span><span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">]</span> <i class="conum" data-value="3"></i><b>(3)</b>
+    <span class="tok-k">print</span> <span class="tok-p">(</span><span class="tok-s">&#39;Hello there&#39;</span><span class="tok-p">,</span> <span class="tok-n">sys</span><span class="tok-o">.</span><span class="tok-n">argv</span><span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">])</span> <i class="conum" data-value="3"></i><b>(3)</b>
     <span class="tok-c"># Command line args are in sys.argv[1], sys.argv[2] ...</span>
     <span class="tok-c"># sys.argv[0] is the script name itself and can be ignored</span>
 
@@ -4844,8 +4844,8 @@ ou des modules personnalisés définis dans le répertoire par le nom du fichier
 <span class="tok-n">choixOrdinateur</span> <span class="tok-o">=</span> <span class="tok-n">randint</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">,</span><span class="tok-mi">3</span><span class="tok-p">)</span>
 <span class="tok-n">computer_value</span> <span class="tok-o">=</span> <span class="tok-n">gameDict</span><span class="tok-p">[</span><span class="tok-n">choixOrdinateur</span><span class="tok-p">]</span>
 
-<span class="tok-k">print</span> <span class="tok-s">&quot;choix ordinateur = &quot;</span> <span class="tok-p">,</span> <span class="tok-n">computer_value</span>
-<span class="tok-k">print</span> <span class="tok-s">&quot;choix joueur = &quot;</span> <span class="tok-p">,</span> <span class="tok-n">choixJoueur</span></code></pre>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;choix ordinateur = &quot;</span> <span class="tok-p">,</span> <span class="tok-n">computer_value</span><span class="tok-p">)</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;choix joueur = &quot;</span> <span class="tok-p">,</span> <span class="tok-n">choixJoueur</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 </div>
@@ -4961,7 +4961,7 @@ ou des modules personnalisés définis dans le répertoire par le nom du fichier
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-11-14 14:47:31 CET
+Last updated 2018-11-15 09:01:00 CET
 </div>
 </div>
 </body>

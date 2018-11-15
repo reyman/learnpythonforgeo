@@ -311,7 +311,7 @@ Toutes les commandes que vous tapez dans ce mode interactif doivent être en pyt
 
 [source,python]
 ----
->>> print "Hello World"
+>>> print( "Hello World")
 hello world
 ----
 
@@ -334,7 +334,7 @@ Chaque commande que vous allez taper dans l'interpreteur de code python sera év
 
 [source,python]
 ----
->>> print "Hello World"
+>>> print( "Hello World")
 hello world
 ----
 
@@ -358,7 +358,7 @@ Si vous êtes sous windows, alors il faut remplace `python nomduprogramme.py` pa
 [source,python]
 ----
 # -*- coding: utf-8 -*-
-print "Hello World"
+print( "Hello World")
 ----
 +
 . Enregistrer et fermer le programme
@@ -373,8 +373,8 @@ Réouvrez ensuite votre fichier __hello.py__ et ajoutez la ligne suivante :
 .hello.py
 [source,python]
 ----
-print "Hello World"
-print Bonjour Monde
+print( "Hello World")
+print( Bonjour Monde)
 ----
 On redemande à l'interpréteur de lire notre programme :
 
@@ -387,12 +387,12 @@ Celui-ci renvoie une erreur que nous allons apprendre à lire :
 ----
 python hello.py
   File "hello.py", line 2
-    print Bonjour Monde
+    print( Bonjour Monde)
                       ^
 SyntaxError: invalid syntax
 ----
 
-L'interpréteur vous donne la ligne et la faute : la syntaxe pour print est incorrecte, car il manque les guillemets
+L'interpréteur vous donne la ligne et la faute : la syntaxe pour print() est incorrecte, car il manque les guillemets
 
 NOTE: "Hello World" est le programme le plus connu des informaticiens, cf. http://en.wikipedia.org/wiki/Hello_world_program
 
@@ -710,9 +710,9 @@ Ceci est un commentaire
 sur plusieurs lignes !
 """
 reponse = 42
-print "Je reviendrai." # Ceci est un commentaire en fin de ligne ...
+print( "Je reviendrai.") # Ceci est un commentaire en fin de ligne ...
 # qui peut aussi être ici en début de ligne ...
-print reponse
+print( reponse)
 ----
 
 NOTE: Les informations sur le *style* à adopter pour les commentaires, l'indentation, etc sont définis dans une *guideline* : +
@@ -728,8 +728,8 @@ La méthode `print()` permet d'afficher du texte ainsi que le contenu des variab
 [source,python]
 ----
 reponse = 42
-print "Je reviendrai."
-print reponse
+print( "Je reviendrai.")
+print( reponse)
 ----
 
 Tout ce qui est compris entre deux quotes `"` et `"` est considéré comme un type `String` par python.
@@ -740,13 +740,13 @@ De nombreuses écritures sont possibles à affichage égal, nous allons seulemen
 [source,python]
 ----
 reponse = 42
-print "La grande question sur la vie, l'univers et le reste est", réponse
+print( "La grande question sur la vie, l'univers et le reste est", réponse)
 
 age = 900
-print "Quand ", age , "ans comme moi tu auras, moins en forme tu seras !"
+print( "Quand ", age , "ans comme moi tu auras, moins en forme tu seras !")
 
 animal = "Tyranosaure"
-print "Le ", animal, "  n'obéit à aucun schéma de groupe ni aucun horaire de parc d'attraction. C'est l'essence du chaos."
+print( "Le ", animal, "  n'obéit à aucun schéma de groupe ni aucun horaire de parc d'attraction. C'est l'essence du chaos.")
 
 ----
 
@@ -755,8 +755,8 @@ print "Le ", animal, "  n'obéit à aucun schéma de groupe ni aucun horaire de 
 ----
 vetements = "vêtements, tes bottes"
 vehicule = "moto"
-print "Je veux tes " + vetements + " et ta " + vehicule
-print "Hasta" + "la vista" + "baby"
+print( "Je veux tes " + vetements + " et ta " + vehicule)
+print( "Hasta" + "la vista" + "baby")
 ----
 
 .Concatener du texte avec des variables
@@ -767,17 +767,17 @@ tirade2 = "Ignore ce que je suis et procure-moi quelque déguisement qui convien
 tirade3a = " Les prolifiques vilenies de dame nature vont pullulant sur lui."
 tirade3b = "Dédaignant la fortune et brandissant son épée qui fumait d'une sanglante exécution"
 
-print "Shakespeare a dit : ", tirade1 ,"mais aussi ", tirade2
+print( "Shakespeare a dit : ", tirade1 ,"mais aussi ", tirade2)
 
 # ou sinon sous une autre forme en concatenant variable texte et texte :
-print "Shakespeare a dit : " + tirade1 + "mais aussi " + tirade2
+print( "Shakespeare a dit : " + tirade1 + "mais aussi " + tirade2)
 
 # ou avec les deux méthodes :
-print  "shakespeare a dit : %s, mais aussi %s" % (tirade1, tirade3a + tirade3b)
+print(  "shakespeare a dit : %s, mais aussi %s" % (tirade1, tirade3a + tirade3b))
 
 # cela marche aussi avec les nombres :
 
-print "La grande question sur la %s, %s, et le %s est %d " % ("vie", "l'univers", "le reste", 42)
+print( "La grande question sur la %s, %s, et le %s est %d " % ("vie", "l'univers", "le reste", 42))
 ----
 
 CAUTION: Attention toutefois à ne pas tout mélanger ! les Types `String` et `Numbers` ne peuvent être concatenés avec l'opérateur `+`
@@ -787,7 +787,7 @@ NOTE: avec `,` la variable est automatiquement transformée en chaîne de caract
 [source,python]
 ----
 reponse = 42
-print "La réponse à la question est :" + reponse
+print( "La réponse à la question est :" + reponse)
 
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
@@ -812,8 +812,8 @@ days = "Mon\tTue\tWed\tThu\tFri\tSat\tSun\t"
 months = "Jan\nFeb\nMar\nApr\nMay\nJun\nJul\nAug"
 
 # retour à la ligne
-print days
-print months
+print( days)
+print( months)
 ----
 
 ****
@@ -830,7 +830,7 @@ La fonction *raw_input(" message ")* est l'équivalent de la commande *SAISIE(" 
 [source,python]
 ----
 value = raw_input ("Veuillez saisir un texte ou une valeur")
-print value
+print( value)
 ----
 
 Pour transformer une variable caractère en numérique, on utilise la fonction de conversion `int()`
@@ -838,7 +838,7 @@ Pour transformer une variable caractère en numérique, on utilise la fonction d
 [source,python]
 ----
 value = int(raw_input ("Veuillez saisir un texte ou une valeur"))
-print value
+print( value)
 ----
 
 == Fonctions
@@ -875,20 +875,20 @@ def multiply(a,b):
    return a * b
 
 # On affiche les valeurs retournées
-print somme(1,4) #<1>
-print multiply(2,7)
+print (somme(1,4)) #<1>
+print (multiply(2,7))
 
 a = 5
 b = 2
 
 # On peux passer des variables directement
-print somme(2,a)
+print( somme(2,a))
 
 # ou en les modifiant/ faisant des calculs intermédiaires
-print multiply(a + 2,3 * 2 + b)
+print( multiply(a + 2,3 * 2 + b))
 
 # les appels de fonctions sont empilables sans aucune limite
-print somme(multiply(2,3),somme(4,b + multiply(2,8))) # <2>
+print (somme(multiply(2,3),somme(4,b + multiply(2,8)))) # <2>
 
 ----
 
@@ -916,24 +916,24 @@ X = 99 # <1>
 
 def foo1():
    Y = 55 # <2>
-   print Y
+   print( Y)
 
 foo1()
-print Y # ne marchera pas # <3>
+print (Y) # ne marchera pas # <3>
 
 # On tente de redéfinir X dans cette fonction foo()
 def foo2():
    X = 88 # <4>
 
 foo2()
-print X # X n'a pas bougé du fait de  <4> ...
+print( X ) # X n'a pas bougé du fait de  <4> ...
 
 # La aussi, ce code ne changera pas la valeur de la variable globale X = 99
 def foo3(X):
    X = X + 1 # <5>
 
 foo3(X)
-print X
+print (X)
 
 # Accès à la variable globale en lecture
 def foo4(Y):
@@ -949,7 +949,7 @@ def foo5():
    X = X + 1 # <7>
 
 foo5()
-print X
+print( X)
 
 ----
 
@@ -1010,8 +1010,8 @@ list = [1, 2]
 
 modif(x,list)
 
-print x # valeur inchangé
-print list # valeur changé
+print (x) # valeur inchangé
+print (list) # valeur changé
 ----
 
 pass:macros[http://pythontutor.com/visualize.html#code=def+modif(a,b)%3A%0A++++a+%3D+2%0A++++b%5B0%5D+%3D+5%0A%0Ax+%3D+1%0Alist+%3D+%5B1,+2%5D%0A%0Amodif(x,list)%0A%0Aprint+x+%23+valeur+inchang%C3%A9%0Aprint+list+%23+valeur+chang%C3%A9&mode=display&cumulative=true&heapPrimitives=true&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=2&curInstr=0[Voir l'execution en ligne\]]
@@ -1041,7 +1041,7 @@ def calcul(sac,nbOr): #<1>
    sac = sac + nbOr
    return sac
 
-print calcul(sac,20)
+print( calcul(sac,20))
 ----
 
 pass:macros[http://pythontutor.com/visualize.html#code=sac+%3D+3%0A%0Adef+calcul(sac,nbOr)%3A+%0A++++sac+%3D+sac+%2B+nbOr%0A++++return+sac%0A%0Adef+calcul2(uxzefzzvc,nbOr)%3A+%0A++++uxzefzzvc+%3D+uxzefzzvc+%2B+nbOr%0A++++return+uxzefzzvc%0A%0Aprint+calcul(sac,20)%0Aprint+calcul2(sac,20)&mode=display&cumulative=true&heapPrimitives=true&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=2&curInstr=0[Voir l'execution en ligne\]]
@@ -1058,7 +1058,7 @@ def calcul(nbOr): #<1>
    sac = sac + nbOr #<3>
 
 calcul(20)
-print sac
+print( sac)
 ----
 
 <1> Seul nbOr est une variable locale
@@ -1083,7 +1083,7 @@ def douane(sac):
         print("pas de taxe pour les pauvres")
         return sac
 
-print douane(sac)
+print( douane(sac))
 ----
 
 
@@ -1104,15 +1104,15 @@ listX = []
 
 # 1 dimension
 listA = [ 1,2,3,4 ]
-print len(listA) # 4 elements
+print (len(listA)) # 4 elements
 
 # 2 dimension matrice
 listB = [ [1,2],[2,3],[4,5]]
-print listB
+print( listB)
 
 # 2 dimension non symmétrique
 listC = [[1,2,3], [2,1], [4]]
-print listC
+print( listC)
 ----
 
 Initialiser une liste avec d'autres listes :
@@ -1124,7 +1124,7 @@ listA = [ 1,2,3,4 ]
 listB = [ 1,2 ]
 listC = [listA, listB]
 
-print listC
+print( listC)
 ----
 
 Construire une liste avec la fonction `append()` :
@@ -1136,7 +1136,7 @@ listA = []
 for i in range(3):
   listA.append(1)
 
-print listA
+print( listA)
 ----
 
 pass:macros[http://pythontutor.com/visualize.html#code=listA+%3D+%5B%5D%0Afor+i+in+range(3)%3A%0A++listA.append(1)%0A%0Aprint+listA&mode=display&cumulative=true&heapPrimitives=true&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=2&curInstr=0[Voir l'execution en ligne\]]
@@ -1154,8 +1154,8 @@ def multiply(a,b):
   return a * b
 
 listd = [somme,multiply]
-print listd[0](1,2)
-print listd[1](2,9)
+print( listd[0](1,2))
+print( listd[1](2,9))
 ----
 
 pass:macros[http://pythontutor.com/visualize.html#code=%23+1+dimension+avec+des+fonctions%0Adef+somme(a,b)%3A%0A++return+a+%2B+b%0Adef+multiply(a,b)%3A%0A++return+a+*+b%0A%0Alistd+%3D+%5Bsomme,multiply%5D%0Aprint+listd%5B0%5D(1,2)%0Aprint+listd%5B1%5D(2,9)&mode=display&cumulative=true&heapPrimitives=true&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=2&curInstr=0[Voir l'execution en ligne\]]
@@ -1165,16 +1165,16 @@ pass:macros[http://pythontutor.com/visualize.html#code=%23+1+dimension+avec+des+
 ----
 # 1 dimension
 listA = [1,2,3,4]
-print listA[0]
+print( listA[0])
 
 # 2 dimension matrice
 listB = [[1,2],[2,3],[4,5]]
-print listB[1][0]
+print( listB[1][0])
 
 # 2 dimension non symmétrique
 listC = [[1,2,3], [2,1], [4]]
-print listC[0][2]
-print listC[2][0]
+print( listC[0][2])
+print( listC[2][0])
 ----
 
 En rapport avec la section qui discutait des références et du passage d'argument lorsque l'objet est *mutable* (comme l'objet liste) que se passe-t-il pour une liste qui contient des références vers des objets ?
@@ -1218,8 +1218,8 @@ Dans ce cas là, tout est différent car nous accédons à l'intérieur de l'obj
 
 [source,python]
 ----
-print L1
-print L2
+print( L1)
+print( L2)
 ----
 
 .modification d'un élément de l'objet liste mutable
@@ -1231,8 +1231,8 @@ Voyons un cas encore plus vicieux, lorsque notre liste comporte une référence 
 ----
 L1 = [2,3]
 L2 = [1, L1, 8] # L2 contient une référence vers L1
-print L1
-print L2
+print( L1)
+print( L2)
 ----
 
 pass:macros[http://pythontutor.com/visualize.html#code=listA+%3D+%5B%5D%0Afor+i+in+range(3)%3A%0A++listA.append(1)%0A%0Aprint+listA&mode=display&cumulative=true&heapPrimitives=true&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=2&curInstr=0[Voir l'execution en ligne\]]
@@ -1242,12 +1242,12 @@ Que se passe-t-il si je modifie les éléments appartenant à L1 dans L2 ?
 [source,python]
 ----
 L2[1].append(5)
-print L1
-print L2
+print( L1)
+print( L2)
 # marche aussi en modifiant L1
 L1.append(8)
-print L1
-print L2
+print( L1)
+print( L2)
 ----
 
 pass:macros[http://pythontutor.com/visualize.html#code=L1+%3D+%5B2,3%5D%0AL2+%3D+%5B1,+L1,+8%5D+%23+L2+contient+une+r%C3%A9f%C3%A9rence+vers+L1%0Aprint+L1%0Aprint+L2%0A%0AL2%5B1%5D.append(5)%0Aprint+L1%0Aprint+L2%0A%0A%23+marche+aussi+en+modifiant+L1%0AL1.append(8)%0Aprint+L1%0Aprint+L2&mode=display&cumulative=true&heapPrimitives=true&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=2&curInstr=0[Voir l'execution en ligne\]]
@@ -1263,8 +1263,8 @@ Si on veut éviter ce comportement, par peur de faire des erreurs, ou parce que 
 ----
 L1 = [2,3]
 L2 = [1, L1[:], 8] # L2 contient une re-copie de la liste L1
-print L1
-print L2
+print( L1)
+print( L2)
 ----
 
 Pour connaitre la taille d'une liste, on utilise la méthode len() fournie par le langage.
@@ -1274,18 +1274,18 @@ Pour connaitre la taille d'une liste, on utilise la méthode len() fournie par l
 ----
 # 1 dimension
 listA = [1,2,3,4]
-print len(listA)
+print( len(listA))
 
 # 2 dimension matrice
 listB = [[1,2],[2,3],[4,5]]
-print len(listB) , "/" , len(listB[0]), "/", len(listB[1]), "/", len(listB[2])
+print( len(listB) , "/" , len(listB[0]), "/", len(listB[1]), "/", len(listB[2]))
 
 # 2 dimension non symmétrique
 listC = [[1,2,3], [2,1], [4]]
-print len(listC)
-print len(listC[0])
-print len(listC[1])
-print len(listC[2])
+print( len(listC))
+print( len(listC[0]))
+print( len(listC[1]))
+print( len(listC[2]))
 
 ----
 
@@ -1298,8 +1298,8 @@ listA = [1,5,3]
 listB = ["gerard", "paul", "albert"]
 listA[0] = 2
 listB[1] = "Edouard"
-print listA
-print listB
+print( listA)
+print( listB)
 ----
 
 Les listes, comme beaucoup d'autres choses en python, sont des objets qui possèdent des méthodes, et des attributs.
@@ -1319,21 +1319,21 @@ CAUTION: La plupart de ces méthodes/fonctions ne retournent rien, et modifient 
 ----
 listA = [1,5,3]
 listA.append(4)
-print listA
+print( listA)
 
 listB = ["oeuf","jambon"]
 listB.append("Frites")
-print listB
+print( listB)
 
 listC = ["gerard", "paul", "albert"]
 listC.append(["Eleonore",5])
-print listC
+print( listC)
 
 listD = []
 listD.append(1)
 listD.append([2,3])
 listD.append("test")
-print listD
+print( listD)
 ----
 
 .Insérer des éléments
@@ -1342,7 +1342,7 @@ print listD
 listA = [1,5,3]
 # Insérer un 8 à la position 2 se fait avec la commande suivante :
 listA.insert(2,8)
-print listA
+print( listA)
 ----
 
 .Supprimer des éléments en utilisant l'indice et la fonction pop()
@@ -1350,12 +1350,12 @@ print listA
 ----
 listA = [1,5,3]
 # pop renvoie la valeur supprimé
-print "element supprimé = " , listA.pop(1)
-print "liste après suppression", listA
+print( "element supprimé = " , listA.pop(1))
+print( "liste après suppression", listA)
 
 listB = [[2,3],[1,4]]
-print "element supprimé = " , listB[0].pop(1)
-print "liste après suppression", listB
+print( "element supprimé = " , listB[0].pop(1))
+print( "liste après suppression", listB)
 ----
 
 .Supprimer des occurence de valeurs directement avec remove()
@@ -1366,11 +1366,11 @@ listB = [2,4,3,4]
 
 #Enleve le chiffre 5 de la liste A
 listA.remove(5)
-print listA
+print( listA)
 
 # Enleve la première occurence 4 de la liste B
 listB.remove(4)
-print listB
+print( listB)
 ----
 
 .Accèder à l'index d'une occurence avec index()
@@ -1380,9 +1380,9 @@ listA = [1,5,3]
 listB = [2,4,3,4]
 listC = [[2,3],[1,4]]
 
-print "index liste A = ", listA.index(3)
-print "index liste B = ", listB.index(4) # Ne renvoie l'index que de la première valeur trouvée
-print "index liste C = ", listC[1].index(4) # Marche aussi sur les tableau deux dimensions, a condition d'indiquer la dimension de recherche !!
+print( "index liste A = ", listA.index(3))
+print( "index liste B = ", listB.index(4)) # Ne renvoie l'index que de la première valeur trouvée
+print("index liste C = ", listC[1].index(4)) # Marche aussi sur les tableau deux dimensions, a condition d'indiquer la dimension de recherche !!
 ----
 
 .Concaténation
@@ -1392,15 +1392,15 @@ listA = [1,5,3]
 listB = [2,[4,3]]
 listC = ["gerard", "paul", "albert"]
 
-print listA + listB
-print listA + listC + listB
+print( listA + listB)
+print( listA + listC + listB)
 ----
 
 .Multiplication
 [source,python]
 ----
 listA = [1,5,3]
-print listA * 2
+print( listA * 2)
 ----
 
 .tri
@@ -1416,9 +1416,9 @@ listB.sort()
 listC[0].sort()
 listC[1].sort()
 
-print listA
-print listB
-print listC
+print( listA)
+print( listB)
+print( listC)
 
 ----
 
@@ -1432,8 +1432,8 @@ listA = [1,5,3]
 listB = listA[:]
 listB.append(8)
 
-print listA
-print listB
+print( listA)
+print( listB)
 ----
 
 [NOTE]
@@ -1535,9 +1535,9 @@ myList = ["alex","paul","gerard","martine","helene","laurent"]
 element = raw_input("Quel nom  ? > ")
 
 if element not in myList:
-   print "L'element n'est pas présent! "
+   print( "L'element n'est pas présent! ")
 else:
-   print "L'element est présent = ", element
+   print( "L'element est présent = ", element)
 ----
 
 ou bien autre exemple :
@@ -1547,7 +1547,7 @@ ou bien autre exemple :
 censor = [ 'bugger', 'nickle' ]
 word = 'bugger'
 if word in censor:
-   print 'CENSORED'
+   print( 'CENSORED')
 ----
 
 === Boucle(s)
@@ -1579,7 +1579,7 @@ Ce qui donne par exemple :
 ----
 count = 0
 while (count < 9):
-   print 'The count is:', count
+   print( 'The count is:', count)
    count = count + 1
 ----
 
@@ -1607,12 +1607,12 @@ Python est aussi capable de manipuler directement les éléments du tableau, san
 # Avec une liste simple
 myList = ["alex","paul","gerard","martine","helene","laurent"]
 for element in myList:
-   print "L'element est = ", element
+   print( "L'element est = ", element)
 
 # ou avec une liste plus complexe
 myList = ['paul', "laurent", 4, [3,2]]
 for element in myList:
-   print "L'element est de type ", type(element) , " = ", element
+   print( "L'element est de type ", type(element) , " = ", element)
 ----
 
 Malheureusement dans ce cas-là, nous n'avons pas accès aux indices, et donc nous ne savons pas de façon explicite de quelle position dans le tableau nous avons extrait l'élément.
@@ -1629,14 +1629,14 @@ Première solution, en générant une liste allant de *__[DEBUT]__* A *__[FIN]__
 debut = 1
 fin = 4
 
-print range(debut, fin) # renvoie une liste [2, 3]
+print (range(debut, fin)) # renvoie une liste [2, 3]
 
 for i in range(debut,fin): # ou range(2,4) cela marche aussi
-   print 'The count is:', i
+   print( 'The count is:', i)
 
 #Par défaut range va de 0 a la valeur - 1 passé en paramètre
 for i in range(5):
-   print "The count is:", i
+   print( "The count is:", i)
 ----
 
 .Pour lire et afficher les éléments d'une liste
@@ -1644,7 +1644,7 @@ for i in range(5):
 ----
 myList = ["alex","paul","gerard","martine","helene","laurent"]
 for i in range(len(myList)):
-   print "At index", i, " value equal ", myList[i]
+   print( "At index", i, " value equal ", myList[i])
 ----
 
 De façon plus générale, python nous permet de parcourir n'importe quel type de collection, résultat d'une fonction (comme c'est le cas pour `range()`) ou bien définie par l'utilisateur ...
@@ -1656,7 +1656,7 @@ De façon plus générale, python nous permet de parcourir n'importe quel type d
 myList = ["alex","paul","gerard","martine","helene","laurent"]
 myIndex = [0, 2 , 3]
 for i in myIndex:
-   print "At index ", i ," value equal ", myList[i]
+   print( "At index ", i ," value equal ", myList[i])
 ----
 
 Deuxième solution, plus élégante mais plus complexe, il est possible de conserver un appel direct aux élémentx de la liste, tout en récupérant l'index.
@@ -1666,7 +1666,7 @@ Pour cela on fait appel a la fonction enumerate() qui nous renvoie une collectio
 ----
 myList = ["alex","paul","gerard","martine","helene","laurent"]
 for i,element in enumerate(myList):
-   print "At index ", i ," value equal ", element
+   print( "At index ", i ," value equal ", element)
 ----
 
 ===== For in + zip()
@@ -1679,7 +1679,7 @@ Voyons voir ce que nous retourne la fonction `zip(listA,listB)`
 questions = ["name", "quest", "favorite color"]
 answers = ["lancelot", "the holy grail", "blue"]
 result = zip(questions,answers)
-print result
+print( result)
 #renvoie [('name', 'lancelot'), ('quest', 'the holy grail'), ('favorite color', 'blue')]
 ----
 
@@ -1693,14 +1693,14 @@ questions = ["name", "quest", "favorite color"]
 answers = ["lancelot", "the holy grail", "blue"]
 resultOfZipping = zip(questions,answers)
 for q, a in resultOfZipping :
-   print 'What is your %s ?  It is %s' % (q, a)
+   print( 'What is your %s ?  It is %s' % (q, a))
 
 # ou plus simplement :
 
 questions = ["name", "quest", "favorite color"]
 answers = ["lancelot", "the holy grail", "blue"]
 for q, a in zip(questions, answers):
-   print 'What is your %s ?  It is %s' % (q, a)
+   print( 'What is your %s ?  It is %s' % (q, a))
 ----
 
 ==== Construire à une liste
@@ -1714,7 +1714,7 @@ res = [] # Initialisation d'une liste vide résultat
 for x in L:
    res.append(x + 10)
 
-print res
+print( res)
 
 # ou bien avec l'autre technique :
 
@@ -1724,7 +1724,7 @@ res = [] # Initialisation d'une liste vide résultat
 for x in range(0,len(L)):
    res.append(L[x] + 10)
 
-print res
+print( res)
 ----
 
 .Opérer sur une liste 2D, ici une initialisation
@@ -1736,7 +1736,7 @@ for i in range(3):
    for j in range(3):
       b.append(i*j) # ajout colonne
    a.append(b) # ajout n colonne comme une nouvelle ligne
-print a
+print( a)
 ----
 
 pass:macros[http://pythontutor.com/visualize.html#code=a%20%3D%20%5B%5D%20%23%20initialisation%20tableau%20contenant%20les%20lignes%0Afor%20i%20in%20range%283%29%3A%0A%20b%20%3D%20%5B%5D%20%23%20initialisation%0A%20for%20j%20in%20range%283%29%3A%0A%20%20b.append%28i*j%29%20%23%20ajout%20colonne%0A%20a.append%28b%29%20%23%20ajout%20n%20colonne%20comme%20une%20nouvelle%20ligne%0Aprint%28a%29&cumulative=true&curInstr=0&heapPrimitives=false&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false[Voir l'execution en ligne\]]
@@ -1761,22 +1761,22 @@ if __name__ == "__main__":
    name = raw_input('Hello! What is your name?\n')
    number = random.randint(1, 20)
 
-   print 'Well, {0}, I am thinking of a number between 1 and 20.'.format(name)
+   print( 'Well, {0}, I am thinking of a number between 1 and 20.'.format(name))
 
    while guesses_made < 6:
       guess = int(raw_input('Take a guess: '))
       guesses_made += 1
       if guess < number:
-         print 'Your guess is too low.'
+         print( 'Your guess is too low.')
       if guess > number:
-         print 'Your guess is too high.'
+         print( 'Your guess is too high.')
       if guess == number:
          break
 
    if guess == number:
-       print 'Good job, {0}! You guessed my number in {1} guesses!'.format(name, guesses_made)
+       print( 'Good job, {0}! You guessed my number in {1} guesses!'.format(name, guesses_made))
    else:
-       print 'Nope. The number I was thinking of was {0}'.format(number)
+       print( 'Nope. The number I was thinking of was {0}'.format(number))
 ----
 
 .Execution du programme dans le terminal
@@ -1789,9 +1789,9 @@ Le mot clef *continue* passe directement à l'itération suivante et saute les i
 ----
 for k in range(2,10):
    if k > 3 and k < 8:
-     print "skipping this iteration!"
+     print( "skipping this iteration!")
      continue
-   print k
+   print( k)
 ----
 
 == Dictionnaires
@@ -1806,15 +1806,15 @@ A la différence des listes qui ne peuvent être accédé que par leurs indices,
 ----
 # Initialisation d'un dictionnaire vide
 monDictionnaire1 = {}
-print monDictionnaire1
+print( monDictionnaire1)
 
 # Initialisation d'un dictionnaire déjà rempli
 monDictionnaire2 = {"pomme":2, "orange":3}
-print monDictionnaire2
+print( monDictionnaire2)
 
 # Avec une clef numérique
 monDictionnaire3 = {1:"Gauche", 2:"Droite"}
-print monDictionnaire3
+print( monDictionnaire3)
 
 ----
 
@@ -1826,10 +1826,10 @@ Les dictionnaires ne sont pas des séquences comme les listes, et la clef qui d�
 .Lister des éléments
 ----
 monDictionnaire4 = {"pomme":2, "orange":3, "patate":2}
-print monDictionnaire4["patate"]
+print( monDictionnaire4["patate"])
 
 monDictionnaire5 = {1:"Gauche", 2:"Droite"}
-print monDictionnaire5[1]
+print( monDictionnaire5[1])
 
 ----
 
@@ -1842,13 +1842,13 @@ monDictionnaire6 = {}
 monDictionnaire6["patate"] = 3
 monDictionnaire6["orange"] = 8
 monDictionnaire6["citron"] = 5
-print monDictionnaire6
+print( monDictionnaire6)
 
 # Ajout dans un dictionnaire existant
 # L'ordre n'a aucune d'importance dans un dictionnaire
 monDictionnaire7 = {1:"Gauche", 3:"Droite"}
 monDictionnaire7[2] = "Milieu"
-print monDictionnaire7
+print( monDictionnaire7)
 ----
 
 [source,python]
@@ -1856,7 +1856,7 @@ print monDictionnaire7
 ----
 monDictionnaire8 = {"pomme":2, "orange":3, "patate":2}
 del monDictionnaire8["pomme"]
-print monDictionnaire8
+print( monDictionnaire8)
 ----
 
 === Méthodes spécifiques aux dictionnaires
@@ -1865,23 +1865,23 @@ print monDictionnaire8
 .Lister les clef dans le dictionnaire
 ----
 monDictionnaire9 = {"pomme":2, "orange":3, "patate":2}
-print monDictionnaire9.keys()
+print( monDictionnaire9.keys())
 ----
 
 [source,python]
 .Lister les valeurs dans le dictionnaire
 ----
 monDictionnaire10 = {"pomme":2, "orange":3, "patate":2}
-print monDictionnaire10.values()
+print( monDictionnaire10.values())
 ----
 
 [source,python]
 .Tester l'existence d'une valeur dans le dictionnaire
 ----
 monDictionnaire11 = {"pomme":2, "orange":3, "patate":2}
-print monDictionnaire11.has_key("Pomme")
-print monDictionnaire11.has_key("pomme")
-print monDictionnaire11.has_key("citron")
+print( monDictionnaire11.has_key("Pomme"))
+print( monDictionnaire11.has_key("pomme"))
+print( monDictionnaire11.has_key("citron"))
 ----
 
 === Parcourir les dictionnaires
@@ -1891,7 +1891,7 @@ print monDictionnaire11.has_key("citron")
 ----
 monDictionnaire12 = {"pomme":2, "orange":3, "patate":2}
 for clef in monDictionnaire12:
-	print clef
+	print( clef)
 ----
 
 [source,python]
@@ -1899,7 +1899,7 @@ for clef in monDictionnaire12:
 ----
 monDictionnaire13 = {"pomme":2, "orange":3, "patate":2}
 for clef in monDictionnaire13:
-	print monDictionnaire13[clef]
+	print( monDictionnaire13[clef])
 ----
 
 [source,python]
@@ -1907,7 +1907,7 @@ for clef in monDictionnaire13:
 ----
 monDictionnaire14 = {"pomme":2, "orange":3, "patate":2}
 for clef, valeur in monDictionnaire14.items():
-	print clef ," = ",  valeur
+	print( clef ," = ",  valeur)
 ----
 
 
@@ -2010,7 +2010,7 @@ class Humain(object): # <1>
    nbJambes = 2
 
    def marche(self): # <3>
-      print "Je marche !"
+      print( "Je marche !")
       #... traitement ...
 
 #fin du bloc classe
@@ -2026,10 +2026,10 @@ class Humain(object): # <1>
 gerard = Humain() # <1>
 paul = Humain () # <2>
 
-print gerard # <3>
+print (gerard) # <3>
 
-print gerard.nbBras # <4>
-print paul.marche() # <5>
+print (gerard.nbBras) # <4>
+print (paul.marche()) # <5>
 ----
 
 pass:macros[http://pythontutor.com/visualize.html#code=class+Humain(object)%3A%0A++++nbYeux+%3D+2+%0A++++nbBras+%3D+2%0A++++nbJambes+%3D+2%0A%0Adef+marche(self)%3A+%0A++++print+%22Je+marche+!%22%0A+++%23...+traitement+...%0A%0Agerard+%3D+Humain()+%0Apaul+%3D+Humain+()+%0A%0Aprint+gerard.nbBras+%0Aprint+paul.marche()&mode=display&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=2&curInstr=0[Voir l'execution en ligne\]]
@@ -2072,7 +2072,7 @@ class Navigateur(object):
       self.afficheInfo() # <4>
 
    def afficheInfo(self): # <5>
-      print "Bonjour ! J'ai ", self.nbYeux, "yeux, ", self.tete, " tête, ", self.nbBras, " bras, et ", self.nbJambes, " jambes ..."
+      print( "Bonjour ! J'ai ", self.nbYeux, "yeux, ", self.tete, " tête, ", self.nbBras, " bras, et ", self.nbJambes, " jambes ...")
 
    def accident(self,typeAcc): # <6>
       if typeAcc == "bras":
@@ -2084,7 +2084,7 @@ class Navigateur(object):
 
    def initGrade(self):
       self.grade = "minable" # <8>
-      print "je suis un pirate ", self.grade
+      print( "je suis un pirate ", self.grade)
 
    def augmenteGrade(self):
       if self.grade == "minable":
@@ -2128,7 +2128,7 @@ gerard.augmenteGrade()
 gerard.augmenteGrade()
 gerard.augmenteGrade()
 
-print "Gerard est maintenant ", gerard.grade ," ! "
+print( "Gerard est maintenant ", gerard.grade ," ! ")
 
 # Malheureusement, la vie de capitaine n'est pas facile ...
 gerard.accident("yeux")
@@ -2161,15 +2161,15 @@ def somme(a,b):
 def multiply(a,b):
    return a*b
 
-print somme # renvoie une adresse de l'objet en mémoire
-print somme() # execute la fonction !
+print (somme) # renvoie une adresse de l'objet en mémoire
+print (somme()) # execute la fonction !
 
 # Et donc vous pouvez stocker les références/adresses dans des structures de données, c'est à dire dans des classes (dans les attributs), dans des listes, dans des dictionnaires, etc.
 
 listeFonctionCalculette = [somme,multiply]
 
 for i in listeFonctionCalculette:
-   print "Resultat = ", i(1,3)
+   print( "Resultat = ", i(1,3))
 
 ----
 
@@ -2186,12 +2186,12 @@ class Personne(object):
       self.age = age
 
    def anniversaire(self):
-      print "Bon anniversaire ", self.nom, " !!"
+      print( "Bon anniversaire ", self.nom, " !!")
       self.age = self.age + 1
 
    def information(self):
-      print "Mon nom est ", self.nom, " et mon prénom est ", self.prenom
-      print "Aujourd'hui j'ai ", self.age, " ans."
+      print( "Mon nom est ", self.nom, " et mon prénom est ", self.prenom)
+      print( "Aujourd'hui j'ai ", self.age, " ans.")
 
 # Creation de deux objets a partir de la classe Personne
 tomy = Personne("Ungerer","Tomy",75)
@@ -2325,7 +2325,7 @@ jack =  Navigateur("Jack Calico", argent=10, force=10, grade="capitaine")
 edward =  Navigateur("Edward Drake", argent=2, force=3, grade="minable")
 anne = Navigateur("Anne Bonny",argent= 3, force=2, grade="minable")
 equipe1 = [jack,edward,anne]
-print equipe1
+print( equipe1)
 ----
 
 Normalement un code bizarre de ce type s'affiche `[<__main__.Navigateur instance at 0x7f632f278908>, <__main__.Navigateur instance at 0x7f632f2789e0>, <__main__.Navigateur instance at 0x7f632f278a28>]`
@@ -2341,7 +2341,7 @@ Si je veux affiche par exemple, le nom de chacun des pirates, je pourrais faire 
 [source,python]
 ----
 for p in equipe1:
-	print p.nom
+	print( p.nom)
 ----
 
 Je peux aussi changer la valeur des attributs directement :
@@ -2351,7 +2351,7 @@ Je peux aussi changer la valeur des attributs directement :
 ----
 for p in equipe1:
 	p.argent = p.argent * 2
-	print p.argent
+	print( p.argent)
 ----
 
 Si je veux uniquement augmenter le grade des *minables* dans mon équipage, il suffit de filtrer notre liste en fonction d'un attribut :
@@ -2370,7 +2370,7 @@ Si je veux calculer l'argent total que possède cet équipage, encore une fois r
 richesse = 0
 for p in equipe1:
 	richesse = richesse + p.argent
-print richesse
+print( richesse)
 ----
 
 Réaliser cet équipage n'est qu'une première étape, que pouvons nous ajouter à présent ? Il serait intéressant par exemple d'encapsuler notre liste de pirates fraichement construite dans un objet `Equipage` auquel on pourra rajouter la fonction de calcul des richesses que nous avons déjà réalisé.
@@ -2385,7 +2385,7 @@ class Equipage(object): # <1>
         richesse = 0
         for p in self.marins:
             richesse = richesse + p.argent
-        print richesse
+        print( richesse)
 
     def rechercheDuPlusRiche(self): #<3>
         pass
@@ -2421,7 +2421,7 @@ class Navire(object): # <1>
         self.equipage = Equipage(marins)
 
     def combat(self, ennemi): # <2>
-        print "combat le bateau ennemi ! "
+        print( "combat le bateau ennemi ! ")
 ----
 
 
@@ -2557,8 +2557,8 @@ class Pirate(object): # <1>
     def __init__(self,nation):
         self.nation = nation
     def speak(self):
-        print "je suis ", self.nation
-        print "et je suis un pirate normal ..."
+        print( "je suis ", self.nation)
+        print( "et je suis un pirate normal ...")
 
 # PirateMagicien is - a Pirate
 class PirateMagicien(Pirate): # <2>
@@ -2567,11 +2567,11 @@ class PirateMagicien(Pirate): # <2>
         self.formules = listFormule # <4>
 
     def speak(self): <5>
-        print "je suis un magicien de nationalité ", self.nation
+        print( "je suis un magicien de nationalité ", self.nation)
 
     def cast(self): # <6>
         self.speak()
-        print self.formules[random.randint(0,len(self.formules)-1)]
+        print( self.formules[random.randint(0,len(self.formules)-1)])
 ----
 
 <1> La classe de Base, qui va servir à la dérivation, celle ci n'a rien de particulier.
@@ -2597,8 +2597,8 @@ class PirateZombie(Pirate):
         print("miam miam")
 
     def speak(self):
-        print " *Bweahhhh* ", self.nation
-        print " *Bweahhhh* Brain ... "
+        print( " *Bweahhhh* ", self.nation)
+        print( " *Bweahhhh* Brain ... ")
 
 # PirateVolant is - a Pirate
 class PirateVolant(Pirate):
@@ -2611,8 +2611,8 @@ class PirateVolant(Pirate):
         print("Je vole sur mon " + self.nomDuBalais)
 
     def speak(self):
-        print "Je suis ", self.nation
-        print "et je suis l'as des as pirates ... "
+        print( "Je suis ", self.nation)
+        print( "et je suis l'as des as pirates ... ")
 
 
 unPremierSpecialiste = PirateMagicien("Italien",["Abracadabra","Bazinga"])
@@ -2728,7 +2728,7 @@ class VolantPower(object):
         self.nomDuBalais = nomDuBalais
 
     def fly(self):
-        print "Je vole sur mon ", self.nomDuBalais
+        print( "Je vole sur mon ", self.nomDuBalais)
 ----
 
 Il y a plusieurs façon de voir une composition, tout dépend du problème.
@@ -2822,7 +2822,7 @@ class MagicPower(object):
     def cast(self):
         if self.owner: # <1>
             self.owner.vie += 5.0 * self.power # <2>
-            print "pfscht +",  5.0 * self.power , " vie"
+            print( "pfscht +",  5.0 * self.power , " vie")
 
 class Pirate(object):
     def __init__(self, nation, vie,magicien = None, zombie = None, volant = None):
@@ -2838,7 +2838,7 @@ class Pirate(object):
 magicien = MagicPower(2.0)
 monpirate = Pirate("LeChuck", 100.0, magicien = magicien)
 monpirate.magic.cast()
-print monpirate.vie # <4>
+print (monpirate.vie) # <4>
 ----
 
 <1> A l'execution de la fonction, et avant d'appliquer le pouvoir on s'assure bien que l'attribut `self.owner` existe. En l'occurence à cet instant là qui correspond à la définition de la fonction, il n'existe pas encore, et il faudra attendre l'étape 4 pour que cet attribut soit fixé par la classe `Pirate`. Il est donc tout à fait possible de définir des attributs à posteriori pour une classe. Toutefois on voit que nous avons rajouté un lien de dépendance entre ces deux classes, car cette fonction a maintenant besoin d'une classe parente pour pouvoir marcher correctement (cad ajouter de la vie à son propriétaire ici)
@@ -2928,12 +2928,12 @@ class Pirate(object):
         self.power = power
 
     def attaque(self, ennemi):
-        print "Attaque de puissance ",self.power ," sur ",ennemi.nom
+        print( "Attaque de puissance ",self.power ," sur ",ennemi.nom)
         ennemi.blessure(self.power)
 
     def blessure(self,vie):
         self.vie -= vie
-        print "Aie ! moi ", self.nom, "je suis blessé de -", vie
+        print( "Aie ! moi ", self.nom, "je suis blessé de -", vie)
 
 class Equipage(object):
     def __init__(self, marins):
@@ -2956,11 +2956,11 @@ class Navire(object):
 
     def combat(self, ennemi):
 
-        print "Attaque de puissance ",self.power ," sur ",ennemi.nom
+        print( "Attaque de puissance ",self.power ," sur ",ennemi.nom)
         ennemi.blessure(self.power)
 
         nombreDeCombat = random.randint(0, len(self.equipage.marins)-1)
-        print "nombreDeCombat = ", nombreDeCombat
+        print( "nombreDeCombat = ", nombreDeCombat)
         for i in range(nombreDeCombat):
             #Duels
             # Marin 1
@@ -3028,7 +3028,7 @@ Point d'entrée d'un programme python :
 import sys # <1>
 
 def main(): # <2>
-    print 'Hello there', sys.argv[1] # <3>
+    print ('Hello there', sys.argv[1]) # <3>
     # Command line args are in sys.argv[1], sys.argv[2] ...
     # sys.argv[0] is the script name itself and can be ignored
 
@@ -3125,8 +3125,8 @@ choixJoueur = raw_input("Pierre Papier Ciseaux ? ")
 choixOrdinateur = randint(1,3)
 computer_value = gameDict[choixOrdinateur]
 
-print "choix ordinateur = " , computer_value
-print "choix joueur = " , choixJoueur
+print( "choix ordinateur = " , computer_value)
+print( "choix joueur = " , choixJoueur)
 ----
 
 === Bataille navale
