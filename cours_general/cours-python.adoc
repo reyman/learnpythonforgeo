@@ -823,13 +823,13 @@ Une liste plus complète des caractères spéciaux, ainsi que de plus nombreuses
 * La documentation officielle http://docs.python.org/reference/lexical_analysis.html#string-literals
 ****
 
-=== Entrées : raw_input()
+=== Entrées : input()
 
-La fonction *raw_input(" message ")* est l'équivalent de la commande *SAISIE(" message ")* vu en cours d'algorithmie, attention elle renvoie une chaîne de caractère.
+La fonction *input(" message ")* est l'équivalent de la commande *SAISIE(" message ")* vu en cours d'algorithmie, attention elle renvoie une chaîne de caractère.
 
 [source,python]
 ----
-value = raw_input ("Veuillez saisir un texte ou une valeur")
+value = input ("Veuillez saisir un texte ou une valeur")
 print( value)
 ----
 
@@ -837,7 +837,7 @@ Pour transformer une variable caractère en numérique, on utilise la fonction d
 
 [source,python]
 ----
-value = int(raw_input ("Veuillez saisir un texte ou une valeur"))
+value = int(input ("Veuillez saisir un texte ou une valeur"))
 print( value)
 ----
 
@@ -1072,7 +1072,7 @@ Ce qui n'exclue pas la possibilité d'avoir plusieurs fonctions `return` dans un
 .multiples retours de fonctions
 [source,python]
 ----
-sac = int(raw_input("nombre de pièces dans votre sac ?"))
+sac = int(input("nombre de pièces dans votre sac ?"))
 
 def douane(sac):
     taxe = 15
@@ -1532,7 +1532,7 @@ Ainsi, grâce à cette notation, il est possible de faire des choses très inté
 [source,python]
 ----
 myList = ["alex","paul","gerard","martine","helene","laurent"]
-element = raw_input("Quel nom  ? > ")
+element = input("Quel nom  ? > ")
 
 if element not in myList:
    print( "L'element n'est pas présent! ")
@@ -1758,13 +1758,13 @@ import random
 if __name__ == "__main__":
 
    guesses_made = 0
-   name = raw_input('Hello! What is your name?\n')
+   name = input('Hello! What is your name?\n')
    number = random.randint(1, 20)
 
    print( 'Well, {0}, I am thinking of a number between 1 and 20.'.format(name))
 
    while guesses_made < 6:
-      guess = int(raw_input('Take a guess: '))
+      guess = int(input('Take a guess: '))
       guesses_made += 1
       if guess < number:
          print( 'Your guess is too low.')
@@ -3119,7 +3119,7 @@ from random import randint
 
 gameDict = {1:"Pierre",2:"Papier",3:"Ciseaux"}
 
-choixJoueur = raw_input("Pierre Papier Ciseaux ? ")
+choixJoueur = input("Pierre Papier Ciseaux ? ")
 
 #Nombre tiré aléatoirement entre 1 et 3 inclus
 choixOrdinateur = randint(1,3)
