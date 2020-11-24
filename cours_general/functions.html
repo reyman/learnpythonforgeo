@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.8">
+<meta name="author" content="Rey Sebastien &lt;rey.sebastien-coyrehourcq@univ-rouen.fr&gt; , Van Hamme Adrien &lt;adrien.van.hamme@gmail.com&gt;">
+<title>Atelier Python</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="./asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="./pygments-tango.css">
+</head>
+<body class="article toc2 toc-left" style="max-width: 70%;">
+<div id="header">
+<h1>Atelier Python</h1>
+<div class="details">
+<span id="author" class="author">Rey Sebastien &lt;rey.sebastien-coyrehourcq@univ-rouen.fr&gt; , Van Hamme Adrien &lt;adrien.van.hamme@gmail.com&gt;</span><br>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_fonctions">Fonctions</a>
+<ul class="sectlevel2">
+<li><a href="#_portées_des_variables">Portées des variables</a></li>
+<li><a href="#_passage_darguments_et_retour_de_données">Passage d&#8217;arguments et retour de données</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_fonctions"><a class="anchor" href="#_fonctions"></a>Fonctions</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Condition simple en Pseudo-Code</div>
+<div class="paragraph">
+<p><strong class="red">FONCTION</strong> <em>NOMFONCTION</em> <strong class="red">(</strong> <em>arguments1</em>, <em>arguments</em>, <em>&#8230;&#8203;</em>, <em>argumentsN</em> <strong class="red">)</strong></p>
+</div>
+<div class="paragraph">
+<p><em>&#8230;&#8203;traitement&#8230;&#8203;</em></p>
+</div>
+<div class="paragraph">
+<p><strong class="red">RENVOIE</strong> <em>[VALUE]</em></p>
+</div>
+<div class="paragraph">
+<p><strong class="red">FIN FONCTION</strong></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Ce qui donne quasiment la même chose en python théorique, le mot clef <code>def</code> introduisant le corps de la fonction :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-k">def</span> <span class="tok-nf">nomFonction</span> <span class="tok-p">(</span><span class="tok-n">arguments1</span><span class="tok-p">,</span> <span class="tok-n">arguments2</span><span class="tok-p">,</span> <span class="tok-o">...</span> <span class="tok-n">argumentsN</span><span class="tok-p">):</span>
+   <span class="tok-c">#...traitements...</span>
+   <span class="tok-k">return</span> <span class="tok-n">value</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>et en pratique :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-c"># les fonctions doivent être déclarées avant de pouvoir être appelées !</span>
+<span class="tok-k">def</span> <span class="tok-nf">somme</span><span class="tok-p">(</span><span class="tok-n">a</span><span class="tok-p">,</span><span class="tok-n">b</span><span class="tok-p">):</span>
+   <span class="tok-k">return</span> <span class="tok-n">a</span> <span class="tok-o">+</span> <span class="tok-n">b</span>
+
+<span class="tok-k">def</span> <span class="tok-nf">multiply</span><span class="tok-p">(</span><span class="tok-n">a</span><span class="tok-p">,</span><span class="tok-n">b</span><span class="tok-p">):</span>
+   <span class="tok-k">return</span> <span class="tok-n">a</span> <span class="tok-o">*</span> <span class="tok-n">b</span>
+
+<span class="tok-c"># On affiche les valeurs retournées</span>
+<span class="tok-k">print</span> <span class="tok-p">(</span><span class="tok-n">somme</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">,</span><span class="tok-mi">4</span><span class="tok-p">))</span> <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="tok-k">print</span> <span class="tok-p">(</span><span class="tok-n">multiply</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">7</span><span class="tok-p">))</span>
+
+<span class="tok-n">a</span> <span class="tok-o">=</span> <span class="tok-mi">5</span>
+<span class="tok-n">b</span> <span class="tok-o">=</span> <span class="tok-mi">2</span>
+
+<span class="tok-c"># On peux passer des variables directement</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">somme</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-n">a</span><span class="tok-p">))</span>
+
+<span class="tok-c"># ou en les modifiant/ faisant des calculs intermédiaires</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">multiply</span><span class="tok-p">(</span><span class="tok-n">a</span> <span class="tok-o">+</span> <span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">3</span> <span class="tok-o">*</span> <span class="tok-mi">2</span> <span class="tok-o">+</span> <span class="tok-n">b</span><span class="tok-p">))</span>
+
+<span class="tok-c"># les appels de fonctions sont empilables sans aucune limite</span>
+<span class="tok-k">print</span> <span class="tok-p">(</span><span class="tok-n">somme</span><span class="tok-p">(</span><span class="tok-n">multiply</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">3</span><span class="tok-p">),</span><span class="tok-n">somme</span><span class="tok-p">(</span><span class="tok-mi">4</span><span class="tok-p">,</span><span class="tok-n">b</span> <span class="tok-o">+</span> <span class="tok-n">multiply</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">8</span><span class="tok-p">))))</span> <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>L&#8217;appel de fonction se fait en appelant le <strong>nom de la fonction</strong> suivi des <strong>arguments entre parenthèses</strong>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Les arguments peuvent être calculés avant execution de la fonction, on peut donc facilement empiler les appels de fonctions comme dans cet exemple.</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_portées_des_variables"><a class="anchor" href="#_portées_des_variables"></a>Portées des variables</h3>
+<div class="paragraph">
+<p>Par <strong>portée</strong>, il faut entendre la durée de vie des variables dans votre programme ou un bloc d&#8217;instruction dans votre programme.</p>
+</div>
+<div class="paragraph">
+<p>Une variable est soit :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>globale</strong> : visible de partout dans le programme</p>
+</li>
+<li>
+<p><strong>locale</strong> : seulement visible dans le bloc d&#8217;instruction dans laquelle elle a été déclarée.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Les variables globales sont toutes celles qui ne sont pas dans une fonction, donc dans le corps du module, et qui ont été déclarées en entête de programme.
+Elles sont visibles de partout dans votre programme, mais nous verrons par la suite qu&#8217;elles sont uniquement modifiables si le programmeur utilise le mot clef <code>global</code></p>
+</div>
+<div class="paragraph">
+<p>Essayons de comprendre la différence concrétement via ces exemples de programme :</p>
+</div>
+<div class="listingblock">
+<div class="title">testGlobal.py</div>
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">X</span> <span class="tok-o">=</span> <span class="tok-mi">99</span> <i class="conum" data-value="1"></i><b>(1)</b>
+
+<span class="tok-k">def</span> <span class="tok-nf">foo1</span><span class="tok-p">():</span>
+   <span class="tok-n">Y</span> <span class="tok-o">=</span> <span class="tok-mi">55</span> <i class="conum" data-value="2"></i><b>(2)</b>
+   <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">Y</span><span class="tok-p">)</span>
+
+<span class="tok-n">foo1</span><span class="tok-p">()</span>
+<span class="tok-k">print</span> <span class="tok-p">(</span><span class="tok-n">Y</span><span class="tok-p">)</span> <span class="tok-c"># ne marchera pas </span><i class="conum" data-value="3"></i><b>(3)</b>
+
+<span class="tok-c"># On tente de redéfinir X dans cette fonction foo()</span>
+<span class="tok-k">def</span> <span class="tok-nf">foo2</span><span class="tok-p">():</span>
+   <span class="tok-n">X</span> <span class="tok-o">=</span> <span class="tok-mi">88</span> <i class="conum" data-value="4"></i><b>(4)</b>
+
+<span class="tok-n">foo2</span><span class="tok-p">()</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">X</span> <span class="tok-p">)</span> <span class="tok-c"># X n&#39;a pas bougé du fait de  &lt;4&gt; ...</span>
+
+<span class="tok-c"># La aussi, ce code ne changera pas la valeur de la variable globale X = 99</span>
+<span class="tok-k">def</span> <span class="tok-nf">foo3</span><span class="tok-p">(</span><span class="tok-n">X</span><span class="tok-p">):</span>
+   <span class="tok-n">X</span> <span class="tok-o">=</span> <span class="tok-n">X</span> <span class="tok-o">+</span> <span class="tok-mi">1</span> <i class="conum" data-value="5"></i><b>(5)</b>
+
+<span class="tok-n">foo3</span><span class="tok-p">(</span><span class="tok-n">X</span><span class="tok-p">)</span>
+<span class="tok-k">print</span> <span class="tok-p">(</span><span class="tok-n">X</span><span class="tok-p">)</span>
+
+<span class="tok-c"># Accès à la variable globale en lecture</span>
+<span class="tok-k">def</span> <span class="tok-nf">foo4</span><span class="tok-p">(</span><span class="tok-n">Y</span><span class="tok-p">):</span>
+   <span class="tok-c"># Portée locale</span>
+   <span class="tok-n">Z</span> <span class="tok-o">=</span> <span class="tok-n">Y</span> <span class="tok-o">+</span> <span class="tok-n">X</span> <i class="conum" data-value="6"></i><b>(6)</b>
+   <span class="tok-k">return</span> <span class="tok-n">Z</span>
+
+<span class="tok-n">foo4</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">)</span>
+
+<span class="tok-c"># Accès à la variable globale en écriture</span>
+<span class="tok-k">def</span> <span class="tok-nf">foo5</span><span class="tok-p">():</span>
+   <span class="tok-k">global</span> <span class="tok-n">X</span>
+   <span class="tok-n">X</span> <span class="tok-o">=</span> <span class="tok-n">X</span> <span class="tok-o">+</span> <span class="tok-mi">1</span> <i class="conum" data-value="7"></i><b>(7)</b>
+
+<span class="tok-n">foo5</span><span class="tok-p">()</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">X</span><span class="tok-p">)</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Déclarée <strong>avant</strong> et en <strong>dehors</strong> d&#8217;une fonction (dans le corps du module donc), la variable <code>X</code> est considérée comme une variable <strong>globale</strong>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Y est déclaré dans le corps de la fonction, c&#8217;est une variable <strong>locale</strong>, c&#8217;est à dire temporaire.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Si on tente d&#8217;y accéder après appel de la fonction, on se rend bien compte qu&#8217;elle a disparue. Le seul moyen de récupérer une (ou plusieurs) valeur est donc de faire un renvoi avec <code>return</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>A partir du moment où il y a affectation dans le corps d&#8217;une fonction, Python déclare cette nouvelle variable comme une variable locale, peu importe qu&#8217;elle existe par ailleurs.
+Autrement dit, elle <strong class="red">masque</strong> la variable <code>X</code> déclarée en globale.
+De la même façon que précédemment, la variable <code>X</code> <strong>disparait/meurt</strong> à la fin de l&#8217;execution de la fonction, c&#8217;est une <strong>variable temporaire</strong> en quelque sorte.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>A partir du moment où vous assignez une valeur à une variable dans une fonction, Python considère qu&#8217;il s&#8217;agit d&#8217;une variable locale.
+Ici vous aurez une erreur, car il va tenter d&#8217;incrémenter la variable locale X, hors celle-ci n&#8217;existe pas dans cette fonction.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Z et Y sont des variables locales. Concernant X, si vous faites appel à une variable <strong>globale</strong>, et qu&#8217;elle n&#8217;a pas été redéfinie, python est capable de re-trouver par déduction la valeur de votre variable <strong>globale</strong>. Toutefois, celle ci ne sera accessible qu&#8217;en lecture et pas en écriture ( car comme vu précédemment toute nouvelle affectation entraine la création d&#8217;une nouvelle variable locale).</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>Il existe un mot clef <code>global</code> permettant de passer outre cette limitation vu en 6, et permettant d&#8217;accéder en écriture à votre variable <strong>globale</strong>. Cette utilisation est clairement déconseillée car pouvant entrainer de nombreuses incohérences dans votre programme..</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Voyons pourquoi dès à présent dans cet exemple :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">X</span> <span class="tok-o">=</span> <span class="tok-mi">99</span>
+
+<span class="tok-k">def</span> <span class="tok-nf">func1</span><span class="tok-p">():</span>
+   <span class="tok-k">global</span> <span class="tok-n">X</span>
+   <span class="tok-n">X</span> <span class="tok-o">=</span> <span class="tok-mi">88</span>
+
+<span class="tok-k">def</span> <span class="tok-nf">func2</span><span class="tok-p">():</span>
+   <span class="tok-k">global</span> <span class="tok-n">X</span>
+   <span class="tok-n">X</span> <span class="tok-o">=</span> <span class="tok-mi">42</span>
+
+<span class="tok-n">func1</span><span class="tok-p">()</span>
+<span class="tok-n">func2</span><span class="tok-p">()</span>
+<span class="tok-c"># ne donnera pas le même resultat que pour</span>
+<span class="tok-n">func2</span><span class="tok-p">()</span>
+<span class="tok-n">func1</span><span class="tok-p">()</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="http://pythontutor.com/visualize.html#code=X+%3D+99%0A%0Adef+func1()%3A%0A+global+X%0AX%3D+88%0A%0Adef+func2()%3A%0A+global+X%0AX%3D+42%0A%0Afunc1()%0Afunc2()%0A%0Afunc2()%0Afunc1()&mode=display&cumulative=true&heapPrimitives=true&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=2&curInstr=0">Voir l'execution en ligne</a></p>
+</div>
+<div class="paragraph">
+<p>Compte tenu de ce programme, il est très clair ici qu&#8217;il risque de favoriser des conflits sur X, qui est devenu une ressource partagée !</p>
+</div>
+<div class="paragraph">
+<p>L&#8217;ordre d&#8217;appels des fonctions aura donc une incidence sur la valeur finale de X, ce qui est <strong>clairement un problème</strong> (pour la recherche d&#8217;erreur par exemple) &#8230;&#8203;</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_passage_darguments_et_retour_de_données"><a class="anchor" href="#_passage_darguments_et_retour_de_données"></a>Passage d&#8217;arguments et retour de données</h3>
+<div class="paragraph">
+<p>Quelques règles sur les arguments, et le passage d&#8217;arguments à des fonctions en python.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Les arguments sont passés par <strong>assignation</strong>, autrement dit il n&#8217;y a <strong>pas de re-copie des valeurs</strong> dans une nouvelle variable locale lors du transfert comme dans certains langages (cf C, C\\) .</p>
+</li>
+<li>
+<p><strong>Peu importe donc le nom de vos arguments</strong>, ils peuvent recouper des noms de variable déjà existant ailleurs dans votre programme puisque <strong>nous savons que leurs portées sont locales.</strong></p>
+</li>
+<li>
+<p>Changer un/plusieurs élément(s) dans un <strong>objet mutable</strong> a une <strong>incidence sur le programme appelant</strong> .</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-k">def</span> <span class="tok-nf">modif</span><span class="tok-p">(</span><span class="tok-n">a</span><span class="tok-p">,</span><span class="tok-n">b</span><span class="tok-p">):</span>
+   <span class="tok-n">a</span> <span class="tok-o">=</span> <span class="tok-mi">2</span> <i class="conum" data-value="1"></i><b>(1)</b>
+   <span class="tok-n">b</span><span class="tok-p">[</span><span class="tok-mi">0</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-mi">5</span> <i class="conum" data-value="2"></i><b>(2)</b>
+
+<span class="tok-n">x</span> <span class="tok-o">=</span> <span class="tok-mi">1</span>
+<span class="tok-nb">list</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">]</span>
+
+<span class="tok-n">modif</span><span class="tok-p">(</span><span class="tok-n">x</span><span class="tok-p">,</span><span class="tok-nb">list</span><span class="tok-p">)</span>
+
+<span class="tok-k">print</span> <span class="tok-p">(</span><span class="tok-n">x</span><span class="tok-p">)</span> <span class="tok-c"># valeur inchangé</span>
+<span class="tok-k">print</span> <span class="tok-p">(</span><span class="tok-nb">list</span><span class="tok-p">)</span> <span class="tok-c"># valeur changé</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="http://pythontutor.com/visualize.html#code=def+modif(a,b)%3A%0A+a+%3D+2%0Ab%5B0%5D%3D+5%0A%0Ax+%3D+1%0Alist+%3D+%5B1,2%5D%0A%0Amodif(x,list)%0A%0Aprint+x%23+valeur+inchang%C3%A9%0Aprint+list+%23+valeur+chang%C3%A9&mode=display&cumulative=true&heapPrimitives=true&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=2&curInstr=0">Voir l'execution en ligne</a></p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="images/ref1.png" alt="ref1">
+</div>
+<div class="title">Figure 1. Avant execution du corps de la fonction, l&#8217;assignation est la suivante :</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code>a</code> est une variable locale qui récupère la valeur de la variable <code>x</code> lors de l&#8217;appel de la fonction.
+L&#8217;assignation n&#8217;a pas d&#8217;effet sur la variable <code>x</code>, seul la variable <code>a</code> locale sera modifiée ici.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>La liste passée ici en paramètre à une variable locale. Toutefois, une liste est un objet <strong>mutable</strong>, donc modifiable sur place !
+Nous ne changeons pas <code>b</code>, mais un élément de la liste représentée par b, ce qui aura à la fin de l&#8217;execution une répercution sur la variable <code>list</code></td>
+</tr>
+</table>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="images/ref2.png" alt="ref2">
+</div>
+<div class="title">Figure 2. Après execution du corps de la fonction, voici le résultat :</div>
+</div>
+<div class="paragraph">
+<p>Un apercu des différentes techniques est donné via le lien ci dessous, mais la meilleur façon reste de renvoyer des données via le mot clef <strong>return</strong></p>
+</div>
+<div class="paragraph">
+<p>Référence ici :<br>
+<a href="http://docs.python.org/release/2.7.3/faq/programming.html?highlight=nonlocal#how-do-i-write-a-function-with-output-parameters-call-by-reference" class="bare">http://docs.python.org/release/2.7.3/faq/programming.html?highlight=nonlocal#how-do-i-write-a-function-with-output-parameters-call-by-reference</a></p>
+</div>
+<div class="listingblock">
+<div class="title">exemple de code source bien écrit</div>
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">sac</span> <span class="tok-o">=</span> <span class="tok-mi">3</span>
+<span class="tok-k">def</span> <span class="tok-nf">calcul</span><span class="tok-p">(</span><span class="tok-n">sac</span><span class="tok-p">,</span><span class="tok-n">nbOr</span><span class="tok-p">):</span> <i class="conum" data-value="1"></i><b>(1)</b>
+   <span class="tok-n">sac</span> <span class="tok-o">=</span> <span class="tok-n">sac</span> <span class="tok-o">+</span> <span class="tok-n">nbOr</span>
+   <span class="tok-k">return</span> <span class="tok-n">sac</span>
+
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">calcul</span><span class="tok-p">(</span><span class="tok-n">sac</span><span class="tok-p">,</span><span class="tok-mi">20</span><span class="tok-p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="http://pythontutor.com/visualize.html#code=sac+%3D+3%0A%0Adef+calcul(sac,nbOr)%3A+%0A+sac+%3D+sac+%2B+nbOr%0Areturn+sac%0A%0Adef+calcul2(uxzefzzvc,nbOr)%3A%0A+uxzefzzvc+%3D+uxzefzzvc+%2B+nbOr%0A+return+uxzefzzvc%0A%0Aprint+calcul(sac,20)%0Aprint+calcul2(sac,20)&mode=display&cumulative=true&heapPrimitives=true&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=2&curInstr=0">Voir l'execution en ligne</a></p>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Comme la fonction manipule des variables locales, peu importe que les noms d&#8217;arguments se recoupent<br>
+<code>sac</code> ou <code>x</code> ou <code>v</code> dans la définition de la méthode <code>calcul(..)</code> ne change rien.</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">exemple de code source qu&#8217;il faut éviter</div>
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">sac</span> <span class="tok-o">=</span> <span class="tok-mi">3</span>
+<span class="tok-k">def</span> <span class="tok-nf">calcul</span><span class="tok-p">(</span><span class="tok-n">nbOr</span><span class="tok-p">):</span> <i class="conum" data-value="1"></i><b>(1)</b>
+   <span class="tok-k">global</span> <span class="tok-n">sac</span> <i class="conum" data-value="2"></i><b>(2)</b>
+   <span class="tok-n">sac</span> <span class="tok-o">=</span> <span class="tok-n">sac</span> <span class="tok-o">+</span> <span class="tok-n">nbOr</span> <i class="conum" data-value="3"></i><b>(3)</b>
+
+<span class="tok-n">calcul</span><span class="tok-p">(</span><span class="tok-mi">20</span><span class="tok-p">)</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">sac</span><span class="tok-p">)</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Seul nbOr est une variable locale</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>On accède à sac en variable globale</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Et on le modifie ainsi, c&#8217;est mal ! :)</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Le mot clef <code>return</code> implique quand il est rencontré par le programme, l&#8217;arrêt du traitement de la fonction, et le retour du résultat.
+Ce qui n&#8217;exclue pas la possibilité d&#8217;avoir plusieurs fonctions <code>return</code> dans un même programme, qui renvoie un résultat en fonction de condition différentes.</p>
+</div>
+<div class="listingblock">
+<div class="title">multiples retours de fonctions</div>
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">sac</span> <span class="tok-o">=</span> <span class="tok-nb">int</span><span class="tok-p">(</span><span class="tok-nb">input</span><span class="tok-p">(</span><span class="tok-s">&quot;nombre de pièces dans votre sac ?&quot;</span><span class="tok-p">))</span>
+
+<span class="tok-k">def</span> <span class="tok-nf">douane</span><span class="tok-p">(</span><span class="tok-n">sac</span><span class="tok-p">):</span>
+    <span class="tok-n">taxe</span> <span class="tok-o">=</span> <span class="tok-mi">15</span>
+    <span class="tok-k">if</span> <span class="tok-n">sac</span> <span class="tok-o">&gt;</span> <span class="tok-n">taxe</span><span class="tok-p">:</span>
+        <span class="tok-k">print</span><span class="tok-p">(</span><span class="tok-s">&quot;par ici la monnaie&quot;</span><span class="tok-p">)</span>
+        <span class="tok-k">return</span> <span class="tok-n">sac</span> <span class="tok-o">-</span> <span class="tok-n">taxe</span>
+    <span class="tok-k">else</span><span class="tok-p">:</span>
+        <span class="tok-k">print</span><span class="tok-p">(</span><span class="tok-s">&quot;pas de taxe pour les pauvres&quot;</span><span class="tok-p">)</span>
+        <span class="tok-k">return</span> <span class="tok-n">sac</span>
+
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">douane</span><span class="tok-p">(</span><span class="tok-n">sac</span><span class="tok-p">))</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2019-02-12 10:47:06 +0100
+</div>
+</div>
+</body>
+</html>

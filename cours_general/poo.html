@@ -1,0 +1,1632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.8">
+<meta name="author" content="Rey Sebastien &lt;rey.sebastien-coyrehourcq@univ-rouen.fr&gt; , Van Hamme Adrien &lt;adrien.van.hamme@gmail.com&gt;">
+<title>Atelier Python</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="./asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="./pygments-tango.css">
+</head>
+<body class="article toc2 toc-left" style="max-width: 70%;">
+<div id="header">
+<h1>Atelier Python</h1>
+<div class="details">
+<span id="author" class="author">Rey Sebastien &lt;rey.sebastien-coyrehourcq@univ-rouen.fr&gt; , Van Hamme Adrien &lt;adrien.van.hamme@gmail.com&gt;</span><br>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_poo">POO</a>
+<ul class="sectlevel2">
+<li><a href="#_définition">Définition</a></li>
+<li><a href="#_exemple">Exemple</a></li>
+<li><a href="#_stocker_des_objets">Stocker des objets</a></li>
+<li><a href="#_bref_rappel_des_termes">Bref rappel des termes</a></li>
+<li><a href="#_des_objets_dans_des_objets">Des objets dans des objets ?</a></li>
+<li><a href="#_héritage_ou_composition">Héritage ou Composition ?</a>
+<ul class="sectlevel3">
+<li><a href="#_héritage">Héritage</a></li>
+<li><a href="#_composition">Composition</a></li>
+</ul>
+</li>
+<li><a href="#_duck_typing">Duck Typing</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_poo"><a class="anchor" href="#_poo"></a>POO</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_définition"><a class="anchor" href="#_définition"></a>Définition</h3>
+<div class="paragraph">
+<p>Comme on a pu le voir au début de ce document, en python tout est <strong>objet</strong></p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="images/ontology.gif" alt="ontology">
+</div>
+</div>
+<div class="paragraph">
+<p>Pour rappel, la Programmation Orientée Objet (ou <strong><a href="http://fr.wikipedia.org/wiki/Programmation_orient%C3%A9e_objet">POO</a></strong>) est un paradigme de programmation qui passe par une organisation des données particulière. Depuis son invention, ce paradigme domine dans l&#8217;industrie informatique.</p>
+</div>
+<div class="paragraph">
+<p>Nous n&#8217;avons que <strong>très peu de temps pour aborder les concepts théorique</strong> en regard avec la POO. Sachez toutefois que vous allez manipuler les concepts théoriques lors des cours de modélisation à l&#8217;ENSG et que l&#8217;apprentissage de ceux ci vous aideront autant pour la <strong>représentation de vos problèmes</strong> (avec un langage de description de données comme <strong>UML</strong> par exemple) en base de données, que pour leur <strong>traduction en programme informatique</strong> Je n&#8217;insisterai donc pas sur les détails théorique dans ce cours, et vous pouvez vous référez aux ressources dessous pour en savoir plus.</p>
+</div>
+<div class="paragraph">
+<p>L&#8217;intérêt de ce paradigme, vous allez voir, et qu&#8217;il s&#8217;accorde beaucoup mieux à une représentation complexe de la réalité par rapport à que ce que nous avons vu jusqu&#8217;à présent.</p>
+</div>
+<div class="paragraph">
+<p>Vous verrez lors du cours de modélisation que le vocabulaire et les concepts généraux vont se recouper avec ce que nous allons voir ici. Seul le niveau d&#8217;abstraction utilisé pour décrire votre problème rendra plus ou moins difficile une future traduction informatique / base de données.</p>
+</div>
+<div class="paragraph">
+<p><strong class="red">Attention</strong> toutefois à ne pas vouloir trop vite coller au langage informatique, car il est très difficile de couvrir correctement la description d&#8217;un problème en restant à un niveau d&#8217;abstraction trop bas (c&#8217;est à dire proche de la machine). Repensez à notre résolution de labyrinthe, et voyez comment l&#8217;apprentissage de python à modifié votre perception globale du problème. Il y&#8217;aura donc un avant et un après votre formation, et il vous faudra régulièrement savoir jongler entre ces différents niveaux d&#8217;abstraction pour être efficace dans la discussion, qu&#8217;elle soit avec un client ou avec un développeur informatique !</p>
+</div>
+<div class="paragraph">
+<p>Un <code>Objet</code> est donc une <strong>structure de donnée</strong> qui va nous permettre d&#8217;organiser nos données selon un certain schéma:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>autour de la descriptions de ces données (critère descriptif)</p>
+</li>
+<li>
+<p>et des moyens de traiter ces données (dynamique).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Prenons par exemple un exemple concret : vous même.</p>
+</div>
+<div class="paragraph">
+<p>A priori vous êtes un <strong>humain</strong>, et normalement vous partagez un certain nombre de descripteurs ou <strong>attributs</strong> avec vos autres congénères humains :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Deux yeux</p>
+</li>
+<li>
+<p>Deux bras</p>
+</li>
+<li>
+<p>Deux jambes</p>
+</li>
+<li>
+<p>Une couleur de cheveux</p>
+</li>
+<li>
+<p>Une couleur pour les yeux</p>
+</li>
+<li>
+<p>Une couleur de peau</p>
+</li>
+<li>
+<p>etc.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Là où je veux en venir, c&#8217;est que si nous devions gérer des humains dans un programme classique tel que nous les avons fait jusqu&#8217;à présent, il nous faudrait autant de variables décrites ci dessous que de personnes. Sachant qu&#8217;une variable doit être unique, imaginez le bazar :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-c">#Gérard</span>
+<span class="tok-n">couleurYeuxGerard</span> <span class="tok-o">=</span> <span class="tok-s">&quot;brun&quot;</span>
+<span class="tok-n">couleurCheveuxGerard</span> <span class="tok-o">=</span> <span class="tok-s">&quot;brun&quot;</span>
+<span class="tok-n">couleurDePeauGerard</span> <span class="tok-o">=</span> <span class="tok-s">&quot;blanche&quot;</span>
+<span class="tok-n">nombreJambeDeGerard</span> <span class="tok-o">=</span> <span class="tok-mi">2</span>
+<span class="tok-n">nombreOeilDeGerard</span> <span class="tok-o">=</span> <span class="tok-mi">2</span>
+<span class="tok-n">nombreBrasDeGerard</span> <span class="tok-o">=</span> <span class="tok-mi">2</span>
+
+<span class="tok-c">#Paul</span>
+<span class="tok-n">couleurYeuxPaul</span> <span class="tok-o">=</span> <span class="tok-s">&quot;vert&quot;</span>
+<span class="tok-n">couleurCheveuxPaul</span> <span class="tok-o">=</span> <span class="tok-s">&quot;brun&quot;</span>
+<span class="tok-n">couleurDePeauPaul</span> <span class="tok-o">=</span> <span class="tok-s">&quot;blanche&quot;</span>
+<span class="tok-n">nombreJambeDePaul</span> <span class="tok-o">=</span> <span class="tok-mi">2</span>
+<span class="tok-n">nombreOeilDePaul</span> <span class="tok-o">=</span> <span class="tok-mi">2</span>
+<span class="tok-n">nombreBrasDePaul</span> <span class="tok-o">=</span> <span class="tok-mi">2</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Bon, et maintenant si je doit gérer la classe entière de carthagéo avec ce modèle de représentation de données, il va me falloir un peu de patience&#8230;&#8203;
+En plus, vous avez du le remarquer, il y a de nombreuses données redondantes, pourtant nécessaires, car Gérard pourrait bien n&#8217;avoir qu&#8217;un oeil, une jambe et travailler sur un bateau après tout.</p>
+</div>
+<div class="paragraph">
+<p>Premier constat, il existe une <strong>matrice</strong> commune, l&#8217;espèce humaine.</p>
+</div>
+<div class="paragraph">
+<p>Deuxième constat, il est possible de trouver une <strong>matrice</strong> originelle à pas mal de choses dans ce monde. Pensez à la fabrication en série, et à l&#8217;invention de la reproduction mécanisé : Voiture, Maison, Avion, Animaux, Porte, Chaise, Chanson, SérieTV, Acteur, Réalisateur, Pompier, etc. Et c&#8217;est à partir de cette <strong>matrice originelle</strong> que nous allons pouvoir généraliser, ou spécialiser un certain nombre de choses à l&#8217;aide de deux choses : des <strong>attributs</strong> et des <strong>fonctions</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Oui, différencier la couleur des yeux ou des cheveux en <strong>instanciant notre matrice originelle</strong> (c&#8217;est à dire en produisant un objet reprenant et complétant <strong>le plan definis</strong> par la matrice originelle) est un bon début, mais si par exemple, je veux aller plus loin et différencier vraiment les humains entre eux, et la manière dont ils interagissent entre eux,il faut que je m&#8217;intéresse non seulement aux aspects <strong>statique</strong> mais également <strong>dynamique</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Par exemple, dans le contexte d&#8217;une université (la description de vos données dépend donc beaucoup du <strong>contexte du problème</strong> !), nous voyons qu&#8217;une sous-spécialisation de l&#8217;être humain générique est tout à fait possible, car dans son interaction avec l&#8217;université un étudiant n&#8217;a pas tout à fait les même fonctions ni les même droits qu&#8217;un professeur, et cela bien que les deux soient des humains !!</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="images/classe.png" alt="classe">
+</div>
+<div class="title">Figure 1. Représentation graphique d&#8217;une classe</div>
+</div>
+<div class="paragraph">
+<p>Cette <strong>matrice originelle</strong> est ce que l&#8217;on appelle une <strong><a href="http://fr.wikipedia.org/wiki/Classe_%28informatique%29">classe</a></strong>, elle définit à la fois des critères descriptifs ou <strong>attributs</strong>, ainsi que des <strong>fonctions</strong> ou interfaces permettant de communiquer avec les autres objets de ce monde. <strong>Instancier une classe</strong> revient à définir un ou plusieurs <strong>objets</strong> qui dérivent de cette classe.</p>
+</div>
+<div class="paragraph">
+<p>Pour reprendre notre exemple, Gérard et Paul sont <strong>deux instances</strong> de la matrice originelle <strong>Humain</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Mais si Gérard est professeur, et Paul étudiant, et que nous voulons les différencier dans notre programme, alors il nous faudra créer quelque chose qui spécialise encore un peu plus notre <strong>Humain</strong>, par exemple en définissant :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>une classe <strong>Etudiant</strong> (qui possède un numéro étudiant par exemple),</p>
+</li>
+<li>
+<p>et une classe <strong>Professeur</strong> (qui possède lui d&#8217;autres attributs administratif spécifique).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Par chance avec la <strong>POO</strong> nous pourrons également <strong><a href="http://en.wikipedia.org/wiki/Object_composition">composer</a></strong> les classe entres elles, car un étudiant est un humain, et un professeur est un humain également !</p>
+</div>
+<div class="paragraph">
+<p>Il est donc tout à fait possible d&#8217;établir une <strong>hierarchie</strong> structurant un peu plus notre programme pour la gestion d&#8217;une université, en adoptant soit un <strong>héritage</strong> , soit une <strong>composition</strong> entre les classes : Etudiant et Professeurs contiennent les attributs d&#8217;un être humain, mais aussi des attributs (statique) et des fonctions (dynamique) qui leurs sont spécifiques.</p>
+</div>
+<div class="paragraph">
+<p>En python une classe est définit par le mot clef <code>class</code> et un bloc d&#8217;instruction clos avec un <strong>début</strong> et une <strong>fin</strong>, comme pour une fonction, une boucle, une condition, etc.</p>
+</div>
+<div class="paragraph">
+<p>La seule différence avec une fonction, c&#8217;est qu&#8217;une classe embarque avec elle des fonctions, et des variables (qui représentent les attributs) qui sont caractéristique de la classe que l&#8217;on veut représenter.</p>
+</div>
+<div class="listingblock">
+<div class="title">Une classe dans son plus simple appareil</div>
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-k">class</span> <span class="tok-nc">Humain</span><span class="tok-p">(</span><span class="tok-nb">object</span><span class="tok-p">):</span> <i class="conum" data-value="1"></i><b>(1)</b>
+   <span class="tok-n">nbYeux</span> <span class="tok-o">=</span> <span class="tok-mi">2</span> <i class="conum" data-value="2"></i><b>(2)</b>
+   <span class="tok-n">nbBras</span> <span class="tok-o">=</span> <span class="tok-mi">2</span>
+   <span class="tok-n">nbJambes</span> <span class="tok-o">=</span> <span class="tok-mi">2</span>
+
+   <span class="tok-k">def</span> <span class="tok-nf">marche</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span> <i class="conum" data-value="3"></i><b>(3)</b>
+      <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;Je marche !&quot;</span><span class="tok-p">)</span>
+      <span class="tok-c">#... traitement ...</span>
+
+<span class="tok-c">#fin du bloc classe</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Par convention les classes démarrent avec une majuscule, et le mot clé <code>object</code> entre parenthèse est obligatoire</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Les variables définies ici correspondent aux <strong>attributs</strong> de notre classe</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Les <strong>fonctions</strong> en rapport avec la classe sont définies dans le corps de la classe. Nous verrons par la suite qu&#8217;elles peuvent accéder direcement aux attributs de la classe. Seule spécificité comparé à une fonction normale, le mot clef <code>self</code> est obligatoire en début de toute vos fonctions.</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Pour instancier une classe, donc créer des objets à partir de cette matrice originelle</div>
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">gerard</span> <span class="tok-o">=</span> <span class="tok-n">Humain</span><span class="tok-p">()</span> <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="tok-n">paul</span> <span class="tok-o">=</span> <span class="tok-n">Humain</span> <span class="tok-p">()</span> <i class="conum" data-value="2"></i><b>(2)</b>
+
+<span class="tok-k">print</span> <span class="tok-p">(</span><span class="tok-n">gerard</span><span class="tok-p">)</span> <i class="conum" data-value="3"></i><b>(3)</b>
+
+<span class="tok-k">print</span> <span class="tok-p">(</span><span class="tok-n">gerard</span><span class="tok-o">.</span><span class="tok-n">nbBras</span><span class="tok-p">)</span> <i class="conum" data-value="4"></i><b>(4)</b>
+<span class="tok-k">print</span> <span class="tok-p">(</span><span class="tok-n">paul</span><span class="tok-o">.</span><span class="tok-n">marche</span><span class="tok-p">())</span> <i class="conum" data-value="5"></i><b>(5)</b></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="http://pythontutor.com/visualize.html#code=class+Humain(object)%3A%0A+nbYeux+%3D+2+%0AnbBras%3D+2%0A+nbJambes+%3D+2%0A%0Adef+marche(self)%3A+%0Aprint%22Je+marche+!%22%0A++%23...+traitement...%0A%0Agerard+%3D+Humain()%0Apaul%3D+Humain+()%0A%0Aprint+gerard.nbBras%0Aprint+paul.marche()&mode=display&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=2&curInstr=0">Voir l'execution en ligne</a></p>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>A partir de la matrice originelle, on crééé un objet unique dont la référence est relié à la variable gerard</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>A partir de la matrice originelle, on créé un nouvel objet unique dont la référence est relié à la variable paul</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Cela nous renvoie à la référence de l&#8217;objet, que l&#8217;on peut donc stocker, puis rapeller par la suite ! (voir l&#8217;exemple des listes qui contiennent des variables pointant sur des listes)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>On peut récupérer la valeur des attributs de notre objet à l&#8217;aide l&#8217;opérateur <code>.</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>De la même façon que nous avons appelé un attribut, nous pouvons également appelé une fonction si elle existe, en utilisant l&#8217;opérateur <code>.</code> suivi du <strong>nom de la fonction</strong> et de <strong>parenthèses</strong> <code>()</code> (qui peuvent contenir des arguments comme n&#8217;importe quelle fonction &#8230;&#8203;).</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>A présent j&#8217;aimerais pouvoir modifier les attributs, pour que le nombre de bras, ou de jambes puissent être différents selon les personnes !</p>
+</div>
+<div class="paragraph">
+<p>Pour cela il faut que j&#8217;utilise un <strong>constructeur</strong>, en fait il s&#8217;agit d&#8217;une fonction <strong>automatiquement appelé à la création de l&#8217;objet</strong></p>
+</div>
+<div class="paragraph">
+<p>Il s&#8217;agit de la fonction <code><em>init()</em></code> qui prend automatiquement l&#8217;argument <code>self</code> qui est une auto-référence désignant l&#8217;objet.</p>
+</div>
+<div class="paragraph">
+<p><code>self</code> doit être indiqué comme argument dans chacune des fonctions de la classe, c&#8217;est obligatoire, c&#8217;est ce qui permet à Python de savoir a qui vous faite référence, donc ici à l&#8217;objet même !<br>
+<strong class="red">&#8658;</strong> self = objet courant</p>
+</div>
+<div class="paragraph">
+<p>Ainsi, pour appeler des attributs depuis des fonctions de votre classe, il faut toujours indiquer <code>self.nomDeVotreAttribut</code></p>
+</div>
+<div class="paragraph">
+<p>Idem pour appeler une fonction en interne dans une classe, il faut toujours l&#8217;apeller avec le mot clef self devant <code>self.nomDeVotreFonction()</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_exemple"><a class="anchor" href="#_exemple"></a>Exemple</h3>
+<div class="imageblock text-center">
+<div class="content">
+<img src="images/classNavigateur.png" alt="classNavigateur">
+</div>
+</div>
+<div class="paragraph">
+<p>Voyons avec un autre exemple d&#8217;humain, le <code>Navigateur</code> , et plus spécifiquement, le navigateur pirate !</p>
+</div>
+<div class="listingblock">
+<div class="title">pirate.py (voir dans /exercice)</div>
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-k">class</span> <span class="tok-nc">Navigateur</span><span class="tok-p">(</span><span class="tok-nb">object</span><span class="tok-p">):</span>
+   <span class="tok-k">def</span> <span class="tok-nf">__init__</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span><span class="tok-n">yeux</span><span class="tok-p">,</span><span class="tok-n">bras</span><span class="tok-p">,</span><span class="tok-n">jambes</span><span class="tok-p">):</span> <i class="conum" data-value="1"></i><b>(1)</b>
+      <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">tete</span> <span class="tok-o">=</span> <span class="tok-mi">1</span> <i class="conum" data-value="2"></i><b>(2)</b>
+      <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nbYeux</span> <span class="tok-o">=</span> <span class="tok-n">yeux</span> <i class="conum" data-value="3"></i><b>(3)</b>
+      <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nbBras</span> <span class="tok-o">=</span> <span class="tok-n">bras</span>
+      <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nbJambes</span> <span class="tok-o">=</span> <span class="tok-n">jambes</span>
+      <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">afficheInfo</span><span class="tok-p">()</span> <i class="conum" data-value="4"></i><b>(4)</b>
+
+   <span class="tok-k">def</span> <span class="tok-nf">afficheInfo</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span> <i class="conum" data-value="5"></i><b>(5)</b>
+      <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;Bonjour ! J&#39;ai &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nbYeux</span><span class="tok-p">,</span> <span class="tok-s">&quot;yeux, &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">tete</span><span class="tok-p">,</span> <span class="tok-s">&quot; tête, &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nbBras</span><span class="tok-p">,</span> <span class="tok-s">&quot; bras, et &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nbJambes</span><span class="tok-p">,</span> <span class="tok-s">&quot; jambes ...&quot;</span><span class="tok-p">)</span>
+
+   <span class="tok-k">def</span> <span class="tok-nf">accident</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span><span class="tok-n">typeAcc</span><span class="tok-p">):</span> <i class="conum" data-value="6"></i><b>(6)</b>
+      <span class="tok-k">if</span> <span class="tok-n">typeAcc</span> <span class="tok-o">==</span> <span class="tok-s">&quot;bras&quot;</span><span class="tok-p">:</span>
+         <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nbBras</span> <span class="tok-o">=</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nbBras</span> <span class="tok-o">-</span> <span class="tok-mi">1</span> <i class="conum" data-value="7"></i><b>(7)</b>
+      <span class="tok-k">elif</span> <span class="tok-n">typeAcc</span> <span class="tok-o">==</span> <span class="tok-s">&quot;jambe&quot;</span><span class="tok-p">:</span>
+         <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nbJambes</span> <span class="tok-o">=</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nbJambes</span> <span class="tok-o">-</span> <span class="tok-mi">1</span>
+      <span class="tok-k">elif</span> <span class="tok-n">typeAcc</span> <span class="tok-o">==</span> <span class="tok-s">&quot;yeux&quot;</span><span class="tok-p">:</span>
+         <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nbYeux</span> <span class="tok-o">=</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nbYeux</span> <span class="tok-o">-</span> <span class="tok-mi">1</span>
+
+   <span class="tok-k">def</span> <span class="tok-nf">initGrade</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
+      <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">grade</span> <span class="tok-o">=</span> <span class="tok-s">&quot;minable&quot;</span> <i class="conum" data-value="8"></i><b>(8)</b>
+      <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;je suis un pirate &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">grade</span><span class="tok-p">)</span>
+
+   <span class="tok-k">def</span> <span class="tok-nf">augmenteGrade</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
+      <span class="tok-k">if</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">grade</span> <span class="tok-o">==</span> <span class="tok-s">&quot;minable&quot;</span><span class="tok-p">:</span>
+         <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">grade</span> <span class="tok-o">=</span> <span class="tok-s">&quot;minus&quot;</span>
+      <span class="tok-k">elif</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">grade</span> <span class="tok-o">==</span> <span class="tok-s">&quot;minus&quot;</span><span class="tok-p">:</span>
+         <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">grade</span> <span class="tok-o">=</span> <span class="tok-s">&quot;chef&quot;</span>
+      <span class="tok-k">elif</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">grade</span> <span class="tok-o">==</span> <span class="tok-s">&quot;chef&quot;</span><span class="tok-p">:</span>
+         <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">grade</span> <span class="tok-o">=</span> <span class="tok-s">&quot;capitaine&quot;</span>
+
+<span class="tok-c">#fin du bloc classe</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Notre constructeur initialise et donc personnalise la matrice originelle que représente la classe <code>Navigateur</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Mais j&#8217;ai le droit de définir également des attributs par défaut<br>
+<strong class="red">! Attention !</strong> Les attributs n&#8217;existe que dans la portée de la classe (même fonctionnement que pour les fonctions donc)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Je transfere l&#8217;argument passé à mon constructeur dans mon attribut de classe</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>J&#8217;appelle une fonction de mon programme à la fin de l&#8217;initialisation de l&#8217;objet, celle ci affiche des informations sur mon nouvel objet navigateur personnalisé</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Une fonction, même si elle ne prend pas d&#8217;argument, doit prendre l&#8217;argument par défaut nommé 'self'</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Ici on passe un argument supplémentaire qui est utilisé dans la fonction.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>Je modifie un attribut de mon objet, j&#8217;ai le droit du moment que j&#8217;utilise self pour indiquer qu&#8217;il existe !<br>
+<strong class="red">&#8658;</strong> sinon cela créé une nouvelle variable locale à la fonction !!</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td>Cette fonction ajoute un attribut grade à mon objet, celui-ci est ensuite accessible normalement comme tout les autres attributs existant et définis dans <code><em>init</em></code></td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Amusons nous maintenant avec une instance de classe : Gérard le pirate !</div>
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-c"># gerard est un petit navigateur de plaisance, et pour le moment il a tout ses membres :)</span>
+<span class="tok-n">gerard</span> <span class="tok-o">=</span> <span class="tok-n">Navigateur</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">2</span><span class="tok-p">)</span>
+
+<span class="tok-c"># il décide de rentrer dans la piraterie</span>
+<span class="tok-n">gerard</span><span class="tok-o">.</span><span class="tok-n">initGrade</span><span class="tok-p">()</span>
+
+<span class="tok-c"># Sauf qu&#39;un jour gerard croise un requin au bout d&#39;une planche, le risque du métier, heureusement il s&#39;en tire pas trop mal</span>
+<span class="tok-n">gerard</span><span class="tok-o">.</span><span class="tok-n">accident</span><span class="tok-p">(</span><span class="tok-s">&quot;jambe&quot;</span><span class="tok-p">)</span>
+<span class="tok-n">gerard</span><span class="tok-o">.</span><span class="tok-n">afficheInfo</span><span class="tok-p">()</span>
+
+<span class="tok-c"># Avec l&#39;experience Gerard fait de grand progrès !</span>
+<span class="tok-n">gerard</span><span class="tok-o">.</span><span class="tok-n">augmenteGrade</span><span class="tok-p">()</span>
+<span class="tok-n">gerard</span><span class="tok-o">.</span><span class="tok-n">augmenteGrade</span><span class="tok-p">()</span>
+<span class="tok-n">gerard</span><span class="tok-o">.</span><span class="tok-n">augmenteGrade</span><span class="tok-p">()</span>
+<span class="tok-n">gerard</span><span class="tok-o">.</span><span class="tok-n">augmenteGrade</span><span class="tok-p">()</span>
+
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;Gerard est maintenant &quot;</span><span class="tok-p">,</span> <span class="tok-n">gerard</span><span class="tok-o">.</span><span class="tok-n">grade</span> <span class="tok-p">,</span><span class="tok-s">&quot; ! &quot;</span><span class="tok-p">)</span>
+
+<span class="tok-c"># Malheureusement, la vie de capitaine n&#39;est pas facile ...</span>
+<span class="tok-n">gerard</span><span class="tok-o">.</span><span class="tok-n">accident</span><span class="tok-p">(</span><span class="tok-s">&quot;yeux&quot;</span><span class="tok-p">)</span>
+
+<span class="tok-c"># Pauvre Gerard ...</span>
+<span class="tok-n">gerard</span><span class="tok-o">.</span><span class="tok-n">afficheInfo</span><span class="tok-p">()</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Exercices</strong> :</p>
+</div>
+<div class="ulist checklist">
+<ul class="checklist">
+<li>
+<p><input type="checkbox" data-item-complete="0"> Essayez maintenant de faire un autre parcours de vie avec un autre pirate !</p>
+</li>
+<li>
+<p><input type="checkbox" data-item-complete="0"> Ajoutez une nouvelle fonction <code>descendreGrade()</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_stocker_des_objets"><a class="anchor" href="#_stocker_des_objets"></a>Stocker des objets</h3>
+<div class="paragraph">
+<p>Comme les fonctions les objets possède une adresse en mémoire, vous avez probablement déjà afficher celle ci par erreur avec les fonctions ..</p>
+</div>
+<div class="paragraph">
+<p>Il est possible de stocker la référence des objets dans une variable, tout comme il est possible de mettre un objet de type liste dans un autre objet de type liste.
+Il est donc également possible de stocker la référence d&#8217;une fonction, ou d&#8217;un objet dans un attributs/variables quelconques, que cela soit dans un objet, dans une liste, dans une variable.</p>
+</div>
+<div class="paragraph">
+<p>Regardons ça plus en détail dans les exemples ci dessous :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-k">def</span> <span class="tok-nf">somme</span><span class="tok-p">(</span><span class="tok-n">a</span><span class="tok-p">,</span><span class="tok-n">b</span><span class="tok-p">):</span>
+   <span class="tok-k">return</span> <span class="tok-n">a</span><span class="tok-o">+</span><span class="tok-n">b</span>
+
+<span class="tok-k">def</span> <span class="tok-nf">multiply</span><span class="tok-p">(</span><span class="tok-n">a</span><span class="tok-p">,</span><span class="tok-n">b</span><span class="tok-p">):</span>
+   <span class="tok-k">return</span> <span class="tok-n">a</span><span class="tok-o">*</span><span class="tok-n">b</span>
+
+<span class="tok-k">print</span> <span class="tok-p">(</span><span class="tok-n">somme</span><span class="tok-p">)</span> <span class="tok-c"># renvoie une adresse de l&#39;objet en mémoire</span>
+<span class="tok-k">print</span> <span class="tok-p">(</span><span class="tok-n">somme</span><span class="tok-p">())</span> <span class="tok-c"># execute la fonction !</span>
+
+<span class="tok-c"># Et donc vous pouvez stocker les références/adresses dans des structures de données, c&#39;est à dire dans des classes (dans les attributs), dans des listes, dans des dictionnaires, etc.</span>
+
+<span class="tok-n">listeFonctionCalculette</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-n">somme</span><span class="tok-p">,</span><span class="tok-n">multiply</span><span class="tok-p">]</span>
+
+<span class="tok-k">for</span> <span class="tok-n">i</span> <span class="tok-ow">in</span> <span class="tok-n">listeFonctionCalculette</span><span class="tok-p">:</span>
+   <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;Resultat = &quot;</span><span class="tok-p">,</span> <span class="tok-n">i</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">,</span><span class="tok-mi">3</span><span class="tok-p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Cela marche exactement de la même façon avec des objets, qui peuvent également être stockés dans des listes, des dictionnaires, etc.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-k">class</span> <span class="tok-nc">Personne</span><span class="tok-p">(</span><span class="tok-nb">object</span><span class="tok-p">):</span>
+
+   <span class="tok-k">def</span> <span class="tok-nf">__init__</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span><span class="tok-n">nom</span><span class="tok-p">,</span><span class="tok-n">prenom</span><span class="tok-p">,</span><span class="tok-n">age</span><span class="tok-p">):</span>
+      <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nom</span> <span class="tok-o">=</span> <span class="tok-n">nom</span>
+      <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">prenom</span> <span class="tok-o">=</span> <span class="tok-n">prenom</span>
+      <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">age</span> <span class="tok-o">=</span> <span class="tok-n">age</span>
+
+   <span class="tok-k">def</span> <span class="tok-nf">anniversaire</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
+      <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;Bon anniversaire &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nom</span><span class="tok-p">,</span> <span class="tok-s">&quot; !!&quot;</span><span class="tok-p">)</span>
+      <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">age</span> <span class="tok-o">=</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">age</span> <span class="tok-o">+</span> <span class="tok-mi">1</span>
+
+   <span class="tok-k">def</span> <span class="tok-nf">information</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
+      <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;Mon nom est &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nom</span><span class="tok-p">,</span> <span class="tok-s">&quot; et mon prénom est &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">prenom</span><span class="tok-p">)</span>
+      <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;Aujourd&#39;hui j&#39;ai &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">age</span><span class="tok-p">,</span> <span class="tok-s">&quot; ans.&quot;</span><span class="tok-p">)</span>
+
+<span class="tok-c"># Creation de deux objets a partir de la classe Personne</span>
+<span class="tok-n">tomy</span> <span class="tok-o">=</span> <span class="tok-n">Personne</span><span class="tok-p">(</span><span class="tok-s">&quot;Ungerer&quot;</span><span class="tok-p">,</span><span class="tok-s">&quot;Tomy&quot;</span><span class="tok-p">,</span><span class="tok-mi">75</span><span class="tok-p">)</span>
+<span class="tok-n">gerard</span> <span class="tok-o">=</span> <span class="tok-n">Personne</span><span class="tok-p">(</span><span class="tok-s">&quot;Mulot&quot;</span><span class="tok-p">,</span><span class="tok-s">&quot;Gerard&quot;</span><span class="tok-p">,</span><span class="tok-mi">55</span><span class="tok-p">)</span>
+<span class="tok-c"># etc...</span>
+
+<span class="tok-c"># On stocke ces objets dans une liste</span>
+<span class="tok-n">listePersonne</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-n">tomy</span><span class="tok-p">,</span><span class="tok-n">gerard</span><span class="tok-p">]</span>
+
+<span class="tok-c"># On appelle des fonctions sur les objets contenus dans cette liste</span>
+<span class="tok-k">for</span> <span class="tok-n">i</span> <span class="tok-ow">in</span> <span class="tok-n">listePersonne</span><span class="tok-p">:</span>
+   <span class="tok-n">i</span><span class="tok-o">.</span><span class="tok-n">information</span><span class="tok-p">()</span>
+
+<span class="tok-k">for</span> <span class="tok-n">i</span> <span class="tok-ow">in</span> <span class="tok-n">listePersonne</span><span class="tok-p">:</span>
+   <span class="tok-n">i</span><span class="tok-o">.</span><span class="tok-n">anniversaire</span><span class="tok-p">()</span>
+
+<span class="tok-k">for</span> <span class="tok-n">i</span> <span class="tok-ow">in</span> <span class="tok-n">listePersonne</span><span class="tok-p">:</span>
+   <span class="tok-n">i</span><span class="tok-o">.</span><span class="tok-n">information</span><span class="tok-p">()</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Exercices</strong> :</p>
+</div>
+<div class="ulist checklist">
+<ul class="checklist">
+<li>
+<p><input type="checkbox" data-item-complete="0"> En reprenant l&#8217;exemple des navigateurs et du pirate, essayez de stocker plusieurs pirates dans une liste, appelez un accident sur chacun d&#8217;eux à l&#8217;aide d&#8217;une boucle.</p>
+</li>
+<li>
+<p><input type="checkbox" data-item-complete="0"> Construisez une fonction tempete qui prend un objet navigateur en paramètre, et lui applique un accident au hasard. Appelez ensuite cette fonction sur un des pirates de votre liste.</p>
+</li>
+<li>
+<p><input type="checkbox" data-item-complete="0"> Essayez maintenant d&#8217;appliquer cette fonction sur un navigateur tiré au hasard dans votre liste de pirate !</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bref_rappel_des_termes"><a class="anchor" href="#_bref_rappel_des_termes"></a>Bref rappel des termes</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-k">class</span> <span class="tok-nc">Navigateur</span><span class="tok-p">(</span><span class="tok-nb">object</span><span class="tok-p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Une classe Navigateur qui hérite d&#8217;un <code>object</code>, obligatoire pour Python.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-k">class</span> <span class="tok-nc">Navigateur</span><span class="tok-p">(</span><span class="tok-nb">object</span><span class="tok-p">):</span> <span class="tok-k">def</span> <span class="tok-nf">__init__</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span><span class="tok-n">yeux</span><span class="tok-p">,</span><span class="tok-n">bras</span><span class="tok-p">,</span><span class="tok-n">jambes</span><span class="tok-p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>La classe <code>Navigateur</code> est initialisé grâce à la fonction constructeur <code><em>init</em></code> qui prend <code>self</code> et 3 paramètres"</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-k">class</span> <span class="tok-nc">Navigateur</span><span class="tok-p">(</span><span class="tok-nb">object</span><span class="tok-p">):</span> <span class="tok-k">def</span> <span class="tok-nf">accident</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span><span class="tok-n">typeAcc</span><span class="tok-p">):</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>La classe <code>Navigateur</code> possède une fonction nommé <code>accident</code> qui prend <code>self</code> et 1 paramètre"</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">gerard</span> <span class="tok-o">=</span> <span class="tok-n">Navigateur</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">2</span><span class="tok-p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>gerard est une variable qui contient une instance de la classe <code>Navigateur</code> (cad un objet)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">gerard</span><span class="tok-o">.</span><span class="tok-n">accident</span><span class="tok-p">(</span><span class="tok-s">&quot;jambe&quot;</span><span class="tok-p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Depuis l&#8217;instance de la classe <code>Navigateur</code> contenu dans la variable <code>gerard</code> (cad un objet), je récupère et apelle la fonction <code>accident</code> avec <code>self</code> et la valeur pour un paramètre.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">gerard</span><span class="tok-o">.</span><span class="tok-n">nbJambes</span> <span class="tok-o">=</span> <span class="tok-mi">1</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Depuis l&#8217;instance de la classe <code>Navigateur</code> contenu dans la variable <code>gerard</code> (cad un objet), je récupère et écrase l&#8217;attribut <code>nbJambes</code> avec la valeur passé par <code>l&#8217;affectation</code></p>
+</div>
+<div class="paragraph">
+<p>A l&#8217;aide de ces principes, nous essaierons de réfléchir par la suite à la manière de structurer plus efficacement nos futurs programme.</p>
+</div>
+<div class="ulist">
+<div class="title">Ressources python POO pour aller plus loin :</div>
+<ul>
+<li>
+<p><a href="http://fr.openclassrooms.com/informatique/cours/langage-python">Partie 3 du cours Python du site openClassRooms</a></p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">Ressource modélisation :</div>
+<ul>
+<li>
+<p><a href="http://laurent-piechocki.developpez.com/uml/tutoriel/lp/cours/" class="bare">http://laurent-piechocki.developpez.com/uml/tutoriel/lp/cours/</a></p>
+</li>
+<li>
+<p><a href="http://fr.wikipedia.org/wiki/Diagramme_de_classes" class="bare">http://fr.wikipedia.org/wiki/Diagramme_de_classes</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_des_objets_dans_des_objets"><a class="anchor" href="#_des_objets_dans_des_objets"></a>Des objets dans des objets ?</h3>
+<div class="imageblock text-left">
+<div class="content">
+<img src="images/worldofpirates.png" alt="worldofpirates" width="500">
+</div>
+</div>
+<div class="paragraph">
+<p>C&#8217;est ici que se trouve la vrai puissance de la programmation orientée objet, car elle permet de créer un code complexe de façon modulaire et générique, par exemple en imbriquant des objets dans d&#8217;autres objets.</p>
+</div>
+<div class="paragraph">
+<p>Essayons à présente de créer un monde à la mesure de nos pirates. La première étape consiste à revoir notre classe <code>Navigateur</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-c"># -*- coding: utf-8 -*-</span>
+
+<span class="tok-kn">import</span> <span class="tok-nn">random</span>
+
+<span class="tok-c"># Definition des classes du monde des pirates !</span>
+<span class="tok-k">class</span> <span class="tok-nc">Navigateur</span><span class="tok-p">(</span><span class="tok-nb">object</span><span class="tok-p">):</span> <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="tok-k">def</span> <span class="tok-nf">__init__</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span> <span class="tok-n">nom</span><span class="tok-p">,</span> <span class="tok-n">salaire</span><span class="tok-o">=</span><span class="tok-mi">10</span><span class="tok-p">,</span> <span class="tok-n">yeux</span><span class="tok-o">=</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-n">bras</span><span class="tok-o">=</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-n">jambes</span><span class="tok-o">=</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-n">argent</span><span class="tok-o">=</span><span class="tok-mi">0</span><span class="tok-p">,</span> <span class="tok-n">force</span><span class="tok-o">=</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-n">grade</span><span class="tok-o">=</span><span class="tok-s">&quot;minable&quot;</span><span class="tok-p">):</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nom</span> <span class="tok-o">=</span> <span class="tok-n">nom</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">salaire</span> <span class="tok-o">=</span> <span class="tok-n">salaire</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">tete</span> <span class="tok-o">=</span> <span class="tok-mi">1</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nbYeux</span> <span class="tok-o">=</span> <span class="tok-n">yeux</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nbBras</span> <span class="tok-o">=</span> <span class="tok-n">bras</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nbJambes</span> <span class="tok-o">=</span> <span class="tok-n">jambes</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">argent</span> <span class="tok-o">=</span> <span class="tok-n">argent</span> <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">force</span> <span class="tok-o">=</span> <span class="tok-n">force</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">grade</span> <span class="tok-o">=</span> <span class="tok-n">grade</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">afficheInfo</span><span class="tok-p">()</span>
+
+    <span class="tok-k">def</span> <span class="tok-nf">augmenteGrade</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
+        <span class="tok-k">if</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">grade</span> <span class="tok-o">==</span> <span class="tok-s">&quot;minable&quot;</span><span class="tok-p">:</span>
+            <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">grade</span> <span class="tok-o">=</span> <span class="tok-s">&quot;minus&quot;</span>
+        <span class="tok-k">elif</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">grade</span> <span class="tok-o">==</span> <span class="tok-s">&quot;minus&quot;</span><span class="tok-p">:</span>
+            <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">grade</span> <span class="tok-o">=</span> <span class="tok-s">&quot;chef&quot;</span>
+        <span class="tok-k">elif</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">grade</span> <span class="tok-o">==</span> <span class="tok-s">&quot;chef&quot;</span><span class="tok-p">:</span>
+            <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">grade</span> <span class="tok-o">=</span> <span class="tok-s">&quot;capitaine&quot;</span>
+
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">force</span> <span class="tok-o">=</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">force</span> <span class="tok-o">+</span> <span class="tok-mi">1</span> <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>La classe Navigateur change un peu, on passe des arguments par défaut pour définir la morphologie et le grade de nos navigateurs. Ainsi on part du principe que le grade par défaut est "minus", et la morphologie normale.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>De nouveaux attributs apparaissent dans notre programme : argent, force et grade.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>A chaque augmentation de grade on augmente la force du navigateur de 1, par exemple cette fonction peut être appellé à chaque fois que son navire gagne un combat, on peut considérer qu&#8217;il augmente de grade.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Mais nous le savons bien, un pirate tout seul n&#8217;a aucune chance de survie dans ce monde hostile, il lui faut donc un équipage.</p>
+</div>
+<div class="paragraph">
+<p>Dans le code suivant nous créons un premier équipage en utilisant une liste dans lequel nous stockons plusieurs instances de cette classe <code>Navigateur</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">jack</span> <span class="tok-o">=</span>  <span class="tok-n">Navigateur</span><span class="tok-p">(</span><span class="tok-s">&quot;Jack Calico&quot;</span><span class="tok-p">,</span> <span class="tok-n">argent</span><span class="tok-o">=</span><span class="tok-mi">10</span><span class="tok-p">,</span> <span class="tok-n">force</span><span class="tok-o">=</span><span class="tok-mi">10</span><span class="tok-p">,</span> <span class="tok-n">grade</span><span class="tok-o">=</span><span class="tok-s">&quot;capitaine&quot;</span><span class="tok-p">)</span>
+<span class="tok-n">edward</span> <span class="tok-o">=</span>  <span class="tok-n">Navigateur</span><span class="tok-p">(</span><span class="tok-s">&quot;Edward Drake&quot;</span><span class="tok-p">,</span> <span class="tok-n">argent</span><span class="tok-o">=</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-n">force</span><span class="tok-o">=</span><span class="tok-mi">3</span><span class="tok-p">,</span> <span class="tok-n">grade</span><span class="tok-o">=</span><span class="tok-s">&quot;minable&quot;</span><span class="tok-p">)</span>
+<span class="tok-n">anne</span> <span class="tok-o">=</span> <span class="tok-n">Navigateur</span><span class="tok-p">(</span><span class="tok-s">&quot;Anne Bonny&quot;</span><span class="tok-p">,</span><span class="tok-n">argent</span><span class="tok-o">=</span> <span class="tok-mi">3</span><span class="tok-p">,</span> <span class="tok-n">force</span><span class="tok-o">=</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-n">grade</span><span class="tok-o">=</span><span class="tok-s">&quot;minable&quot;</span><span class="tok-p">)</span>
+<span class="tok-n">equipe1</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-n">jack</span><span class="tok-p">,</span><span class="tok-n">edward</span><span class="tok-p">,</span><span class="tok-n">anne</span><span class="tok-p">]</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">equipe1</span><span class="tok-p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Normalement un code bizarre de ce type s&#8217;affiche <code>[&lt;<em>main</em>.Navigateur instance at 0x7f632f278908&gt;, &lt;<em>main</em>.Navigateur instance at 0x7f632f2789e0&gt;, &lt;<em>main</em>.Navigateur instance at 0x7f632f278a28&gt;]</code></p>
+</div>
+<div class="paragraph">
+<p>Il s&#8217;agit de la référence des objets en mémoire. Pour accéder au contenu de chacun de ces objets navigateurs, il n&#8217;y a pas d&#8217;autres choix que de faire appel aux méthodes ou aux attributs propre à ces objets.</p>
+</div>
+<div class="paragraph">
+<p>Pour mieux comprendre la structure qui résulte d&#8217;un tel code, on peut se représenter la liste sous cette forme en mémoire. Les valeurs initialisées pour chaque attributs étant commentée ici en rouge.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="images/equipage.png" alt="equipage" width="500">
+</div>
+</div>
+<div class="paragraph">
+<p>Si je veux affiche par exemple, le nom de chacun des pirates, je pourrais faire la boucle suivante :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-k">for</span> <span class="tok-n">p</span> <span class="tok-ow">in</span> <span class="tok-n">equipe1</span><span class="tok-p">:</span>
+	<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">p</span><span class="tok-o">.</span><span class="tok-n">nom</span><span class="tok-p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Je peux aussi changer la valeur des attributs directement :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-k">for</span> <span class="tok-n">p</span> <span class="tok-ow">in</span> <span class="tok-n">equipe1</span><span class="tok-p">:</span>
+	<span class="tok-n">p</span><span class="tok-o">.</span><span class="tok-n">argent</span> <span class="tok-o">=</span> <span class="tok-n">p</span><span class="tok-o">.</span><span class="tok-n">argent</span> <span class="tok-o">*</span> <span class="tok-mi">2</span>
+	<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">p</span><span class="tok-o">.</span><span class="tok-n">argent</span><span class="tok-p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Si je veux uniquement augmenter le grade des <strong>minables</strong> dans mon équipage, il suffit de filtrer notre liste en fonction d&#8217;un attribut :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-k">for</span> <span class="tok-n">p</span> <span class="tok-ow">in</span> <span class="tok-n">equipe1</span><span class="tok-p">:</span>
+	<span class="tok-k">if</span> <span class="tok-n">p</span><span class="tok-o">.</span><span class="tok-n">grade</span> <span class="tok-o">==</span> <span class="tok-s">&quot;minable&quot;</span><span class="tok-p">:</span>
+		<span class="tok-n">p</span><span class="tok-o">.</span><span class="tok-n">augmenteGrade</span><span class="tok-p">()</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Si je veux calculer l&#8217;argent total que possède cet équipage, encore une fois rien de plus facile. Il suffit d&#8217;accéder à l&#8217;attribut correspondant lors d&#8217;un parcours de liste.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">richesse</span> <span class="tok-o">=</span> <span class="tok-mi">0</span>
+<span class="tok-k">for</span> <span class="tok-n">p</span> <span class="tok-ow">in</span> <span class="tok-n">equipe1</span><span class="tok-p">:</span>
+	<span class="tok-n">richesse</span> <span class="tok-o">=</span> <span class="tok-n">richesse</span> <span class="tok-o">+</span> <span class="tok-n">p</span><span class="tok-o">.</span><span class="tok-n">argent</span>
+<span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">richesse</span><span class="tok-p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Réaliser cet équipage n&#8217;est qu&#8217;une première étape, que pouvons nous ajouter à présent ? Il serait intéressant par exemple d&#8217;encapsuler notre liste de pirates fraichement construite dans un objet <code>Equipage</code> auquel on pourra rajouter la fonction de calcul des richesses que nous avons déjà réalisé.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-k">class</span> <span class="tok-nc">Equipage</span><span class="tok-p">(</span><span class="tok-nb">object</span><span class="tok-p">):</span> <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="tok-k">def</span> <span class="tok-nf">__init__</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span> <span class="tok-n">marins</span><span class="tok-p">):</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">marins</span> <span class="tok-o">=</span> <span class="tok-n">marins</span>
+
+    <span class="tok-k">def</span> <span class="tok-nf">calculDesRichesses</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span> <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="tok-n">richesse</span> <span class="tok-o">=</span> <span class="tok-mi">0</span>
+        <span class="tok-k">for</span> <span class="tok-n">p</span> <span class="tok-ow">in</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">marins</span><span class="tok-p">:</span>
+            <span class="tok-n">richesse</span> <span class="tok-o">=</span> <span class="tok-n">richesse</span> <span class="tok-o">+</span> <span class="tok-n">p</span><span class="tok-o">.</span><span class="tok-n">argent</span>
+        <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-n">richesse</span><span class="tok-p">)</span>
+
+    <span class="tok-k">def</span> <span class="tok-nf">rechercheDuPlusRiche</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span> <i class="conum" data-value="3"></i><b>(3)</b>
+        <span class="tok-k">pass</span>
+
+    <span class="tok-k">def</span> <span class="tok-nf">rechercheDuPlusFort</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
+        <span class="tok-k">pass</span>
+
+    <span class="tok-k">def</span> <span class="tok-nf">calculForceEquipage</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span> <i class="conum" data-value="4"></i><b>(4)</b>
+        <span class="tok-k">pass</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>La classe a besoin d&#8217;une liste de <code>Navigateur</code> pour que notre méthode marche correctement.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>On interroge l&#8217;attribut de notre objet qui contient à présent la liste de navigateurs, à savoir <code>self.marins</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Il est intéressant de pouvoir savoir à tout moment quel est le navigateur le plus fort mais aussi le plus riche de la bande. A vous d&#8217;écrire le code :)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Une fonction qui renvoie la force totale de notre équipage, pratique pour comparer deux équipages par la suite (dans la future fonction <code>combat()</code> par exemple)</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Une première idée serait de définir un équipage ainsi :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">equipage1</span> <span class="tok-o">=</span> <span class="tok-n">Equipage</span><span class="tok-p">([</span><span class="tok-n">jack</span><span class="tok-p">,</span><span class="tok-n">edward</span><span class="tok-p">,</span><span class="tok-n">anne</span><span class="tok-p">])</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Seulement voilà, maintenant que nous avons définit un équipage comme un objet à part entière, plus complexe qu&#8217;une simple liste, il serait également intéressant de donner une vrai raison d&#8217;être à cet équipage, à savoir un bateau qui l&#8217;abrite.</p>
+</div>
+<div class="paragraph">
+<p>Plutôt que de créer un objet <code>Equipage</code> à part, pour ensuite le passer en paramètre lors de l&#8217;instanciation d&#8217;un <code>Navire</code>, nous préferons ici faire le choix d&#8217;une vrai composition. Ainsi l&#8217;équipage (et non les navigateurs, qui eux restent libre d&#8217;être associés à d&#8217;autres bateaux/équipages) devient exclusivement rattaché à un objet Navire. Si le <code>Navire</code> sombre, alors l&#8217;objet <code>Equipage</code> sombre avec lui.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-k">class</span> <span class="tok-nc">Navire</span><span class="tok-p">(</span><span class="tok-nb">object</span><span class="tok-p">):</span> <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="tok-k">def</span> <span class="tok-nf">__init__</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span> <span class="tok-n">nom</span><span class="tok-p">,</span> <span class="tok-n">marins</span><span class="tok-p">):</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nom</span> <span class="tok-o">=</span> <span class="tok-n">nom</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">equipage</span> <span class="tok-o">=</span> <span class="tok-n">Equipage</span><span class="tok-p">(</span><span class="tok-n">marins</span><span class="tok-p">)</span>
+
+    <span class="tok-k">def</span> <span class="tok-nf">combat</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span> <span class="tok-n">ennemi</span><span class="tok-p">):</span> <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;combat le bateau ennemi ! &quot;</span><span class="tok-p">)</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>La classe navire est responsable d&#8217;un équipage et un seul, c&#8217;est elle qui créée l&#8217;instance de la classe <code>Equipage</code> accueillant la liste de <code>Navigateurs</code>.
+Ainsi la liste de marins passés en paramètres sert ici à instancier la classe <code>Equipage</code> stocké par chaque objet <code>Navire</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>La classe qui définit les combats, pour déterminer l&#8217;issue du combat et calculer l&#8217;abordage, il faut prendre en paramètre un navire ennemi. On se base sur une comparaison de force entre les deux équipages pour le moment. Le navire le plus fort l&#8217;emporte.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Désormais, c&#8217;est l&#8217;objet <code>Navire</code> qui récupère la liste de navigateurs pour en faire un objet <code>Equipage</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">navire1</span> <span class="tok-o">=</span> <span class="tok-n">Navire</span><span class="tok-p">(</span><span class="tok-s">&quot;Queen Anne&#39;s Revenge&quot;</span><span class="tok-p">,[</span><span class="tok-n">jack</span><span class="tok-p">,</span><span class="tok-n">edward</span><span class="tok-p">,</span><span class="tok-n">anne</span><span class="tok-p">])</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>En terme d&#8217;imbrication entre objets (<code>Navire</code> contient <code>Equipage</code> contient une liste de <code>Navigateurs</code>), cela représente le diagramme de classe, puis d&#8217;objets suivant :</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="images/imbricationClasses.png" alt="imbricationClasses" width="500">
+</div>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="images/imbricationClasses2.png" alt="imbricationClasses2" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>La liste de navigateurs est passée à <code>navire1</code>, qui lors de sa initialisation construit directement un objet de type <code>Equipage</code> qui prend en paramètre cette même liste (<code>self.equipage = Equipage(marins)</code>). Celle-ci étant stocké dans l&#8217;attribut <code>marins</code> de cet équipage, on pourra l&#8217;apeller ainsi : <code>navire1.equipage.marin</code>. Comme il s&#8217;agit d&#8217;une liste, les navigateurs qu&#8217;elle contient peuvent être appelé avec la notation tableau classique. Ainsi <code>navire1.equipage.marins[0]</code> renvoie le premier marin de l&#8217;équipage, dont on peut également afficher le nom <code>navire1.equipage.marins[0].nom</code></p>
+</div>
+<div class="paragraph">
+<p>Autrement dit, chaque imbrication implique un niveau supplémentaire dans la notation pointé.</p>
+</div>
+<div class="paragraph">
+<p>Enfin, pour cette dernière étape, essayons d&#8217;être encore plus imaginatif. Les pirates ne se recrutent pas n&#8217;importe comment, il faut aller les chercher dans des <code>Tavernes</code>, logique non ?</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-k">class</span> <span class="tok-nc">Taverne</span><span class="tok-p">(</span><span class="tok-nb">object</span><span class="tok-p">):</span>
+    <span class="tok-k">def</span> <span class="tok-nf">__init__</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span> <span class="tok-n">listeDeNoms</span><span class="tok-p">,</span> <span class="tok-n">listeDePrenoms</span><span class="tok-p">):</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">listDeNoms</span> <span class="tok-o">=</span> <span class="tok-n">listeDeNoms</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">listDePrenoms</span> <span class="tok-o">=</span> <span class="tok-n">listeDePrenoms</span>
+
+    <span class="tok-k">def</span> <span class="tok-nf">debaucher</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span> <i class="conum" data-value="1"></i><b>(1)</b>
+        <span class="tok-n">salaire</span> <span class="tok-o">=</span> <span class="tok-n">random</span><span class="tok-o">.</span><span class="tok-n">randint</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">10</span><span class="tok-p">)</span>
+		<span class="tok-n">argent</span> <span class="tok-o">=</span> <span class="tok-n">random</span><span class="tok-o">.</span><span class="tok-n">randint</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">20</span><span class="tok-p">)</span>
+        <span class="tok-n">force</span> <span class="tok-o">=</span> <span class="tok-n">salaire</span> <span class="tok-o">*</span> <span class="tok-mf">1.5</span>
+        <span class="tok-n">nomPrenom</span> <span class="tok-o">=</span> <span class="tok-s">&quot; &quot;</span><span class="tok-o">.</span><span class="tok-n">join</span><span class="tok-p">([</span><span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">listDeNoms</span><span class="tok-p">[</span><span class="tok-n">random</span><span class="tok-o">.</span><span class="tok-n">randint</span><span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-p">,</span> <span class="tok-nb">len</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">listDeNoms</span><span class="tok-p">)</span> <span class="tok-o">-</span> <span class="tok-mi">1</span><span class="tok-p">)],</span>
+                              <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">listDePrenoms</span><span class="tok-p">[</span><span class="tok-n">random</span><span class="tok-o">.</span><span class="tok-n">randint</span><span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-p">,</span> <span class="tok-nb">len</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">listDePrenoms</span><span class="tok-p">)</span> <span class="tok-o">-</span> <span class="tok-mi">1</span><span class="tok-p">)]])</span>
+        <span class="tok-k">return</span> <span class="tok-n">Navigateur</span><span class="tok-p">(</span><span class="tok-n">nomPrenom</span><span class="tok-p">,</span> <span class="tok-n">salaire</span><span class="tok-p">,</span> <span class="tok-n">argent</span><span class="tok-o">=</span><span class="tok-n">argent</span><span class="tok-p">,</span> <span class="tok-n">force</span><span class="tok-o">=</span><span class="tok-nb">int</span><span class="tok-p">(</span><span class="tok-n">force</span><span class="tok-p">))</span> <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>En utilisant la liste de noms et prénoms stockés par l&#8217;objet <code>Taverne</code>, on génère un nouvel objet <code>Navigateur</code>, en piochant au hasard un salaire entre 1 et 10 pièce d&#8217;or.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Le Navigateur ainsi créé est renvoyé par la fonction <code>debaucher()</code></td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Ne reste plus ici qu&#8217;à construire une fonction qui apelle de multiple fois la fonction <code>debaucher()</code> pour constituer équipage. Nous allons voire cela dans les exercices.</p>
+</div>
+<div class="paragraph">
+<p>Voici un schéma UML qui tente de résumer de façon globale cette architecture.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="images/classNavigateur2.png" alt="classNavigateur2" width="400">
+</div>
+</div>
+<div class="paragraph">
+<p>Ce schéma UML (diagramme de classe) peut se lire ainsi. Un objet construit avec la classe <code>Taverne</code> doit pouvoir construire des navigateurs en partant de la classe <code>Navigateur</code>. Un objet de type <code>Equipage</code> contient en ensemble d&#8217;objets de type <code>Navigateur</code> (dans une liste par exemple). L&#8217;objet de type <code>Equipage</code> est ici dépendant et construit par l&#8217;objet de type <code>Navire</code>, il n&#8217;existe pas en dehors (symbole losange noir). Enfin un objet de type <code>Navire</code> contient un seul objet équipage.</p>
+</div>
+<div class="paragraph">
+<p>Ainsi on peut en déduire qu&#8217;un objet navire contient un objet équipage qui contient lui même un attribut contenant une liste d&#8217;objets navigateurs.</p>
+</div>
+<div class="paragraph">
+<p><strong>Exercices</strong> :</p>
+</div>
+<div class="ulist checklist">
+<ul class="checklist">
+<li>
+<p><input type="checkbox" data-item-complete="0"> Construire/Instancier un objet de type <code>Taverne</code> stocké dans une variable <code>taverneAPirate</code> en lui passant les listes ci-dessous :</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">nomDePirate</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-s">&quot;Bonny&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;Jack&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;Teach&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;Drake&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;Morgan&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;Nau&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;Read&quot;</span><span class="tok-p">]</span>
+<span class="tok-n">prenomDePirate</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-s">&quot;Anne&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;Calico&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;Edward&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;Francis&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;Henry&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;Jean&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;Mary&quot;</span><span class="tok-p">]</span></code></pre>
+</div>
+</div>
+<div class="ulist checklist">
+<ul class="checklist">
+<li>
+<p><i class="fa fa-square-o"></i> Ecrire une fonction <code>buildEquipage</code> qui prend en paramètre un nombre de marin (nbMarins) et un objet taverneAPirate de type <code>Taverne</code>, et renvoie une liste d&#8217;objets <code>Navigateur</code>.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-c"># Fonction pour construire equipage</span>
+<span class="tok-k">def</span> <span class="tok-nf">buildEquipage</span><span class="tok-p">(</span><span class="tok-n">taverne</span><span class="tok-p">,</span> <span class="tok-n">nbMarins</span><span class="tok-p">):</span>
+    <span class="tok-n">equipage</span> <span class="tok-o">=</span> <span class="tok-p">[]</span>
+    <span class="tok-n">equipage</span><span class="tok-o">.</span><span class="tok-n">append</span><span class="tok-p">(</span><span class="tok-o">...</span><span class="tok-p">)</span>
+    <span class="tok-o">...</span>
+    <span class="tok-k">return</span> <span class="tok-n">equipage</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Comme déjà vu un peu plus haut, on apelle les attributs et les fonctions à l&#8217;aide d&#8217;une notation pointée. Une fois l&#8217;objet <code>taverneAPirate</code> instancié, il est possible d&#8217;apeller sa fonction <code>debaucher()</code> ainsi <code>taverneAPirate.debaucher()</code></p>
+</div>
+<div class="ulist checklist">
+<ul class="checklist">
+<li>
+<p><i class="fa fa-square-o"></i> Construire et stocker dans des variables deux objets navires (<code>navire1</code> et <code>navire2</code> par exemple) à partir de la classe <code>Navire</code> en leur passant des équipages renvoyés par <code>buildEquipage(&#8230;&#8203;)</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Comme déjà vu un peu plus haut, on apelle les attributs et les fonctions des objets à l&#8217;aide d&#8217;une notation pointée, et cela de façon hiérarchique.</p>
+</div>
+<div class="ulist checklist">
+<ul class="checklist">
+<li>
+<p><i class="fa fa-square-o"></i> Réaliser les fonctions permettant de calculer un combat entre deux Navires en se basant sur la force des pirates qui les composent. Remplir la fonction <code>calculForceEquipage()</code> et <code>combat()</code> qui prend forcément un objet navire en paramètre (pour comparer les deux forces, celle de lui-même, et celle du navire passé en paramètre).</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Penser à payer vos pirates à la fin de chaque combat victorieux! Remplir la fonction <code>jourDePaye()</code> qui se base sur le salaire de vos pirates.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Penser à ajouter une ou plusieurs classes de votre choix permettant d&#8217;enrichir ce monde de Pirate par de nouvelles aventures.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="images/bandePirates.jpg" alt="bandePirates" width="400">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_héritage_ou_composition"><a class="anchor" href="#_héritage_ou_composition"></a>Héritage ou Composition ?</h3>
+<div class="paragraph">
+<p>De la même façon qu&#8217;il existe les fonctions pour éviter d&#8217;avoir à réécrire du code, il existe deux notions en Poo qui permettent de limiter la redondance de code entre des classes qui partageraient les mêmes comportements(attributs et fonctions).</p>
+</div>
+<div class="paragraph">
+<p>Il faut savoir qu&#8217;il n&#8217;y a pas de meilleur techniques l&#8217;une par rapport à l&#8217;autre, tout est avant tout une <strong>question d&#8217;usage</strong>. Ainsi n&#8217;y a pas de duel entre héritage et/ou composition, il faut seulement savoir que les deux techniques possèdent leurs avantages ou leurs inconvénients, et qu&#8217;elle sont bien souvent interchangeables.</p>
+</div>
+<div class="sect3">
+<h4 id="_héritage"><a class="anchor" href="#_héritage"></a>Héritage</h4>
+<div class="paragraph">
+<p>L&#8217;héritage est la notion la plus facile à comprendre, et la plus facile à mettre en oeuvre, et donc c&#8217;est aussi la plus dangereuse. Il existe un débat très vif sur son utilisation dans le cercle des développeurs. Je vous donne dans la suite du document quelques clefs (non exhaustives) pour mieux comprendre quand il faut, et quand il ne faut pas l&#8217;utiliser.</p>
+</div>
+<div class="paragraph">
+<p>Voici par exemple ce que dit le très bon site de <a href="http://learnpythonthehardway.org/book/ex44.html">learn python the hard way</a> à ce sujet :</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>On object-oriented programming, <strong>Inheritance is the evil forest</strong>. Experienced programmers know to avoid this evil because they know that deep inside the Dark Forest Inheritance is the Evil Queen Multiple Inheritance. She likes to eat software and programmers with her massive complexity teeth, chewing on the flesh of the fallen. But the forest is so powerful and so tempting that nearly every programmer has to go into it, and try to make it out alive with the Evil Queen&#8217;s head before they can call themselves real programmers. You just can&#8217;t resist the Inheritance Forest&#8217;s pull, so you go in. After the adventure you learn to just stay out of that stupid forest and bring an army if you are ever forced to go in again.</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; suite sur <a href="http://learnpythonthehardway.org/book/ex44.html">learn python the hard way</a>
+</div>
+</div>
+<div class="paragraph">
+<p>L&#8217;héritage permet plusieurs choses, mais on la retient surtout pour sa capacité à factoriser du code tout en spécialisant une classe de base existante, ce qui permet de garder le comportement initial (attributs et méthodes), tout en lui en ajoutant de nouveaux (attributs et méthodes).</p>
+</div>
+<div class="paragraph">
+<p>Voyons ce que cela donne avec nos pirates &#8230;&#8203;</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="images/classPiratesMZV.png" alt="classPiratesMZV" width="500">
+</div>
+</div>
+<div class="paragraph">
+<p>Pour déterminer si une relation d&#8217;héritage est possible ou pas entre deux classes, on peut s&#8217;aider de cette règle : <strong>is-a</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Un PirateZombie <strong>is-a</strong> Pirate</p>
+</li>
+<li>
+<p>Un PirateVolant <strong>is-a</strong> Pirate</p>
+</li>
+<li>
+<p>Un PirateMagicien <strong>is-a</strong> Pirate</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-c"># -*- coding: utf-8 -*-</span>
+
+<span class="tok-kn">import</span> <span class="tok-nn">random</span>
+
+<span class="tok-k">class</span> <span class="tok-nc">Pirate</span><span class="tok-p">(</span><span class="tok-nb">object</span><span class="tok-p">):</span> <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="tok-k">def</span> <span class="tok-nf">__init__</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span><span class="tok-n">nation</span><span class="tok-p">):</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nation</span> <span class="tok-o">=</span> <span class="tok-n">nation</span>
+    <span class="tok-k">def</span> <span class="tok-nf">speak</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
+        <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;je suis &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nation</span><span class="tok-p">)</span>
+        <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;et je suis un pirate normal ...&quot;</span><span class="tok-p">)</span>
+
+<span class="tok-c"># PirateMagicien is - a Pirate</span>
+<span class="tok-k">class</span> <span class="tok-nc">PirateMagicien</span><span class="tok-p">(</span><span class="tok-n">Pirate</span><span class="tok-p">):</span> <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="tok-k">def</span> <span class="tok-nf">__init__</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span> <span class="tok-n">nation</span><span class="tok-p">,</span> <span class="tok-n">listFormule</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-s">&quot;Abracadabra&quot;</span><span class="tok-p">]):</span>
+        <span class="tok-nb">super</span><span class="tok-p">(</span><span class="tok-n">PirateMagicien</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-p">)</span><span class="tok-o">.</span><span class="tok-n">__init__</span><span class="tok-p">(</span><span class="tok-n">nation</span><span class="tok-p">)</span> <i class="conum" data-value="3"></i><b>(3)</b>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">formules</span> <span class="tok-o">=</span> <span class="tok-n">listFormule</span> <i class="conum" data-value="4"></i><b>(4)</b>
+
+    <span class="tok-k">def</span> <span class="tok-nf">speak</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span> <i class="conum" data-value="5"></i><b>(5)</b>
+        <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;je suis un magicien de nationalité &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nation</span><span class="tok-p">)</span>
+
+    <span class="tok-k">def</span> <span class="tok-nf">cast</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span> <i class="conum" data-value="6"></i><b>(6)</b>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">speak</span><span class="tok-p">()</span>
+        <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">formules</span><span class="tok-p">[</span><span class="tok-n">random</span><span class="tok-o">.</span><span class="tok-n">randint</span><span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-p">,</span><span class="tok-nb">len</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">formules</span><span class="tok-p">)</span><span class="tok-o">-</span><span class="tok-mi">1</span><span class="tok-p">)])</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>La classe de Base, qui va servir à la dérivation, celle ci n&#8217;a rien de particulier.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>C&#8217;est ici que l&#8217;on déclare la dérivation, en indiquant bien de quelle classe on hérite, ici <code>Pirate</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td><code>super()</code> est une fonction spéciale qui permet d&#8217;apeller la méthode <code><em>init</em>()</code> de <code>Pirate</code>. C&#8217;est ainsi que l&#8217;on ajoute les comportements de la classe <code>Pirate</code> à notre classe dérivée <code>PirateMagicien</code>. Pour que cette méthode s&#8217;initialise bien, des paramètres doivent lui être passé en entrées, ce qui explique le passage de nation à la méthode <code><em>init</em>()</code> de <code>Pirate</code> : <code><em>init</em>(nation)</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Il est temps de spécialiser notre pirate en lui ajoutant de nouveaux attributs, ici une liste de formules pour lancer un sort.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Si je ne suis pas content du comportement de la classe de base, comme par exemple ici la fonction <code>speak()</code> de <code>Pirate</code>, je peux toujours l&#8217;écraser (plus connu sous l&#8217;appelation 'override') par un <code>speak()</code> plus adapté comme c&#8217;est le cas ici.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Idem, on continue la spécialisation en ajoutant une nouvelle méthode disponible uniquement pour les instances de la classe <code>PiratesMagiciens</code>*</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Le reste du programme avec d&#8217;autres types de pirates spécialisés.<br>
+L&#8217;appel des functions propre à chacun est en bas du programme.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-c"># PirateZombie is - a Pirate</span>
+<span class="tok-k">class</span> <span class="tok-nc">PirateZombie</span><span class="tok-p">(</span><span class="tok-n">Pirate</span><span class="tok-p">):</span>
+    <span class="tok-k">def</span> <span class="tok-nf">__init__</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span> <span class="tok-n">nation</span><span class="tok-p">,</span> <span class="tok-n">vitesse</span><span class="tok-p">):</span>
+        <span class="tok-nb">super</span><span class="tok-p">(</span><span class="tok-n">PirateZombie</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-p">)</span><span class="tok-o">.</span><span class="tok-n">__init__</span><span class="tok-p">(</span><span class="tok-n">nation</span><span class="tok-p">)</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">vitesse</span> <span class="tok-o">=</span> <span class="tok-n">vitesse</span>
+
+    <span class="tok-k">def</span> <span class="tok-nf">eat</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">speak</span><span class="tok-p">()</span>
+        <span class="tok-k">print</span><span class="tok-p">(</span><span class="tok-s">&quot;miam miam&quot;</span><span class="tok-p">)</span>
+
+    <span class="tok-k">def</span> <span class="tok-nf">speak</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
+        <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot; *Bweahhhh* &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nation</span><span class="tok-p">)</span>
+        <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot; *Bweahhhh* Brain ... &quot;</span><span class="tok-p">)</span>
+
+<span class="tok-c"># PirateVolant is - a Pirate</span>
+<span class="tok-k">class</span> <span class="tok-nc">PirateVolant</span><span class="tok-p">(</span><span class="tok-n">Pirate</span><span class="tok-p">):</span>
+    <span class="tok-k">def</span> <span class="tok-nf">__init__</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span> <span class="tok-n">nation</span><span class="tok-p">,</span><span class="tok-n">nomDuBalais</span><span class="tok-p">):</span>
+        <span class="tok-nb">super</span><span class="tok-p">(</span><span class="tok-n">PirateVolant</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-p">)</span><span class="tok-o">.</span><span class="tok-n">__init__</span><span class="tok-p">(</span><span class="tok-n">nation</span><span class="tok-p">)</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nomDuBalais</span> <span class="tok-o">=</span> <span class="tok-n">nomDuBalais</span>
+
+    <span class="tok-k">def</span> <span class="tok-nf">fly</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">speak</span><span class="tok-p">()</span>
+        <span class="tok-k">print</span><span class="tok-p">(</span><span class="tok-s">&quot;Je vole sur mon &quot;</span> <span class="tok-o">+</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nomDuBalais</span><span class="tok-p">)</span>
+
+    <span class="tok-k">def</span> <span class="tok-nf">speak</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
+        <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;Je suis &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nation</span><span class="tok-p">)</span>
+        <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;et je suis l&#39;as des as pirates ... &quot;</span><span class="tok-p">)</span>
+
+
+<span class="tok-n">unPremierSpecialiste</span> <span class="tok-o">=</span> <span class="tok-n">PirateMagicien</span><span class="tok-p">(</span><span class="tok-s">&quot;Italien&quot;</span><span class="tok-p">,[</span><span class="tok-s">&quot;Abracadabra&quot;</span><span class="tok-p">,</span><span class="tok-s">&quot;Bazinga&quot;</span><span class="tok-p">])</span>
+<span class="tok-n">unPremierSpecialiste</span><span class="tok-o">.</span><span class="tok-n">cast</span><span class="tok-p">()</span>
+
+<span class="tok-n">unDeuxiemeSpecialiste</span> <span class="tok-o">=</span> <span class="tok-n">PirateZombie</span><span class="tok-p">(</span><span class="tok-s">&quot;Haitien&quot;</span><span class="tok-p">,</span><span class="tok-mi">10</span><span class="tok-p">)</span>
+<span class="tok-n">unDeuxiemeSpecialiste</span><span class="tok-o">.</span><span class="tok-n">eat</span><span class="tok-p">()</span>
+
+<span class="tok-n">unTroisiemeSpecialiste</span> <span class="tok-o">=</span> <span class="tok-n">PirateVolant</span><span class="tok-p">(</span><span class="tok-s">&quot;Hollandais&quot;</span><span class="tok-p">,</span><span class="tok-s">&quot;Alactasar&quot;</span><span class="tok-p">)</span>
+<span class="tok-n">unTroisiemeSpecialiste</span><span class="tok-o">.</span><span class="tok-n">fly</span><span class="tok-p">()</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Ok, comme vous voyez, ça marche plutôt bien, et ça peut nous faire économiser pas mal de code dans certains cas en factorisant les comportements similaires dans une même classe de base.</p>
+</div>
+<div class="paragraph">
+<p>Toutefois, dans le cadre du développement d&#8217;un logiciel plus complexe, on pourrait être tenté de réaliser une hierarchie bien plus grande que celle ci. Voici donc un exemple simple qui montre bien les limites de ce type de hierarchie finalement très <strong>statique</strong>, ou <strong>rigide</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Que se passe t il dans mon programme si je décide tout à coup que les Pirates peuvent cumulés plusieurs traits, autrement dit, si je veux pouvoir créer des Pirate qui sont par exemple à la fois Volant et Magicien ? ou Zombie et Volant ? etc. Vais je continuer à étendre ma hierarchie ? Non car je vais perdre tout le bénéfice de la factorisation réalisé au préalable.</p>
+</div>
+<div class="paragraph">
+<p>Voici une proposition de test vue sur stackOverflow, que j&#8217;ai traduite ci dessous, et qui permet de detecter avec un peu plus de discernation si vous avez besoin d&#8217;un héritage ou plutôt d&#8217;une composition dans votre programme :</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Un petit test pour y voir plus clair</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Does <code>TypeB</code> want to expose the complete interface (all public methods no less) of <code>TypeA</code> such that <code>TypeB</code> can be used where <code>TypeA</code> is expected? Indicates Inheritance.</p>
+<div class="literalblock">
+<div class="content">
+<pre>e.g. A Cessna biplane will expose the complete interface of an airplane, if not more. So that makes it fit to derive from Airplane.</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Does <code>TypeB</code> only want only some/part of the behavior exposed by <code>TypeA</code>? Indicates need for Composition.</p>
+<div class="literalblock">
+<div class="content">
+<pre>e.g. A Bird may need only the fly behavior of an Airplane. In this case, it makes sense to extract it out as an interface / class / both and make it a member of both classes.</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Source</strong> : 'http://stackoverflow.com/questions/49002/prefer-composition-over-inheritance?rq=1[stackoverflow]'</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="title">Version informaticien du test décrit ci dessus :</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://fr.wikipedia.org/wiki/Principe_de_substitution_de_Liskov">Barbara Liskov&#8217;s Liskov Substitution Principle</a> as a test for 'Should I be inheriting from this type?'</p>
+</li>
+<li>
+<p>Les principes de POO <a href="http://fr.wikipedia.org/wiki/SOLID_%28informatique%29">SOLID</a></p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Quelques phrases que j&#8217;ai trouvé un peu partout sur Internet qui permettent de cloturer ce sujet épineux :</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Most of the uses of inheritance can be simplified or replaced with composition, and multiple inheritance should be avoided at all costs.</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; suite sur <a href="http://learnpythonthehardway.org/book/ex44.html">learn python the hard way</a>
+</div>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>All of the pain caused by inheritance can be traced back to the fact that inheritance forces <strong>is-a</strong> rather than <strong>has-a</strong> relationships. If class R2Unit extends Droid, then a R2Unit is-a Droid. If class Jedi contains an instance variable of type Lightsabre, then a Jedi has-a Lightsabre.</p>
+</div>
+<div class="paragraph">
+<p>The difference between <strong>is-a</strong> and <strong>has-a</strong> relationships is well known and a fundamental part of OOAD, but what is less well known is that almost every <strong>is-a</strong> relationship would be better off re-articulated as a <strong>has-a</strong> relationship.</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; <a href="http://berniesumption.com/software/inheritance-is-evil-and-must-be-destroyed">berniesumption</a>
+</div>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Inheritance doesn’t work in real life
+During my Computer Science studies, I learned about a cliche example of Student and Teacher classes should inherit from a Person base class. All the common properties and methods should be put in the base class, therefore when new common properties and methods are added, they will not be duplicated in different child classes.In reality, this almost never happens.</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; suite sur <a href="http://www.ronaldwidha.net/2009/03/22/a-good-example-of-favouring-composition-over-inheritance/">ronaldwidha.net</a>
+</div>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+Il faut privilégier la composition dès que votre hierarchie de classe vous parait trop complexe ou inadapté.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Pour aller plus loin dans le débat héritage vs composition :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://learnpythonthehardway.org/book/ex44.html" class="bare">http://learnpythonthehardway.org/book/ex44.html</a></p>
+</li>
+<li>
+<p><a href="http://www.copypasteisforword.com/notes/use-inheritance-properly" class="bare">http://www.copypasteisforword.com/notes/use-inheritance-properly</a></p>
+</li>
+<li>
+<p><a href="http://stackoverflow.com/questions/49002/prefer-composition-over-inheritance?rq=1" class="bare">http://stackoverflow.com/questions/49002/prefer-composition-over-inheritance?rq=1</a></p>
+</li>
+<li>
+<p><a href="http://www.artima.com/lejava/articles/designprinciples4.html" class="bare">http://www.artima.com/lejava/articles/designprinciples4.html</a></p>
+</li>
+<li>
+<p><a href="http://stackoverflow.com/questions/1020453/whats-the-point-of-inheritance-in-python?rq=1" class="bare">http://stackoverflow.com/questions/1020453/whats-the-point-of-inheritance-in-python?rq=1</a></p>
+</li>
+<li>
+<p><a href="http://berniesumption.com/software/inheritance-is-evil-and-must-be-destroyed/" class="bare">http://berniesumption.com/software/inheritance-is-evil-and-must-be-destroyed/</a></p>
+</li>
+<li>
+<p><a href="http://en.wikipedia.org/wiki/Composition_over_inheritance" class="bare">http://en.wikipedia.org/wiki/Composition_over_inheritance</a></p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_composition"><a class="anchor" href="#_composition"></a>Composition</h4>
+<div class="paragraph">
+<p>Cette notion est moins facile à comprendre et demande l&#8217;écriture de plus de code, mais par contre elle amène aussi beaucoup plus de souplesse pour penser l&#8217;architecture de vos programmes.</p>
+</div>
+<div class="paragraph">
+<p>Si on change notre façon de raisonner en essayant d&#8217;externaliser les comportements de notre <code>Pirate</code> initial.  En utilisant la relation <strong>has-a</strong> propre à l&#8217;aggrégation ou à la composition, il est possible de construire des objets complexes à partir de sous blocs plus simple, pensé pour être réutilisable.</p>
+</div>
+<div class="paragraph">
+<p>Est ce que notre exemple de pirate aux multiples fonctionnalités (volant, zombie, magicien) devient possible ?</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-c"># -*- coding: utf-8 -*-</span>
+
+<span class="tok-kn">import</span> <span class="tok-nn">random</span>
+
+<span class="tok-k">class</span> <span class="tok-nc">MagicPower</span><span class="tok-p">(</span><span class="tok-nb">object</span><span class="tok-p">):</span>
+    <span class="tok-k">def</span> <span class="tok-nf">__init__</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span><span class="tok-n">power</span><span class="tok-p">):</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">power</span> <span class="tok-o">=</span> <span class="tok-n">power</span>
+
+    <span class="tok-k">def</span> <span class="tok-nf">cast</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
+        <span class="tok-k">print</span> <span class="tok-p">(</span><span class="tok-s">&quot;pfscht &quot;</span><span class="tok-p">)</span>
+
+<span class="tok-k">class</span> <span class="tok-nc">ZombiePower</span><span class="tok-p">(</span><span class="tok-nb">object</span><span class="tok-p">):</span>
+    <span class="tok-k">def</span> <span class="tok-nf">__init__</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span><span class="tok-n">vitesse</span><span class="tok-p">):</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">vitesse</span> <span class="tok-o">=</span> <span class="tok-n">vitesse</span>
+
+    <span class="tok-k">def</span> <span class="tok-nf">eat</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
+        <span class="tok-k">print</span><span class="tok-p">(</span><span class="tok-s">&quot;miam&quot;</span><span class="tok-p">)</span>
+
+<span class="tok-k">class</span> <span class="tok-nc">VolantPower</span><span class="tok-p">(</span><span class="tok-nb">object</span><span class="tok-p">):</span>
+    <span class="tok-k">def</span> <span class="tok-nf">__init__</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span><span class="tok-n">nomDuBalais</span><span class="tok-p">):</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nomDuBalais</span> <span class="tok-o">=</span> <span class="tok-n">nomDuBalais</span>
+
+    <span class="tok-k">def</span> <span class="tok-nf">fly</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
+        <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;Je vole sur mon &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nomDuBalais</span><span class="tok-p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Il y a plusieurs façon de voir une composition, tout dépend du problème.</p>
+</div>
+<div class="paragraph">
+<p>Dans cette première version les classes sont créés directement dans la classe <code>PirateZombieMagicien</code>, elles sont donc liées à celle ci.
+Si le <code>PirateZombieMagicien</code> se faisait tuer, alors les définitions des classes qu&#8217;il contient sont également perdus.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="images/classPiratesCompose.png" alt="classPiratesCompose" width="500">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-c">#Pirate Zombie Magicien has-a MagicPower, has-a ZombiePower</span>
+<span class="tok-k">class</span> <span class="tok-nc">PirateZombieMagicien</span><span class="tok-p">(</span><span class="tok-n">Pirate</span><span class="tok-p">):</span>
+    <span class="tok-k">def</span> <span class="tok-nf">__init__</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span> <span class="tok-n">nation</span><span class="tok-p">):</span>
+        <span class="tok-nb">super</span><span class="tok-p">(</span><span class="tok-n">PirateZombieMagicien</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-p">)</span><span class="tok-o">.</span><span class="tok-n">__init__</span><span class="tok-p">(</span><span class="tok-n">nation</span><span class="tok-p">)</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">magic</span> <span class="tok-o">=</span> <span class="tok-n">MagicPower</span><span class="tok-p">(</span><span class="tok-mi">5</span><span class="tok-p">)</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">zombie</span> <span class="tok-o">=</span> <span class="tok-n">ZombiePower</span><span class="tok-p">(</span><span class="tok-mf">2.5</span><span class="tok-p">)</span>
+
+    <span class="tok-k">def</span> <span class="tok-nf">eat</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">zombie</span><span class="tok-o">.</span><span class="tok-n">eat</span><span class="tok-p">()</span>
+
+    <span class="tok-k">def</span> <span class="tok-nf">cast</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">magic</span><span class="tok-o">.</span><span class="tok-n">cast</span><span class="tok-p">()</span>
+
+<span class="tok-c">#Pirate Zombie Magicien has-a VolantPower, has-a ZombiePower</span>
+<span class="tok-k">class</span> <span class="tok-nc">PirateZombieVolant</span><span class="tok-p">(</span><span class="tok-n">Pirate</span><span class="tok-p">):</span>
+    <span class="tok-k">def</span> <span class="tok-nf">__init__</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span> <span class="tok-n">nation</span><span class="tok-p">):</span>
+        <span class="tok-nb">super</span><span class="tok-p">(</span><span class="tok-n">PirateZombieVolant</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-p">)</span><span class="tok-o">.</span><span class="tok-n">__init__</span><span class="tok-p">(</span><span class="tok-n">nation</span><span class="tok-p">)</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">volant</span> <span class="tok-o">=</span> <span class="tok-n">VolantPower</span><span class="tok-p">(</span><span class="tok-s">&quot;Asclatra&quot;</span><span class="tok-p">)</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">zombie</span> <span class="tok-o">=</span> <span class="tok-n">ZombiePower</span><span class="tok-p">(</span><span class="tok-mf">2.5</span><span class="tok-p">)</span>
+
+    <span class="tok-k">def</span> <span class="tok-nf">eat</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">zombie</span><span class="tok-o">.</span><span class="tok-n">eat</span><span class="tok-p">()</span>
+
+    <span class="tok-k">def</span> <span class="tok-nf">fly</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">volant</span><span class="tok-o">.</span><span class="tok-n">fly</span><span class="tok-p">()</span>
+
+
+<span class="tok-n">monpiratecustom1</span> <span class="tok-o">=</span> <span class="tok-n">PirateZombieMagicien</span><span class="tok-p">(</span><span class="tok-s">&quot;Hongrie&quot;</span><span class="tok-p">)</span>
+<span class="tok-n">monpiratecustom1</span><span class="tok-o">.</span><span class="tok-n">cast</span><span class="tok-p">()</span>
+<span class="tok-n">monpiratecustom1</span><span class="tok-o">.</span><span class="tok-n">eat</span><span class="tok-p">()</span>
+
+<span class="tok-n">monpiratecustom2</span> <span class="tok-o">=</span> <span class="tok-n">PirateZombieVolant</span><span class="tok-p">(</span><span class="tok-s">&quot;Pérou&quot;</span><span class="tok-p">)</span>
+<span class="tok-n">monpiratecustom2</span><span class="tok-o">.</span><span class="tok-n">fly</span><span class="tok-p">()</span>
+<span class="tok-n">monpiratecustom2</span><span class="tok-o">.</span><span class="tok-n">eat</span><span class="tok-p">()</span></code></pre>
+</div>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="images/classPiratesAggregation.png" alt="classPiratesAggregation" width="500">
+</div>
+</div>
+<div class="paragraph">
+<p>Une autre possibilité est envisageable, où cette fois ci la nature des pouvoirs du Pirate est passée en paramètre au moment de sa création.
+Il s&#8217;agit d&#8217;une aggregation, mais le bénéfice est le même que pour la composition, et la flexibilité pour développer des fonctionnalités dans notre programme est d&#8217;autant plus grande.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-k">class</span> <span class="tok-nc">Pirate</span><span class="tok-p">(</span><span class="tok-nb">object</span><span class="tok-p">):</span>
+    <span class="tok-k">def</span> <span class="tok-nf">__init__</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span> <span class="tok-n">nation</span><span class="tok-p">,</span> <span class="tok-n">magicien</span> <span class="tok-o">=</span> <span class="tok-bp">None</span><span class="tok-p">,</span> <span class="tok-n">zombie</span> <span class="tok-o">=</span> <span class="tok-bp">None</span><span class="tok-p">,</span> <span class="tok-n">volant</span> <span class="tok-o">=</span> <span class="tok-bp">None</span><span class="tok-p">):</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nation</span> <span class="tok-o">=</span> <span class="tok-n">nation</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">magic</span> <span class="tok-o">=</span> <span class="tok-n">magicien</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">zombie</span> <span class="tok-o">=</span> <span class="tok-n">zombie</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">volant</span> <span class="tok-o">=</span> <span class="tok-n">volant</span>
+
+<span class="tok-n">magicien</span> <span class="tok-o">=</span> <span class="tok-n">MagicPower</span><span class="tok-p">(</span><span class="tok-mi">5</span><span class="tok-p">)</span>
+<span class="tok-n">volant</span> <span class="tok-o">=</span> <span class="tok-n">VolantPower</span><span class="tok-p">(</span><span class="tok-s">&quot;Patatra&quot;</span><span class="tok-p">)</span>
+<span class="tok-n">monpirate</span> <span class="tok-o">=</span> <span class="tok-n">Pirate</span><span class="tok-p">(</span><span class="tok-s">&quot;BarbeCourte&quot;</span><span class="tok-p">,</span><span class="tok-n">magicien</span> <span class="tok-o">=</span> <span class="tok-n">magicien</span><span class="tok-p">,</span> <span class="tok-n">volant</span> <span class="tok-o">=</span> <span class="tok-n">volant</span><span class="tok-p">)</span>
+<span class="tok-k">if</span> <span class="tok-n">monpirate</span><span class="tok-o">.</span><span class="tok-n">volant</span> <span class="tok-p">:</span>
+    <span class="tok-n">monpirate</span><span class="tok-o">.</span><span class="tok-n">volant</span><span class="tok-o">.</span><span class="tok-n">fly</span><span class="tok-p">()</span>
+<span class="tok-k">if</span> <span class="tok-n">monpirate</span><span class="tok-o">.</span><span class="tok-n">magic</span> <span class="tok-p">:</span>
+    <span class="tok-n">monpirate</span><span class="tok-o">.</span><span class="tok-n">magic</span><span class="tok-o">.</span><span class="tok-n">cast</span><span class="tok-p">()</span>
+<span class="tok-k">if</span> <span class="tok-n">monpirate</span><span class="tok-o">.</span><span class="tok-n">zombie</span><span class="tok-p">:</span>
+    <span class="tok-n">monpirate</span><span class="tok-o">.</span><span class="tok-n">zombie</span><span class="tok-o">.</span><span class="tok-n">eat</span><span class="tok-p">()</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Bon et admettons maintenant que le Pirate magicien possède une barbe de feu, qu&#8217;il soit diabolique, et possède un sort capable de lui rendre de la vie ?</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="images/lechuck.png" alt="lechuck" width="200">
+</div>
+</div>
+<div class="paragraph">
+<p>Une des solution est de rendre bi-directionelle la relation d&#8217;aggregation <strong>has-a</strong> entre la classe <code>Pirate</code> et la classe <code>MagicPower</code>, comme cela la classe <code>MagicPower</code> qui contient le sort de vie peut avoir accès aux attributs et aux méthodes du <code>Pirate</code> et les modifier.</p>
+</div>
+<div class="paragraph">
+<p>Exactement ce que l&#8217;on veut faire, et donc pour cela il suffit d&#8217;enlever la flèche de direction dans le schéma UML.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="images/classPiratesAggregation2.png" alt="classPiratesAggregation2" width="500">
+</div>
+</div>
+<div class="paragraph">
+<p>Voici pour le code source correspondant au diagramme UML :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-k">class</span> <span class="tok-nc">MagicPower</span><span class="tok-p">(</span><span class="tok-nb">object</span><span class="tok-p">):</span>
+    <span class="tok-k">def</span> <span class="tok-nf">__init__</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span><span class="tok-n">power</span><span class="tok-p">):</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">power</span> <span class="tok-o">=</span> <span class="tok-n">power</span>
+
+    <span class="tok-k">def</span> <span class="tok-nf">cast</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
+        <span class="tok-k">if</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">owner</span><span class="tok-p">:</span> <i class="conum" data-value="1"></i><b>(1)</b>
+            <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">owner</span><span class="tok-o">.</span><span class="tok-n">vie</span> <span class="tok-o">+=</span> <span class="tok-mf">5.0</span> <span class="tok-o">*</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">power</span> <i class="conum" data-value="2"></i><b>(2)</b>
+            <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;pfscht +&quot;</span><span class="tok-p">,</span>  <span class="tok-mf">5.0</span> <span class="tok-o">*</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">power</span> <span class="tok-p">,</span> <span class="tok-s">&quot; vie&quot;</span><span class="tok-p">)</span>
+
+<span class="tok-k">class</span> <span class="tok-nc">Pirate</span><span class="tok-p">(</span><span class="tok-nb">object</span><span class="tok-p">):</span>
+    <span class="tok-k">def</span> <span class="tok-nf">__init__</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span> <span class="tok-n">nation</span><span class="tok-p">,</span> <span class="tok-n">vie</span><span class="tok-p">,</span><span class="tok-n">magicien</span> <span class="tok-o">=</span> <span class="tok-bp">None</span><span class="tok-p">,</span> <span class="tok-n">zombie</span> <span class="tok-o">=</span> <span class="tok-bp">None</span><span class="tok-p">,</span> <span class="tok-n">volant</span> <span class="tok-o">=</span> <span class="tok-bp">None</span><span class="tok-p">):</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">vie</span> <span class="tok-o">=</span> <span class="tok-n">vie</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nation</span> <span class="tok-o">=</span> <span class="tok-n">nation</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">magic</span> <span class="tok-o">=</span> <span class="tok-n">magicien</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">zombie</span> <span class="tok-o">=</span> <span class="tok-n">zombie</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">volant</span> <span class="tok-o">=</span> <span class="tok-n">volant</span>
+
+        <span class="tok-k">if</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">magic</span><span class="tok-p">:</span> <i class="conum" data-value="3"></i><b>(3)</b>
+            <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">magic</span><span class="tok-o">.</span><span class="tok-n">owner</span> <span class="tok-o">=</span> <span class="tok-bp">self</span> <i class="conum" data-value="4"></i><b>(4)</b>
+
+<span class="tok-n">magicien</span> <span class="tok-o">=</span> <span class="tok-n">MagicPower</span><span class="tok-p">(</span><span class="tok-mf">2.0</span><span class="tok-p">)</span>
+<span class="tok-n">monpirate</span> <span class="tok-o">=</span> <span class="tok-n">Pirate</span><span class="tok-p">(</span><span class="tok-s">&quot;LeChuck&quot;</span><span class="tok-p">,</span> <span class="tok-mf">100.0</span><span class="tok-p">,</span> <span class="tok-n">magicien</span> <span class="tok-o">=</span> <span class="tok-n">magicien</span><span class="tok-p">)</span>
+<span class="tok-n">monpirate</span><span class="tok-o">.</span><span class="tok-n">magic</span><span class="tok-o">.</span><span class="tok-n">cast</span><span class="tok-p">()</span>
+<span class="tok-k">print</span> <span class="tok-p">(</span><span class="tok-n">monpirate</span><span class="tok-o">.</span><span class="tok-n">vie</span><span class="tok-p">)</span> <i class="conum" data-value="4"></i><b>(4)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>A l&#8217;execution de la fonction, et avant d&#8217;appliquer le pouvoir on s&#8217;assure bien que l&#8217;attribut <code>self.owner</code> existe. En l&#8217;occurence à cet instant là qui correspond à la définition de la fonction, il n&#8217;existe pas encore, et il faudra attendre l&#8217;étape 4 pour que cet attribut soit fixé par la classe <code>Pirate</code>. Il est donc tout à fait possible de définir des attributs à posteriori pour une classe. Toutefois on voit que nous avons rajouté un lien de dépendance entre ces deux classes, car cette fonction a maintenant besoin d&#8217;une classe parente pour pouvoir marcher correctement (cad ajouter de la vie à son propriétaire ici)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>On accède à l&#8217;objet parent, et on modifie son attribut de vie !</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>On teste que le <code>Pirate</code> en question est bien un magicien</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>On ajoute un attribut owner à l&#8217;objet <code>MagicPower</code>, qui connait donc maintenant son propriétaire.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_duck_typing"><a class="anchor" href="#_duck_typing"></a>Duck Typing</h3>
+<div class="paragraph">
+<p>La notion de DuckTyping est très très utilisé en Python, et préfigure plus d&#8217;une philosophie que d&#8217;une réelle contrainte technique.
+Pour mieux comprendre en quoi consiste cette posture mentale il faut déjà tenter de comprendre pourquoi les informaticiens font référence à un canard&#8230;&#8203;</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+In other words, don&#8217;t check whether it IS-a duck: check whether it QUACKS-like-a duck, WALKS-like-a duck, etc, etc, depending on exactly what subset of duck-like behaviour you need to play your language-games with.
+</blockquote>
+<div class="attribution">
+&#8212; Alex Martelli (2000) on comp.lang.python newsgroup
+</div>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="images/ducktyping-square.jpeg" alt="ducktyping square" width="250">
+</div>
+</div>
+<div class="paragraph">
+<p>Autrement dit si je vois un animal qui vole comme un canard, cancane comme un canard, et nage comme un canard, alors j&#8217;appelle cet oiseau un canard !</p>
+</div>
+<div class="listingblock">
+<div class="title">Pris sur wikipedia &gt; <a href="http://en.wikipedia.org/wiki/Duck_typing#History">DuckTyping</a></div>
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-k">class</span> <span class="tok-nc">Duck</span><span class="tok-p">(</span><span class="tok-nb">object</span><span class="tok-p">):</span>
+    <span class="tok-k">def</span> <span class="tok-nf">quack</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
+        <span class="tok-k">print</span><span class="tok-p">(</span><span class="tok-s">&quot;Quaaaaaack!&quot;</span><span class="tok-p">)</span>
+
+    <span class="tok-k">def</span> <span class="tok-nf">feathers</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
+        <span class="tok-k">print</span><span class="tok-p">(</span><span class="tok-s">&quot;The duck has white and gray feathers.&quot;</span><span class="tok-p">)</span>
+
+<span class="tok-k">class</span> <span class="tok-nc">Person</span><span class="tok-p">(</span><span class="tok-nb">object</span><span class="tok-p">):</span>
+    <span class="tok-k">def</span> <span class="tok-nf">quack</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
+        <span class="tok-k">print</span><span class="tok-p">(</span><span class="tok-s">&quot;The person imitates a duck.&quot;</span><span class="tok-p">)</span>
+
+    <span class="tok-k">def</span> <span class="tok-nf">feathers</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
+        <span class="tok-k">print</span><span class="tok-p">(</span><span class="tok-s">&quot;The person takes a feather from the ground and shows it.&quot;</span><span class="tok-p">)</span>
+
+    <span class="tok-k">def</span> <span class="tok-nf">name</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
+        <span class="tok-k">print</span><span class="tok-p">(</span><span class="tok-s">&quot;John Smith&quot;</span><span class="tok-p">)</span>
+
+<span class="tok-k">def</span> <span class="tok-nf">in_the_forest</span><span class="tok-p">(</span><span class="tok-n">animal</span><span class="tok-p">):</span> <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="tok-n">animal</span><span class="tok-o">.</span><span class="tok-n">quack</span><span class="tok-p">()</span>
+    <span class="tok-n">animal</span><span class="tok-o">.</span><span class="tok-n">feathers</span><span class="tok-p">()</span>
+
+<span class="tok-k">def</span> <span class="tok-nf">game</span><span class="tok-p">():</span>
+    <span class="tok-n">donald</span> <span class="tok-o">=</span> <span class="tok-n">Duck</span><span class="tok-p">()</span>
+    <span class="tok-n">john</span> <span class="tok-o">=</span> <span class="tok-n">Person</span><span class="tok-p">()</span>
+    <span class="tok-n">in_the_forest</span><span class="tok-p">(</span><span class="tok-n">donald</span><span class="tok-p">)</span>
+    <span class="tok-n">in_the_forest</span><span class="tok-p">(</span><span class="tok-n">john</span><span class="tok-p">)</span>
+
+<span class="tok-n">game</span><span class="tok-p">()</span> <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Ici une fonction qui prend en paramètre n&#8217;importe quel animal, et essaye voir si il a les capacité de comportements <code>quack()</code> ou <code>feathers()</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>On voit bien quand on execute <code>game()</code> que Python se contrefiche de savoir quel est la nature de la classe à l&#8217;origine de la méthode, pour lui john est un canard car il possède bien les comportement attendus.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>En quoi cette technique est intéressante ? Elle permet de filtrer ou d&#8217;apeller des classes sans forcément savoir tout de leur comportement, c&#8217;est ce que l&#8217;on apelle aussi le <code>polymorphisme</code>. Il y&#8217;en a absolument partout dans le langage Python, ainsi par exemple la fonction <code>len()</code> est tout à fait capable de calculer la taille de n&#8217;importe quel <code>type</code> d&#8217;objets : tuple, list, texte sans se soucier de sa nature !</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-o">&gt;&gt;&gt;</span> <span class="tok-nb">len</span><span class="tok-p">(</span><span class="tok-s">&quot;How long am I?&quot;</span><span class="tok-p">)</span>
+<span class="tok-mi">14</span>
+<span class="tok-o">&gt;&gt;&gt;</span> <span class="tok-nb">len</span><span class="tok-p">((</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">,</span> <span class="tok-mi">4</span><span class="tok-p">,</span> <span class="tok-mi">5</span><span class="tok-p">))</span>
+<span class="tok-mi">5</span>
+<span class="tok-o">&gt;&gt;&gt;</span> <span class="tok-nb">len</span><span class="tok-p">([</span><span class="tok-s">&quot;a&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;b&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;c&quot;</span><span class="tok-p">])</span>
+<span class="tok-mi">3</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Si nous revenons à l&#8217;exemple du pirate dans le cadre de l&#8217;héritage vu tout à l&#8217;heure, le <code>polymorphisme</code> est possible du fait que nous pouvons utiliser n&#8217;importe quel fonction <code>speak()</code> ou <code>nation</code> sans forcément savoir si ce qu&#8217;il y a dans la liste c&#8217;est un <code>PirateZombie</code> ou un <code>PirateVolant</code>. Cette notion est extrement importante car elle permet d&#8217;avoir des comportements génériques.</p>
+</div>
+<div class="paragraph">
+<p><strong>exemple</strong></p>
+</div>
+<div class="paragraph">
+<p>Le duckTyping va plus loin encore, et permet d&#8217;avoir du <code>polymorphisme</code> sans qu&#8217;il y ai un <code>héritage</code> derrière. En ce sens son utilisation est encore plus simple et intuitive.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-k">class</span> <span class="tok-nc">Mousse</span><span class="tok-p">(</span><span class="tok-nb">object</span><span class="tok-p">):</span>
+    <span class="tok-k">def</span> <span class="tok-nf">__init__</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span> <span class="tok-n">nom</span><span class="tok-p">,</span> <span class="tok-n">vie</span><span class="tok-p">):</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nom</span> <span class="tok-o">=</span> <span class="tok-n">nom</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">vie</span> <span class="tok-o">=</span> <span class="tok-n">vie</span>
+
+        <span class="tok-k">def</span> <span class="tok-nf">blessure</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span><span class="tok-n">vie</span><span class="tok-p">):</span>
+            <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">vie</span> <span class="tok-o">-=</span> <span class="tok-n">vie</span>
+
+<span class="tok-k">class</span> <span class="tok-nc">Pirate</span><span class="tok-p">(</span><span class="tok-nb">object</span><span class="tok-p">):</span>
+    <span class="tok-k">def</span> <span class="tok-nf">__init__</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span> <span class="tok-n">nom</span><span class="tok-p">,</span> <span class="tok-n">vie</span><span class="tok-p">,</span> <span class="tok-n">power</span><span class="tok-p">):</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">vie</span> <span class="tok-o">=</span> <span class="tok-n">vie</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nom</span> <span class="tok-o">=</span> <span class="tok-n">nom</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">power</span> <span class="tok-o">=</span> <span class="tok-n">power</span>
+
+    <span class="tok-k">def</span> <span class="tok-nf">attaque</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span> <span class="tok-n">ennemi</span><span class="tok-p">):</span>
+        <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;Attaque de puissance &quot;</span><span class="tok-p">,</span><span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">power</span> <span class="tok-p">,</span><span class="tok-s">&quot; sur &quot;</span><span class="tok-p">,</span><span class="tok-n">ennemi</span><span class="tok-o">.</span><span class="tok-n">nom</span><span class="tok-p">)</span>
+        <span class="tok-n">ennemi</span><span class="tok-o">.</span><span class="tok-n">blessure</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">power</span><span class="tok-p">)</span>
+
+    <span class="tok-k">def</span> <span class="tok-nf">blessure</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span><span class="tok-n">vie</span><span class="tok-p">):</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">vie</span> <span class="tok-o">-=</span> <span class="tok-n">vie</span>
+        <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;Aie ! moi &quot;</span><span class="tok-p">,</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nom</span><span class="tok-p">,</span> <span class="tok-s">&quot;je suis blessé de -&quot;</span><span class="tok-p">,</span> <span class="tok-n">vie</span><span class="tok-p">)</span>
+
+<span class="tok-k">class</span> <span class="tok-nc">Equipage</span><span class="tok-p">(</span><span class="tok-nb">object</span><span class="tok-p">):</span>
+    <span class="tok-k">def</span> <span class="tok-nf">__init__</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span> <span class="tok-n">marins</span><span class="tok-p">):</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">marins</span> <span class="tok-o">=</span> <span class="tok-n">marins</span>
+
+    <span class="tok-k">def</span> <span class="tok-nf">jourDePaye</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span> <span class="tok-n">sommeParMarin</span><span class="tok-p">):</span>
+        <span class="tok-k">print</span> <span class="tok-p">(</span><span class="tok-s">&quot;ajoute de l&#39;argent à la bourse de chacun des marins&quot;</span><span class="tok-p">)</span>
+
+    <span class="tok-k">def</span> <span class="tok-nf">random</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
+        <span class="tok-n">numMarin</span> <span class="tok-o">=</span> <span class="tok-n">random</span><span class="tok-o">.</span><span class="tok-n">randint</span><span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-p">,</span><span class="tok-nb">len</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">marins</span><span class="tok-p">)</span><span class="tok-o">-</span><span class="tok-mi">1</span><span class="tok-p">)</span>
+        <span class="tok-k">return</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">marins</span><span class="tok-p">[</span><span class="tok-n">numMarin</span><span class="tok-p">]</span>
+
+<span class="tok-k">class</span> <span class="tok-nc">Navire</span><span class="tok-p">(</span><span class="tok-nb">object</span><span class="tok-p">):</span>
+    <span class="tok-k">def</span> <span class="tok-nf">__init__</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span> <span class="tok-n">nom</span><span class="tok-p">,</span> <span class="tok-n">marins</span><span class="tok-p">):</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">nom</span> <span class="tok-o">=</span> <span class="tok-n">nom</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">equipage</span> <span class="tok-o">=</span> <span class="tok-n">Equipage</span><span class="tok-p">(</span><span class="tok-n">marins</span><span class="tok-p">)</span>
+
+    <span class="tok-k">def</span> <span class="tok-nf">random</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
+        <span class="tok-k">return</span> <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">equipage</span><span class="tok-o">.</span><span class="tok-n">random</span><span class="tok-p">()</span>
+
+    <span class="tok-k">def</span> <span class="tok-nf">combat</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span> <span class="tok-n">ennemi</span><span class="tok-p">):</span>
+
+        <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;Attaque de puissance &quot;</span><span class="tok-p">,</span><span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">power</span> <span class="tok-p">,</span><span class="tok-s">&quot; sur &quot;</span><span class="tok-p">,</span><span class="tok-n">ennemi</span><span class="tok-o">.</span><span class="tok-n">nom</span><span class="tok-p">)</span>
+        <span class="tok-n">ennemi</span><span class="tok-o">.</span><span class="tok-n">blessure</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">power</span><span class="tok-p">)</span>
+
+        <span class="tok-n">nombreDeCombat</span> <span class="tok-o">=</span> <span class="tok-n">random</span><span class="tok-o">.</span><span class="tok-n">randint</span><span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-p">,</span> <span class="tok-nb">len</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">equipage</span><span class="tok-o">.</span><span class="tok-n">marins</span><span class="tok-p">)</span><span class="tok-o">-</span><span class="tok-mi">1</span><span class="tok-p">)</span>
+        <span class="tok-k">print</span><span class="tok-p">(</span> <span class="tok-s">&quot;nombreDeCombat = &quot;</span><span class="tok-p">,</span> <span class="tok-n">nombreDeCombat</span><span class="tok-p">)</span>
+        <span class="tok-k">for</span> <span class="tok-n">i</span> <span class="tok-ow">in</span> <span class="tok-nb">range</span><span class="tok-p">(</span><span class="tok-n">nombreDeCombat</span><span class="tok-p">):</span>
+            <span class="tok-c">#Duels</span>
+            <span class="tok-c"># Marin 1</span>
+            <span class="tok-n">pirate1</span> <span class="tok-o">=</span> <span class="tok-n">navire1</span><span class="tok-o">.</span><span class="tok-n">equipage</span><span class="tok-o">.</span><span class="tok-n">random</span><span class="tok-p">()</span>
+            <span class="tok-c"># Marin 2</span>
+            <span class="tok-n">pirate2</span> <span class="tok-o">=</span> <span class="tok-n">navire1</span><span class="tok-o">.</span><span class="tok-n">equipage</span><span class="tok-o">.</span><span class="tok-n">random</span><span class="tok-p">()</span>
+
+            <span class="tok-c"># Seul les pirates ou tout autre objet ayant une fonction attaque() peut attaquer le pirate 2 !</span>
+            <span class="tok-c"># Donc lorsque pirate 1 est un mousse il ne se passe rien...</span>
+            <span class="tok-k">if</span> <span class="tok-nb">hasattr</span><span class="tok-p">(</span><span class="tok-n">pirate1</span><span class="tok-p">,</span><span class="tok-s">&quot;attaque&quot;</span><span class="tok-p">):</span>
+                <span class="tok-n">pirate1</span><span class="tok-o">.</span><span class="tok-n">attaque</span><span class="tok-p">(</span><span class="tok-n">pirate2</span><span class="tok-p">)</span>
+
+
+<span class="tok-k">class</span> <span class="tok-nc">Taverne</span><span class="tok-p">(</span><span class="tok-nb">object</span><span class="tok-p">):</span>
+    <span class="tok-k">def</span> <span class="tok-nf">__init__</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span> <span class="tok-n">listeDeNoms</span><span class="tok-p">,</span> <span class="tok-n">listeDePrenoms</span><span class="tok-p">):</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">listDeNoms</span> <span class="tok-o">=</span> <span class="tok-n">listeDeNoms</span>
+        <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">listDePrenoms</span> <span class="tok-o">=</span> <span class="tok-n">listeDePrenoms</span>
+
+    <span class="tok-k">def</span> <span class="tok-nf">debaucher</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
+        <span class="tok-n">salaire</span> <span class="tok-o">=</span> <span class="tok-n">random</span><span class="tok-o">.</span><span class="tok-n">randint</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">10</span><span class="tok-p">)</span>
+        <span class="tok-n">force</span> <span class="tok-o">=</span> <span class="tok-n">salaire</span> <span class="tok-o">*</span> <span class="tok-mf">1.5</span>
+        <span class="tok-n">nomPrenom</span> <span class="tok-o">=</span> <span class="tok-s">&quot; &quot;</span><span class="tok-o">.</span><span class="tok-n">join</span><span class="tok-p">([</span><span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">listDeNoms</span><span class="tok-p">[</span><span class="tok-n">random</span><span class="tok-o">.</span><span class="tok-n">randint</span><span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-p">,</span> <span class="tok-nb">len</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">listDeNoms</span><span class="tok-p">)</span> <span class="tok-o">-</span> <span class="tok-mi">1</span><span class="tok-p">)],</span>
+                              <span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">listDePrenoms</span><span class="tok-p">[</span><span class="tok-n">random</span><span class="tok-o">.</span><span class="tok-n">randint</span><span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-p">,</span> <span class="tok-nb">len</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-o">.</span><span class="tok-n">listDePrenoms</span><span class="tok-p">)</span> <span class="tok-o">-</span> <span class="tok-mi">1</span><span class="tok-p">)]])</span>
+        <span class="tok-c">#La taverne renvoie different type de pirates</span>
+        <span class="tok-n">des</span> <span class="tok-o">=</span> <span class="tok-n">random</span><span class="tok-o">.</span><span class="tok-n">randint</span><span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-p">,</span> <span class="tok-mi">1</span><span class="tok-p">)</span>
+        <span class="tok-k">if</span> <span class="tok-n">des</span> <span class="tok-o">==</span> <span class="tok-mi">0</span><span class="tok-p">:</span>
+            <span class="tok-k">return</span> <span class="tok-n">Pirate</span><span class="tok-p">(</span><span class="tok-n">nomPrenom</span><span class="tok-p">,</span><span class="tok-mf">120.0</span><span class="tok-p">,</span> <span class="tok-n">random</span><span class="tok-o">.</span><span class="tok-n">randint</span><span class="tok-p">(</span><span class="tok-mf">0.0</span><span class="tok-p">,</span><span class="tok-mf">5.0</span><span class="tok-p">,))</span>
+        <span class="tok-k">else</span><span class="tok-p">:</span>
+            <span class="tok-k">return</span> <span class="tok-n">Mousse</span><span class="tok-p">(</span><span class="tok-n">nomPrenom</span><span class="tok-p">,</span><span class="tok-mf">100.0</span><span class="tok-p">)</span>
+
+<span class="tok-c"># Fonction pour construire equipage</span>
+<span class="tok-k">def</span> <span class="tok-nf">buildEquipage</span><span class="tok-p">(</span><span class="tok-n">nbMarins</span><span class="tok-p">):</span>
+    <span class="tok-n">equipage</span> <span class="tok-o">=</span> <span class="tok-p">[]</span>
+    <span class="tok-k">for</span> <span class="tok-n">x</span> <span class="tok-ow">in</span> <span class="tok-nb">range</span><span class="tok-p">(</span><span class="tok-n">nbMarins</span><span class="tok-p">):</span>
+        <span class="tok-n">equipage</span><span class="tok-o">.</span><span class="tok-n">append</span><span class="tok-p">(</span><span class="tok-n">taverneAPirate</span><span class="tok-o">.</span><span class="tok-n">debaucher</span><span class="tok-p">())</span>
+    <span class="tok-k">return</span> <span class="tok-n">equipage</span>
+
+<span class="tok-c"># Programme principal</span>
+<span class="tok-k">if</span> <span class="tok-n">__name__</span> <span class="tok-o">==</span> <span class="tok-s">&quot;__main__&quot;</span><span class="tok-p">:</span>
+    <span class="tok-n">nomDePirate</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-s">&quot;Bonny&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;Jack&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;Teach&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;Drake&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;Morgan&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;Nau&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;Read&quot;</span><span class="tok-p">]</span>
+    <span class="tok-n">prenomDePirate</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-s">&quot;Anne&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;Calico&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;Edward&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;Francis&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;Henry&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;Jean&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;Mary&quot;</span><span class="tok-p">]</span>
+
+    <span class="tok-n">taverneAPirate</span> <span class="tok-o">=</span> <span class="tok-n">Taverne</span><span class="tok-p">(</span><span class="tok-n">nomDePirate</span><span class="tok-p">,</span> <span class="tok-n">prenomDePirate</span><span class="tok-p">)</span>
+
+    <span class="tok-n">navire1</span> <span class="tok-o">=</span> <span class="tok-n">Navire</span><span class="tok-p">(</span><span class="tok-s">&quot;Queen Anne&#39;s Revenge&quot;</span><span class="tok-p">,</span> <span class="tok-n">buildEquipage</span><span class="tok-p">(</span><span class="tok-mi">10</span><span class="tok-p">))</span>
+    <span class="tok-n">navire2</span> <span class="tok-o">=</span> <span class="tok-n">Navire</span><span class="tok-p">(</span><span class="tok-s">&quot;Adventure Galley&quot;</span><span class="tok-p">,</span> <span class="tok-n">buildEquipage</span><span class="tok-p">(</span><span class="tok-mi">10</span><span class="tok-p">))</span>
+
+    <span class="tok-n">navire1</span><span class="tok-o">.</span><span class="tok-n">combat</span><span class="tok-p">(</span><span class="tok-n">navire2</span><span class="tok-p">)</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+Le duckTyping pourrait être utile dans le cadre du projet
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2019-02-12 10:40:24 +0100
+</div>
+</div>
+</body>
+</html>

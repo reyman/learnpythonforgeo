@@ -1,0 +1,162 @@
+= Atelier Python
+Rey Sebastien <rey.sebastien-coyrehourcq@univ-rouen.fr> , Van Hamme Adrien <adrien.van.hamme@gmail.com>
+:Author Initials: SR
+:toc2:
+:toclevels: 4
+:icons: font
+:max-width: 70%
+:source-highlighter: pygments
+:sectanchors:
+:experimental:
+:pygments-style: tango
+
+
+== Mot-Clef spécifique
+
+Le mot clef *break* interrompt immédiatement une boucle *for* ou *while* en cours
+
+Par exemple dans ce code, il est inutile d'aller jusqu'au bout de la boucle si l'utilisateur a trouvé le bon nombre.
+
+Src du code : http://inventwithpython.com/chapter4.html
+
+.guess.py
+[source,python]
+----
+# -*- coding: utf-8 -*-
+import random
+
+if __name__ == "__main__":
+
+   guesses_made = 0
+   name = input('Hello! What is your name?\n')
+   number = random.randint(1, 20)
+
+   print( 'Well, {0}, I am thinking of a number between 1 and 20.'.format(name))
+
+   while guesses_made < 6:
+      guess = int(input('Take a guess: '))
+      guesses_made += 1
+      if guess < number:
+         print( 'Your guess is too low.')
+      if guess > number:
+         print( 'Your guess is too high.')
+      if guess == number:
+         break
+
+   if guess == number:
+       print( 'Good job, {0}! You guessed my number in {1} guesses!'.format(name, guesses_made))
+   else:
+       print( 'Nope. The number I was thinking of was {0}'.format(number))
+----
+
+.Execution du programme dans le terminal
+[source,python]
+$> python guess.py
+
+Le mot clef *continue* passe directement à l'itération suivante et saute les instructions qui suivent, valable pour une boucle *for* et *while*
+
+[source,python]
+----
+for k in range(2,10):
+   if k > 3 and k < 8:
+     print( "skipping this iteration!")
+     continue
+   print( k)
+----
+
+== Main
+
+Point d'entrée d'un programme python :
+
+.hello2.py
+[source,python]
+----
+# -*- coding: utf-8 -*-
+import sys # <1>
+
+def main(): # <2>
+    print ('Hello there', sys.argv[1]) # <3>
+    # Command line args are in sys.argv[1], sys.argv[2] ...
+    # sys.argv[0] is the script name itself and can be ignored
+
+
+if __name__ == '__main__': # <4>
+    main()
+----
+
+.Execution de python2.py
+[source,python]
+----
+$> python hello2.py "Sebastien Rey"
+----
+
+<1> Le mot-clef *import* permet d'étendre le programme en ajoutant des fonctionnalités qui existent dans des sous-modules de python,
+ou des modules personnalisés définis dans le répertoire par le nom du fichier (nous en discuterons plus dans la partie module)
+<2> La fonction qui sera lancée au démarrage du programme, on l'apelle souvent *main()* par convention.
+<3> *sys.argv[]* est le nom du tableau définit par python qui contient l'ensemble des paramètres passé en ligne de commande. L'élément 0 est le nom du programme.
+<4> *\_\_xxx_\_* est une dénomination spéciale de nom de fonction que seul python reconnait, ici cela a pour effet d'indiquer à l'interpréteur python que le bloc d'instruction suivant est le point de départ de notre programme lorsqu'il est executé en ligne de commande : cf. http://docs.python.org/reference/datamodel.html#specialnames pour en savoir plus
+
+
+L'avantage de cette méthode par rapport à la première, c'est que dans la première, si vous fermez le terminal, ou que vous décidez de quitter le programme pour aller boire un café, tout ce que vous avez écrit est bel et bien perdu quand vous re-lancez la console Python.
+
+Il est donc plus intéressant de stocker nos programmes dans des fichiers avec des noms *explicites*, comme dans la deuxième méthode.
+
+
+== Boucles
+
+=== For in + zip()
+
+Il est également possible de parcourir deux listes de façon simultanée en joignant les éléments de chaque liste à fusionner 1 par 1
+Voyons voir ce que nous retourne la fonction `zip(listA,listB)`
+
+[source, python]
+----
+questions = ["name", "quest", "favorite color"]
+answers = ["lancelot", "the holy grail", "blue"]
+result = zip(questions,answers)
+print( result)
+#renvoie [('name', 'lancelot'), ('quest', 'the holy grail'), ('favorite color', 'blue')]
+----
+
+pass:macros[http://pythontutor.com/visualize.html#code=questions+%3D+%5B%22name%22,+%22quest%22,+%22favorite+color%22%5D%0Aanswers+%3D+%5B%22lancelot%22,+%22the+holy+grail%22,+%22blue%22%5D%0Aresult+%3D+zip(questions,answers)%0Aprint+result&mode=display&cumulative=true&heapPrimitives=false&drawParentPointers=true&textReferences=false&showOnlyOutputs=false&py=2&curInstr=0[Voir l'execution en ligne\]]
+
+Une liste de Tuple (question,réponse) nous est renvoyés, dans notre boucle il est donc possible pour chacun des éléments tuple () de notre liste d'assigner *q* à question et *a* à reponse
+
+[source,python]
+----
+questions = ["name", "quest", "favorite color"]
+answers = ["lancelot", "the holy grail", "blue"]
+resultOfZipping = zip(questions,answers)
+for q, a in resultOfZipping :
+   print( 'What is your %s ?  It is %s' % (q, a))
+
+# ou plus simplement :
+
+questions = ["name", "quest", "favorite color"]
+answers = ["lancelot", "the holy grail", "blue"]
+for q, a in zip(questions, answers):
+   print( 'What is your %s ?  It is %s' % (q, a))
+----
+
+== Fonctions
+
+=== Stockage dans des listes
+
+Avec des fonctions, même principe pour l'initialisation, seul l'appel du tableau est un peu différent.
+
+.initialiser une liste avec des fonctions
+[source,python]
+----
+# 1 dimension avec des fonctions
+def somme(a,b):
+  return a + b
+
+def multiply(a,b):
+  return a * b
+
+listd = [somme,multiply]
+print( listd[0](1,2))
+print( listd[1](2,9))
+----
+
+pass:macros[http://pythontutor.com/visualize.html#code=%23+1+dimension+avec+des+fonctions%0Adef+somme(a,b)%3A%0A++return+a+%2B+b%0Adef+multiply(a,b)%3A%0A++return+a+*+b%0A%0Alistd+%3D+%5Bsomme,multiply%5D%0Aprint+listd%5B0%5D(1,2)%0Aprint+listd%5B1%5D(2,9)&mode=display&cumulative=true&heapPrimitives=true&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=2&curInstr=0[Voir l'execution en ligne\]]

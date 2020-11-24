@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.4">
+<title>Projet Python Open Source</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="./asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="./pygments-tango.css">
+</head>
+<body class="article toc2 toc-left" style="max-width: 80%;">
+<div id="header">
+<h1>Projet Python Open Source</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_projet">Projet</a></li>
+<li><a href="#_introduction_à_psycopg2">Introduction à Psycopg2</a>
+<ul class="sectlevel2">
+<li><a href="#_info_base_de_données">Info base de données</a></li>
+<li><a href="#_initier_une_connection">Initier une connection</a></li>
+<li><a href="#_executer_une_requete">Executer une requete</a></li>
+<li><a href="#_valider_les_données_en_base">Valider les données en base</a></li>
+<li><a href="#_passer_des_paramètres_aux_requetes_avec_psycopg">Passer des paramètres aux requetes avec Psycopg</a></li>
+<li><a href="#_suppression">Suppression</a></li>
+<li><a href="#_pour_afficher_les_metadata">Pour afficher les metadata</a></li>
+<li><a href="#_mise_en_application">Mise en application</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Auteurs :</strong></p>
+</div>
+<div class="paragraph">
+<p>Rey Sebastien
+&lt;<a href="mailto:rey.sebastien@yahoo.fr">rey.sebastien@yahoo.fr</a>&gt;</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_projet"><a class="anchor" href="#_projet"></a>Projet</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>En cours &#8230;&#8203;</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_introduction_à_psycopg2"><a class="anchor" href="#_introduction_à_psycopg2"></a>Introduction à Psycopg2</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Pour manipuler une base de données, on utilise une librairie python spécifique nommé <code>psycopg2</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Pour consulter l&#8217;url de l&#8217;API psycopg2 : <a href="http://initd.org/psycopg/docs/" class="bare">http://initd.org/psycopg/docs/</a></p>
+</li>
+<li>
+<p>Pour consulter un tutorial simple d&#8217;utilisation de psycopg2 : <a href="http://initd.org/psycopg/docs/usage.html" class="bare">http://initd.org/psycopg/docs/usage.html</a></p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_info_base_de_données"><a class="anchor" href="#_info_base_de_données"></a>Info base de données</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>L&#8217;url est <code>web504.webfaction.com:5432</code></p>
+</li>
+<li>
+<p>Le login de la base est : <code>reyman64_triade</code></p>
+</li>
+<li>
+<p>Le nom d&#8217;utilisateur est : <code>reyman64_triade</code></p>
+</li>
+<li>
+<p>Le mdp est : <code>M2Triade</code></p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Cinq tables sont présentes dans la base de données :</p>
+</div>
+<div class="ulist">
+<div class="title">Tables fixes :</div>
+<ul>
+<li>
+<p>coastline (LineString) : #id, geom</p>
+</li>
+<li>
+<p>ports (Point) : #id_ports, city, country, geom, country.</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">Tables à manipuler avec attribut <strong>idbinome</strong>:</div>
+<ul>
+<li>
+<p>bateaux (Point) : #id_bateaux, geom, nom, idbinome, color, #id_ports</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Le schéma <code>exo2017</code> de la table <code>reyman64_cartha</code> contient donc <code>ports</code> et <code>coastline</code> qui ne doivent pas être modifié, par contre les tables <code>bateaux</code> sont des tables communes à tous que vous allez manipuler avec précaution en utilisant pour l&#8217;insertion ou la suppression l&#8217;attribut <strong>idbinome</strong>.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Voir les données du site <a href="http://www.naturalearthdata.com/downloads/110m-physical-vectors/">naturalearthdata</a></p>
+</div>
+<div class="paragraph">
+<p>Pour les villes/ports, les données viennent d&#8217;un shape réalisé par  <a href="https://nordpil.com/resources/world-database-of-large-cities/">nordpil</a></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_initier_une_connection"><a class="anchor" href="#_initier_une_connection"></a>Initier une connection</h3>
+<div class="paragraph">
+<p>Pour importer <code>psycopg2</code> dans python :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-kn">import</span> <span class="tok-nn">psycopg2</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Pour se connecter à la base de données :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">conn</span> <span class="tok-o">=</span> <span class="tok-n">psycopg2</span><span class="tok-o">.</span><span class="tok-n">connect</span><span class="tok-p">(</span><span class="tok-n">database</span><span class="tok-o">=</span><span class="tok-s">&quot;nomdelabase&quot;</span><span class="tok-p">,</span> <span class="tok-n">user</span><span class="tok-o">=</span><span class="tok-s">&quot;postgres&quot;</span><span class="tok-p">,</span> <span class="tok-n">password</span><span class="tok-o">=</span><span class="tok-s">&quot;secret&quot;</span><span class="tok-p">,</span> <span class="tok-n">host</span><span class="tok-o">=</span><span class="tok-s">&quot;adressebase&quot;</span><span class="tok-p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>conn</code> est une variable qui contient l&#8217;objet permettant d&#8217;accéder au lien entre votre programme et la base de données.</p>
+</div>
+<div class="paragraph">
+<p>Une fois que votre programme à finit de traiter les données, il est impératif de bien clôturer ce lien en appelant la fonction <code>close()</code> sur votre objet, ici <code>conn</code> :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">conn</span><span class="tok-o">.</span><span class="tok-n">close</span><span class="tok-p">()</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_executer_une_requete"><a class="anchor" href="#_executer_une_requete"></a>Executer une requete</h3>
+<div class="paragraph">
+<p>Une requete n&#8217;aboutit pas obligatoirement, il faut utiliser des blocs d&#8217;instruction <code>try</code> <code>except</code> pour capturer les erreurs susceptibles d&#8217;apparaitre.</p>
+</div>
+<div class="paragraph">
+<p>Par exemple, si votre requete est mal écrite, elle ne sera pas executé par la base de données, et une exception sera levée par le programme.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>le bloc <code>try</code> contient un code susceptible de soulever une erreur, ce n&#8217;est pas forcément limité aux requetes SQL, c&#8217;est aussi valable  par exemple pour les opération de lecture/écriture dans un fichier</p>
+</li>
+<li>
+<p>le bloc <code>catch</code> contient quant à lui le code à executer en cas d&#8217;erreur.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Un bloc <code>try</code> <code>except</code> se présente sous cette forme :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-k">try</span><span class="tok-p">:</span>
+  <span class="tok-c"># tentative d&#39;execution de la requete SQL</span>
+  <span class="tok-n">curs</span><span class="tok-o">.</span><span class="tok-n">execute</span><span class="tok-p">(</span><span class="tok-n">marequeteSQL</span><span class="tok-p">)</span>
+
+<span class="tok-k">except</span> <span class="tok-n">psycopg2</span><span class="tok-o">.</span><span class="tok-n">ProgrammingError</span><span class="tok-p">,</span><span class="tok-n">err</span><span class="tok-p">:</span>
+  <span class="tok-c"># Affichage de l&#39;erreur</span>
+  <span class="tok-k">print</span> <span class="tok-n">err</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Plus d&#8217;information sur les blocs try / catch en python est disponible sur ces sites <a href="http://docs.python.org/2/tutorial/errors.html">#1</a> <a href="http://www.siteduzero.com/tutoriel-3-37204-les-exceptions.html">#2</a></p>
+</div>
+<div class="paragraph">
+<p>Pour executer une requete, nous avons vu qu&#8217;il fallait un object connexion, et un curseur qui va vous permettre de dialoguer (dans les deux sens) avec la base de données Postgis.</p>
+</div>
+<div class="paragraph">
+<p>Pour récupérer et stocker un curseur :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">cur</span> <span class="tok-o">=</span> <span class="tok-n">conn</span><span class="tok-o">.</span><span class="tok-n">cursor</span><span class="tok-p">()</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Pour fermer le curseur :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">cur</span><span class="tok-o">.</span><span class="tok-n">close</span><span class="tok-p">()</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Il vaut mieux ouvrir (et fermer) un curseur pour chaque bloc de requetes, c&#8217;est beaucoup moins couteux que d&#8217;ouvrir et de fermer une connexion à chaque fois.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Le curseur permet d&#8217;executer une requete ainsi :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">cur</span><span class="tok-o">.</span><span class="tok-n">execute</span><span class="tok-p">(</span><span class="tok-s">&quot;SELECT * FROM test;&quot;</span><span class="tok-p">)</span>
+
+<span class="tok-c"># equivalent à</span>
+<span class="tok-n">requete</span> <span class="tok-o">=</span> <span class="tok-s">&quot;SELECT * FROM test;&quot;</span>
+<span class="tok-n">cur</span><span class="tok-o">.</span><span class="tok-n">execute</span><span class="tok-p">(</span><span class="tok-n">requete</span><span class="tok-p">)</span>
+
+<span class="tok-c"># equivalent à</span>
+<span class="tok-n">requete</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-s">&quot;SELECT * FROM </span><span class="tok-si">%s</span><span class="tok-s">;&quot;</span><span class="tok-p">)</span> <span class="tok-o">%</span> <span class="tok-p">(</span><span class="tok-s">&quot;test&quot;</span><span class="tok-p">)</span>
+<span class="tok-n">cur</span><span class="tok-o">.</span><span class="tok-n">execute</span><span class="tok-p">(</span><span class="tok-n">requete</span><span class="tok-p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>et de récupérer les valeurs après execution (si elles existent) ainsi :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">cur</span><span class="tok-o">.</span><span class="tok-n">fetchone</span><span class="tok-p">()</span> <span class="tok-c"># ou cur.fetchmany() ou cur.fetchall()</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Par exemple le résultat de <code>cur.fetchone()</code> est un <strong>itérable python</strong>, apellé plusieurs fois il permet d&#8217;avancer dans les résultats :</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&gt;&gt;&gt; cur.execute("SELECT * FROM test;")
+&gt;&gt;&gt; for record in cur:
+       print record</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>(1, 100, "abc'def")
+(2, None, 'dada')
+(3, 42, 'bar')</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Chaque élément <code>record</code> peut ensuite être parcouru avec une instruction de type <strong>for .. in</strong> car il s&#8217;agit d&#8217;une variable de type   <a href="http://python.developpez.com/cours/DiveIntoPython/php/frdiveintopython/native_data_types/tuples.php"><code>Tuple</code></a>.</p>
+</div>
+<div class="paragraph">
+<p>Il y&#8217;a aussi la possibilité de récupérer un tuple contenant l&#8217;ensemble des résultat avec la méthode <code>fetchall()</code></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&gt;&gt;&gt; cur.execute("SELECT * FROM test;")
+&gt;&gt;&gt; cur.fetchall()</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[(1, 100, "abcdef"), (2, None, 'dada'), (3, 42, 'bar')]</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_valider_les_données_en_base"><a class="anchor" href="#_valider_les_données_en_base"></a>Valider les données en base</h3>
+<div class="paragraph">
+<p>Les bases de données bénéficie de mécanismes de protection permettant de les protéger contre les mauvaises transactions. Il est donc important de valider vos requetes par la commande :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">conn</span><span class="tok-o">.</span><span class="tok-n">commit</span><span class="tok-p">()</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Si vous ne le faites pas, tout vos changement sur la base, donc vos requêtes d&#8217;insertion/update/delete seront perdus (et cela jusqu&#8217;au précédent <code>commit()</code>).</p>
+</div>
+<div class="paragraph">
+<p>Si une requete se passe mal (renvoie une exception par exemple), alors il est possible de remettre la base dans son état précédent datant du dernier commit(), avec la commande suivante :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">conn</span><span class="tok-o">.</span><span class="tok-n">rollback</span><span class="tok-p">()</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_passer_des_paramètres_aux_requetes_avec_psycopg"><a class="anchor" href="#_passer_des_paramètres_aux_requetes_avec_psycopg"></a>Passer des paramètres aux requetes avec Psycopg</h3>
+<div class="paragraph">
+<p>Les types normalisé pour SQL <strong>ne sont pas les même</strong> que les type Python, il n&#8217;est donc pas permis de passer une liste ou une chaine de caractère comme variable sans utiliser une syntaxe spéciale.</p>
+</div>
+<div class="paragraph">
+<p>Par exemple le type <code>List</code> de python n&#8217;existe pas en SQL, par contre il peut être converti par psycopg2 en utilisant le type <a href="http://www.postgresql.org/docs/9.1/static/datatype.html"><code>ARRAY</code></a> qui lui existe.</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Il est formalement interdit d&#8217;executer une requete en utilisant ce formalisme là pour le passage d&#8217;arguments (<code>cur</code> est l&#8217;objet curseur) :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">SQL</span> <span class="tok-o">=</span> <span class="tok-s">&quot;INSERT INTO authors (name) VALUES (&#39;</span><span class="tok-si">%s</span><span class="tok-s">&#39;);&quot;</span> <span class="tok-c"># NEVER DO THIS</span>
+<span class="tok-n">data</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-s">&quot;O&#39;Reilly&quot;</span><span class="tok-p">,</span> <span class="tok-p">)</span>
+<span class="tok-n">cur</span><span class="tok-o">.</span><span class="tok-n">execute</span><span class="tok-p">(</span><span class="tok-n">SQL</span> <span class="tok-o">%</span> <span class="tok-n">data</span><span class="tok-p">)</span> <span class="tok-c"># THIS WILL FAIL MISERABLY</span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>ProgrammingError: syntax error at or near "Reilly"
+LINE 1: INSERT INTO authors (name) VALUES ('O'Reilly')</pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>La bonne méthode est de passer les variables qu&#8217;au moment de l&#8217;execution de la requête, de cette façon :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">cur</span><span class="tok-o">.</span><span class="tok-n">execute</span><span class="tok-p">(</span><span class="tok-s">&quot;INSERT INTO test (num, data) VALUES (</span><span class="tok-si">%s</span><span class="tok-s">, </span><span class="tok-si">%s</span><span class="tok-s">)&quot;</span><span class="tok-p">,</span> <span class="tok-p">(</span><span class="tok-mi">100</span><span class="tok-p">,</span> <span class="tok-s">&quot;abcdef&quot;</span><span class="tok-p">,))</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Cette méthode n&#8217;est utilisé que pour le placement de variable, autrement dit, il est interdit de faire ca pour construire des requetes de façon dynamique !</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Par exemple, reprenons la requete précédent, et imaginons qu&#8217;il nous faut insérer le nom de table comme paramètre pour faire une créer une fonction d&#8217;insertion d&#8217;objet plus générique :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-c"># Remplacement classique de chaine de caractere avec python</span>
+<span class="tok-n">SQL</span> <span class="tok-o">=</span> <span class="tok-s">&quot;INSERT INTO </span><span class="tok-si">%s</span><span class="tok-s">(num, data) VALUES (</span><span class="tok-si">%%</span><span class="tok-s">s, </span><span class="tok-si">%%</span><span class="tok-s">s)&quot;</span> <span class="tok-o">%</span> <span class="tok-p">(</span><span class="tok-n">table</span><span class="tok-p">)</span>
+
+<span class="tok-c"># Renvoie la chaine &quot;INSERT INTO table(num, data) VALUES (%s, %s)&quot;</span>
+<span class="tok-k">print</span> <span class="tok-n">SQL</span>
+
+<span class="tok-c"># Remplacement specifique à psycopg2 avec conversion de types</span>
+<span class="tok-n">cur</span><span class="tok-o">.</span><span class="tok-n">execute</span><span class="tok-p">(</span><span class="tok-n">SQL</span><span class="tok-p">,</span> <span class="tok-p">(</span><span class="tok-mi">100</span><span class="tok-p">,</span> <span class="tok-s">&quot;abcdef&quot;</span><span class="tok-p">,))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Vous remarquerez l&#8217;importance du double <code>%%s</code> qui après remplacement devient <code>%s</code>, et fait que nos variables puissent être insérées correctement !</p>
+</div>
+<div class="paragraph">
+<p>Plus d&#8217;information sur la conversion de type est disponible sur la documentation de   <a href="http://initd.org/psycopg/docs/usage.html#passing-parameters-to-sql-queries">psycopg2</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_suppression"><a class="anchor" href="#_suppression"></a>Suppression</h3>
+<div class="paragraph">
+<p>Pour supprimer une table de la base, il faut d&#8217;abord supprimer la clé primaire avec <a href="http://sql.sh/cours/alter-table"><code>ALTER TABLE</code></a>, puis la table elle même avec <a href="http://sql.sh/cours/drop-table"><code>DROP TABLE</code></a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_pour_afficher_les_metadata"><a class="anchor" href="#_pour_afficher_les_metadata"></a>Pour afficher les metadata</h3>
+<div class="paragraph">
+<p>Il vous faudra récupérer les métadata concernant les tables (noms de colonnes, type de projection, etc.), pour cela il vous faudra envoyer des requêtes sur la base <a href="http://postgis.net/docs/manual-1.4/ch04.html#id418599"><code>geometry_columns</code></a> contenu dans le schema public.</p>
+</div>
+<div class="paragraph">
+<p>Pour questionner les metadata d&#8217;une table, vous pouvez utiliser ce type de code :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">metadataSQL</span> <span class="tok-o">=</span> <span class="tok-s">&quot;SELECT srid, type, f_table_schema FROM public.geometry_columns WHERE f_table_name = &#39;</span><span class="tok-si">%s</span><span class="tok-s">&#39;;&quot;</span> <span class="tok-o">%</span><span class="tok-p">(</span><span class="tok-n">table</span><span class="tok-p">)</span>
+
+<span class="tok-n">curs</span><span class="tok-o">.</span><span class="tok-n">execute</span><span class="tok-p">(</span><span class="tok-n">metadataSQL</span><span class="tok-p">)</span>
+<span class="tok-n">tableMetaData</span> <span class="tok-o">=</span> <span class="tok-n">curs</span><span class="tok-o">.</span><span class="tok-n">fetchone</span><span class="tok-p">()</span>
+
+<span class="tok-n">tableSRID</span> <span class="tok-o">=</span> <span class="tok-nb">int</span><span class="tok-p">(</span><span class="tok-n">tableMetaData</span><span class="tok-p">[</span><span class="tok-mi">0</span><span class="tok-p">])</span>
+<span class="tok-n">tableGeomType</span> <span class="tok-o">=</span> <span class="tok-n">tableMetaData</span><span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">]</span>
+<span class="tok-n">tableSchema</span> <span class="tok-o">=</span> <span class="tok-n">tableMetaData</span><span class="tok-p">[</span><span class="tok-mi">2</span><span class="tok-p">]</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Lorsque vous faites des requêtes utilisant plusieurs tables, il est tentant d&#8217;utiliser le joker <code><strong></code> (comme dans <code>select * from &#8230;&#8203;;</code>) pour selectionner l&#8217;ensemble des colonnes. Cette technique peut poser problème. En effet, dans le cas d&#8217;une jointure entre une <code>tableA</code> et une <code>tableB</code> en vue de réaliser une <code>tableC</code>, l&#8217;utilisation du joker <code></strong></code> sur un <code>select</code> fait que chacune des colonnes <code>geom</code> de <code>tableA</code> et de <code>tableB</code> sont récupérées dans <code>tableC</code>. Ce qui peut poser problème par la suite lors de l&#8217;affichage dans QGIS.</p>
+</div>
+<div class="paragraph">
+<p>Voici une astuce pour récupérer la liste des colonnes d&#8217;une table en vue de construire une chaine de caractère où la colonne <code>geom</code> à été supprimé ! Vous pouvez ainsi remplacer pour une des tables de notre exemple (A ou B) le <code>*</code> du <code>select</code> par cette construction de colonne qui supprime la colonne <code>geom</code> tout en conservant le reste des colonnes.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-k">try</span><span class="tok-p">:</span>
+    <span class="tok-n">curs</span><span class="tok-o">.</span><span class="tok-n">execute</span><span class="tok-p">(</span><span class="tok-s">&quot;SELECT column_name FROM information_schema.columns where table_name= </span><span class="tok-si">%s</span><span class="tok-s">;&quot;</span><span class="tok-p">,</span> <span class="tok-p">(</span> <span class="tok-n">table</span><span class="tok-p">,))</span>
+<span class="tok-k">except</span> <span class="tok-n">psycopg2</span><span class="tok-o">.</span><span class="tok-n">ProgrammingError</span><span class="tok-p">,</span><span class="tok-n">err</span><span class="tok-p">:</span>
+    <span class="tok-k">print</span> <span class="tok-s">&quot;error &quot;</span> <span class="tok-p">,</span> <span class="tok-n">err</span>
+
+<span class="tok-kn">from</span> <span class="tok-nn">itertools</span> <span class="tok-kn">import</span> <span class="tok-n">chain</span>
+<span class="tok-n">columnList</span> <span class="tok-o">=</span> <span class="tok-nb">list</span><span class="tok-p">(</span><span class="tok-n">chain</span><span class="tok-o">.</span><span class="tok-n">from_iterable</span><span class="tok-p">(</span><span class="tok-n">curs</span><span class="tok-o">.</span><span class="tok-n">fetchall</span><span class="tok-p">()))</span>
+<span class="tok-n">columnList</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-n">c</span> <span class="tok-k">for</span> <span class="tok-n">c</span> <span class="tok-ow">in</span> <span class="tok-n">columnList</span> <span class="tok-k">if</span> <span class="tok-n">c</span> <span class="tok-o">!=</span> <span class="tok-s">&quot;geom&quot;</span><span class="tok-p">]</span>
+<span class="tok-k">print</span> <span class="tok-s">&quot;,&quot;</span><span class="tok-o">.</span><span class="tok-n">join</span><span class="tok-p">(</span><span class="tok-n">columnList</span><span class="tok-p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Enfin, si jamais vous avez des problèmes pour accéder à vos colonnes, il faut  rafraichir la liste des metaData dans postgis, le code suivant supprime et recrée la table :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">curs</span><span class="tok-o">.</span><span class="tok-n">execute</span><span class="tok-p">(</span><span class="tok-s">&quot;DELETE FROM geometry_columns; SELECT Populate_Geometry_Columns();&quot;</span><span class="tok-p">)</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_mise_en_application"><a class="anchor" href="#_mise_en_application"></a>Mise en application</h3>
+<div class="paragraph">
+<p>Pour faciliter l&#8217;usage des fonctions de psycopg2, j&#8217;ai mis en place deux fonctions utilitaires pour l&#8217;envoie de requetes de lecture ou d&#8217;écriture.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">sql</span> <span class="tok-o">=</span> <span class="tok-s">&quot;SELECT </span><span class="tok-si">%s</span><span class="tok-s">,</span><span class="tok-si">%s</span><span class="tok-s"> from exo2017.bateaux&quot;</span>
+
+<span class="tok-c"># les arguments idBinome, et id_ports sont intégrés dans la chaine de caractere à la place des %s</span>
+<span class="tok-n">bdUtil</span><span class="tok-o">.</span><span class="tok-n">execute_read_db</span><span class="tok-p">(</span><span class="tok-n">sql1</span><span class="tok-p">,(</span><span class="tok-s">&quot;idBinome&quot;</span><span class="tok-p">,</span><span class="tok-s">&quot;id_ports&quot;</span><span class="tok-p">))</span>
+
+<span class="tok-n">sql</span> <span class="tok-o">=</span> <span class="tok-s">&quot;bla bla </span><span class="tok-si">%s</span><span class="tok-s"> bla bla </span><span class="tok-si">%s</span><span class="tok-s">&quot;</span>
+
+<span class="tok-c"># même chose avec l&#39;écriture, on passe une chaine de caractère sql, et des arguments de remplacement</span>
+<span class="tok-n">bdUtil</span><span class="tok-o">.</span><span class="tok-n">execute_write_db</span><span class="tok-p">(</span><span class="tok-n">sql2</span><span class="tok-p">,(</span><span class="tok-n">argument1</span><span class="tok-p">,</span><span class="tok-n">argument2</span><span class="tok-p">))</span></code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Dans la fonction <code>getAndBuildPorts()</code>, écrire le SQL permettant de renvoyer la géometrie (geom) du port au format WKT. Indice, vous devez utiliser la fonction <code>ST_AsText</code> : <a href="http://www.postgis.org/docs/ST_AsText.html">#lien</a></p>
+</li>
+<li>
+<p>Dans la classe <code>Ports</code>, il y a une fonction <code>buildNavire()</code> à remplir. Ajouter votre bateau avec votre identifiant <code>idbinome</code> (accessible avec <code>self.bdUtil.ident</code>) dans la table <code>bateau</code>. Utiliser une requête SQL <code>INSERT INTO</code> : <a href="https://www.postgresql.org/docs/9.0/static/dml-insert.html">#lien</a></p>
+</li>
+<li>
+<p>Après intégration du bateau dans la base, pour récupérer l&#8217;identifiant bateau <code>id_bateaux</code> qui vous permettra de créer <code>newnavire</code>, vous aurez besoin d&#8217;ajouter à la fin de votre requete sql, la commande <code>RETURNING id_bateaux;</code></p>
+</li>
+<li>
+<p><code>getAccessiblePorts()</code> renvoie la liste de routes maritimes possibles qui n&#8217;intersecte pas les cotes. Pour tester l&#8217;intersection entre une ligne reliant le port 1 et le port 2 (avec <code>ST_MakeLine(geom1,geom2)</code>), et l&#8217;ensemble des lignes de cote de la table <code>exo2017.coastline</code>, vous pouvez utiliser <code>ST_Intersects</code>  <a href="http://postgis.refractions.net/docs/ST_Intersects.html">#lien</a> (pour construire la ligne entre les deux ports) et <code>ST_Union</code> <a href="http://postgis.net/docs/ST_Union.html">#lien</a> (pour merger le contenu de <code>exo2017.coastline</code>). N&#8217;oubliez pas que vous pouvez transformer un WKT en geom a tout moment en utilisant la fonction <code>ST_GeomFromText(monWKT,monSRID)</code> <a href="http://postgis.net/docs/ST_GeomFromText.html">#lien</a></p>
+</li>
+<li>
+<p>Dans la classe <code>Ports</code>, il y a une fonction <code>listBoat()</code> qui effectue une jointure <a href="http://sql.sh/cours/jointures/inner-join">#lien</a> entre la table <code>exo2017.bateaux</code> et <code>exo2017.ports</code> à la recherche de tout les bateaux qui sont présent dans ce ports d&#8217;identifiant <code>self.id_ports</code></p>
+</li>
+<li>
+<p>Enfin dans la classe <code>Navire</code>, il y a la fonction <code>moveToPort()</code> qui permet de mettre à jour la position du bateau. Il faut donc modifier dans l&#8217;objet les attributs <code>self.id_ports</code>, <code>self.wkt</code>, tout en mettant à jour les colonnes <code>id_ports</code> et <code>geom</code> de ce bateau dans la table exo2017.bateaux.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2016-11-29 07:49:09 CET
+</div>
+</div>
+</body>
+</html>

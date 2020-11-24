@@ -1,0 +1,257 @@
+= Atelier Python
+Rey Sebastien <rey.sebastien-coyrehourcq@univ-rouen.fr> , Van Hamme Adrien <adrien.van.hamme@gmail.com>
+:Author Initials: SR
+:toc2:
+:toclevels: 4
+:icons: font
+:max-width: 70%
+:source-highlighter: pygments
+:sectanchors:
+:experimental:
+:pygments-style: tango
+
+
+== Fonctions
+
+.Condition simple en Pseudo-Code
+****
+[red]*FONCTION* _NOMFONCTION_ [red]*(* _arguments1_, _arguments_, _..._, _argumentsN_ [red]*)*
+
+_...traitement..._
+
+[red]*RENVOIE* _[VALUE]_
+
+[red]*FIN FONCTION*
+****
+
+Ce qui donne quasiment la même chose en python théorique, le mot clef `def` introduisant le corps de la fonction :
+
+[source,python]
+----
+def nomFonction (arguments1, arguments2, ... argumentsN):
+   #...traitements...
+   return value
+----
+
+et en pratique :
+
+[source,python]
+----
+# les fonctions doivent être déclarées avant de pouvoir être appelées !
+def somme(a,b):
+   return a + b
+
+def multiply(a,b):
+   return a * b
+
+# On affiche les valeurs retournées
+print (somme(1,4)) #<1>
+print (multiply(2,7))
+
+a = 5
+b = 2
+
+# On peux passer des variables directement
+print( somme(2,a))
+
+# ou en les modifiant/ faisant des calculs intermédiaires
+print( multiply(a + 2,3 * 2 + b))
+
+# les appels de fonctions sont empilables sans aucune limite
+print (somme(multiply(2,3),somme(4,b + multiply(2,8)))) # <2>
+
+----
+
+<1> L'appel de fonction se fait en appelant le *nom de la fonction* suivi des *arguments entre parenthèses*.
+<2> Les arguments peuvent être calculés avant execution de la fonction, on peut donc facilement empiler les appels de fonctions comme dans cet exemple.
+
+=== Portées des variables
+
+Par *portée*, il faut entendre la durée de vie des variables dans votre programme ou un bloc d'instruction dans votre programme.
+
+Une variable est soit :
+
+* *globale* : visible de partout dans le programme
+* *locale* : seulement visible dans le bloc d'instruction dans laquelle elle a été déclarée.
+
+Les variables globales sont toutes celles qui ne sont pas dans une fonction, donc dans le corps du module, et qui ont été déclarées en entête de programme.
+Elles sont visibles de partout dans votre programme, mais nous verrons par la suite qu'elles sont uniquement modifiables si le programmeur utilise le mot clef `global`
+
+Essayons de comprendre la différence concrétement via ces exemples de programme :
+
+.testGlobal.py
+[source,python]
+----
+X = 99 # <1>
+
+def foo1():
+   Y = 55 # <2>
+   print( Y)
+
+foo1()
+print (Y) # ne marchera pas # <3>
+
+# On tente de redéfinir X dans cette fonction foo()
+def foo2():
+   X = 88 # <4>
+
+foo2()
+print( X ) # X n'a pas bougé du fait de  <4> ...
+
+# La aussi, ce code ne changera pas la valeur de la variable globale X = 99
+def foo3(X):
+   X = X + 1 # <5>
+
+foo3(X)
+print (X)
+
+# Accès à la variable globale en lecture
+def foo4(Y):
+   # Portée locale
+   Z = Y + X # <6>
+   return Z
+
+foo4(1)
+
+# Accès à la variable globale en écriture
+def foo5():
+   global X
+   X = X + 1 # <7>
+
+foo5()
+print( X)
+
+----
+
+<1> Déclarée *avant* et en *dehors* d'une fonction (dans le corps du module donc), la variable `X` est considérée comme une variable *globale*.
+<2> Y est déclaré dans le corps de la fonction, c'est une variable *locale*, c'est à dire temporaire.
+<3> Si on tente d'y accéder après appel de la fonction, on se rend bien compte qu'elle a disparue. Le seul moyen de récupérer une (ou plusieurs) valeur est donc de faire un renvoi avec `return`
+<4> A partir du moment où il y a affectation dans le corps d'une fonction, Python déclare cette nouvelle variable comme une variable locale, peu importe qu'elle existe par ailleurs.
+Autrement dit, elle [red]*masque* la variable `X` déclarée en globale.
+De la même façon que précédemment, la variable `X` *disparait/meurt* à la fin de l'execution de la fonction, c'est une *variable temporaire* en quelque sorte.
+<5> A partir du moment où vous assignez une valeur à une variable dans une fonction, Python considère qu'il s'agit d'une variable locale.
+Ici vous aurez une erreur, car il va tenter d'incrémenter la variable locale X, hors celle-ci n'existe pas dans cette fonction.
+<6> Z et Y sont des variables locales. Concernant X, si vous faites appel à une variable *globale*, et qu'elle n'a pas été redéfinie, python est capable de re-trouver par déduction la valeur de votre variable *globale*. Toutefois, celle ci ne sera accessible qu'en lecture et pas en écriture ( car comme vu précédemment toute nouvelle affectation entraine la création d'une nouvelle variable locale).
+<7> Il existe un mot clef `global` permettant de passer outre cette limitation vu en 6, et permettant d'accéder en écriture à votre variable *globale*. Cette utilisation est clairement déconseillée car pouvant entrainer de nombreuses incohérences dans votre programme..
+
+Voyons pourquoi dès à présent dans cet exemple :
+
+[source,python]
+----
+X = 99
+
+def func1():
+   global X
+   X = 88
+
+def func2():
+   global X
+   X = 42
+
+func1()
+func2()
+# ne donnera pas le même resultat que pour
+func2()
+func1()
+----
+
+pass:macros[http://pythontutor.com/visualize.html#code=X+%3D+99%0A%0Adef+func1()%3A%0A++++global+X%0A++++X+%3D+88%0A%0Adef+func2()%3A%0A++++global+X%0A++++X+%3D+42%0A++++%0Afunc1()%0Afunc2()%0A%0Afunc2()%0Afunc1()&mode=display&cumulative=true&heapPrimitives=true&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=2&curInstr=0[Voir l'execution en ligne\]]
+
+Compte tenu de ce programme, il est très clair ici qu'il risque de favoriser des conflits sur X, qui est devenu une ressource partagée !
+
+L'ordre d'appels des fonctions aura donc une incidence sur la valeur finale de X, ce qui est *clairement un problème* (pour la recherche d'erreur par exemple) ...
+
+=== Passage d'arguments et retour de données
+
+Quelques règles sur les arguments, et le passage d'arguments à des fonctions en python.
+
+* Les arguments sont passés par *assignation*, autrement dit il n'y a *pas de re-copie des valeurs* dans une nouvelle variable locale lors du transfert comme dans certains langages (cf C, C\+\+) .
+* *Peu importe donc le nom de vos arguments*, ils peuvent recouper des noms de variable déjà existant ailleurs dans votre programme puisque *nous savons que leurs portées sont locales.*
+* Changer un/plusieurs élément(s) dans un *objet mutable* a une *incidence sur le programme appelant* .
+
+[source,python]
+----
+def modif(a,b):
+   a = 2 # <1>
+   b[0] = 5 # <2>
+
+x = 1
+list = [1, 2]
+
+modif(x,list)
+
+print (x) # valeur inchangé
+print (list) # valeur changé
+----
+
+pass:macros[http://pythontutor.com/visualize.html#code=def+modif(a,b)%3A%0A++++a+%3D+2%0A++++b%5B0%5D+%3D+5%0A%0Ax+%3D+1%0Alist+%3D+%5B1,+2%5D%0A%0Amodif(x,list)%0A%0Aprint+x+%23+valeur+inchang%C3%A9%0Aprint+list+%23+valeur+chang%C3%A9&mode=display&cumulative=true&heapPrimitives=true&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=2&curInstr=0[Voir l'execution en ligne\]]
+
+.Avant execution du corps de la fonction, l'assignation est la suivante :
+image::images/ref1.png[align="center"]
+
+<1> `a` est une variable locale qui récupère la valeur de la variable `x` lors de l'appel de la fonction.
+L'assignation n'a pas d'effet sur la variable `x`, seul la variable `a` locale sera modifiée ici.
+
+<2> La liste passée ici en paramètre à une variable locale. Toutefois, une liste est un objet *mutable*, donc modifiable sur place !
+Nous ne changeons pas `b`, mais un élément de la liste représentée par b, ce qui aura à la fin de l'execution une répercution sur la variable `list`
+
+.Après execution du corps de la fonction, voici le résultat :
+image::images/ref2.png[align="center"]
+
+Un apercu des différentes techniques est donné via le lien ci dessous, mais la meilleur façon reste de renvoyer des données via le mot clef *return*
+
+Référence ici : +
+http://docs.python.org/release/2.7.3/faq/programming.html?highlight=nonlocal#how-do-i-write-a-function-with-output-parameters-call-by-reference
+
+.exemple de code source bien écrit
+[source,python]
+----
+sac = 3
+def calcul(sac,nbOr): #<1>
+   sac = sac + nbOr
+   return sac
+
+print( calcul(sac,20))
+----
+
+pass:macros[http://pythontutor.com/visualize.html#code=sac+%3D+3%0A%0Adef+calcul(sac,nbOr)%3A+%0A++++sac+%3D+sac+%2B+nbOr%0A++++return+sac%0A%0Adef+calcul2(uxzefzzvc,nbOr)%3A+%0A++++uxzefzzvc+%3D+uxzefzzvc+%2B+nbOr%0A++++return+uxzefzzvc%0A%0Aprint+calcul(sac,20)%0Aprint+calcul2(sac,20)&mode=display&cumulative=true&heapPrimitives=true&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=2&curInstr=0[Voir l'execution en ligne\]]
+
+<1> Comme la fonction manipule des variables locales, peu importe que les noms d'arguments se recoupent +
+  `sac` ou `x` ou `v` dans la définition de la méthode `calcul(..)` ne change rien.
+
+.exemple de code source qu'il faut éviter
+[source,python]
+----
+sac = 3
+def calcul(nbOr): #<1>
+   global sac #<2>
+   sac = sac + nbOr #<3>
+
+calcul(20)
+print( sac)
+----
+
+<1> Seul nbOr est une variable locale
+<2> On accède à sac en variable globale
+<3> Et on le modifie ainsi, c'est mal ! :)
+
+
+Le mot clef `return` implique quand il est rencontré par le programme, l'arrêt du traitement de la fonction, et le retour du résultat.
+Ce qui n'exclue pas la possibilité d'avoir plusieurs fonctions `return` dans un même programme, qui renvoie un résultat en fonction de condition différentes.
+
+.multiples retours de fonctions
+[source,python]
+----
+sac = int(input("nombre de pièces dans votre sac ?"))
+
+def douane(sac):
+    taxe = 15
+    if sac > taxe:
+        print("par ici la monnaie")
+        return sac - taxe
+    else:
+        print("pas de taxe pour les pauvres")
+        return sac
+
+print( douane(sac))
+----

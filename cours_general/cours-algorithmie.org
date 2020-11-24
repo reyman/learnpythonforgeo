@@ -1,0 +1,197 @@
+#+TITLE: ALGORITHMIE ET PROGRAMMATION
+
+* Slides
+** Partie 1 introductive (1 - 43)
+
+*** 5
+Naissance dans ~ actuel ouzbékhistan en 780, more en 850 a Bagdad
+
+Membre de la maison de la sagesse de bagdad, pendant le règne des abassides, un age d'or de la civilisation "Islamique" (VIII - XIII).
+
+Il s'agit de Centre intellectuels au carrefour des civilisations grecques, indiennes, lieu de collecte, de traduction et de diffusion des savoirs.
+
+2 livres majeurs :
+- "abrégé du calcul par la restauration et la comparaison" , premier manuel d'algèbre dont toutes les expressions sont exprimés avec des mots. Ce livre est destiné à des choses très pratiques, le commerce, l'arpentage, etc. Il liste/classe différents algorithmes de résolutions.
+- et "Livre de l'addition et de la soustraction selon le calcul indien" : système de numérotation décimal des indiens et le chiffre 0, vecteur de diffusion ensuite dans l'occident une fois traduit.  
+
+Traduit en latin au 12ème siècle, et son nom sera retenu pour sa forme latine à "Algorithme"
+
+Les algorithmes existent depuis bien avant, Al khuwarizmi n'est pas l'inventeur, car on retrouve déjà des algorithmes : Euclide (PGCD plus grand commun diviseur), Babylone, Egypte etc. 
+
+Les chiffres dit "arabes" vont mettre des siecles à s'imposer en occident.
+
+*** 9
+
+Le sens d'algorithmie va changer avec l'invention de machine mécanisme capable de résoudre des problèmes.
+Il va être lié à la mécanisation, pendant la révolution industrielle.
+
+On citera par exemple le travail de Charle Babbage, le premier a énoncé ce que seront toujours aujourd'hui les parties d'un ordinateur moderne.
+
+Il développe plusieurs machines :
+- première "machine à différences" en 1834 afin de pallier aux erreurs des opérateurs humains. Celle-ci ne sera jamais terminé.
+- une machine analytique qui utilisent des cartes perforés, une invention qu'il pique aux métiers jacquard qu'il a vu en France dans les alentours de Lyon. Cette machine dispose d'un langage de programmation simplifié, et la réalisation de boucles et de conditions sont possibles, Babbage a même écrit plusieurs programmes pour cette machine. Seule une toute partie de la machine sera réalisée. Depuis les années 2010, un projet est à l'oeuvre pour tenter de réaliser la machine tel qu'elle pouvait être dans les plans de Babbage.
+- la machine à différences numéro 2, version simplifié de la 1, qui reste à l'état de plan. Une version a finalement été construite en 2002 pour un musée.
+
+  Il faudra attendre les années 1940 pour voir un remplacant de ces machines mécaniques, et la naissance des premiers ordinateurs electroniques (Colossus UK, Bombe poland, Mark1 US, Zuse Germany, Eniac US, etc.).
+  
+ 
+  
+** Partie 2 De l'homme à la machine (43 - )
+
+*** 44
+
+Comme déjà dit, l'informatique est une discipline assez jeune, et en 1965 les
+langages pour écrire des programes très rudimentaires.
+
+Pourtant avec aussi peu de puissance de calcul/mémoire et de très bonnes équipes
+d'informaticiens, on a réussi à envoyer des personnes sur la lune.
+
+Imaginez ce que vous pouvez faire à présent avec le super ordinateur (ou
+téléphone portable) que vous avez en permanence sur vous.
+
+*** 45
+
+Pour aborder cette complexité, il y a plusieurs méthodes, pistes qui peuvent
+être suivies. Nous en avons déjà vu quelques une en début de cours.
+
+En général c'est pendant la phase de conception, préalable à la construction
+du/des programmes, que l'on se pose toutes ces questions.
+
+*** 46
+
+Dans ce schéma, ce que l'on observe, c'est que l'informatique et le
+développement logiciels ne concerne pas seulement les informaticiens,
+mais inclue tout un ensemble d'acteurs en interactions : client, services
+client, commerciaux, analystes, experts du domaines, programmeurs, etc.
+
+Ce que l'on voit aussi, c'est que la langue naturelle va jouer un grand rôle (perturbateur)
+dans la compréhension du problème et la façon dont on va le résoudre. Au final,
+il y a énormément d'implicite et de biais dans la façon dont nous échangeons des
+informations.
+
+*** 47
+
+Cette phrase de l'auteur Lovecraft et les 8 façon de la traduire de l'anglais au français
+montre bien cette problématique dans un autre contexte.
+
+*** 48
+
+En général, après la phase de conception, intervient la phase d'implémentation,
+qui concerne l'écriture du programme. En général il est nécessaire de faire de
+nombreux retours entre ces deux phases pour arriver à construire un programme satisfaisant.
+
+*** 49
+
+Les informaticiens se sont dotés d'une science dédiés à l'organisation de ces
+étapes. Il existe différents type de cycle de vie logiciels, certains vieux et
+obsolètes comme le cycle en cascade, d'autres plus récents et efficace comme
+la méthode Agile.
+
+Dans le cycle en cascade, entre la phase de conception et la livraison du
+produit, il n'y a aucun aller retour. On concoit un très gros cahier des
+charges avec le client, ensuite on produit le programme et ce n'est qu'à la fin
+que le client dit si il est satisfait ou pas. Ce type de cycle de vie est rare
+aujourd'hui, pour de très nombreuses raisons. La plus évidente est le cout et le
+manque de flexibilité en cas d'échec ou de client mécontent du produit final.
+
+La méthode Agile est celle qui est employé la plus souvent aujourd'hui. On
+essaye d'avancer par petit incrément, avec une confrontation très régulière avec
+le client. Forcément les avancées se font par petit pas, mais nous avons la
+garantie que le produit convient au client. En général on réalise un cycle par
+mois, avec de petites équipes de développement.
+
+*** 50
+
+Le concept est plus dur à comprendre qu'il n'y parait.
+Lorsque vous allez programmer, il va être tentant d'écrire du code sans jamais
+le tester. C'est une erreur, car si vous passez 1 heure à écrire du code, et que
+celui-ci ne s'execute pas car il y a 200 erreurs, vous allez vite vous
+décourager.
+
+Au contraire, il est important d'executer le code le plus souvent possible pour
+voir si il marche et corriger les erreurs au fur et à mesure qu'elles se
+présentent.
+
+La difficulté c'est de prévoir un peu à l'avance les jalons/points d'étapes
+entre chaque amélioration de votre programme. C'est là ou le MVP est malin,
+car il vous rapelle que cela ne sert à rien de produire votre programme petit
+bout par petit bout sans réfléchir. Il vaut mieux le complexifier à partir d'une
+structure principale.
+
+Par exemple, si vous devez réaliser un petit jeu, il vaut mieux construire une
+première version fonctionnelle, avec peu de fonctionnalité. Une fois que vous
+êtes satisfait, vous faite une sauvegarde, et vous cassez votre programme pour
+ajouter une nouvelle fonctionnalité. Et ainsi de suite, en gardant toujours une
+version fonctionelle sous la main pour revenir en arrière si il y a un problème.
+
+** Partie 3 Communiquer avec les ordinateurs (51 - )
+
+*** 52
+
+Les ordinateurs ne comprennent qu'une seul langage, le binaire, c'est à dire une suite de
+zéro et de un. Lorsque les ordinateurs ont étés inventés, il n'y avait pas de
+langage informatiques, et les programmeurs étaient bien obligés d'écrire en
+binaire, ou dans un langage machine à peine plus simple comme l'assembleur.
+
+Aujourd'hui plus personne n'écrits en binaire, et ce sont des logiciels spécialisés, apellés
+compilateur ou interpreteur, qui transforme les langages informatiques en
+binaire compréhensible par la machine.
+
+Afin de passer de la langue naturelle au langage informatique, encore assez rigide, nous allons
+utiliser des formalismes qui permettent d'exprimer de façon moins ambigue nos problèmes.
+
+*** 54
+
+Le premier formalisme que nous allons voir est un formalisme graphique, il
+s'agit du diagramme d'activité.
+
+Ce type de formalisme fait partie du langage de formalisme UML.
+
+Ce langage est composé de plus d'une dizaine de type de diagramme, qui
+permettent de représenter un même programme dans ses différents aspects.
+
+Si vous avez fait de la base de données, alors vous connaissez surement le
+diagramme de classe, qui permet de représenter une vue statique des éléments
+d'un programme ou d'une base de données.
+
+Le diagramme d'activité fait partie, avec d'autres comme le diagramme de
+séquence, ou le diagramme d'état, des diagrammes dit "dynamique" car il
+s'intéresse au déroulement du programme.
+
+*** 55
+
+La syntaxe à retenir est relativement simple :
+
+- Le point d'entrée du programme, là ou tout commence
+- Le ou les points de sorties du programme, là ou tout s'arrête.
+- Les points de décision, qui représente un embranchement dans votre programme.
+  Vous ne pouvez suivre d'une seule branche à la fois.
+- Les boites, qui correspondent à des traitements ayant lieu dans votre
+  programme
+  - Des transitions, et des transitions "gardés", qui règle la façon dont les
+    liens peuvent être / doivent être suivi dans votre programme. Il est évident
+    qu'il ne peux y avoir plusieurs transition sans garde lors d'une
+    intersection, car le programme ne doit jamais se situer dans une situation
+    ambigue sans savoir ou aller.
+
+     Si il n'y a pas de garde, alors il n'y a pas de
+    condition qui limite le déplacement sur cette branche.
+    Si il y a une garde, alors le déplacement sur cette transition n'a lieu que si la condition est
+    remplie.
+
+Conditions
+
+*** 56
+
+BOucles
+
+*** 57
+
+Exemple de diagramme plus complexe
+
+
+
+
+
+
+* Exercices
