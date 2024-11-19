@@ -20,6 +20,14 @@ Les algorithmes existent depuis bien avant, Al khuwarizmi n'est pas l'inventeur,
 
 Les chiffres dit "arabes" vont mettre des siecles à s'imposer en occident.
 
+*** 8
+
+J'aime bien prendre l'exemple d'algorithmes qu'on connait tous, comme par exemple, les recettes de cuisine.
+
+- Les éléments d'un algorithme ne sont pas forcément des symboles, il peux s'agir d'élément très concrets. Ex en cuisine, on manipule des légumes/fruits/etc.
+- Les algorithmes ne sont pas forcément déterministes, cad de reproduction strictement identique entre deux executions, l'aléatoire a toute sa place. Ex : si le résultat que l'on doit observer est une tarte à la pomme, vous pouvez faire varier les ingrédients / recettes sans que cela change la nature fondamentale du résultat. Tout dépend donc ce que l'on attend de l'algorithme.
+- La recette de cuisine montre bien qu'un algorithme n'a pas forcément besoin d'être écrit pour être appliqué. Ex : transmission orale des recettes pendant des millénaires, peut être même avant l'écriture ?
+
 *** 9
 
 Le sens d'algorithmie va changer avec l'invention de machine mécanisme capable de résoudre des problèmes.
